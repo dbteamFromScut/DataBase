@@ -7,6 +7,10 @@ body {
 	padding: 6px 0;
 	text-align: center;
 }
+.textbox {
+	width:220px;
+	height:30px;
+}
 p {
 	height: 40px;
 	line-height: 40px;

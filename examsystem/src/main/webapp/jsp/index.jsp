@@ -9,11 +9,13 @@
 </head>
 <body>
 	<div id="login">
-		<p><input type="text" id="userName" class="textbox"  style="width:220px;height:30px;" placeholder="请输入用户名"></p>
-		<p><input type="password" id="passWord" class="textbox"  style="width:220px;height:30px;" placeholder="请输入密码"></p>
-		<span><input type="radio" name="type" id="student">学生</span>
-		<span><input type="radio" name="type" id="teacher">老师</span>
-		<span><input type="radio" name="type" id="manager">管理员</span>
+		<form action="" method="POST">
+			<p><input type="text" id="userName" class="textbox" placeholder="请输入用户名"></p>
+			<p><input type="password" id="passWord" class="textbox" placeholder="请输入密码"></p>
+			<span><input type="radio" name="type" id="student">学生</span>
+			<span><input type="radio" name="type" id="teacher">老师</span>
+			<span><input type="radio" name="type" id="manager">管理员</span>
+		</form>
 	</div>
 
 	<div id="btn">
