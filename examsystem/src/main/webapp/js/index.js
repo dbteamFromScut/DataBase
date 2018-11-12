@@ -32,7 +32,11 @@ $(function(){
 				}else if(!$('#passWord').validatebox('isValid')){
 					$('#passWord').focus();
 				}else{
+
 					//提交账号密码
+					$.ajax({
+						url:"login",
+					})
 				}
 			});
 		});
