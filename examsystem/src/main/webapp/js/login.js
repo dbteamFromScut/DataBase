@@ -32,7 +32,7 @@ document.getElementById("login").onclick = function(){
                     window.location.href="/admin";
                 }
 			}else {
-
+ 					console.log("登陆失败");
 			}
 		}
 	});
