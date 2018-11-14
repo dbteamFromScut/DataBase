@@ -13,7 +13,7 @@
         <!--指定会话工厂，如果当前上下文中只定义了一个则该属性可省去 -->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
         <!-- 指定要自动扫描接口的基础包，实现接口 -->
-        <property name="basePackage" value="com.lzw.ssm.mapper"></property>
+        <property name="basePackage" value="com.db.mapper"></property>
     </bean>
 
     <!--3 会话工厂bean sqlSessionFactoryBean -->
@@ -30,7 +30,7 @@
         <!--指定会话工厂，如果当前上下文中只定义了一个则该属性可省去 -->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
         <!-- 指定要自动扫描接口的基础包，实现接口 -->
-        <property name="basePackage" value="com.lzw.dao"></property>
+        <property name="basePackage" value="com.db.dao"></property>
     </bean>
     <!--5 声明式事务管理 -->
     <!--定义事物管理器，由spring管理事务 -->
@@ -65,5 +65,6 @@
         <!-- 连接池中连接最大个数 -->
         <property name="maxPoolSize" value="${mysql.maxPoolSize}"></property>
     </bean>
+
 
 </beans>

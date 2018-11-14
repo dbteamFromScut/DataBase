@@ -16,7 +16,7 @@
 			<span><input type="radio" name="type" id="teacher">老师</span>
 			<span><input type="radio" name="type" id="manager">管理员</span>
 		</div>
-		<button id="login" onclick="login()">登陆</button>
+		<button id="login">登陆</button>
 	</form>
 	</script>
 </body>
