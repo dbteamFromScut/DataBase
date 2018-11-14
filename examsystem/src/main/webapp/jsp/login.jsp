@@ -13,7 +13,7 @@
 	<form action="" id="loginWindow" method="post">
 		<div class="title"><p>学生考试管理系统</p></div>
 		<div class="text_in"><input type="text" id="userName" class="input" placeholder="用户名"><span class="img">&#xe971;</span></div>
-		<div class="text_in"><input type="text" id="passWord" class="input" placeholder="密码"><span class="img">&#xe955;</span></div>
+		<div class="text_in"><input type="password" id="passWord" class="input" placeholder="密码"><span class="img">&#xe955;</span></div>
 		<div class="radio">
 			<span><input type="radio" name="type" id="student">学生</span>
 			<span><input type="radio" name="type" id="teacher">老师</span>

@@ -3,40 +3,23 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>index</title>
-    <link rel="stylesheet" type="text/css" href="../css/themes/default/easyui.css" />
-    <link rel="stylesheet" type="text/css" href="../css/themes/icon.css" />
-    <link rel="stylesheet" href="../css/index.css">
-    <script type="text/javascript" src="../js/jquery.min.js"></script>
-    <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
-    <script type="text/javascript" src="../js/locale/easyui-lang-zh_CN.js" ></script>
-    <script src="../js/script1.js"></script>
+	<meta charset="utf-8">
+	<title>login</title>
+	<link rel="stylesheet" href="../css/login.css"></head>
 </head>
-<body>
-<div id="eT" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
-     closed="false" buttons="#login_btn">
-    <form id="eTfm" method="post">
-        <div class="fitem">
-            <input id="userName" class="easyui-validatebox" name="username" style="width:200px;" placeholder="请输入用户名">
-        </div>
-        <div class="fitem">
-            <input id="passWord" name="passWord" class="easyui-validatebox"  style="width:200px;" placeholder="请输入密码">
-        </div>
-        <div class="fitem">
-            <span><input type="radio" name="type" id="student">学生</span>
-            <span><input type="radio" name="type" id="teacher">老师</span>
-            <span><input type="radio" name="type" id="manager">管理员</span>
-        </div>
-    </form>
-</div>
-<div id="login_btn">
-    <a href="" class="easyui-linkbutton" onclick="login()" style="align-self: center">登录</a>
-    <a href="/login" class="easyui-linkbutton" style="align-self: center">登录</a>
-
-</div>
-
+<body background="../images/background.png">
+	<form action="" id="loginWindow" method="post">
+		<div class="title"><p>学生考试管理系统</p></div>
+		<div class="text_in"><input type="text" id="userName" class="input" placeholder="用户名"><span class="img">&#xe971;</span></div>
+		<div class="text_in"><input type="password" id="passWord" class="input" placeholder="密码"><span class="img">&#xe955;</span></div>
+		<div class="radio">
+			<span><input type="radio" name="type" id="student">学生</span>
+			<span><input type="radio" name="type" id="teacher">老师</span>
+			<span><input type="radio" name="type" id="manager">管理员</span>
+		</div>
+		<button id="login">登陆</button>
+	</form>
 </body>
-
 </html>
