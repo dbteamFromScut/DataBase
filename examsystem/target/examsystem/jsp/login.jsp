@@ -1,6 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page isELIgnored="false" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <html>
@@ -10,16 +8,19 @@
 	<link rel="stylesheet" href="../css/login.css"></head>
 </head>
 <body background="../images/background.png">
-	<form action="" id="loginWindow" method="post">
+	<form action="" id="loginWindow">
 		<div class="title"><p>学生考试管理系统</p></div>
 		<div class="text_in"><input type="text" id="userName" class="input" placeholder="用户名"><span class="img">&#xe971;</span></div>
-		<div class="text_in"><input type="password" id="passWord" class="input" placeholder="密码"><span class="img">&#xe955;</span></div>
-		<div class="radio">
-			<span><input type="radio" name="type" id="student">学生</span>
-			<span><input type="radio" name="type" id="teacher">老师</span>
-			<span><input type="radio" name="type" id="manager">管理员</span>
+		<div class="text_in"><input type="passWord" id="passWord" class="input" placeholder="密码"><span class="img">&#xe955;</span></div>
+		<div class="radio" id="radio">
+			<input type="radio" name="type" id="student">学生
+			<input type="radio" name="type" id="teacher">老师
+			<input type="radio" name="type" id="manager">管理员
 		</div>
-		<button id="login">登陆</button>
+		<input name="" type="button" id="login" value="登陆"></input>
 	</form>
+
+	<script src="../js/login.js"></script>
+	 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 </body>
 </html>

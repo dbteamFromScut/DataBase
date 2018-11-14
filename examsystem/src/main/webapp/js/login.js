@@ -21,5 +21,19 @@ document.getElementById("login").onclick = function(){
 		data : form,
 		processData : false,
         contentType : false,
+		success: function(result){
+            var result = eval('('+result+')');
+			if (result.code=="success"){
+				if (role=="student"){
+                    window.location.href="/student";
+                }else if (role=="teacher"){
+                    window.location.href="/teacher";
+                }else if (role=="admin") {
+                    window.location.href="/admin";
+                }
+			}else {
+
+			}
+		}
 	});
 }

@@ -11,4 +11,10 @@ public class JumpController {
     public String test(){
         return "login";
     }
+
+    @RequestMapping(value = "/student")
+    public String student(){
+        System.out.print("ssss");
+        return "student";
+    }
 }
