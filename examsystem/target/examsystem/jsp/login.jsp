@@ -15,7 +15,7 @@
 		<div class="radio" id="radio">
 			<input type="radio" name="type" id="student">学生
 			<input type="radio" name="type" id="teacher">老师
-			<input type="radio" name="type" id="manager">管理员
+			<input type="radio" name="type" id="admin">管理员
 		</div>
 		<input name="" type="button" id="login" value="登陆"></input>
 	</form>

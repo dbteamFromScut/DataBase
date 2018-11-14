@@ -8,8 +8,15 @@
   <component name="ChangeListManager">
     <list default="true" id="d4c73bcf-5635-4767-ba7a-61f8ce97c76d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/controller/JumpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/controller/JumpController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/db/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/controller/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/db/controller/JumpController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/db/controller/JumpController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/db/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/db/controller/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/examsystem/WEB-INF/classes/com/db/controller/JumpController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/examsystem/WEB-INF/classes/com/db/controller/JumpController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/examsystem/WEB-INF/classes/com/db/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/examsystem/WEB-INF/classes/com/db/controller/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/examsystem/jsp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/examsystem/jsp/login.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,7 +29,7 @@
     <session id="-1426480617">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.2" value="1" />
@@ -52,18 +59,18 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="466" />
-          <entry key="js" value="197" />
-          <entry key="jsp" value="87" />
+          <entry key="java" value="477" />
+          <entry key="js" value="201" />
+          <entry key="jsp" value="92" />
           <entry key="txt" value="7" />
           <entry key="xml" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="466" />
-          <entry key="JSP" value="87" />
-          <entry key="JavaScript" value="197" />
+          <entry key="JAVA" value="477" />
+          <entry key="JSP" value="92" />
+          <entry key="JavaScript" value="201" />
           <entry key="PLAIN_TEXT" value="7" />
           <entry key="XML" value="9" />
         </counts>
@@ -84,10 +91,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/db/controller/JumpController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+            <state relative-caret-position="209">
+              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#543#544#0" expanded="true" />
+                <element signature="e#573#574#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -106,7 +115,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/webapp/js/login.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="304">
-              <caret line="34" column="40" lean-forward="true" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
+              <caret line="31" column="17" lean-forward="true" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -132,8 +141,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/login.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+            <state relative-caret-position="221">
+              <caret line="17" column="53" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -141,8 +150,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/db/controller/LoginController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
+            <state relative-caret-position="503">
+              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -193,13 +202,13 @@
         <option value="$PROJECT_DIR$/src/main/webapp/jsp/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/script1.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/jsp/login.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/jsp/student.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/jsp/teacher.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/jsp/admin.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/db/controller/JumpController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/login.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/db/controller/JumpController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/jsp/login.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/db/controller/LoginController.java" />
       </list>
     </option>
@@ -328,7 +337,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542210205554" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542211242832" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -337,14 +346,14 @@
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Github\DataBase\examsystem\src\main\resources" />
+      <recent name="D:\Github\DataBase\examsystem\src\main\webapp" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Github\DataBase\examsystem\src\main\webapp\jsp" />
       <recent name="D:\Github\DataBase\examsystem\src\main\webapp" />
       <recent name="D:\Github\DataBase\examsystem\src\main\resources" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Github\DataBase\examsystem\src\main\resources" />
-      <recent name="D:\Github\DataBase\examsystem\src\main\webapp" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -448,7 +457,7 @@
       <workItem from="1542010901054" duration="6198000" />
       <workItem from="1542028129767" duration="1168000" />
       <workItem from="1542189008226" duration="1235000" />
-      <workItem from="1542204080001" duration="6109000" />
+      <workItem from="1542204080001" duration="7237000" />
     </task>
     <task id="LOCAL-00001" summary="utf8">
       <created>1542189286080</created>
@@ -478,11 +487,18 @@
       <option name="project" value="LOCAL" />
       <updated>1542209764005</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="1.0">
+      <created>1542210214362</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1542210214362</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14710000" />
+    <option name="totallyTimeSpent" value="15838000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -498,7 +514,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32765958" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32765958" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.30921987" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -627,34 +643,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/db/controller/JumpController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="304">
+          <caret line="31" column="17" lean-forward="true" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/login.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+        <state relative-caret-position="221">
+          <caret line="17" column="53" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="53" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/login.js">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/db/controller/JumpController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="34" column="40" lean-forward="true" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
+        <state relative-caret-position="209">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#543#544#0" expanded="true" />
+            <element signature="e#573#574#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/db/controller/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
+        <state relative-caret-position="503">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

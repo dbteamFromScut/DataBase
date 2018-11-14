@@ -26,7 +26,6 @@ public class JumpController {
 
     @RequestMapping(value = "/admin")
     public String toAdmin(){
-
         return "admin";
     }
 }

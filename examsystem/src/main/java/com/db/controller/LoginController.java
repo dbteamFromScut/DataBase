@@ -21,7 +21,8 @@ public class LoginController {
         System.out.print(password);
         System.out.print(role);
         JSONObject resilt=new JSONObject();
-        resilt.put("code","success");
+        resilt.put("code","fail");
+        System.out.print(resilt);
         return resilt;
     }
 
