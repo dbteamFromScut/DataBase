@@ -13,8 +13,20 @@ public class JumpController {
     }
 
     @RequestMapping(value = "/student")
-    public String student(){
-        System.out.print("ssss");
+    public String toStudent(){
+
         return "student";
+    }
+
+    @RequestMapping(value = "/teacher")
+    public String toTeacher(){
+
+        return "teacher";
+    }
+
+    @RequestMapping(value = "/admin")
+    public String toAdmin(){
+
+        return "admin";
     }
 }
