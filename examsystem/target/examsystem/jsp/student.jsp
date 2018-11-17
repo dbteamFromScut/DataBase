@@ -13,6 +13,6 @@
     <title>Student</title>
 </head>
 <body>
-
+${username}
 </body>
 </html>
