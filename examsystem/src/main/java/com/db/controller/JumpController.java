@@ -19,18 +19,32 @@ public class JumpController {
     @RequestMapping(value = "/student")
     public String toStudent(ModelMap modelMap, HttpServletRequest request){
         HttpSession seesion=request.getSession();
-        modelMap.addAttribute("username",seesion.getAttribute("username"));
-        return "student";
+        if (seesion.getAttribute("username")!=null){
+            return "student";
+        }else {
+            return "login";
+        }
+
     }
 
     @RequestMapping(value = "/teacher")
-    public String toTeacher(){
+    public String toTeacher(HttpServletRequest request){
+        HttpSession seesion=request.getSession();
+        if (seesion.getAttribute("username")!=null){
+            return "teacher";
+        }else {
+            return "login";
+        }
 
-        return "teacher";
     }
 
     @RequestMapping(value = "/admin")
-    public String toAdmin(){
-        return "admin";
+    public String toAdmin(HttpServletRequest request){
+        HttpSession seesion=request.getSession();
+        if (seesion.getAttribute("username")!=null){
+            return "admin";
+        }else {
+            return "login";
+        }
     }
 }
