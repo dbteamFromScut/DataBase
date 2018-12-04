@@ -12,7 +12,13 @@ import javax.servlet.http.HttpSession;
 public class JumpController {
 
     @RequestMapping("/")
-    public String test(){
+    public String login(){
+        return "login";
+    }
+
+
+    @RequestMapping("/login")
+    public String loginn(){
         return "login";
     }
 
