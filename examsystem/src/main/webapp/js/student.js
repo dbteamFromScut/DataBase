@@ -49,8 +49,7 @@ document.getElementById("logout").onclick = function(){
 	//退出登录，跳转到登录界面
 	$.ajax({
 		url : "/logout",
-		type : "POST",
-		data : {"logout" : "true"},
+		type : "GET",
 		processData : false,
         contentType : false,
 		success: function(result){
