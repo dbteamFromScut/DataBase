@@ -15,14 +15,15 @@
     	<div class="nav-wrapper">
     		<a href="#" class="brand-logo">Logo</a>
     			<ul class="right">
-    				<li><button id="menu" data-activates="slide-out" class="button-collapse waves-effect"><i class="icon-menu"></i></button></li>
+    				<li><button class="button-collapse waves-effect tooltipped" data-position="right" data-delay="50" data-tooltip="菜单" " data-activates="slide-out" id="menu"><i class="icon-menu"></i></button></li>
     				<li><a class="waves-effect" href="#">姓名</a></li>
     				<li><a class="waves-effect" href="#">学生</a></li>
     				<li><a class="waves-effect" href="#modal1">注销</a></li>
+                    <li><a class="waves-effect tooltipped" data-position="left" data-delay="50" data-tooltip="修改密码" id="change"><i class="icon-key"></i></a></li>
     			</ul>
     	</div>
   	</nav>
-
+    <!-- 退出账号提示 -->
 	<div id="modal1" class="modal l6">
     	<div class="modal-content">
       		<h6>你确定退出当前账号吗？</h6>
@@ -32,6 +33,33 @@
       		<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">取消</a>
     	</div>
   	</div>
+
+    <!-- 修改密码 -->
+    <div class="container" id="changePassword">
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s6 push-s3">
+                        <i class="icon-user prefix"></i>
+                        <input disabled id="icon_prefix" type="text" class="validate">
+                        <label for="icon_prefix">账号</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6 push-s3">
+                        <i class="icon-key prefix"></i>
+                        <input id="password" type="tel" class="validate"  >
+                        <label for="icon_telephone">密码</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- <div></div> -->
+                    <a href="#" class="col btn push-s3 s2" id="yes">确定</a>
+                    <a href="#" class="col btn s2 push-s4" id="cancel">取消</a>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <!-- 侧边导航栏-->
 	<ul id="slide-out" class="side-nav">
@@ -64,68 +92,76 @@
     		  	<div class="row">
     		    	<div class="input-field col s3">
     		    		<i class="icon-price-tag prefix"></i>
-    		      		<input id="first_name" type="text" class="validate" value="糖好酸">
+    		      		<input disabled id="first_name" type="text" class="validate" value="糖好酸">
     		      		<label for="first_name">姓名</label>
     		    	</div>
     		    	<div class="input-field col s3">
     		    		<i class="prefix icon-star-full"></i>
-    		    	  	<input id="last_name" type="text" class="validate" value="201630600000">
+    		    	  	<input disabled id="StudentNumber" type="text" class="validate" value="201630600000">
     		    	  	<label for="last_name">学号</label>
     		    	</div>
     		    	<div class="input-field col s2">
     		    		<i class="prefix icon-man-woman"></i>
-    		    	  	<input id="last_name" type="text" class="validate" value="女">
-    		    	  	<label for="last_name">性别</label>
+    		    	  	<input disabled id="sex" type="text" class="validate" value="女">
+    		    	  	<label for="sex">性别</label>
     		    	</div>
     		  	</div>
     		  	<div class="row">
     		    	<div class="input-field col s5">
     		    		<i class="prefix icon-tree"></i>
-    		    	  	<input disabled value="计算机科学与工程学院" id="disabled" type="text" class="validate">
-    		    	  	<label for="disabled">学院</label>
+    		    	  	<input disabled value="计算机科学与工程学院" id="college" type="text" class="validate">
+    		    	  	<label for="college">学院</label>
     		    	</div>
     		    	<div class="input-field col s3">
     		    		<i class="prefix icon-profile"></i>
-    		    	  	<input disabled value="2016级" id="disabled" type="text" class="validate">
-    		    	  	<label for="disabled">年级</label>
+    		    	  	<input disabled value="2016级" id="grade" type="text" class="validate">
+    		    	  	<label for="grade">年级</label>
     		    	</div>
     		    	<div class="input-field col s3">
     		    		<i class="prefix icon-address-book"></i>
-    		    	  	<input disabled value="16网络工程" id="disabled" type="text" class="validate">
-    		    	  	<label for="disabled">班级</label>
+    		    	  	<input disabled value="16网络工程" id="class" type="text" class="validate">
+    		    	  	<label for="class">班级</label>
     		    	</div>
     		  	</div>
     		  	<div class="row">
     		    	<div class="input-field col s5">
     		    		<i class="prefix icon-home3"></i>
-    		    	  	<input id="address" type="text" class="validate" value="华南理工大学大学城校区C12-300">
+    		    	  	<input disabled id="address" type="text" class="validate" value="华南理工大学大学城校区C12-300">
     		    	  	<label for="address">住址</label>
     		    	</div>
+                    <div class="input-field col s5">
+                        <i class="prefix icon-reddit"></i>
+                        <input disabled id="birthday" type="text" class="validate" value="1993.03">
+                        <label for="birthday">出生年月</label>
+                    </div>
     		  	</div>
     		  	<div class="row">
     		  		<div class="input-field col s5">
     		  			<i class="prefix icon-phone"></i>
-    		    	  	<input id="email" type="email" class="validate" value="13500055522">
-    		    	  	<label for="email">电话号码</label>
+    		    	  	<input disabled id="phoneNumbr" type="text" class="validate" value="13500055522">
+    		    	  	<label for="phoneNumbr">电话号码</label>
     		    	</div>
     		    	<div class="input-field col s5">
     		    		<i class="prefix icon-envelop"></i>
-    		    	  	<input id="email" type="email" class="validate" value="1111111@qq.com">
+    		    	  	<input disabled id="email" type="email" class="validate" value="1111111@qq.com">
     		    	  	<label for="email">邮箱</label>
     		    	</div>
     		  	</div>
-    		  	<div class="row">
-    		    	<div class="input-field col s4">
-    		    		<i class="prefix icon-dice"></i>
-    		    	  	<div id="last_name" type="text" class="validate chips"></div>
-    		    	  	<label for="last_name">爱好</label>
-    		    	</div>
-    		  	</div>
+    		  	
+                <div class="row">
+                    <div class="input-field col s4 offset-s5">
+                        <a href="#" class="btn" id="changeInfo">修改信息</a>
+                    </div>
+                    <div class="input-field col s8 offset-s3">
+                        <a href="#" class="btn" id="confirmChange">确定</a>
+                        <a href="#" class="btn" id="cancelChange">取消</a>
+                    </div>
+                </div>
     		</form>
   		</div>
   	</div>
 
-
+    <!-- 等待完成的考试 -->
 	<div class="container" id="oout2">
 		<div class="row">
 			<h4><i class="icon-files-empty"></i>需完成考试</h4>
@@ -174,6 +210,7 @@
       	</div>
 	</div>
 
+    <!-- 已经完成的考试 -->
 	<div class="container" id="oout3">
 		<div class="row">
 			<h4><i class="icon-file-text2"></i>已完成考试</h4>

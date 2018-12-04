@@ -42,8 +42,157 @@ for (var i = 0; i < slide.length; i++) {
 	}
 }
 
+
+
 //确定注销按钮
 document.getElementById("logout").onclick = function(){
 	//退出登录，跳转到登录界面
-	console.log("d");
+	$.ajax({
+		url : "/logout",
+		type : "POST",
+		data : {"logout" : "true"},
+		processData : false,
+        contentType : false,
+		success: function(result){
+			if (result.code=="success"){
+				window.location.href = "/login"
+				alert("注销成功！")
+			}else {
+ 				alert("注销失败！");
+			}
+		}
+	});
+	
+}
+
+
+
+
+
+//修改密码
+out[3] = document.getElementById('changePassword');
+document.getElementById('change').onclick = function(){
+	for (var i = 0; i < out.length; i++) {
+		out[i].style.display = "none";
+	}
+	out[3].style.display = "block";
+	document.getElementById('icon_prefix').value = inputs[1].value;
+}
+//确定修改密码
+document.getElementById('yes').onclick = function() {
+	//发送新的密码
+	var form = new FormData();
+	var uname = document.getElementById('icon_prefix').value;
+	var pword = document.getElementById('password').value;
+	
+	form.append("username",uname);
+	form.append("password",pword);
+	$.ajax({
+		url : "/changePassword",
+		type : "POST",
+		data : form,
+		processData : false,
+        contentType : false,
+		success: function(result){
+			if (result.code=="success"){
+				document.getElementById('changePassword').style.display = "none";
+				alert("修改成功！")
+			}else {
+ 				alert("修改失败！");
+			}
+		}
+	});
+}
+//取消修改
+document.getElementById('cancel').onclick = function() {
+	document.getElementById('changePassword').style.display = "none";
+}
+
+
+
+
+
+
+//修改信息按钮
+var inputs = document.getElementById('oout1').getElementsByTagName("input");
+
+
+function init(json) {
+	for (var i = 0; i < inputs.length; i++) {
+		inputs[i].value = json[inputs[i].id];
+	}
+}
+
+//获取学生信息,返回一个json格式的数据，里面的各项信息按顺序排列
+function getStudentInfo() {
+	$.ajax({
+		url : "/getInfo",
+		type : "POST",
+		processData : false,
+        contentType : false,
+        dataType : "json",
+		success: function(data,status){
+			if (result.code=="success"){
+				init(data);
+				for (var i = 0; i < inputs.length; i++) {
+					inputs[i].disabled = true;
+				}
+			}else {
+ 				alert("获取信息失败！");
+			}
+		}
+	});
+}
+
+
+document.getElementById('changeInfo').onclick = function() {
+	this.parentNode.style.display = "none";
+	document.getElementById('confirmChange').style.display = "inline-block";
+	document.getElementById('cancelChange').style.display = "inline-block";
+	for (var i = 0; i < inputs.length; i++) {
+		inputs[i].disabled = false;
+	}
+}
+
+//取消修改信息，请求原信息写回页面
+document.getElementById('cancelChange').onclick = function() {
+	this.style.display = "none";
+	document.getElementById('confirmChange').style.display = "none";
+	document.getElementById('changeInfo').parentNode.style.display = "inline-block";
+	//调用请求获取数据库信息
+	getStudentInfo();
+}
+
+
+
+
+
+
+//确认修改信息，上传修改后信息
+document.getElementById("confirmChange").onclick = function() {
+	var json = {};
+	var form = new FormData();
+	for (var i = 0; i < inputs.length; i++) {
+		json[inputs[i].id] = inputs[i].value;
+		form.append(inputs[i].id,inputs[i].value)
+	}
+	init(json);
+	//发送请求附带数据json
+	$.ajax({
+		url : "/changeInfo",
+		type : "POST",
+		data : form,
+		processData : false,
+        contentType : false,
+		success: function(result){
+			if (result.code=="success"){
+				alert("修改成功！")
+				for (var i = 0; i < inputs.length; i++) {
+					inputs[i].disabled = true;
+				}
+			}else {
+ 				alert("修改失败！");
+			}
+		}
+	});
 }

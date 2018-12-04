@@ -36,3 +36,6 @@ document.getElementById("login").onclick = function(){
 		}
 	});
 }
+$(function(){ 
+  $("#userName").focus(); 
+}); 

@@ -20,7 +20,7 @@
 		<input name="" type="button" id="login" value="登陆"></input>
 	</form>
 
-	<script src="../js/login.js"></script>
 	 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script src="../js/login.js"></script>
 </body>
 </html>
