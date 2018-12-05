@@ -51,7 +51,7 @@ foreign key (teacher_id) references teachers (teacher_id)
 
 /*试题库*/
 create table questions
-(question_id varchar(10) primary key, 
+(question_id int primary key, 
 chapter int,
 test_type char(3),
 question varchar(500),
@@ -67,8 +67,9 @@ correct_num int
 
 /*试卷表*/
 create table papers
-(paper_id varchar(10) primary key,
+(paper_id int primary key,
 teacher_id varchar(15),
+paper_name varchar(50),
 start_time datetime,
 stop_time datetime,
 foreign key (teacher_id) references teachers (teacher_id)
@@ -76,7 +77,7 @@ foreign key (teacher_id) references teachers (teacher_id)
 
 /*出题表*/
 create table set_questions
-(paper_id varchar(10),
+(paper_id int,
 question_id varchar(10),
 primary key (paper_id,question_id),
 foreign key (paper_id) references papers (paper_id),
@@ -86,7 +87,7 @@ foreign key (question_id) references questions (question_id)
 /*学生-考试表*/
 create table sp
 (student_id varchar(15),
-paper_id varchar(10),
+paper_id int,
 grade tinyint,
 primary key (student_id,paper_id),
 foreign key (student_id) references students (student_id),
@@ -96,7 +97,7 @@ foreign key (paper_id) references papers (paper_id)
 
 /*操作日志表*/
 create table operation_log
-(order_id varchar(10) primary key,
+(order_id int primary key,
 table_name varchar(20),
 user_id varchar(15),
 operation_type varchar(10),
