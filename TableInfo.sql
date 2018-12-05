@@ -34,7 +34,6 @@ class_name varchar(20)，
 student_password varchar(20),
 sex varchar(2),
 institute varchar(20),
-grade varchar(20),
 address varchar(200),
 birthdate date,
 phone varchar2(11),
