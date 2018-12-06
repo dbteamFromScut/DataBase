@@ -10,10 +10,14 @@
 </head>
 <body>
 
+    <div id="cover">
+        <h1>Welcome</h1>
+    </div>
+
 	<!-- 导航栏 -->
 	<nav>
     	<div class="nav-wrapper">
-    		<a href="#" class="brand-logo">Logo</a>
+    		<a href="#" class="brand-logo">在线考试系统</a>
     			<ul class="right">
     				<li><button class="button-collapse waves-effect tooltipped" data-position="right" data-delay="50" data-tooltip="菜单" " data-activates="slide-out" id="menu"><i class="icon-menu"></i></button></li>
     				<li><a class="waves-effect" href="#">姓名</a></li>
@@ -41,15 +45,15 @@
                 <div class="row">
                     <div class="input-field col s6 push-s3">
                         <i class="icon-user prefix"></i>
-                        <input disabled id="icon_prefix" type="text" class="validate">
-                        <label for="icon_prefix">账号</label>
+                        <input id="icon_prefix" type="text" class="validate">
+                        <label for="icon_prefix">原密码</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s6 push-s3">
                         <i class="icon-key prefix"></i>
                         <input id="password" type="tel" class="validate"  >
-                        <label for="icon_telephone">密码</label>
+                        <label for="icon_telephone">新密码</label>
                     </div>
                 </div>
                 <div class="row">
@@ -87,7 +91,7 @@
 	<!-- 页面内容 -->
   	<div class="container" id="oout1">
 		<div class="row">
-			<h4>基本信息</h3>
+			<h4>基本信息</h4>
     		<form class="col s12">
     		  	<div class="row">
     		    	<div class="input-field col s3">
