@@ -15,7 +15,7 @@
     	<div class="nav-wrapper">
     		<a href="#" class="brand-logo">在线考试系统</a>
     			<ul class="right">
-    				<li><button class="button-collapse waves-effect tooltipped" data-position="right" data-delay="50" data-tooltip="菜单" " data-activates="slide-out" id="menu"><i class="icon-menu"></i></button></li>
+    				<li><button class="button-collapse waves-effect tooltipped" data-position="right" data-delay="50" data-tooltip="菜单"  data-activates="slide-out" id="menu"><i class="icon-menu"></i></button></li>
     				<li><a class="waves-effect" href="#">姓名</a></li>
     				<li><a class="waves-effect" href="#">学生</a></li>
     				<li><a class="waves-effect" href="#modal1">注销</a></li>
@@ -41,15 +41,15 @@
                 <div class="row">
                     <div class="input-field col s6 push-s3">
                         <i class="icon-user prefix"></i>
-                        <input id="icon_prefix" type="text" class="validate">
-                        <label for="icon_prefix">原密码</label>
+                        <input id="oldpassword" type="text" class="validate">
+                        <label for="oldpassword">原密码</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s6 push-s3">
                         <i class="icon-key prefix"></i>
-                        <input id="password" type="tel" class="validate"  >
-                        <label for="icon_telephone">新密码</label>
+                        <input id="newpassword" type="tel" class="validate"  >
+                        <label for="newpassword">新密码</label>
                     </div>
                 </div>
                 <div class="row">
@@ -97,8 +97,8 @@
     		    	</div>
     		    	<div class="input-field col s3">
     		    		<i class="prefix icon-star-full"></i>
-    		    	  	<input disabled id="StudentNumber" type="text" class="validate" value="201630600000">
-    		    	  	<label for="last_name">学号</label>
+    		    	  	<input disabled id="StudentNumber" type="text" class="validate" value="2016000000">
+    		    	  	<label for="StudentNumber">学号</label>
     		    	</div>
     		    	<div class="input-field col s2">
     		    		<i class="prefix icon-man-woman"></i>
@@ -233,9 +233,7 @@
       	</div>
 	</div>
 
-    <div id="cover">
-        <h1>Welcome</h1>
-    </div>
+
 	<script src="../js/jquery.min.js"></script>
 	<script src="../js/materialize.min.js"></script>
   	<script src="../js/student.js"></script>

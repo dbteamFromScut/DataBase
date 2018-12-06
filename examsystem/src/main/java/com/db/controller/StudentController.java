@@ -41,16 +41,27 @@ public class StudentController {
 
     @RequestMapping(value = "/changePassword",method = {RequestMethod.GET,RequestMethod.POST})
     @ResponseBody
-    public Object changePassword(@RequestParam(value = "oldpassword") String oldpassword,
-                                 @RequestParam(value = "newpassword") String newpassword,
+    public Object changePassword(@RequestParam(value = "oldpassword",required = false) String oldpassword,
+                                 @RequestParam(value = "newpassword",required = false) String newpassword,
                                  HttpServletRequest request){
         JSONObject result=new JSONObject();
-        result.put("code","success");
-        return result;
+        HttpSession session=request.getSession();
+        String id = session.getAttribute("username").toString();
+        Student student=studentDao.selectByPrimaryKey(id);
+        if (student.getStudentPassword().equals(oldpassword)){
+            student.setStudentPassword(newpassword);
+            studentDao.updateByPrimaryKey(student);
+            result.put("code","success");
+            return result;
+        }else{
+            result.put("code","fail");
+            return result;
+        }
+
 
     }
 
-    @RequestMapping(value = "/changePassword",method = {RequestMethod.GET,RequestMethod.POST})
+    @RequestMapping(value = "/getInfo",method = {RequestMethod.GET,RequestMethod.POST})
     @ResponseBody
     public Object getInfo(HttpServletRequest request){
 
@@ -58,12 +69,14 @@ public class StudentController {
         HttpSession seesion=request.getSession();
         String id =seesion.getAttribute("username").toString();
         Student student=studentDao.selectByPrimaryKey(id);
-        result.put("","");
-        result.put("","");
-        result.put("","");
-        result.put("","");
+        result.put("姓名","唐浩栓");
+        result.put("性别","女");
+        result.put("生日","1997-9-9");
+        result.put("学号","123");
         return result;
 
     }
+
+
 
 }

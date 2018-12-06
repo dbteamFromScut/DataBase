@@ -5,10 +5,18 @@
     <id column="student_id" property="studentId" jdbcType="VARCHAR" />
     <result column="student_name" property="studentName" jdbcType="VARCHAR" />
     <result column="class_name" property="className" jdbcType="VARCHAR" />
+    <result column="class_grade" property="classGrade" jdbcType="CHAR" />
     <result column="student_password" property="studentPassword" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="institute" property="institute" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="birthdate" property="birthdate" jdbcType="DATE" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="e_mail" property="eMail" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    student_id, student_name, class_name, student_password
+    student_id, student_name, class_name, class_grade, student_password, sex, institute, 
+    address, birthdate, phone, e_mail
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -22,9 +30,13 @@
   </delete>
   <insert id="insert" parameterType="com.db.model.Student" >
     insert into students (student_id, student_name, class_name, 
-      student_password)
+      class_grade, student_password, sex, 
+      institute, address, birthdate, 
+      phone, e_mail)
     values (#{studentId,jdbcType=VARCHAR}, #{studentName,jdbcType=VARCHAR}, #{className,jdbcType=VARCHAR}, 
-      #{studentPassword,jdbcType=VARCHAR})
+      #{classGrade,jdbcType=CHAR}, #{studentPassword,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{institute,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{birthdate,jdbcType=DATE}, 
+      #{phone,jdbcType=VARCHAR}, #{eMail,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.db.model.Student" >
     insert into students
@@ -38,8 +50,29 @@
       <if test="className != null" >
         class_name,
       </if>
+      <if test="classGrade != null" >
+        class_grade,
+      </if>
       <if test="studentPassword != null" >
         student_password,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="institute != null" >
+        institute,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="birthdate != null" >
+        birthdate,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="eMail != null" >
+        e_mail,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -52,8 +85,29 @@
       <if test="className != null" >
         #{className,jdbcType=VARCHAR},
       </if>
+      <if test="classGrade != null" >
+        #{classGrade,jdbcType=CHAR},
+      </if>
       <if test="studentPassword != null" >
         #{studentPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="institute != null" >
+        #{institute,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdate != null" >
+        #{birthdate,jdbcType=DATE},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="eMail != null" >
+        #{eMail,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -66,8 +120,29 @@
       <if test="className != null" >
         class_name = #{className,jdbcType=VARCHAR},
       </if>
+      <if test="classGrade != null" >
+        class_grade = #{classGrade,jdbcType=CHAR},
+      </if>
       <if test="studentPassword != null" >
         student_password = #{studentPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="institute != null" >
+        institute = #{institute,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdate != null" >
+        birthdate = #{birthdate,jdbcType=DATE},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="eMail != null" >
+        e_mail = #{eMail,jdbcType=VARCHAR},
       </if>
     </set>
     where student_id = #{studentId,jdbcType=VARCHAR}
@@ -76,12 +151,14 @@
     update students
     set student_name = #{studentName,jdbcType=VARCHAR},
       class_name = #{className,jdbcType=VARCHAR},
-      student_password = #{studentPassword,jdbcType=VARCHAR}
+      class_grade = #{classGrade,jdbcType=CHAR},
+      student_password = #{studentPassword,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      institute = #{institute,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      birthdate = #{birthdate,jdbcType=DATE},
+      phone = #{phone,jdbcType=VARCHAR},
+      e_mail = #{eMail,jdbcType=VARCHAR}
     where student_id = #{studentId,jdbcType=VARCHAR}
   </update>
-
-  <select id="countStudentId" parameterType="java.lang.String" resultType="int">
-    select count (*) from students
-    where student_id = #{studentId,jdbcType=VARCHAR}
-  </select>
 </mapper>

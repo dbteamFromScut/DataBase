@@ -5,9 +5,16 @@
     <id column="teacher_id" property="teacherId" jdbcType="VARCHAR" />
     <result column="teacher_name" property="teacherName" jdbcType="VARCHAR" />
     <result column="teacher_password" property="teacherPassword" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="institute" property="institute" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="birthdate" property="birthdate" jdbcType="DATE" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="e_mail" property="eMail" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    teacher_id, teacher_name, teacher_password
+    teacher_id, teacher_name, teacher_password, sex, institute, address, birthdate, phone, 
+    e_mail
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -20,9 +27,13 @@
     where teacher_id = #{teacherId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.db.model.Teacher" >
-    insert into teachers (teacher_id, teacher_name, teacher_password
+    insert into teachers (teacher_id, teacher_name, teacher_password, 
+      sex, institute, address, 
+      birthdate, phone, e_mail
       )
-    values (#{teacherId,jdbcType=VARCHAR}, #{teacherName,jdbcType=VARCHAR}, #{teacherPassword,jdbcType=VARCHAR}
+    values (#{teacherId,jdbcType=VARCHAR}, #{teacherName,jdbcType=VARCHAR}, #{teacherPassword,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{institute,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{birthdate,jdbcType=DATE}, #{phone,jdbcType=VARCHAR}, #{eMail,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.db.model.Teacher" >
@@ -37,6 +48,24 @@
       <if test="teacherPassword != null" >
         teacher_password,
       </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="institute != null" >
+        institute,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="birthdate != null" >
+        birthdate,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="eMail != null" >
+        e_mail,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="teacherId != null" >
@@ -47,6 +76,24 @@
       </if>
       <if test="teacherPassword != null" >
         #{teacherPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="institute != null" >
+        #{institute,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdate != null" >
+        #{birthdate,jdbcType=DATE},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="eMail != null" >
+        #{eMail,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -59,13 +106,37 @@
       <if test="teacherPassword != null" >
         teacher_password = #{teacherPassword,jdbcType=VARCHAR},
       </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="institute != null" >
+        institute = #{institute,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdate != null" >
+        birthdate = #{birthdate,jdbcType=DATE},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="eMail != null" >
+        e_mail = #{eMail,jdbcType=VARCHAR},
+      </if>
     </set>
     where teacher_id = #{teacherId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.db.model.Teacher" >
     update teachers
     set teacher_name = #{teacherName,jdbcType=VARCHAR},
-      teacher_password = #{teacherPassword,jdbcType=VARCHAR}
+      teacher_password = #{teacherPassword,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      institute = #{institute,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      birthdate = #{birthdate,jdbcType=DATE},
+      phone = #{phone,jdbcType=VARCHAR},
+      e_mail = #{eMail,jdbcType=VARCHAR}
     where teacher_id = #{teacherId,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -49,13 +49,13 @@ body {
 	position: fixed;
 	width: 100%;
 	text-align:center;
-	margin-top:14%;	
+	margin-top:14%;
 }
 #cover h1
 {
 	font-weight: bold;
 	font-style: oblique;
-	font-size:100px;
+	font-size:200px;
 	font-family: Tahoma;
 	color: #969eab;
 }

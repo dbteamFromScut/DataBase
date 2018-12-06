@@ -35,7 +35,6 @@ for (var i = 0; i < 3; i++) {
 for (var i = 0; i < slide.length; i++) {
 	slide[i].onclick = function() {
 		for (var j = 0; j < out.length; j++) {
-			console.log(j);
 			out[j].style.display = "none";
 		}
 		out[this.getAttribute("index")].style.display = "block";
@@ -66,7 +65,7 @@ document.getElementById("logout").onclick = function(){
 
 
 
-
+//ssss
 
 //修改密码
 out[3] = document.getElementById('changePassword');
@@ -75,21 +74,20 @@ document.getElementById('change').onclick = function(){
 		out[i].style.display = "none";
 	}
 	out[3].style.display = "block";
-	document.getElementById('icon_prefix').value = inputs[1].value;
 }
 //确定修改密码
 document.getElementById('yes').onclick = function() {
 	//发送新的密码
-	var form = new FormData();
-	var uname = document.getElementById('icon_prefix').value;
-	var pword = document.getElementById('password').value;
-	
-	form.append("username",uname);
-	form.append("password",pword);
+	var form1 = new FormData();
+	var oldPassword = document.getElementById('oldpassword').value;
+    var newPassword = document.getElementById('newpassword').value;
+    form1.append("oldpassword",oldPassword);
+	form1.append("newpassword",newPassword);
+	console.log("000");
 	$.ajax({
 		url : "/changePassword",
 		type : "POST",
-		data : form,
+		data : form1,
 		processData : false,
         contentType : false,
 		success: function(result){
@@ -130,8 +128,8 @@ function getStudentInfo() {
 		processData : false,
         contentType : false,
         dataType : "json",
-		success: function(data,status){
-			if (result.code=="success"){
+		success: function(data){
+			if (data.code=="success"){
 				init(data);
 				for (var i = 0; i < inputs.length; i++) {
 					inputs[i].disabled = true;

@@ -1,5 +1,6 @@
 body {
-	background: url(../images/student-bgi.jpg);
+	background: url(../images/student-bgi.jpg) no-repeat center;
+	background-attachment: fixed;
 }
 #menu {
 	background-color: rgb(238,110,115);
@@ -34,10 +35,27 @@ body {
 	margin: 100px auto;
 	background-color: rgb(245,242,240);
 	padding: 50px;
+	z-index: 1;
 }
 
 #confirmChange,
 #cancelChange {
 	display: none;
 	margin: 0 50px;
+}
+#cover
+{
+	display: block;
+	position: fixed;
+	width: 100%;
+	text-align:center;
+	margin-top:14%;
+}
+#cover h1
+{
+	font-weight: bold;
+	font-style: oblique;
+	font-size:200px;
+	font-family: Tahoma;
+	color: #969eab;
 }

@@ -38,7 +38,6 @@ for (var i = 0; i < slide.length; i++) {
 			out[j].style.display = "none";
 		}
 		out[this.getAttribute("index")].style.display = "block";
-		document.getElementById("cover").style.display = "none";
 	}
 }
 
@@ -66,7 +65,7 @@ document.getElementById("logout").onclick = function(){
 
 
 
-
+//ssss
 
 //修改密码
 out[3] = document.getElementById('changePassword');
@@ -74,22 +73,21 @@ document.getElementById('change').onclick = function(){
 	for (var i = 0; i < out.length; i++) {
 		out[i].style.display = "none";
 	}
-	document.getElementById("cover").style.display = "none";
 	out[3].style.display = "block";
 }
 //确定修改密码
 document.getElementById('yes').onclick = function() {
 	//发送新的密码
-	var form = new FormData();
-	var oldPassword = document.getElementById('icon_prefix').value;
-	var newPassword = document.getElementById('password').value;
-	
-	form.append("oldpassword",oldPassword);
-	form.append("newpassword",newPassword);
+	var form1 = new FormData();
+	var oldPassword = document.getElementById('oldpassword').value;
+    var newPassword = document.getElementById('newpassword').value;
+    form1.append("oldpassword",oldPassword);
+	form1.append("newpassword",newPassword);
+	console.log("000");
 	$.ajax({
 		url : "/changePassword",
 		type : "POST",
-		data : form,
+		data : form1,
 		processData : false,
         contentType : false,
 		success: function(result){
