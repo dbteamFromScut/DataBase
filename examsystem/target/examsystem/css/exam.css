@@ -1,0 +1,19 @@
+body {
+	background: url(../images/student-bgi.jpg) no-repeat center;
+	background-attachment: fixed;
+}
+
+#index {
+	position: fixed;
+	top: 70px;
+	right: 60px;
+	width: 15%;
+	padding: 10px;
+}
+.dd {
+	border: 1px solid black;
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	text-align: center;
+}
