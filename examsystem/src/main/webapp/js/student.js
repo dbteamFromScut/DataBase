@@ -35,10 +35,10 @@ for (var i = 0; i < 3; i++) {
 for (var i = 0; i < slide.length; i++) {
 	slide[i].onclick = function() {
 		for (var j = 0; j < out.length; j++) {
-			console.log(j);
 			out[j].style.display = "none";
 		}
 		out[this.getAttribute("index")].style.display = "block";
+		document.getElementById("cover").style.display = "none";
 	}
 }
 
@@ -74,18 +74,18 @@ document.getElementById('change').onclick = function(){
 	for (var i = 0; i < out.length; i++) {
 		out[i].style.display = "none";
 	}
+	document.getElementById("cover").style.display = "none";
 	out[3].style.display = "block";
-	document.getElementById('icon_prefix').value = inputs[1].value;
 }
 //确定修改密码
 document.getElementById('yes').onclick = function() {
 	//发送新的密码
 	var form = new FormData();
-	var uname = document.getElementById('icon_prefix').value;
-	var pword = document.getElementById('password').value;
+	var oldPassword = document.getElementById('icon_prefix').value;
+	var newPassword = document.getElementById('password').value;
 	
-	form.append("username",uname);
-	form.append("password",pword);
+	form.append("oldpassword",oldPassword);
+	form.append("newpassword",newPassword);
 	$.ajax({
 		url : "/changePassword",
 		type : "POST",
@@ -130,8 +130,8 @@ function getStudentInfo() {
 		processData : false,
         contentType : false,
         dataType : "json",
-		success: function(data,status){
-			if (result.code=="success"){
+		success: function(data){
+			if (data.code=="success"){
 				init(data);
 				for (var i = 0; i < inputs.length; i++) {
 					inputs[i].disabled = true;

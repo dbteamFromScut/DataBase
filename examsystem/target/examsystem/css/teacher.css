@@ -1,13 +1,15 @@
 body {
 	background: url(../images/student-bgi.jpg);
+	background-repeat:no-repeat;
+	background-attachment:fixed;
 }
 #menu {
 	background-color: rgb(238,110,115);
 	border: 0;
 	height: 64px;
 	margin: 0;
+	margin-right: 20px;
 }
-
 #menu:hover {
 	background-color: rgb(214,99,103)
 }
@@ -16,31 +18,6 @@ body {
 }
 .right {
 	margin-right: 15%;
-}
-
-.container .row form i {
-	margin-right: 10px;
-}
-.container .row form label {
-	font-size: 14px;
-	margin: 5px 0;
-	font-weight: 800;
-}
-#oout1,
-#oout2,
-#oout3,
-#changePassword {
-	display: none;
-	margin: 100px auto;
-	background-color: rgb(245,242,240);
-	padding: 50px;
-	z-index: 1;
-}
-
-#confirmChange,
-#cancelChange {
-	display: none;
-	margin: 0 50px;
 }
 #cover
 {
@@ -57,5 +34,39 @@ body {
 	font-size:100px;
 	font-family: Tahoma;
 	color: #969eab;
-	z-index: -1;
+}
+.container .row form i {
+	margin-right: 10px;
+}
+.container .row form label {
+	font-size: 14px;
+	margin: 5px 0;
+	font-weight: 800;
+}
+
+#question
+{
+	margin-left: 30px;
+}
+
+#l_A,
+#l_B,
+#l_C,
+#l_D,
+#l_T,
+#l_F
+{
+	margin-left: 20px;
+	margin-right: 5px;
+}
+
+#oout1,
+#oout2,
+#oout3,
+#oout4,
+#oout5 {
+	display: none;
+	margin: 100px auto;
+	background-color: rgb(245,242,240);
+	padding: 30px;
 }
