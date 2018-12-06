@@ -35,6 +35,7 @@ public class LoginController {
         JSONObject result=new JSONObject();
         Student student=null;
         Teacher teacher=null;
+        int bool=0;
         if (role.equals("student")){
             student=studentDao.selectByPrimaryKey(username);
             if (student==null){
@@ -43,8 +44,9 @@ public class LoginController {
                 return result;
             }
             if (!student.getStudentPassword().equals(password)){
-                System.out.print(student.getStudentPassword());
-                student=null;
+                result.put("code","fail");
+                result.put("msg","密码不正确");
+                return result;
             }
         }else if (role.equals("teacher")){
             teacher=teacherDao.selectByPrimaryKey(username);
@@ -74,5 +76,7 @@ public class LoginController {
 
 
     }
+
+
 
 }

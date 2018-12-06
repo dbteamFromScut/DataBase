@@ -31,8 +31,11 @@ document.getElementById("login").onclick = function(){
                     window.location.href="/admin";
                 }
 			}else {
- 					console.log("登陆失败");
+ 					console.log(result.msg);
 			}
 		}
 	});
 }
+$(function(){ 
+  $("#userName").focus(); 
+}); 

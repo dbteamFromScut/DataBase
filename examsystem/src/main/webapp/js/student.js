@@ -50,13 +50,12 @@ document.getElementById("logout").onclick = function(){
 	$.ajax({
 		url : "/logout",
 		type : "POST",
-		data : {"logout" : "true"},
 		processData : false,
         contentType : false,
 		success: function(result){
 			if (result.code=="success"){
-				window.location.href = "/login"
 				alert("注销成功！")
+                window.location.href = "/"
 			}else {
  				alert("注销失败！");
 			}
