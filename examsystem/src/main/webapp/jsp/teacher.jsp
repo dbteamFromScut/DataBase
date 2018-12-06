@@ -65,7 +65,7 @@
   	<!-- 基本信息 -->
   	<div class="container" id="oout1">
 		<div class="row">
-			<h4>基本信息</h3>
+			<h4>基本信息</h4>
     		<form class="col s12">
     		  	<div class="row">
     		    	<div class="input-field col s3">
@@ -223,7 +223,7 @@
 		<div class="row">
 			<h4><i class="icon-file-text2"></i> 扩充题库</h4>
 			<form class="card">
-     			<div class="row" id="question">
+     			<div class="row" id="choose">
         			<div class="input-field col s8">
           				<textarea id="choose_q" class="materialize-textarea" placeholder="请输入选择题题目"></textarea>	
         			</div>
@@ -258,7 +258,7 @@
     		</form>
 
     		<form class="card">
-     			<div class="row" id="question">
+     			<div class="row" id="TF">
         			<div class="input-field col s8">
           				<textarea id="TorF" class="materialize-textarea" placeholder="请输入判断题题目"></textarea>	
         			</div>
