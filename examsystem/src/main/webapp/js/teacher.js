@@ -25,7 +25,7 @@ $(document).ready(function(){
 var slide = new Array();
 var out = new Array();
 var cover = document.getElementById("cover");
-for (var i = 0; i < 4; i++) {
+for (var i = 0; i < 5; i++) {
 	var id1 = "slide" + (i+1);
 	var id2 = "oout" + (i+1);
 	slide[i] = document.getElementById(id1);
