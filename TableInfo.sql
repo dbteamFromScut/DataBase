@@ -68,7 +68,7 @@ correct_num int
 /*试卷表*/
 create table papers
 (paper_id int primary key,
-teacher_id varchar(15),
+teacher_id varchar(20),
 paper_name varchar(50),
 start_time datetime,
 stop_time datetime,
@@ -78,7 +78,7 @@ foreign key (teacher_id) references teachers (teacher_id)
 /*出题表*/
 create table set_questions
 (paper_id int,
-question_id varchar(10),
+question_id int,
 primary key (paper_id,question_id),
 foreign key (paper_id) references papers (paper_id),
 foreign key (question_id) references questions (question_id)
@@ -86,7 +86,7 @@ foreign key (question_id) references questions (question_id)
 
 /*学生-考试表*/
 create table sp
-(student_id varchar(15),
+(student_id varchar(20),
 paper_id int,
 grade tinyint,
 primary key (student_id,paper_id),
@@ -99,9 +99,8 @@ foreign key (paper_id) references papers (paper_id)
 create table operation_log
 (order_id int primary key,
 table_name varchar(20),
-user_id varchar(15),
+user_id varchar(20),
 operation_type varchar(10),
-old_content varchar(500),
-new_content varchar(500),
+information varchar(500),
 operation_time datetime
 );
