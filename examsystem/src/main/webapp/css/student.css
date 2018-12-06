@@ -1,5 +1,6 @@
 body {
-	background: url(../images/student-bgi.jpg);
+	background: url(../images/student-bgi.jpg) no-repeat center;
+	background-attachment: fixed;
 }
 #menu {
 	background-color: rgb(238,110,115);
@@ -57,5 +58,4 @@ body {
 	font-size:100px;
 	font-family: Tahoma;
 	color: #969eab;
-	z-index: -1;
 }

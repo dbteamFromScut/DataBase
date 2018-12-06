@@ -10,10 +10,6 @@
 </head>
 <body>
 
-    <div id="cover">
-        <h1>Welcome</h1>
-    </div>
-
 	<!-- 导航栏 -->
 	<nav>
     	<div class="nav-wrapper">
@@ -236,6 +232,10 @@
 
       	</div>
 	</div>
+
+    <div id="cover">
+        <h1>Welcome</h1>
+    </div>
 	<script src="../js/jquery.min.js"></script>
 	<script src="../js/materialize.min.js"></script>
   	<script src="../js/student.js"></script>
