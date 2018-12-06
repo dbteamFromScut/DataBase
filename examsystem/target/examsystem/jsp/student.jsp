@@ -87,7 +87,7 @@
 	<!-- 页面内容 -->
   	<div class="container" id="oout1">
 		<div class="row">
-			<h4>基本信息</h3>
+			<h4>基本信息</h4>
     		<form class="col s12">
     		  	<div class="row">
     		    	<div class="input-field col s3">

@@ -18,4 +18,5 @@ public interface StudentMapper {
     int updateByPrimaryKey(Student record);
 
     int countStudentId(String studentId);
+
 }
