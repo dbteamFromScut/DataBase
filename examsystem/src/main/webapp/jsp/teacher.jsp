@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="../css/materialize.min.css">
 	<link rel="stylesheet" href="../css/icomoon.css">
 	<link rel="stylesheet" href="../css/teacher.css">
+	<script src="../js/teacher.js"></script>
 </head>
 <body>
 	<!-- 导航栏 -->
@@ -14,14 +15,15 @@
     	<div class="nav-wrapper">
     		<a href="#" class="brand-logo">Logo</a>
     			<ul class="right">
-    				<li><button id="menu" data-activates="slide-out" class="button-collapse waves-effect"><i class="icon-menu"></i></button></li>
+    				<li><button class="button-collapse waves-effect tooltipped" data-position="right" data-delay="50" data-tooltip="菜单"  data-activates="slide-out" id="menu"><i class="icon-menu"></i></button></li>
     				<li><a class="waves-effect" href="#">姓名</a></li>
     				<li><a class="waves-effect" href="#">教师</a></li>
     				<li><a class="waves-effect" href="#modal1">注销</a></li>
+    				<li><a class="waves-effect tooltipped" data-position="left" data-delay="50" data-tooltip="修改密码" id="change"><i class="icon-key"></i></a></li>
     			</ul>
     	</div>
   	</nav>
-
+  	<!-- 注销确认 -->
   	<div id="modal1" class="modal l6">
     	<div class="modal-content">
       		<h6>你确定退出当前账号吗？</h6>
@@ -35,6 +37,33 @@
   	<div id="cover">
   		<h1>Welcome</h1>
   	</div>
+
+  	<!-- 修改密码 -->
+    <div class="container" id="changePassword">
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s6 push-s3">
+                        <i class="icon-user prefix"></i>
+                        <input id="oldpassword" type="text" class="validate">
+                        <label for="oldpassword">原密码</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6 push-s3">
+                        <i class="icon-key prefix"></i>
+                        <input id="newpassword" type="tel" class="validate"  >
+                        <label for="newpassword">新密码</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- <div></div> -->
+                    <a href="#" class="col btn push-s3 s2" id="yes">确定</a>
+                    <a href="#" class="col btn s2 push-s4" id="cancel">取消</a>
+                </div>
+            </form>
+        </div>
+    </div>
 
   	<!-- 侧边导航栏-->
 	<ul id="slide-out" class="side-nav">
@@ -56,7 +85,7 @@
    		<li><a id="slide2" class="waves-effect" href="#!"><i class="icon-alarm"></i>创建/发布考试</a></li>
    		<li><a id="slide3" class="waves-effect" href="#!"><i class="icon-history"></i>已发布的考试</a></li>
    		<li><a id="slide4" class="waves-effect" href="#!"><i class="icon-plus"></i>添加题目</a></li>
-   		<li><a id="slide5" class="waves-effect" href="#!"><i class="icon-address-book"></i>查看本班</a></li>
+   		<li><a id="slide5" class="waves-effect" href="#!"><i class="icon-address-book"></i>查看学生信息</a></li>
   	</ul>
 
 
@@ -70,7 +99,7 @@
     		  	<div class="row">
     		    	<div class="input-field col s3">
     		    		<i class="icon-price-tag prefix"></i>
-    		      		<input id="name" type="text" class="validate" value="教师姓名">
+    		      		<input disabled id="name" type="text" class="validate" value="教师姓名">
     		      		<label for="name">姓名</label>
     		    	</div>
     		    	<div class="input-field col s3">
@@ -80,7 +109,7 @@
     		    	</div>
     		    	<div class="input-field col s2">
     		    		<i class="prefix icon-man-woman"></i>
-    		    	  	<input id="sex" type="text" class="validate" value="女">
+    		    	  	<input disabled id="sex" type="text" class="validate" value="女">
     		    	  	<label for="sex">性别</label>
     		    	</div>
     		  	</div>
@@ -99,23 +128,31 @@
     		  	<div class="row">
     		    	<div class="input-field col s5">
     		    		<i class="prefix icon-home3"></i>
-    		    	  	<input id="address" type="text" class="validate" value="华南理工大学大学城校区C12-300">
+    		    	  	<input disabled id="address" type="text" class="validate" value="华南理工大学大学城校区C12-300">
     		    	  	<label for="address">住址</label>
     		    	</div>
     		  	</div>
     		  	<div class="row">
     		  		<div class="input-field col s5">
     		  			<i class="prefix icon-phone"></i>
-    		    	  	<input id="phone" type="email" class="validate" value="13500055522">
+    		    	  	<input disabled id="phone" type="email" class="validate" value="13500055522">
     		    	  	<label for="phone">电话号码</label>
     		    	</div>
     		    	<div class="input-field col s5">
     		    		<i class="prefix icon-envelop"></i>
-    		    	  	<input id="email" type="email" class="validate" value="1111111@qq.com">
+    		    	  	<input disabled id="email" type="email" class="validate" value="1111111@qq.com">
     		    	  	<label for="email">邮箱</label>
     		    	</div>
     		  	</div>
-    		  	
+    		  	<div class="row">
+                    <div class="input-field col s4 offset-s5">
+                        <a href="#" class="btn" id="changeInfo">修改信息</a>
+                    </div>
+                    <div class="input-field col s8 offset-s3">
+                        <a href="#" class="btn" id="confirmChange">确定</a>
+                        <a href="#" class="btn" id="cancelChange">取消</a>
+                    </div>
+                </div>
     		</form>
   		</div>
   	</div>
@@ -235,13 +272,13 @@
         			</div>
         			<div>
         				<h4>正确答案：</h4>
-        				<input name="group1" type="radio" id="_A"/>
+        				<input name="group1" type="radio" id="_A" value="A" name="ABCD"/>
         				<label for="_A" id="l_A">A</label>
-        				<input name="group1" type="radio" id="_B"/>
+        				<input name="group1" type="radio" id="_B" value="B" name="ABCD"/>
         				<label for="_B" id="l_B">B</label>
-        				<input name="group1" type="radio" id="_C"/>
+        				<input name="group1" type="radio" id="_C" value="C" name="ABCD"/>
         				<label for="_C" id="l_C">C</label>
-        				<input name="group1" type="radio" id="_D"/>
+        				<input name="group1" type="radio" id="_D" value="D" name="ABCD"/>
         				<label for="_D" id="l_D">D</label>
         			</div>
         			<a class="waves-effect waves-light btn" href="#import_choose"><i class="icon-quill"></i>提交选择题</a>
@@ -264,9 +301,9 @@
         			</div>
         			<div>
         				<h4>正确答案：</h4>
-        				<input name="group2" type="radio" id="_T"/>
+        				<input name="group2" type="radio" id="_T" value="T" />
         				<label for="_T" id="l_T">True</label>
-        				<input name="group2" type="radio" id="_F"/>
+        				<input name="group2" type="radio" id="_F" value="F" />
         				<label for="_F" id="l_F">False</label>
         			</div>
         			<a class="waves-effect waves-light btn" href="#import_tf"><i class="icon-quill"></i>提交判断题</a>
@@ -308,64 +345,54 @@
 	<!-- 本班学生信息 -->
 	<div class="container" id="oout5">
 		<div class="row">
-			<h4><i class="icon-users"> 网络工程班</i></h4>
+			<h4><i class="icon-users"> 学生信息</i></h4>
 			<div class="s12">
-			<ul class="collection">
+    		    <div class="col s4"></div>
+    		    <select class="browser-default col s3" id="grade">
+    		      <option disabled selected>年级</option>
+    		      
+    		    </select>
+    		    <div class="col s0.5"></div>
+    		    <select class="browser-default col s3" id="class">
+    		      <option disabled selected>班级</option>
+    		      
+    		    </select>
+    		    <div class="col s0.5"></div>
+    		    <button class="btn waves-effect waves-light col s1" type="submit" id="search_student">查询</button>
+    		</div>
+    		<br><br>
+			<div class="s12">
+			<ul class="collection" id="student_list">
       				<p class="col s2">姓名</p>
-      				<p class="col s3">学号</p>
-      				<p class="col s2">性别</p>
+      				<p class="col s2">学号</p>
+      				<p class="col s1">性别</p>
       				<p class="col s3">学院</p>
       				<p class="col s2">年级</p>
+      				<p class="col s2">班级</p>
       			<li>
       				<p class="col s2">大哥哥</p>
-      				<p class="col s3">201630600000</p>
-      				<p class="col s2">男</p>
+      				<p class="col s2">201630600000</p>
+      				<p class="col s1">男</p>
       				<p class="col s3">计算机科学与工程学院</p>
       				<p class="col s2">2016</p>
+      				<p class="col s2">网络工程班</p>
       			</li>
       			<li>
       				<p class="col s2">大哥哥</p>
-      				<p class="col s3">201630600000</p>
-      				<p class="col s2">男</p>
+      				<p class="col s2">201630600000</p>
+      				<p class="col s1">男</p>
       				<p class="col s3">计算机科学与工程学院</p>
       				<p class="col s2">2016</p>
+      				<p class="col s2">网络工程班</p>
       			</li>
       			<li>
-      				<p class="col s2">大姐姐</p>
-      				<p class="col s3">201630600000</p>
-      				<p class="col s2">女</p>
+      				<p class="col s2">大哥哥</p>
+      				<p class="col s2">201630600000</p>
+      				<p class="col s1">男</p>
       				<p class="col s3">计算机科学与工程学院</p>
       				<p class="col s2">2016</p>
-      			</li>
-      			<li>
-      				<p class="col s2">大姐姐</p>
-      				<p class="col s3">201630600000</p>
-      				<p class="col s2">女</p>
-      				<p class="col s3">计算机科学与工程学院</p>
-      				<p class="col s2">2016</p>
-      			</li>
-      			<li>
-      				<p class="col s2">大姐姐</p>
-      				<p class="col s3">201630600000</p>
-      				<p class="col s2">女</p>
-      				<p class="col s3">计算机科学与工程学院</p>
-      				<p class="col s2">2016</p>
-      			</li>
-      			<li>
-      				<p class="col s2">大姐姐</p>
-      				<p class="col s3">201630600000</p>
-      				<p class="col s2">女</p>
-      				<p class="col s3">计算机科学与工程学院</p>
-      				<p class="col s2">2016</p>
-      			</li>
-      			<li>
-      				<p class="col s2">大姐姐</p>
-      				<p class="col s3">201630600000</p>
-      				<p class="col s2">女</p>
-      				<p class="col s3">计算机科学与工程学院</p>
-      				<p class="col s2">2016</p>
-      			</li>
-      			
+      				<p class="col s2">网络工程班</p>
+      			</li>      			
     		</ul>
     		</div>
 

@@ -49,6 +49,12 @@ body {
 	margin-left: 30px;
 }
 
+#confirmChange,
+#cancelChange {
+	display: none;
+	margin: 0 50px;
+}
+
 #l_A,
 #l_B,
 #l_C,
@@ -64,7 +70,8 @@ body {
 #oout2,
 #oout3,
 #oout4,
-#oout5 {
+#oout5,
+#changePassword {
 	display: none;
 	margin: 100px auto;
 	background-color: rgb(245,242,240);
