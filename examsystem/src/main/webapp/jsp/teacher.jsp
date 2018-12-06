@@ -70,30 +70,30 @@
     		  	<div class="row">
     		    	<div class="input-field col s3">
     		    		<i class="icon-price-tag prefix"></i>
-    		      		<input id="first_name" type="text" class="validate" value="教师姓名">
-    		      		<label for="first_name">姓名</label>
+    		      		<input id="name" type="text" class="validate" value="教师姓名">
+    		      		<label for="name">姓名</label>
     		    	</div>
     		    	<div class="input-field col s3">
     		    		<i class="prefix icon-star-full"></i>
-    		    	  	<input id="last_name" type="text" class="validate" value="201630600000">
-    		    	  	<label for="last_name">教职工号</label>
+    		    	  	<input disabled id="id" type="text" class="validate" value="201630600000">
+    		    	  	<label for="id">教职工号</label>
     		    	</div>
     		    	<div class="input-field col s2">
     		    		<i class="prefix icon-man-woman"></i>
-    		    	  	<input id="last_name" type="text" class="validate" value="女">
-    		    	  	<label for="last_name">性别</label>
+    		    	  	<input id="sex" type="text" class="validate" value="女">
+    		    	  	<label for="sex">性别</label>
     		    	</div>
     		  	</div>
     		  	<div class="row">
     		    	<div class="input-field col s4">
     		    		<i class="prefix icon-tree"></i>
-    		    	  	<input disabled value="计算机科学与工程学院" id="disabled" type="text" class="validate">
-    		    	  	<label for="disabled">学院</label>
+    		    	  	<input disabled value="计算机科学与工程学院" id="college" type="text" class="validate">
+    		    	  	<label for="college">学院</label>
     		    	</div>
     		    	<div class="input-field col s3">
     		    		<i class="prefix icon-profile"></i>
-    		    	  	<input disabled value="1980-08-11" id="disabled" type="text" class="validate">
-    		    	  	<label for="disabled">生日</label>
+    		    	  	<input disabled value="1980-08-11" id="birthday" type="text" class="validate">
+    		    	  	<label for="birthday">生日</label>
     		    	</div>    		       	
     		  	</div>
     		  	<div class="row">
@@ -106,8 +106,8 @@
     		  	<div class="row">
     		  		<div class="input-field col s5">
     		  			<i class="prefix icon-phone"></i>
-    		    	  	<input id="email" type="email" class="validate" value="13500055522">
-    		    	  	<label for="email">电话号码</label>
+    		    	  	<input id="phone" type="email" class="validate" value="13500055522">
+    		    	  	<label for="phone">电话号码</label>
     		    	</div>
     		    	<div class="input-field col s5">
     		    		<i class="prefix icon-envelop"></i>
