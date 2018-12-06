@@ -170,10 +170,6 @@ document.getElementById('cancelChange').onclick = function() {
 }
 
 
-
-
-
-
 //确认修改信息，上传修改后信息
 document.getElementById("confirmChange").onclick = function() {
     var json = {};
@@ -195,6 +191,10 @@ document.getElementById("confirmChange").onclick = function() {
                 for (var i = 0; i < inputs.length; i++) {
                     inputs[i].disabled = true;
                 }
+                alert("修改成功！");
+                this.style.display = "none";
+                document.getElementById('cancelChange').style.display = "none";
+                document.getElementById('changeInfo').parentNode.style.display = "inline-block";
             }else {
                 alert("修改失败！");
             }
