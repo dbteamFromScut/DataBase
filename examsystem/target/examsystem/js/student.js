@@ -83,7 +83,6 @@ document.getElementById('yes').onclick = function() {
     var newPassword = document.getElementById('newpassword').value;
     form1.append("oldpassword",oldPassword);
     form1.append("newpassword",newPassword);
-    console.log("000");
     $.ajax({
         url : "/changePassword",
         type : "POST",
@@ -112,9 +111,16 @@ var inputs = document.getElementById('oout1').getElementsByTagName("input");
 
 
 function init(json) {
-    for (var i = 0; i < inputs.length; i++) {
-        inputs[i].value = json[inputs[i].id];
-    }
+    $("#first_name").val(json.first_name);
+    $("#StudentNumber").val(json.StudentNumber);
+    $("#sex").val(json.sex);
+    $("#college").val(json.college);
+    $("#grade").val(json.grade);
+    $("#class").val(json.class);
+    $("#address").val(json.address);
+    $("#birthday").val(json.birthday);
+    $("#phoneNumbr").val(json.phoneNumbr);
+    $("#email").val(json.email);
 }
 
 //获取学生信息,返回一个json格式的数据，里面的各项信息按顺序排列
@@ -126,13 +132,12 @@ function getStudentInfo() {
         contentType : false,
         dataType : "json",
         success: function(data){
-            if (data.code=="success"){
+            if (data.code=="success")
+            {
                 init(data);
                 for (var i = 0; i < inputs.length; i++) {
                     inputs[i].disabled = true;
                 }
-            }else {
-                alert("获取信息失败！");
             }
         }
     });
@@ -146,6 +151,13 @@ document.getElementById('changeInfo').onclick = function() {
     for (var i = 0; i < inputs.length; i++) {
         inputs[i].disabled = false;
     }
+    document.getElementById('StudentNumber').disabled=true;
+    document.getElementById('first_name').disabled=true;
+    document.getElementById('class').disabled=true;
+    document.getElementById('college').disabled=true;
+    document.getElementById('grade').disabled=true;
+
+
 }
 
 //取消修改信息，请求原信息写回页面
@@ -170,7 +182,6 @@ document.getElementById("confirmChange").onclick = function() {
         json[inputs[i].id] = inputs[i].value;
         form.append(inputs[i].id,inputs[i].value)
     }
-    init(json);
     //发送请求附带数据json
     $.ajax({
         url : "/changeInfo",
@@ -180,7 +191,7 @@ document.getElementById("confirmChange").onclick = function() {
         contentType : false,
         success: function(result){
             if (result.code=="success"){
-                alert("修改成功！")
+                getStudentInfo();
                 for (var i = 0; i < inputs.length; i++) {
                     inputs[i].disabled = true;
                 }
