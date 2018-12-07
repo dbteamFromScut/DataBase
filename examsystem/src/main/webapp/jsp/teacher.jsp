@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="../css/teacher.css">
 	<script src="../js/teacher.js"></script>
 </head>
-<body>
+<body onload="getTeacherInfo()">
 	<!-- 导航栏 -->
 	<nav>
     	<div class="nav-wrapper">
@@ -346,7 +346,7 @@
 	<div class="container" id="oout5">
 		<div class="row">
 			<h4><i class="icon-users"> 学生信息</i></h4>
-			<div class="s12">
+			<form class="s12">
     		    <div class="col s4"></div>
     		    <select class="browser-default col s3" id="grade">
     		      <option disabled selected>年级</option>
@@ -359,7 +359,7 @@
     		    </select>
     		    <div class="col s0.5"></div>
     		    <button class="btn waves-effect waves-light col s1" type="submit" id="search_student">查询</button>
-    		</div>
+    		</form>
     		<br><br>
 			<div class="s12">
 			<ul class="collection" id="student_list">

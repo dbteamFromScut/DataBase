@@ -144,9 +144,9 @@ function init(json) {
 }
 var inputs = document.getElementById('oout1').getElementsByTagName("input");
 //获取老师的信息
-function getStudentInfo() {
+function getTeacherInfo() {
     $.ajax({
-        url : "/getInfo",
+        url : "/",
         type : "POST",
         processData : false,
         contentType : false,
@@ -323,7 +323,7 @@ document.getElementById("file_confirm").onclick=function(){
 		});
 	}
 }
-//获取所教班级的学生信息
+//获取所教班级的所有学生信息
 function getAllstudents(){
 	var form=new FormData();
 	form.append("classgrade",class_grade);//数组
@@ -347,6 +347,7 @@ function getAllstudents(){
         }
 	});
 }
+ducument.getElementById("slide5").onclick=getAllstudents();
 //根据信息查询学生列表，如果classgrade或classname之一为空，就查询某个班名或某个年级的所有人
 document.getElementById("search_student").onclick=function(){
 	var classgrade=$("#grade").text();
