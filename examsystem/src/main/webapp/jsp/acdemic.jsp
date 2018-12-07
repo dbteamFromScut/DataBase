@@ -1,3 +1,4 @@
+<%@ page language="java" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +14,7 @@
     	<div class="nav-wrapper">
     		<a href="#" class="brand-logo">Logo</a>
     			<ul class="right">
-    				<li><button id="menu" data-activates="slide-out" class="button-collapse waves-effect"><i class="icon-menu"></i></button></li>
+    				<li><button class="button-collapse waves-effect tooltipped" data-position="right" data-delay="50" data-tooltip="菜单"  data-activates="slide-out" id="menu"><i class="icon-menu"></i></button></li>
     				<li><a class="waves-effect" href="#">姓名</a></li>
     				<li><a class="waves-effect" href="#">教务员</a></li>
     				<li><a class="waves-effect" href="#modal1">注销</a></li>
@@ -68,14 +69,14 @@
       		<p class="col s2">操作</p>
       		<li>
       			<p class="col s2">大哥哥</p>
-      			<p class="col s3">201630600000</p>
+      			<p class="col s3" name="teacher_id">201630600000</p>
       			<p class="col s2">男</p>
       			<p class="col s3">计算机科学与工程学院</p>
       			<p class="col s2"><a href="#teacher_detail" name="teacher_edit">修改</a></p>
       		</li>
       		<li>
       			<p class="col s2">大哥哥</p>
-      			<p class="col s3">201630600000</p>
+      			<p class="col s3" name="teacher_id">201630603000</p>
       			<p class="col s2">男</p>
       			<p class="col s3">计算机科学与工程学院</p>
       			<p class="col s2"><a href="#teacher_detail" name="teacher_edit">修改</a></p>
@@ -167,7 +168,7 @@
           <option value="5">计联计创</option>
         </select>
         <div class="col s0.5"></div>
-        <button class="btn waves-effect waves-light col s1" type="submit" id="search_question">查询</button>
+        <button class="btn waves-effect waves-light col s1" type="submit" id="search_student">查询</button>
       </div>
       <br><br>
       <div class="s12">
@@ -175,24 +176,27 @@
               <p class="col s2">姓名</p>
               <p class="col s2">学号</p>
               <p class="col s1">性别</p>
-              <p class="col s2">年级</p>
+              <p class="col s1">年级</p>
+              <p class="col s2">班级</p>
               <p class="col s3">学院</p>
-              <p class="col s2">操作</p>
+              <p class="col s1">操作</p>
             <li>
               <p class="col s2">大哥哥</p>
-              <p class="col s2">201630600000</p>
+              <p class="col s2" name="student_id">201630600000</p>
               <p class="col s1">男</p>
-              <p class="col s2">2016级</p>
+              <p class="col s1">2016级</p>
+              <p class="col s2">网络工程班</p>
               <p class="col s3">计算机科学与工程学院</p>
-              <p class="col s2"><a href="#student_detail" name="student_edit">修改</a></p>
+              <p class="col s1"><a href="#student_detail" name="student_edit">修改</a></p>
             </li>
             <li>
               <p class="col s2">大哥哥</p>
-              <p class="col s2">201630600000</p>
+              <p class="col s2" name="student_id">201630650000</p>
               <p class="col s1">男</p>
-              <p class="col s2">2016级</p>
+              <p class="col s1">2016级</p>
+              <p class="col s2">网络工程班</p>
               <p class="col s3">计算机科学与工程学院</p>
-              <p class="col s2"><a href="#student_detail" name="student_edit">修改</a></p>
+              <p class="col s1"><a href="#student_detail" name="student_edit">修改</a></p>
             </li>                                 
         </ul>
       </div>
@@ -379,9 +383,9 @@
               </div>
               <div>
                 <h4>正确答案：</h4>
-                <input name="group2" type="radio" id="_T"/>
+                <input name="group2" type="radio" id="_T" value="对"/>
                 <label for="_T" id="l_T">True</label>
-                <input name="group2" type="radio" id="_F"/>
+                <input name="group2" type="radio" id="_F" value="错"/>
                 <label for="_F" id="l_F">False</label>
               </div>
               <div class="modal-footer">
