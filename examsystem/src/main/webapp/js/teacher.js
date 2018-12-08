@@ -1,5 +1,36 @@
+//老师所教的班级信息
 var class_name = new Array();
 var class_grade = new Array();
+//以下用于获取教师所教的班级，返回的是对应的年级class_grade和班级class_name
+var formdata=new FormData();
+var t_id=$("#id").val();
+formdata.append("id",t_id);
+var str1='<option value="" disabled selected>年级</option>';
+var str2='<option value="" disabled selected>班级</option>';
+$.ajax({
+    url:"/getTeacherlass",
+    type:"POST",
+    processData : false,
+    contentType : false,
+    async : false,
+    data:formdata,
+    dataType:"json",
+    success:function(result){
+        if (result){
+            $("#grade").empty();
+            $("#class").empty();
+            for(var i=0;i<result.length;i++){
+                class_name[i]=result[i].class_name;
+                class_grade[i]=result[i].class_grade;
+                str1+='<option>'+result[i].class_grade+'</option>';
+                str2+='<option>'+result[i].class_name+'</option>';
+            }
+            $("#grade").append(str1);
+            $("#class").append(str2);
+        }
+    }
+});
+
 
 $(document).ready(function(){
 // Initialize collapse button
@@ -21,35 +52,7 @@ $(document).ready(function(){
       },
       // complete: function() { alert('Closed'); } // Callback for Modal close
     });
- 	//以下用于获取教师所教的班级，返回的是对应的年级class_grade和班级class_name
- 	var formdata=new FormData();
- 	var t_id=$("#id").val();
- 	formdata.append("id",t_id);
- 	var str1='<option value="" disabled selected>年级</option>';
- 	var str2='<option value="" disabled selected>班级</option>';
- 	$.ajax({
- 		url:"/",
- 		type:"POST",
- 		processData : false,
-        contentType : false,
-        async : false,
-        data:formdata,
-        dataType:"json",
-        success:function(result){
-        	if (result){
-        		$("#grade").empty();
-        		$("#class").empty();
-                for(var i=0;i<result.length;i++){
-                	class_name[i]=result[i].class_name;
-                	class_grade[i]=result[i].class_grade;
-                	str1+='<option>'+class_grade+'</option>';
-                	str2+='<option>'+class_name+'</option>';
-                }
-                $("#grade").append(str1);
-                $("#class").append(str2);
-            }
-        }
- 	});
+ 	
 });
 
 //控制左侧导航栏菜单的点击切换
@@ -328,9 +331,9 @@ function getAllstudents(){
 	var form=new FormData();
 	form.append("classgrade",class_grade);//数组
 	form.append("classname",class_name);//数组
-	var str='';
+	var str='<p class="col s2">姓名</p><p class="col s2">学号</p><p class="col s1">性别</p><p class="col s3">学院</p><p class="col s2">年级</p><p class="col s2">班级</p>';
 	$.ajax({
-		url:"/",
+		url:"/getAllStudents",
 		type:"POST",
 		processData : false,
         contentType : false,
@@ -347,9 +350,10 @@ function getAllstudents(){
         }
 	});
 }
-ducument.getElementById("slide5").onclick=getAllstudents();
-//根据信息查询学生列表，如果classgrade或classname之一为空，就查询某个班名或某个年级的所有人
+ducument.getElementById("slide5").onclick=getAllstudents;
+//根据信息查询学生列表，如果classgrade或classname之一为""，就查询某个班名或某个年级的所有人
 document.getElementById("search_student").onclick=function(){
+    var str='<p class="col s2">姓名</p><p class="col s2">学号</p><p class="col s1">性别</p><p class="col s3">学院</p><p class="col s2">年级</p><p class="col s2">班级</p>';
 	var classgrade=$("#grade").text();
 	var classname=$("#class").text();
 	if(classgrade=="年级"){classgrade="";}
@@ -360,7 +364,7 @@ document.getElementById("search_student").onclick=function(){
 		form.append("classgrade",classgrade);
 		form.append("classname",classname);
 		$.ajax({
-			url:"/",
+			url:"/getSelectedStudents",
 			type:"POST",
 			data:form,
 			processData : false,

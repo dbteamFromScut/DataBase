@@ -157,7 +157,7 @@
   		</div>
   	</div>
 
-  	<!-- 考试相关 -->
+  	<!-- 创建/发布考试 -->
   	<div class="container" id="oout2">
 		<div class="row">
 			<h4><i class="icon-files-empty"></i> 已创建的考试</h4>
@@ -207,7 +207,7 @@
       	<a class="waves-effect waves-light btn"><i class="icon-plus left"></i>创建新的考试</a>
 	</div>
 
-	<!-- 考试相关 -->
+	<!-- 已发布的考试 -->
   	<div class="container" id="oout3">
 		<div class="row">
 			<h4><i class="icon-files-empty"></i> 已发布的考试</h4>
@@ -272,13 +272,13 @@
         			</div>
         			<div>
         				<h4>正确答案：</h4>
-        				<input name="group1" type="radio" id="_A" value="A" name="ABCD"/>
+        				<input name="group1" type="radio" id="_A" value="A"/>
         				<label for="_A" id="l_A">A</label>
-        				<input name="group1" type="radio" id="_B" value="B" name="ABCD"/>
+        				<input name="group1" type="radio" id="_B" value="B"/>
         				<label for="_B" id="l_B">B</label>
-        				<input name="group1" type="radio" id="_C" value="C" name="ABCD"/>
+        				<input name="group1" type="radio" id="_C" value="C"/>
         				<label for="_C" id="l_C">C</label>
-        				<input name="group1" type="radio" id="_D" value="D" name="ABCD"/>
+        				<input name="group1" type="radio" id="_D" value="D"/>
         				<label for="_D" id="l_D">D</label>
         			</div>
         			<a class="waves-effect waves-light btn" href="#import_choose"><i class="icon-quill"></i>提交选择题</a>

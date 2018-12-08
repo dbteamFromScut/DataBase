@@ -61,7 +61,7 @@
 		<div class="row">
 			<h4><i class="icon-users"> 教师信息</i></h4>
 			<div class="s12">
-			  <ul class="collection">
+			  <ul class="collection" id="allteacher">
       		<p class="col s2">姓名</p>
       		<p class="col s3">职工号</p>
       		<p class="col s2">性别</p>
@@ -150,7 +150,7 @@
   <div class="container" id="oout2">
     <div class="row">
       <h4><i class="icon-users"> 学生信息</i></h4>
-      <div class="s12">
+      <form class="s12">
         <div class="col s4"></div>
         <select class="browser-default col s3" id="grade">
           <option value="" disabled selected>年级</option>
@@ -169,10 +169,10 @@
         </select>
         <div class="col s0.5"></div>
         <button class="btn waves-effect waves-light col s1" type="submit" id="search_student">查询</button>
-      </div>
+      </form>
       <br><br>
       <div class="s12">
-      <ul class="collection">
+      <ul class="collection" id="student_list">
               <p class="col s2">姓名</p>
               <p class="col s2">学号</p>
               <p class="col s1">性别</p>
@@ -275,7 +275,7 @@
   <div class="container" id="oout3">
     <div class="row">
       <h4><i class="icon-pencil"> 管理试题</i></h4>
-      <div class="s12">
+      <form class="s12">
         <div class="col s4"></div>
         <select class="browser-default col s3" id="section">
           <option value="" disabled selected>章节</option>
@@ -292,17 +292,17 @@
           <option value="11">第十一章</option>
         </select>
         <div class="col s0.5"></div>
-        <select class="browser-default col s3" id="questin_type">
+        <select class="browser-default col s3" id="question_type">
           <option value="" disabled selected>题型</option>
-          <option value="1">选择题</option>
-          <option value="2">判断题</option>
+          <option value="选择">选择</option>
+          <option value="判断">判断</option>
         </select>
         <div class="col s0.5"></div>
         <button class="btn waves-effect waves-light col s1" type="submit" id="search_question">查询</button>
-      </div>
+      </form>
       <br><br>
       <div class="s12">
-        <ul class="collection">
+        <ul class="collection" id="question_list">
           <p class="col s2">试题id</p>
           <p class="col s5">题目</p>
           <p class="col s2">章节</p>

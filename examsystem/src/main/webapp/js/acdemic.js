@@ -1,3 +1,28 @@
+getStudentList();
+getTeacherList();
+getQuestionList();
+//result返回数据库中学生所在的所有年级class_grade和班级class_name
+var str1='<option value="" disabled selected>年级</option>';
+var str2='<option value="" disabled selected>班级</option>';
+$.ajax({
+  url:"/getAllClass",
+  type:"POST",
+  processData : false,
+  contentType : false,
+  dataType:"json",
+  success:function(result){
+    if(result){
+      $("#grade").empty();
+      $("#class").empty();
+      for(var i=0;i<result.length;i++){
+          str1+='<option>'+result[i].class_grade+'</option>';
+          str2+='<option>'+result[i].class_name+'</option>';
+      }
+      $("#grade").append(str1);
+      $("#class").append(str2);
+    }
+  }
+});
 
 $(document).ready(function(){
 // Initialize collapse button
@@ -49,7 +74,7 @@ for (var i = 0; i < slide.length; i++) {
   }
 }
 
-//管理试题页面
+/*管理试题页面*/
 //弹出对应id的试题修改框，ajax根据id获取除id外的题目、选项、以及答案
 var question_edit=document.getElementsByName("question_edit");
 for (var i = 0; i < question_edit.length; i++) {
@@ -218,7 +243,7 @@ document.getElementById("save_choose").onclick=function(){
 
 
 
-//管理学生页面
+/*管理学生页面*/
 //弹出对应id的学生信息修改框，ajax根据id获取除id外的其他信息
 var student_edit=document.getElementsByName("student_edit");
 for (var i = 0; i < student_edit.length; i++) {
@@ -306,7 +331,7 @@ document.getElementById("save_student").onclick=function(){
 }
 
 
-//管理教师信息页面
+/*管理教师信息页面*/
 //弹出对应id的教师信息修改框，ajax根据id获取除id外的其他信息
 var teacher_edit=document.getElementsByName("teacher_edit");
 for (var i = 0; i < teacher_edit.length; i++) {
@@ -385,4 +410,104 @@ document.getElementById("save_teacher").onclick=function(){
       });
     }
   } 
+}
+
+
+
+/*列表更新函数*/
+
+//学生,根据年级和班级返回result为指定的学生(name、id、sex、class_grade、class_name、college)的数组
+//如果收到的classgrade、classname都=="",那么返回全部的学生，也要考虑其中之一为""的情况
+function getStudentList(){
+  var classgrade=$("#grade").text();
+  var classname=$("#class").text();
+  if(classgrade=="年级"){classgrade="";}
+  if(classname=="班级"){classname="";}
+  var form=new FormData();
+  form.append("classgrade",classgrade);
+  form.append("classname",classname);
+  $.ajax({
+    url:"/getStudentList",
+    type:"POST",
+    data:form,
+    processData : false,
+    contentType : false,
+    dataType : "json",
+    success:function(result){
+      if (result){
+        var str='<p class="col s2">姓名</p><p class="col s2">学号</p><p class="col s1">性别</p><p class="col s1">年级</p><p class="col s2">班级</p><p class="col s3">学院</p><p class="col s1">操作</p>';
+        $("#student_list").empty();
+        for(var i=0;i<result.length;i++){
+          str+='<li><p class="col s2">'+result[i].name+'</p><p class="col s2">'+result[i].id+'</p><p class="col s1">'+result[i].sex+'</p><p class="col s1">'+result[i].class_grade+'</p><p class="col s2">'+result[i].class_name+'</p><p class="col s3">'+result[i].college+'</p><p class="col s1"><a href="#student_detail" name="student_edit">修改</a></p></li>';
+        }
+        $("#student_list").append(str);
+      }
+      else{
+        alert("列表载入失败！");
+      }
+    }
+  });
+}
+
+//教师,result返回一个教师姓名、职工号、性别、学院元组作为一个元组组成的数组
+//name、id、sex、college
+function getTeacherList(){
+  var str='<p class="col s2">姓名</p><p class="col s3">职工号</p><p class="col s2">性别</p><p class="col s3">学院</p><p class="col s2">操作</p>';
+  $.ajax({
+    url:"/getTeacherList",
+    type:"POST",
+    processData : false,
+    contentType : false,
+    dataType:"json",
+    success:function(result){
+      if(result){
+        $("#allteacher").empty();
+        for(var i=0;i<result.length;i++){
+          str+='<li><p class="col s2">'+result[i].name+'</p><p class="col s3" name="teacher_id">'+result[i].id+'</p><p class="col s2">'+result[i].sex+'</p><p class="col s3">'+result[i].college+'</p><p class="col s2"><a href="#teacher_detail" name="teacher_edit">修改</a></p></li>';
+        }
+        $("#allteacher").append(str);
+      }
+      else{
+        alert("列表载入失败！");
+      }
+    }
+  });
+}
+
+//试题,根据题目类型返回题目的id、除去选项外的题目(question)、section、question_type
+//section由数字转换成中文（如“第一章”）返回
+function getQuestionList(){
+  var section=$("#section").val();
+  var question_type=$("#question_type").val();
+  var form=new FormData();
+  form.append("section",section);
+  form.append("question_type",question_type);
+  $.ajax({
+    url:"/getQuestionList",
+    type:"POST",
+    data:form,
+    processData : false,
+    contentType : false,
+    dataType : "json",
+    success:function(result){
+      if(result){
+        str='<p class="col s2">试题id</p><p class="col s5">题目</p><p class="col s2">章节</p><p class="col s2">题型</p><p class="col s1">操作</p>';
+        $("#question_list").empty();
+        for(var i=0;i<result.length;i++){
+          str+='<p class="col s2" name="question_id">'+result[i].id+'</p><p class="col s5">'+result[i].question.substr(0,20)+'...</p><p class="col s2">'+result[i].section+'</p><p class="col s2" name="type">'+result[i].question_type+'</p><p class="col s1"><a href="#!" name="question_edit">修改</a></p></li>';
+        }
+        $("#question_list").append(str);
+      }
+      else{
+        alert("列表载入失败！");
+      }
+    }
+  });
+}
+
+document.getElementById("search_student").onclick=function(){
+  getStudentList();
+}
+document.getElementById("search_question").onclick=function(){
+  getQuestionList();
 }
