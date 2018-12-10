@@ -1,28 +1,34 @@
-getStudentList();
-getTeacherList();
-getQuestionList();
-//result返回数据库中学生所在的所有年级class_grade和班级class_name
-var str1='<option value="" disabled selected>年级</option>';
-var str2='<option value="" disabled selected>班级</option>';
-$.ajax({
-  url:"/getAllClass",
-  type:"POST",
-  processData : false,
-  contentType : false,
-  dataType:"json",
-  success:function(result){
-    if(result){
-      $("#grade").empty();
-      $("#class").empty();
-      for(var i=0;i<result.length;i++){
-          str1+='<option>'+result[i].class_grade+'</option>';
-          str2+='<option>'+result[i].class_name+'</option>';
+function getAllList(){
+  getStudentList();
+  getTeacherList();
+  getQuestionList();
+  getAllClass();
+}
+
+function getAllClass(){
+  //result返回数据库中学生所在的所有年级class_grade和班级class_name
+  var str1='<option value="" disabled selected>年级</option>';
+  var str2='<option value="" disabled selected>班级</option>';
+  $.ajax({
+    url:"/getAllClass",
+    type:"POST",
+    processData : false,
+    contentType : false,
+    dataType:"json",
+    success:function(result){
+      if(result){
+        $("#grade").empty();
+        $("#class").empty();
+        for(var i=0;i<result.length;i++){
+            str1+='<option>'+result[i].class_grade+'</option>';
+            str2+='<option>'+result[i].class_name+'</option>';
+        }
+        $("#grade").append(str1);
+        $("#class").append(str2);
       }
-      $("#grade").append(str1);
-      $("#class").append(str2);
     }
-  }
-});
+  });
+}
 
 $(document).ready(function(){
 // Initialize collapse button
@@ -175,6 +181,7 @@ document.getElementById("save_tf").onclick=function(){
       $.ajax({
         url:"/saveStudent",
         type:"POST",
+        data:form,
         processData : false,
         contentType : false,
         success:function(result){
@@ -226,6 +233,7 @@ document.getElementById("save_choose").onclick=function(){
       $.ajax({
         url:"/saveStudent",
         type:"POST",
+        data:form,
         processData : false,
         contentType : false,
         success:function(result){
@@ -397,6 +405,7 @@ document.getElementById("save_teacher").onclick=function(){
       $.ajax({
         url:"/saveStudent",
         type:"POST",
+        data:form,
         processData : false,
         contentType : false,
         success:function(result){
@@ -476,6 +485,7 @@ function getTeacherList(){
 
 //试题,根据题目类型返回题目的id、除去选项外的题目(question)、section、question_type
 //section由数字转换成中文（如“第一章”）返回
+//同样要考虑section、question_type==""的情况
 function getQuestionList(){
   var section=$("#section").val();
   var question_type=$("#question_type").val();

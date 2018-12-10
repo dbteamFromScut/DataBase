@@ -71,9 +71,27 @@ body {
 #oout3,
 #oout4,
 #oout5,
-#changePassword {
+#changePassword,
+#AddExam {
 	display: none;
 	margin: 100px auto;
 	background-color: rgb(245,242,240);
 	padding: 30px;
+}
+.stone{
+	border:1px solid white;
+	text-align: center;
+	background-color: #4db6ac;
+}
+.stone:hover{
+	border:1px solid #4db6ac;
+}
+.point{
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+	height: 50px;
+}
+#right_choose{
+	color: red;
 }

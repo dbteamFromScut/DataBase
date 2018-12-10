@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="../css/icomoon.css">
 	<link rel="stylesheet" href="../css/acdemic.css">
 </head>
-<body>
+<body onload="getAllList()">
 	<!-- 导航栏 -->
 	<nav>
     	<div class="nav-wrapper">
