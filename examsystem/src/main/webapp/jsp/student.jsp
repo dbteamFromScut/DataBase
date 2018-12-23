@@ -11,6 +11,7 @@
 <body onload="getStudentInfo()">
 
 	<!-- 导航栏 -->
+    <div class="navbar-fixed">
 	<nav>
     	<div class="nav-wrapper">
     		<a href="#" class="brand-logo">在线考试系统</a>
@@ -23,6 +24,7 @@
     			</ul>
     	</div>
   	</nav>
+    </div>
     <!-- 退出账号提示 -->
 	<div id="modal1" class="modal l6">
     	<div class="modal-content">
@@ -41,15 +43,24 @@
                 <div class="row">
                     <div class="input-field col s6 push-s3">
                         <i class="icon-user prefix"></i>
-                        <input id="oldpassword" type="text" class="validate">
+                        <input id="oldpassword" type="password" class="validate">
                         <label for="oldpassword">原密码</label>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="input-field col s6 push-s3">
                         <i class="icon-key prefix"></i>
-                        <input id="newpassword" type="tel" class="validate"  >
+                        <input id="newpassword" type="password" class="validate"  >
                         <label for="newpassword">新密码</label>
+                    </div>
+                </div>
+
+                 <div class="row">
+                    <div class="input-field col s6 push-s3">
+                        <i class="icon-key prefix"></i>
+                        <input id="newpassword2" type="password" class="validate"  >
+                        <label for="newpassword2">确认新密码</label>
                     </div>
                 </div>
                 <div class="row">
@@ -69,12 +80,12 @@
         			<img src="../images/t6.jpg">
       			</div>
       			<img class="circle" src="../images/t2.jpg">
-      			<span class="white-text name">张三</span>
-      			<span class="white-text email">jdandturk@sina.com</span>
+      			<span id="Sname" class="white-text name">张三</span>
+      			<span id="Semail" class="white-text email">jdandturk@sina.com</span>
     		</div>
     	</li>
-    	<li><a href="#!"><i class="icon-newspaper"></i>学院</a></li>
-   		<li><a href="#!"><i class="icon-users"></i>班级</a></li>
+    	<li><a id="college2" href="#!"><i class="icon-newspaper"></i>学院</a></li>
+   		<li><a id="class2" href="#!"><i class="icon-users"></i>班级</a></li>
    		<li><div class="divider"></div></li>
    		<li><a class="subheader">其他选项</a></li>
    		<li><a id="slide1" class="waves-effect" href="#!" data-activates="slide-out2"><i class="icon-user"></i>基本信息</a></li>
@@ -166,47 +177,27 @@
 		<div class="row">
 			<h4><i class="icon-files-empty"></i>需完成考试</h4>
 
+            <!-- dv1 -->
+        	<!-- <div class="col s12 m6 l4 hoverable"> -->
+                <!-- dv2 -->
+        	  	<!-- <div class="card"> -->
+                    <!-- dv3 -->
+        	    	<!-- <div class="card-content white-text amber darken-4"> -->
+        	      		<!-- <span class="card-title">考试标题</span> -->
+        	      		<!-- <p>开始时间：</p><p name="startTime">2018-09-01 22:08</p> -->
+                        <!-- <p>结束时间：</p><p name="endTime">2018-09-01 22:08</p> -->
+        	    	<!-- </div> -->
 
-        	<div class="col s12 m6 l4 hoverable">
-        	  	<div class="card">
-        	    	<div class="card-content white-text amber darken-4">
-        	      		<span class="card-title">考试标题</span>
-        	      		<p>考试时间：</p>
-        	      		<p>考试时长：</p>
-        	    	</div>
-        	   		<div class="card-action blue-grey darken-1">
-        	   		  	<a href="#">进入考试</a>
-        	   		</div>
-        		</div>
-        	</div>
+                    <!-- dv4 -->
+        	   		<!-- <div class="card-action blue-grey darken-1"> -->
+        	   		  	<!-- <a href="#">进入考试</a> -->
+        	   		<!-- </div> -->
+        		<!-- </div> -->
+        	<!-- </div> -->
 
+            
+        	
 
-        	<div class="col s12 m6 l4 hoverable">
-        	  	<div class="card">
-        	    	<div class="card-content white-text  amber darken-4">
-        	      		<span class="card-title">考试标题</span>
-        	      		<p>考试时间：</p>
-        	      		<p>考试时长：</p>
-        	    	</div>
-        	   		<div class="card-action blue-grey darken-1">
-        	   		  	<a href="#">进入考试</a>
-        	   		</div>
-        		</div>
-        	</div>
-
-
-        	<div class="col s12 m6 l4 hoverable">
-        	  	<div class="card">
-        	    	<div class="card-content white-text amber darken-4">
-        	      		<span class="card-title">考试标题</span>
-        	      		<p>考试时间：</p>
-        	      		<p>考试时长：</p>
-        	    	</div>
-        	   		<div class="card-action blue-grey darken-1">
-        	   		  	<a href="#">进入考试</a>
-        	   		</div>
-        		</div>
-        	</div>
       	</div>
 	</div>
 
@@ -214,21 +205,9 @@
 	<div class="container" id="oout3">
 		<div class="row">
 			<h4><i class="icon-file-text2"></i>已完成考试</h4>
+                
 
-
-        	<div class="col s12 m6 l4 hoverable">
-        	  	<div class="card">
-        	    	<div class="card-content white-text cyan">
-        	      		<span class="card-title">考试标题</span>
-        	      		<p>考试时间：</p>
-        	      		<p>考试时长：</p>
-        	    	</div>
-        	   		<div class="card-action blue-grey darken-1">
-        	   		  	<a href="#">查看试卷</a>
-        	   		</div>
-        		</div>
-        	</div>
-
+        	
 
       	</div>
 	</div>
