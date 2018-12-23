@@ -1,14 +1,13 @@
+
 //jsons数组前端测试用，后台传数据后写完后可以删除
 var jsons = new Array();
 jsons[0] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
 	"type" : "choice",
-	"options0" : "A选项内容",
-	"options1" : "B选项内容",
-	"options2" : "C选项内容",
-	"options3" : "D选项内容",
-	"accuracy" : "50%",
-	"right-key" : "1", //1-4表示ABCD，判断题则是1、2表示正确错误
+	"options0" : "A",
+	"options1" : "B",
+	"options2" : "C",
+	"options3" : "D",
 }
 jsons[1] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈2",
@@ -17,16 +16,12 @@ jsons[1] = {
 	"options1" : "B",
 	"options2" : "C",
 	"options3" : "D",
-	"accuracy" : "50%",
-	"right-key" : "1",
 }
 jsons[2] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈3",
 	"type" : "judge",
 	"options0" : "正确",
 	"options1" : "错误",
-	"accuracy" : "80%",
-	"right-key" : "1",
 }
 jsons[3] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈4",
@@ -35,8 +30,6 @@ jsons[3] = {
 	"options1" : "B",
 	"options2" : "C",
 	"options3" : "D",
-	"accuracy" : "50%",
-	"right-key" : "1",
 }
 jsons[4] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈5",
@@ -45,8 +38,6 @@ jsons[4] = {
 	"options1" : "B",
 	"options2" : "C",
 	"options3" : "D",
-	"accuracy" : "50%",
-	"right-key" : "1",
 }
 jsons[5] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈6",
@@ -55,8 +46,6 @@ jsons[5] = {
 	"options1" : "B",
 	"options2" : "C",
 	"options3" : "D",
-	"accuracy" : "50%",
-	"right-key" : "1",
 }
 jsons[6] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
@@ -65,8 +54,6 @@ jsons[6] = {
 	"options1" : "B",
 	"options2" : "C",
 	"options3" : "D",
-	"accuracy" : "50%",
-	"right-key" : "1", 
 }
 jsons[7] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
@@ -75,8 +62,6 @@ jsons[7] = {
 	"options1" : "B",
 	"options2" : "C",
 	"options3" : "D",
-	"accuracy" : "50%",
-	"right-key" : "1", 
 }
 jsons[8] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
@@ -85,8 +70,6 @@ jsons[8] = {
 	"options1" : "B",
 	"options2" : "C",
 	"options3" : "D",
-	"accuracy" : "50%",
-	"right-key" : "1", 
 }
 jsons[9] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
@@ -95,8 +78,6 @@ jsons[9] = {
 	"options1" : "B",
 	"options2" : "C",
 	"options3" : "D",
-	"accuracy" : "50%",
-	"right-key" : "1", 
 }
 jsons[10] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
@@ -105,64 +86,10 @@ jsons[10] = {
 	"options1" : "B",
 	"options2" : "C",
 	"options3" : "D",
-	"accuracy" : "50%",
-	"right-key" : "1", 
 }
-jsons[11] = {
-	"title" : "哈哈哈哈哈哈哈或哈哈哈",
-	"type" : "choice",
-	"options0" : "A",
-	"options1" : "B",
-	"options2" : "C",
-	"options3" : "D",
-	"accuracy" : "50%",
-	"right-key" : "1", 
-}
-jsons[12] = {
-	"title" : "哈哈哈哈哈哈哈或哈哈哈",
-	"type" : "choice",
-	"options0" : "A",
-	"options1" : "B",
-	"options2" : "C",
-	"options3" : "D",
-	"accuracy" : "50%",
-	"right-key" : "1", 
-}
-jsons[13] = {
-	"title" : "哈哈哈哈哈哈哈或哈哈哈",
-	"type" : "choice",
-	"options0" : "A",
-	"options1" : "B",
-	"options2" : "C",
-	"options3" : "D",
-	"accuracy" : "50%",
-	"right-key" : "1", 
-}
-jsons[14] = {
-	"title" : "哈哈哈哈哈哈哈或哈哈哈",
-	"type" : "choice",
-	"options0" : "A",
-	"options1" : "B",
-	"options2" : "C",
-	"options3" : "D",
-	"accuracy" : "50%",
-	"right-key" : "1", 
-}
-function datas (){
-	this.title = "编译原理测试";
-	this.jsons = [];
-}
-var data = new datas();
-for (var i = 0; i < jsons.length; i++) {
-	data.jsons[i] = jsons[i];
-}
-data.title = "编译原理测试1";
-
-console.log(data);
-//以上内容是前端测试写的数据，写后台时注释掉，输出的data是所需要的数据类型
 
 
-//请求获得试卷的数据data加载试卷
+//请求获得试卷的数据json数组（jsons）加载试卷
 function onloadExam(){
 	//请求试卷信息
 	$.ajax({
@@ -186,14 +113,6 @@ function initExam(jsons){
 		alert("试卷加载失败！请重新加载");
 		return false;
 	}
-	if(!data.title){
-		alert("试卷标题加载出错");
-		document.getElementById("title").innerHTML = "考试详情";
-	}else {
-		document.getElementById("title").innerHTML = data.title;
-	}
-	var jsons = new Array();
-	jsons = data.jsons;
 	for (var i = 0; i < jsons.length; i++) {
 		//创建试题最外的div
 		var dv = document.createElement("div");
@@ -220,7 +139,7 @@ function initExam(jsons){
 				input.id = "text" + (i+1) + (j+1);
 				var label = document.createElement("label");
 				label.setAttribute("for",input.id);
-				label.innerHTML = String.fromCharCode(65+j) + "、" + jsons[i]["options" + j];
+				label.innerHTML = jsons[i]["options" + j];
 				li.appendChild(input);
 				li.appendChild(label);
 				ul.appendChild(li);
@@ -253,8 +172,7 @@ function initExam(jsons){
 		document.getElementById("contain").appendChild(dv);
 	}
 }
-
-initExam(data);  //前端写代码时测试用，后台写完可删除，改为body标签调用onloadExam()
+initExam(jsons);  //前端写代码时测试用，后台写完可删除，改为body标签调用onloadExam()
 
 
 
@@ -295,23 +213,12 @@ function located() {
 located();
 
 
-//设定每个li的mouseover事件以及上边距
-function f2() {
-	this.style.cursor = "pointer";
-}
-function setCursor() {
-	var lis = document.getElementsByTagName("li");
-	for (var i = 1; i < lis.length; i++) {
-		lis[i].onmouseover = f2;
-		lis[i].style.marginTop = "15px";
-	}
-}
-setCursor();
+
 
 
 
 //获取作答答案
-function getAnswers(isTimeRunOut){
+function getAnswers(timeRunOut){
 	var answers = {};
 	var num = 0;
 	var inputs = document.getElementsByTagName("input");
@@ -327,7 +234,7 @@ function getAnswers(isTimeRunOut){
 
 		}
 	}
-	if(!isTimeRunOut){
+	if(!timeRunOut){
 		if(num != 15)
 			return null;
 		else
@@ -348,7 +255,6 @@ function uploadAnswers(answers){
         success : function(result){
         	if (result == "success") {
         		alert("试卷提交成功，离开时请记得带齐所有物品。");
-        		window.close();
         	}
         	else
         		alert("提交失败，请重新提交一次");
@@ -358,14 +264,14 @@ function uploadAnswers(answers){
 
 //提交试卷时记录答案
 document.getElementById("submit").onclick = function() {
-	var answers = getAnswers(false);
+	var answers = getAnswers();
 	if(!answers){
+		// console.log(answers);
+		// console.log("11");
 		alert("试卷还没写完，请写完后再提交！");
 		return false;
 	}
 	uploadAnswers(answers);
-    window.location.href = "./student.jsp";
-
 }
 
 
@@ -391,7 +297,7 @@ function getExamTime(){
 		}
 	});
 }
-var maxtime = 303; //考试的剩余时间。
+var maxtime = getExamTime(); 
 function CountDown() {
     if (maxtime >= 0) {
         minutes = Math.floor(maxtime / 60);
@@ -403,7 +309,7 @@ function CountDown() {
         --maxtime;
     }else{
         clearInterval(timer);
-        var answers = getAnswers(true);
+        var answers = getAnswers();
         uploadAnswers(answers);
         alert("考试时间到，系统将自动上传答题情况!");
     }
