@@ -348,7 +348,7 @@
     		    <div class="col s0.5"></div>
     		    <button class="btn waves-effect waves-light col s1" type="submit" id="search_student">查询</button>
     		</form>
-    		<br/>
+    		<br><br>
 			<div class="s12">
 			<ul class="collection" id="student_list">
       				<p class="col s2">姓名</p>
