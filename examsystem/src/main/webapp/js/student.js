@@ -54,7 +54,7 @@ document.getElementById("logout").onclick = function(){
         success: function(result){
             if (result.code=="success"){
                 alert("注销成功！")
-                window.location.href = "/"
+                window.location.href = "./login.jsp"
             }else {
                 alert("注销失败！");
             }
@@ -75,12 +75,35 @@ document.getElementById('change').onclick = function(){
     out[3].style.display = "block";
 }
 
+function checkPassword(password){
+    var flag = 1;
+    if(password.length < 6){
+        flag = 0;
+    }else if(password.length > 20){
+        flag = 0;
+    }
+    return flag;
+}
+
 //确定修改密码
 document.getElementById('yes').onclick = function() {
     //发送新的密码
-    var form1 = new FormData();
     var oldPassword = document.getElementById('oldpassword').value;
     var newPassword = document.getElementById('newpassword').value;
+    var newPassword2 = document.getElementById('newpassword2').value;
+    if(!newPassword || !oldPassword || !newPassword2){
+        alert("密码不能为空！");
+        return;
+    }
+    if(!(checkPassword(oldPassword) && checkPassword(newPassword) && checkPassword(newPassword2))){
+        alert("密码位数需6-20位！");
+        return;
+    }
+    if(newPassword != newPassword2){
+        alert("两次密码不一致！");
+        return;
+    }
+    var form1 = new FormData();
     form1.append("oldpassword",oldPassword);
     form1.append("newpassword",newPassword);
     $.ajax({
@@ -96,6 +119,9 @@ document.getElementById('yes').onclick = function() {
             }else {
                 alert("修改失败！");
             }
+        },
+        error : function() {
+            alert("提交失败，请重试");
         }
     });
 }
@@ -110,7 +136,7 @@ document.getElementById('cancel').onclick = function() {
 var inputs = document.getElementById('oout1').getElementsByTagName("input");
 
 
-function init(json) {
+function initInfo(json) {
     $("#first_name").val(json.first_name);
     $("#StudentNumber").val(json.StudentNumber);
     $("#sex").val(json.sex);
@@ -121,6 +147,15 @@ function init(json) {
     $("#birthday").val(json.birthday);
     $("#phoneNumbr").val(json.phoneNumbr);
     $("#email").val(json.email);
+
+    //菜单栏个人信息设置
+    $("#Smail").val(json.email);
+    $("#Sname").val(json.first_name);
+    $("#college2").val(json.college);
+    $("#class2").val(json.class);
+
+    //导航栏加载名字
+    $("#Sname1").val(json.first_name);
 }
 
 //获取学生信息,返回一个json格式的数据，里面的各项信息按顺序排列
@@ -134,15 +169,161 @@ function getStudentInfo() {
         success: function(data){
             if (data.code=="success")
             {
-                init(data);
+                initInfo(data);
                 for (var i = 0; i < inputs.length; i++) {
                     inputs[i].disabled = true;
                 }
             }
+        },
+        error : function(){
+            // alert("加载信息失败，请刷新页面");
         }
     });
 }
 
+var ExamList = [
+    {
+        "Type" : "done",
+        "title" : "数据库测试1",
+        "start" : "2018-09-01 22:08",
+        "end" : "2018-09-01 23:08",
+        "id" : "123",
+        "grade" : "85",
+},
+{
+        "Type" : "do",
+        "title" : "数据库测试2",
+        "start" : "2018-09-01 22:08",
+        "end" : "2018-09-01 23:08",
+        "id" : "456",
+}];
+
+
+function initExamList(ExamList) {
+    console.log(ExamList.length);
+    console.log(typeof(ExamList));
+    var containerDone = document.getElementById("oout3").children[0];
+    var containerDo = document.getElementById("oout2").children[0];
+    for (var i = 0; i < ExamList.length; i++) {
+
+        var dv1 = document.createElement("div");
+        dv1.className = "col s12 m6 l4 hoverable";
+        dv1.setAttribute("examId",ExamList[i]["id"]);
+        var dv2 = document.createElement("div");
+        dv2.className = "card";
+        dv1.appendChild(dv2);
+
+        var dv3 = document.createElement("div");
+        var span = document.createElement("span");
+        span.innerHTML = ExamList[i]["title"];
+        span.className = "card-title";
+        dv3.appendChild(span);
+        var br = document.createElement("br");
+        dv3.appendChild(br);
+
+        var p1 = document.createElement("span");
+        p1.innerHTML = "开始时间：";
+        dv3.appendChild(p1);
+        var p2 = document.createElement("span");
+        p2.innerHTML = ExamList[i]["start"];
+        dv3.appendChild(p2);
+        var br1 = document.createElement("br");
+        dv3.appendChild(br1);
+
+        var p3 = document.createElement("span");
+        p3.innerHTML = "结束时间：";
+        dv3.appendChild(p3);
+        var p4 = document.createElement("span");
+        p4.innerHTML = ExamList[i]["end"];
+        dv3.appendChild(p4);
+        var br2 = document.createElement("br");
+        dv3.appendChild(br2);
+
+        dv2.appendChild(dv3);
+    
+        var dv4 = document.createElement("div");
+        dv4.className = "card-action blue-grey darken-1";
+        dv2.appendChild(dv4);
+    
+        var a = document.createElement("a");
+        a.href = "#";
+        dv4.appendChild(a);
+
+
+        if(ExamList[i]["Type"] == "done"){
+            a.innerHTML = "查看考试";
+            dv3.className = "card-content white-text amber darken-4";
+            var grade = document.createElement("span");
+            grade.innerHTML = "成绩：";
+            var grade2 = document.createElement("span");
+            grade2.innerHTML = ExamList[i]["grade"];
+            dv3.appendChild(grade);
+            dv3.appendChild(grade2);
+            a.onclick = function() {
+                var id = dv1.getAttribute("examId");
+                console.log(id);
+                $.ajax({
+                    url : "/binginExam",
+                    type : "POST",
+                    data : {"examId" : id },
+                    processData : false,
+                    contentType : false,
+                    dataType : "json",
+                    success : function() {
+                        //成功则在新页面加载试卷。需要根据试卷ID返回试卷信息给考试页面。
+                        window.open("./exam-detail.html");
+                    },
+                    error : function() {
+                        alert("进入失败，请重试");
+                    }
+                });
+                window.open("./exam-detail.html");
+            }
+            containerDone.appendChild(dv1);
+        }else if(ExamList[i]["Type"] == "do"){
+            a.innerHTML = "进入考试";
+           dv3.className = "card-content white-text cyan";
+            containerDo.appendChild(dv1);
+            a.onclick = function() {
+                var id = dv1.getAttribute("examId");
+                $.ajax({
+                    url : "/binginExam",
+                    type : "POST",
+                    data : {"examId" : id },
+                    processData : false,
+                    contentType : false,
+                    dataType : "json",
+                    success : function() {
+                        //成功则在新页面加载试卷。需要根据试卷ID返回试卷信息给考试页面。
+                        window.open("./exam.html");
+                    },
+                    error : function() {
+                        alert("进入失败，请重试");
+                    }
+                });
+                window.open("./exam.html");
+            }
+        }
+    }
+}
+
+initExamList(ExamList);//前端测试用，后台写完可以删除，包括上面的数据ExamList
+
+//获取试卷列表
+function getExamList(){
+    $.ajax({
+        url : "/getExamList",
+        type : "POST",
+        processData : false,
+        contentType : false,
+        dataType : "json",
+        success : function(data){
+            if(data.code == "success"){
+                initExamList(data);
+            }
+        }
+    });
+}
 
 document.getElementById('changeInfo').onclick = function() {
     this.parentNode.style.display = "none";
