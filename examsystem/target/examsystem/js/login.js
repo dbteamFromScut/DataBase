@@ -1,9 +1,4 @@
 document.getElementById("login").onclick = function(){
-	if(!checkPassword()){
-		alert("密码位数需6-20位！");
-		return false;
-	}
-	console.log("s");
 	var form = new FormData();
 	var uname = document.getElementById('userName').value;
 	var pword = document.getElementById('passWord').value;
@@ -44,14 +39,3 @@ document.getElementById("login").onclick = function(){
 $(function(){ 
   $("#userName").focus(); 
 }); 
-
-function checkPassword(){
-	var pword = document.getElementById('passWord').value;
-	var flag = 1;
-	if(pword.length < 6){
-		flag = 0;
-	}else if(pword.length > 20){
-		flag = 0;
-	}
-	return flag;
-}

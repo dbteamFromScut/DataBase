@@ -69,12 +69,12 @@
         			<img src="../images/t6.jpg">
       			</div>
       			<img class="circle" src="../images/t2.jpg">
-      			<span class="white-text name" id="side-name">张三</span>
-      			<span class="white-text email" id="side-email">jdandturk@sina.com</span>
+      			<span class="white-text name">张三</span>
+      			<span class="white-text email">jdandturk@sina.com</span>
     		</div>
     	</li>
-    	<li><a href="#!" id="side-college"><i class="icon-newspaper"></i>学院</a></li>
-   		<li><a href="#!" id="side-class"><i class="icon-users"></i>班级</a></li>
+    	<li><a href="#!"><i class="icon-newspaper"></i>学院</a></li>
+   		<li><a href="#!"><i class="icon-users"></i>班级</a></li>
    		<li><div class="divider"></div></li>
    		<li><a class="subheader">其他选项</a></li>
    		<li><a id="slide1" class="waves-effect" href="#!" data-activates="slide-out2"><i class="icon-user"></i>基本信息</a></li>

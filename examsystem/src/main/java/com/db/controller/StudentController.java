@@ -17,7 +17,6 @@ import java.text.SimpleDateFormat;
 
 
 @Controller
-@RequestMapping("/student")
 public class StudentController {
 
     @Autowired
@@ -26,7 +25,22 @@ public class StudentController {
 
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
+    @RequestMapping(value = "/logout",method = {RequestMethod.GET,RequestMethod.POST})
+    @ResponseBody
+    public Object logout(HttpServletRequest request){
+        JSONObject result=new JSONObject();
+        HttpSession seesion=request.getSession();
+        String id =seesion.getAttribute("username").toString();
+        if (id!=null){
+            result.put("code","success");
+            seesion.invalidate();
+            return result;
+        }else {
+            result.put("code","fail");
+            return result;
+        }
 
+    }
 
 
     @RequestMapping(value = "/changePassword",method = {RequestMethod.GET,RequestMethod.POST})
