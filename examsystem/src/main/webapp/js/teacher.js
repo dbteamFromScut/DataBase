@@ -3,8 +3,8 @@ var year=today.getFullYear();
 var month=today.getMonth()+1; 
 var date=today.getDate();
 var today=year+"-"+month+"-"+date;
-$("#exam_date").attr("min",today);
-$("#exam_date").val(today);
+$('#exam_date').attr("min",today);
+$('#exam_date').val(today);
 
 $(document).ready(function(){
 // Initialize collapse button
@@ -55,14 +55,14 @@ for (var i = 0; i < slide.length; i++) {
 document.getElementById("logout").onclick = function(){
 	//退出登录，跳转到登录界面
     $.ajax({
-        url : "/logout",
+        url : "/teacher/logout",
         type : "POST",
         processData : false,
         contentType : false,
         success: function(result){
             if (result.code=="success"){
                 alert("注销成功！")
-                window.location.href = "/"
+                window.location.href = "./login.jsp"
             }else {
                 alert("注销失败！");
             }
@@ -80,16 +80,42 @@ document.getElementById('change').onclick = function(){
     document.getElementById("AddExam").style.display="none";
     out[5].style.display = "block";
 }
+
+function checkPassword(password){
+    var flag = 1;
+    if(password.length < 6){
+        flag = 0;
+    }else if(password.length > 20){
+        flag = 0;
+    }
+    return flag;
+}
+
 //确定修改密码
 document.getElementById('yes').onclick = function() {
     //发送新的密码
-    var form1 = new FormData();
     var oldPassword = document.getElementById('oldpassword').value;
     var newPassword = document.getElementById('newpassword').value;
-    form1.append("oldpassword",oldPassword);
-    form1.append("newpassword",newPassword);
+    var newPassword2 = document.getElementById('newpassword2').value;
+    if(!newPassword || !oldPassword || !newPassword2){
+        alert("密码不能为空！");
+        return;
+    }
+    if(!(checkPassword(oldPassword) && checkPassword(newPassword) && checkPassword(newPassword2))){
+        alert("密码位数需6-20位！");
+        return;
+    }
+    if(newPassword != newPassword2){
+        alert("两次密码不一致！");
+        return;
+    }
+    if(oldPassword == newPassword){
+        alert("新密码和原密码一样！");
+        return;
+    }
+    var form1 = new FormData();
     $.ajax({
-        url : "/changePassword",
+        url : "/teacher/changePassword",
         type : "POST",
         data : form1,
         processData : false,
@@ -125,7 +151,7 @@ var inputs = document.getElementById('oout1').getElementsByTagName("input");
 //获取老师的信息
 function getTeacherInfo() {
     $.ajax({
-        url : "/",
+        url : "/teacher/getInfo",
         type : "POST",
         processData : false,
         contentType : false,
@@ -151,7 +177,7 @@ function getClasses(){
     var str1='<option value="" disabled selected>年级</option>';
     var str2='<option value="" disabled selected>班级</option>';
     $.ajax({
-        url:"/getTeacherlass",
+        url:"/teacher/getTeacherlass",
         type:"POST",
         processData : false,
         contentType : false,
@@ -211,7 +237,7 @@ document.getElementById("confirmChange").onclick = function() {
     console.log(form);
     //发送请求附带数据json
     $.ajax({
-        url : "/changeInfo",
+        url : "/teacher/changeInfo",
         type : "POST",
         data : form,
         processData : false,
@@ -255,7 +281,7 @@ document.getElementById("choose_confirm").onclick=function(){
 		form.append("answer",answer);
 		$.ajax({
 			type:"POST",
-			url:"/",
+			url:"/teacher/submitChoose",
 			data:form,
 			processData : false,
         	contentType : false,
@@ -291,7 +317,7 @@ document.getElementById("tf_confirm").onclick=function(){
 		form.append("answer",answer);
 		$.ajax({
 			type:"POST",
-			url:"",
+			url:"/teacher/submitTF",
 			data:form,
 			processData : false,
         	contentType : false,
@@ -322,7 +348,7 @@ document.getElementById("file_confirm").onclick=function(){
 		form.append("filename",filename);
 		form.append("file",$("#input_file"[0].files[0]));
 		$.ajax({
-			url:"",
+			url:"/teacher/",
 			type:'POST',
 			data:form,
 			processData : false,
@@ -359,7 +385,7 @@ function getAllstudents(){
 	form.append("classgrade",classgrade);
 	form.append("classname",classname);
 	$.ajax({
-		url:"/getSelectedStudents",
+		url:"/teacher/getSelectedStudents",
 		type:"POST",
 		data:form,
 		processData : false,
@@ -389,13 +415,20 @@ var choose_array=new Array();
 var tf_array=new Array();
 var c_selected=document.getElementsByName("c_selected");
 var tf_selected=document.getElementsByName("tf_selected");
-var choose_count=0;
-var tf_count=0;
+var choose_count= new Array();
+var tf_count = new Array();
 var detail=document.getElementsByName("detail");
 var addtolist=document.getElementsByName("addtolist");
 var type=document.getElementsByName("type");
 var question_id=document.getElementsByName("question_id");
 var the_chooses=document.getElementsByName("the_chooses");
+
+for (var i = 0; i < 15; i++) {
+    choose_count[i] = 0;
+}
+for (var i = 0; i < 5; i++) {
+    tf_count[i] = 0;
+}
 
 for (var i = 0; i < detail.length; i++) {
   detail[i].setAttribute("index",i);
@@ -416,7 +449,7 @@ for(var i=0;i<detail.length;i++){
             $("#tf_id").text(q_id);
             //根据题目id返回判断题的题目和对错(answer)
             $.ajax({
-                url:"/",
+                url:"/teacher/",
                 type:"POST",
                 data:form,
                 processData : false,
@@ -438,7 +471,7 @@ for(var i=0;i<detail.length;i++){
             $("#choose_id").text(q_id);
             //根据id返回题目、以及四个选项，其中返回的第一个选项为正确答案
             $.ajax({
-                url:"/",
+                url:"/teacher/",
                 type:"POST",
                 data:form,
                 processData : false,
@@ -467,13 +500,28 @@ for(var i=0;i<addtolist.length;i++){
         var thetype=$(type[j]).text();
         if(thetype=="判断"){
             if($.inArray(q_id,tf_array)==-1){
-                if(tf_count==5){
+                var flag = 1;
+                for (var i = tf_count.length - 1; i >= 0; i--) {
+                    if(tf_count[i] == 0){
+                        flag = 0;
+                        break;
+                    }
+                }
+                if(flag){
                     alert("5道判断题已经选满");
                 }else{
-                    $(tf_selected[tf_count]).text(q_id);
-                    $(tf_selected[tf_count]).css("background-color","#ff8a80");
-                    tf_array[tf_count]=q_id;
-                    tf_count+=1;
+                    var index = 0;
+                    for (var j = 0; j < tf_count.length; j++) {
+                        if(tf_count[j] == 0){
+                            index = j;
+                            break;
+                        }
+                    }
+                    $(tf_selected[index]).text(q_id);
+                    $(tf_selected[index]).css("background-color","#ff8a80");
+                    tf_array[index]=q_id;
+                    tf_count[index] = 1;
+                    console.log(tf_array);
                 }
             }else{
                 alert("这道题目已经添加到列表中了");
@@ -481,13 +529,27 @@ for(var i=0;i<addtolist.length;i++){
         }
         if(thetype=="选择"){
             if($.inArray(q_id,choose_array)==-1){
-                if(choose_count==15){
+                var flag = 1;
+                for (var i = choose_count.length - 1; i >= 0; i--) {
+                    if(choose_count[i] == 0){
+                        flag = 0;
+                        break;
+                    }
+                }
+                if(flag){
                     alert("15道选择题已选满");
                 }else{
-                    $(c_selected[choose_count]).text(q_id);
-                    $(c_selected[choose_count]).css("background-color","#ff8a80");
-                    choose_array[choose_count]=q_id;
-                    choose_count+=1;
+                    var index;
+                    for (var j = 0; j < choose_count.length; j++) {
+                        if(choose_count[j] == 0){
+                            index = j;
+                            break;
+                        }
+                    }
+                    $(c_selected[index]).text(q_id);
+                    $(c_selected[index]).css("background-color","#ff8a80");
+                    choose_array[index]=q_id;
+                    choose_count[index] = 1;
                 }
             }else{
                 alert("这道题目已经添加到列表中了");
@@ -506,7 +568,7 @@ function getQuestionList(){
   form.append("section",section);
   form.append("question_type",question_type);
   $.ajax({
-    url:"/getQuestionList",
+    url:"/teacher/getQuestionList",
     type:"POST",
     data:form,
     processData : false,
@@ -533,17 +595,21 @@ document.getElementById("search_question").onclick=function(){
 }
 document.getElementById("empty_selected").onclick=function(){
     if(confirm("确定清空已选题目吗？")==true){
-        choose_count=0;
-        tf_count=0;
+        for (var i = 0; i < 15; i++) {
+            choose_count[i] = 0;
+        }
+        for (var i = 0; i < 5; i++) {
+            tf_count[i] = 0;
+        }
         choose_array=[];
         tf_array=[];
         for(i=0;i<15;i++){
             $(c_selected[i]).text("未选");
-            $(c_selected[i]).css("background-color","#4db6ac");
+            $(c_selected[i]).css("background-color","rgb(227,224,181)");
         }
         for(i=0;i<5;i++){
             $(tf_selected[i]).text("未选");
-            $(tf_selected[i]).css("background-color","#4db6ac");
+            $(tf_selected[i]).css("background-color","rgb(200,211,179)");
         }
     }
 }
@@ -571,7 +637,7 @@ document.getElementById("save_paper").onclick=function(){
             form.append("tf_array",tf_array);//判断题id组成的数组
             //保存试卷，同时需生成一个独有的试卷id,已经将试卷标记为“未发布”
             $.ajax({
-                url:"/",
+                url:"/teacher/",
                 type:"POST",
                 data:form,
                 processData : false,
@@ -586,4 +652,40 @@ document.getElementById("save_paper").onclick=function(){
             });
         }
     }
+}
+
+
+//点击已选选择题目取消选择
+console.log(c_selected);
+function cancelSelected(){
+    if(this.innerHTML != "未选"){
+        if(confirm("确认移除这道题目吗") == true){
+            this.innerHTML = "未选";
+            this.style.backgroundColor = "rgb(227,224,181)";
+            var index = this.getAttribute("index");
+            choose_count[index] = 0;
+            choose_array[index] = 0;
+        }
+    }
+}
+for (var i = 0; i < c_selected.length; i++) {
+    c_selected[i].onclick = cancelSelected;
+    c_selected[i].setAttribute("index",i);
+}
+
+function cancelTf(){
+    if(this.innerHTML != "未选"){
+        if(confirm("确认移除这道题目吗") == true){
+            this.innerHTML = "未选";
+            this.style.backgroundColor = "rgb(200,211,179)";
+            var index = this.getAttribute("index");
+            tf_count[index] = 0;
+            tf_array[index] = 0;
+            console.log(tf_array);
+        }
+    }
+}
+for (var i = 0; i < tf_selected.length; i++) {
+    tf_selected[i].onclick = cancelTf;
+    tf_selected[i].setAttribute("index",i);
 }

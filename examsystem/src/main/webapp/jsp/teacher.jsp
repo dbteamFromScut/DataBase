@@ -45,17 +45,26 @@
                 <div class="row">
                     <div class="input-field col s6 push-s3">
                         <i class="icon-user prefix"></i>
-                        <input id="oldpassword" type="text" class="validate">
+                        <input id="oldpassword" type="password" class="validate">
                         <label for="oldpassword">原密码</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s6 push-s3">
                         <i class="icon-key prefix"></i>
-                        <input id="newpassword" type="tel" class="validate"  >
+                        <input id="newpassword" type="password" class="validate"  >
                         <label for="newpassword">新密码</label>
                     </div>
                 </div>
+
+                 <div class="row">
+                    <div class="input-field col s6 push-s3">
+                        <i class="icon-key prefix"></i>
+                        <input id="newpassword2" type="password" class="validate"  >
+                        <label for="newpassword2">确认新密码</label>
+                    </div>
+                </div>
+
                 <div class="row">
                     <!-- <div></div> -->
                     <a href="#" class="col btn push-s3 s2" id="yes">确定</a>
@@ -339,7 +348,7 @@
     		    <div class="col s0.5"></div>
     		    <button class="btn waves-effect waves-light col s1" type="submit" id="search_student">查询</button>
     		</form>
-    		<br><br>
+    		<br/>
 			<div class="s12">
 			<ul class="collection" id="student_list">
       				<p class="col s2">姓名</p>
@@ -383,7 +392,7 @@
   <div class="container" id="AddExam">
     <div class="row">
       <h4><i class="icon-pencil"> 创建考试</i></h4>
-      <form class="s12">
+      <form class="s12 form1">
         <div class="col s12">
           <div class="col s1"></div>
           <div class="input-field inline col s3">
@@ -401,41 +410,47 @@
               <div class="input-field inline"><input type="time" id="end_time"></div>
           </div>
         </div>
+
+          <h4 style="text-align: center;">选择题</h4>
         <div class="col s12">
-          <div class="col s2 point">选择题：</div>
-          <div class="white-text col s2 stone" name="c_selected">未选</div> 
-          <div class="white-text col s2 stone" name="c_selected">未选</div>
-          <div class="white-text col s2 stone" name="c_selected">未选</div>
-          <div class="white-text col s2 stone" name="c_selected">未选</div>
-          <div class="white-text col s2 stone" name="c_selected">未选</div>
-          <div class="white-text col s2 stone" name="c_selected">未选</div>
-          <div class="white-text col s2 stone" name="c_selected">未选</div>
-          <div class="white-text col s2 stone" name="c_selected">未选</div>
-          <div class="white-text col s2 stone" name="c_selected">未选</div>
-          <div class="white-text col s2 stone" name="c_selected">未选</div>
-          <div class="white-text col s2 stone" name="c_selected">未选</div>
-          <div class="white-text col s2 stone" name="c_selected">未选</div>
-          <div class="white-text col s2 stone" name="c_selected">未选</div>
-          <div class="white-text col s2 stone" name="c_selected">未选</div>
-          <div class="white-text col s2 stone" name="c_selected">未选</div>
-          <br><br><br><br>
+          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div> 
+          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
+          <br/><br/><br/><br/>
         </div>        
+        <h4 style="text-align: center;">判断题</h4>
         <div class="col s12">
-          <div class="col s2 point">判断题：</div>
-          <div class="white-text col s2 stone" name="tf_selected">未选</div> 
-          <div class="white-text col s2 stone" name="tf_selected">未选</div>
-          <div class="white-text col s2 stone" name="tf_selected">未选</div>
-          <div class="white-text col s2 stone" name="tf_selected">未选</div>
-          <div class="white-text col s2 stone" name="tf_selected">未选</div>
+          
+          <div class="white-text col s2 stone stone1" name="tf_selected" style="margin: 10px 15px;">未选</div> 
+          <div class="white-text col s2 stone stone1" name="tf_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone stone1" name="tf_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone stone1" name="tf_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone stone1" name="tf_selected" style="margin: 10px 15px;">未选</div>
         </div>
-        <div class="col s12">
+
+        <div class="aa col s12">
           <div class="col s1"></div>
-          <button class="btn cyan darken-2 col s1" type="submit" id="empty_selected">清空</button>
+          <button class="btn cyan darken-2 col s2 push-s2" type="submit" id="empty_selected">清空</button>
           <div class="col s1"></div>
-          <button class="btn cyan darken-2 col s2" type="submit" id="save_paper">保存试卷</button>
+          <button class="btn cyan darken-2 col s2 push-s2" type="submit" id="save_paper">保存试卷</button>
           <br><br>
         </div>
       </form>
+      
+      <div class="divider"></div>
+      <div class="divider"></div>
 
       <form class="s12">
         <div class="col s4"></div>
@@ -462,7 +477,7 @@
         <div class="col s0.5"></div>
         <button class="btn waves-effect waves-light col s1" type="submit" id="search_question">查询</button>
       </form>
-      <br><br>
+      <div class=""></div>
       <div class=" col s12">
         <ul class="collection" id="question_list">
           <p class="col s2">试题id</p>

@@ -10,7 +10,7 @@ function getAllClass(){
   var str1='<option value="" disabled selected>年级</option>';
   var str2='<option value="" disabled selected>班级</option>';
   $.ajax({
-    url:"/getAllClass",
+    url:"/acdemic/getAllClass",
     type:"POST",
     processData : false,
     contentType : false,
@@ -99,7 +99,7 @@ for(var i=0;i<question_edit.length;i++){
       question_edit[j].setAttribute("href","#tf_detail");
       $("#tf_id").text(q_id);
       $.ajax({
-        url:"/getTFinfo",
+        url:"/acdemic/getTFinfo",
         type:"POST",
         data:form,
         processData : false,
@@ -128,7 +128,7 @@ for(var i=0;i<question_edit.length;i++){
       $("#choose_id").text(q_id);
       //返回的answer为A/B/C/D
       $.ajax({
-        url:"/getChooseinfo",
+        url:"/acdemic/getChooseinfo",
         type:"POST",
         data:form,
         processData : false,
@@ -179,7 +179,7 @@ document.getElementById("save_tf").onclick=function(){
       form.append("answer",answer);
       //根据ID保存信息
       $.ajax({
-        url:"/saveStudent",
+        url:"/acdemic/saveStudent",
         type:"POST",
         data:form,
         processData : false,
@@ -231,7 +231,7 @@ document.getElementById("save_choose").onclick=function(){
       form.append("answer",answer);
       //根据ID保存信息
       $.ajax({
-        url:"/saveStudent",
+        url:"/acdemic/saveStudent",
         type:"POST",
         data:form,
         processData : false,
@@ -266,7 +266,7 @@ for(var i=0;i<student_edit.length;i++){
     form=new FormData();
     form.append("id",s_id);
     $.ajax({
-      url:"/studentinfo",
+      url:"/acdemic/studentinfo",
       type:"POST",
       data:form,
       processData : false,
@@ -321,7 +321,7 @@ document.getElementById("save_student").onclick=function(){
       form.append("email",email);
       //根据ID保存信息
       $.ajax({
-        url:"/saveStudent",
+        url:"/acdemic/saveStudent",
         type:"POST",
         processData : false,
         contentType : false,
@@ -354,7 +354,7 @@ for(var i=0;i<student_edit.length;i++){
     form=new FormData();
     form.append("id",t_id);
     $.ajax({
-      url:"/teacherinfo",
+      url:"/acdemic/teacherinfo",
       type:"POST",
       data:form,
       processData : false,
@@ -403,7 +403,7 @@ document.getElementById("save_teacher").onclick=function(){
       form.append("email",email);
       //根据ID保存信息
       $.ajax({
-        url:"/saveStudent",
+        url:"/acdemic/saveStudent",
         type:"POST",
         data:form,
         processData : false,
@@ -436,7 +436,7 @@ function getStudentList(){
   form.append("classgrade",classgrade);
   form.append("classname",classname);
   $.ajax({
-    url:"/getStudentList",
+    url:"/acdemic/getStudentList",
     type:"POST",
     data:form,
     processData : false,
@@ -463,7 +463,7 @@ function getStudentList(){
 function getTeacherList(){
   var str='<p class="col s2">姓名</p><p class="col s3">职工号</p><p class="col s2">性别</p><p class="col s3">学院</p><p class="col s2">操作</p>';
   $.ajax({
-    url:"/getTeacherList",
+    url:"/acdemic/getTeacherList",
     type:"POST",
     processData : false,
     contentType : false,
@@ -493,7 +493,7 @@ function getQuestionList(){
   form.append("section",section);
   form.append("question_type",question_type);
   $.ajax({
-    url:"/getQuestionList",
+    url:"/acdemic/getQuestionList",
     type:"POST",
     data:form,
     processData : false,

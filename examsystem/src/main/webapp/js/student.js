@@ -47,7 +47,7 @@ for (var i = 0; i < slide.length; i++) {
 document.getElementById("logout").onclick = function(){
     //退出登录，跳转到登录界面
     $.ajax({
-        url : "/logout",
+        url : "/student/logout",
         type : "POST",
         processData : false,
         contentType : false,
@@ -103,11 +103,15 @@ document.getElementById('yes').onclick = function() {
         alert("两次密码不一致！");
         return;
     }
+    if(oldPassword == newPassword){
+        alert("新密码和原密码一样！");
+        return;
+    }
     var form1 = new FormData();
     form1.append("oldpassword",oldPassword);
     form1.append("newpassword",newPassword);
     $.ajax({
-        url : "/changePassword",
+        url : "/student/changePassword",
         type : "POST",
         data : form1,
         processData : false,
@@ -161,7 +165,7 @@ function initInfo(json) {
 //获取学生信息,返回一个json格式的数据，里面的各项信息按顺序排列
 function getStudentInfo() {
     $.ajax({
-        url : "/getInfo",
+        url : "/student/getInfo",
         type : "POST",
         processData : false,
         contentType : false,
@@ -263,7 +267,8 @@ function initExamList(ExamList) {
                 var id = dv1.getAttribute("examId");
                 console.log(id);
                 $.ajax({
-                    url : "/binginExam",
+                    url : "/student/beginExam",
+                    //开始考试，需计时
                     type : "POST",
                     data : {"examId" : id },
                     processData : false,
@@ -287,7 +292,7 @@ function initExamList(ExamList) {
             a.onclick = function() {
                 var id = dv1.getAttribute("examId");
                 $.ajax({
-                    url : "/binginExam",
+                    url : "/student/getExam",
                     type : "POST",
                     data : {"examId" : id },
                     processData : false,
@@ -312,7 +317,7 @@ initExamList(ExamList);//前端测试用，后台写完可以删除，包括上�
 //获取试卷列表
 function getExamList(){
     $.ajax({
-        url : "/getExamList",
+        url : "/student/getExamList",
         type : "POST",
         processData : false,
         contentType : false,
@@ -361,7 +366,7 @@ document.getElementById("confirmChange").onclick = function() {
     }
     //发送请求附带数据json
     $.ajax({
-        url : "/changeInfo",
+        url : "/student/changeInfo",
         type : "POST",
         data : form,
         processData : false,
