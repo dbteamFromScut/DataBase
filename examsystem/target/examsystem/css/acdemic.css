@@ -35,25 +35,6 @@ body {
 	font-family: Tahoma;
 	color: #969eab;
 }
-.container .row form i {
-	margin-right: 10px;
-}
-.container .row form label {
-	font-size: 14px;
-	margin: 5px 0;
-	font-weight: 800;
-}
-
-#choose,#TF
-{
-	margin-left: 30px;
-}
-
-#confirmChange,
-#cancelChange {
-	display: none;
-	margin: 0 50px;
-}
 
 #l_A,
 #l_B,
@@ -68,10 +49,7 @@ body {
 
 #oout1,
 #oout2,
-#oout3,
-#oout4,
-#oout5,
-#changePassword {
+#oout3 {
 	display: none;
 	margin: 100px auto;
 	background-color: rgb(245,242,240);

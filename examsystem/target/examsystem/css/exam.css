@@ -6,7 +6,7 @@ body {
 #index {
 	position: fixed;
 	top: 70px;
-	right: 60px;
+	right: 10px;
 	width: 15%;
 	padding: 10px;
 }
@@ -16,4 +16,21 @@ body {
 	height: 20px;
 	display: inline-block;
 	text-align: center;
+}
+.question {
+	background-color: rgb(245,242,240);
+	margin-top: 50px;
+}
+.pan {
+	width: 100%;
+	font-size: 15px;
+	height: 55px;
+	line-height: 55px;
+	margin: 0;
+	text-indent: 2em;
+	display: inline-block;
+}
+.contain {
+	width: 45%;
+	margin: 0 auto;
 }

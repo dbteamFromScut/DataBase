@@ -10,7 +10,7 @@
 <body background="../images/background.png">
 	<form action="" id="loginWindow">
 		<div class="title"><p>学生考试管理系统</p></div>
-		<div class="text_in"><input type="text" id="userName" class="input" placeholder="用户名"><span class="img">&#xe971;</span></div>
+		<div class="text_in"><input type="text" id="userName" class="input" placeholder="学号/职工号"><span class="img">&#xe971;</span></div>
 		<div class="text_in"><input type="passWord" id="passWord" class="input" placeholder="密码"><span class="img">&#xe955;</span></div>
 		<div class="radio" id="radio">
 			<input type="radio" name="type" id="student">学生

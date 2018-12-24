@@ -84,7 +84,7 @@ document.getElementById('yes').onclick = function() {
     form1.append("oldpassword",oldPassword);
     form1.append("newpassword",newPassword);
     $.ajax({
-        url : "/changePassword",
+        url : "/student/changePassword",
         type : "POST",
         data : form1,
         processData : false,
@@ -112,21 +112,26 @@ var inputs = document.getElementById('oout1').getElementsByTagName("input");
 
 function init(json) {
     $("#first_name").val(json.first_name);
+    $("#side-name").innerText=json.first_name;
     $("#StudentNumber").val(json.StudentNumber);
     $("#sex").val(json.sex);
     $("#college").val(json.college);
+    $("#side-college").innerText=json.college;
     $("#grade").val(json.grade);
     $("#class").val(json.class);
+    $("#side-class").innerText=json.class;
     $("#address").val(json.address);
     $("#birthday").val(json.birthday);
     $("#phoneNumbr").val(json.phoneNumbr);
     $("#email").val(json.email);
+    $("#side-email").innerText=json.email;
+
 }
 
 //获取学生信息,返回一个json格式的数据，里面的各项信息按顺序排列
 function getStudentInfo() {
     $.ajax({
-        url : "/getInfo",
+        url : "/student/getInfo",
         type : "POST",
         processData : false,
         contentType : false,
@@ -180,7 +185,7 @@ document.getElementById("confirmChange").onclick = function() {
     }
     //发送请求附带数据json
     $.ajax({
-        url : "/changeInfo",
+        url : "/student/changeInfo",
         type : "POST",
         data : form,
         processData : false,
