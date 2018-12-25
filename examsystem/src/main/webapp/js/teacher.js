@@ -55,7 +55,7 @@ for (var i = 0; i < slide.length; i++) {
 document.getElementById("logout").onclick = function(){
 	//退出登录，跳转到登录界面
     $.ajax({
-        url : "/teacher/logout",
+        url : "/logout",
         type : "POST",
         processData : false,
         contentType : false,
@@ -114,6 +114,8 @@ document.getElementById('yes').onclick = function() {
         return;
     }
     var form1 = new FormData();
+    form1.append("oldpassword",oldPassword);
+    form1.append("newpassword",newPassword);
     $.ajax({
         url : "/teacher/changePassword",
         type : "POST",
@@ -177,7 +179,7 @@ function getClasses(){
     var str1='<option value="" disabled selected>年级</option>';
     var str2='<option value="" disabled selected>班级</option>';
     $.ajax({
-        url:"/teacher/getTeacherlass",
+        url:"/teacher/getTeacherclass",
         type:"POST",
         processData : false,
         contentType : false,
@@ -378,8 +380,10 @@ document.getElementById("search_student").onclick=function(){
 //如果收到的classgrade、classname都=="",那么返回全部的学生，也要考虑其中之一为""的情况
 function getAllstudents(){
     var str='<p class="col s2">姓名</p><p class="col s2">学号</p><p class="col s1">性别</p><p class="col s3">学院</p><p class="col s2">年级</p><p class="col s2">班级</p>';
-	var classgrade=$("#grade").text();
-	var classname=$("#class").text();
+	var classgrade=$("#grade option:selected").text();
+	var classname=$("#class option:selected").text();
+	console.log(classgrade);
+	console.log(classname);
 	if(classgrade=="年级"){classgrade="";}
 	if(classname=="班级"){classname="";}	
 	var form=new FormData();
@@ -396,7 +400,7 @@ function getAllstudents(){
     		if (result){
     			$("#student_list").empty();
     	        for(var i=0;i<result.length;i++){
-    	        	str+='<li><p class="col s2">'+result[i].name+'</p><p class="col s2">'+result[i].id+'</p><p class="col s1">'+result[i].sex+'</p><p class="col s3">'+result[i].college+'</p><p class="col s2">'+result[i].grade+'</p><p class="col s2">'+result[i].class+'</p></li>';
+    	        	str+='<li><p class="col s2">'+result[i].name+'</p><p class="col s2">'+result[i].id+'</p><p class="col s1">'+result[i].sex+'</p><p class="col s3">'+result[i].college+'</p><p class="col s2">'+result[i].grade+'</p><p class="col s2">'+result[i].classname+'</p></li>';
     	        }
     	        $("#student_list").append(str);
     	    }
@@ -567,8 +571,8 @@ for(var i=0;i<addtolist.length;i++){
 //同样要考虑section、question_type==""的情况
 //创建试卷页面的
 function getQuestionList(){
-  var section=$("#section").val();
-  var question_type=$("#question_type").val();
+  var section=$("#section option:selected").val();
+  var question_type=$("#question_type option:selected").val();
   var form=new FormData();
   form.append("section",section);
   form.append("question_type",question_type);

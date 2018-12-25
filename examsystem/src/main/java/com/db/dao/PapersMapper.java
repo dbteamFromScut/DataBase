@@ -1,7 +1,9 @@
 package com.db.dao;
 
 import com.db.model.Papers;
+import org.springframework.stereotype.Service;
 
+@Service("papersDao")
 public interface PapersMapper {
     int deleteByPrimaryKey(Integer paperId);
 

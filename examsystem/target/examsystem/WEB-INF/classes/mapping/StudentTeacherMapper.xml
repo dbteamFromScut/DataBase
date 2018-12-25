@@ -68,4 +68,11 @@
       class_grade = #{classGrade,jdbcType=CHAR}
     where teacher_id = #{teacherId,jdbcType=VARCHAR}
   </update>
+
+  <select id="selectByPrimaryKeyList" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List" />
+    from st
+    where teacher_id=#{teacherId}
+  </select>
 </mapper>

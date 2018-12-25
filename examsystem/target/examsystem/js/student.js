@@ -47,7 +47,7 @@ for (var i = 0; i < slide.length; i++) {
 document.getElementById("logout").onclick = function(){
     //退出登录，跳转到登录界面
     $.ajax({
-        url : "/student/logout",
+        url : "/logout",
         type : "POST",
         processData : false,
         contentType : false,

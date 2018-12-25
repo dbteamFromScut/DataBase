@@ -1,7 +1,9 @@
 package com.db.dao;
 
 import com.db.model.OperationLog;
+import org.springframework.stereotype.Service;
 
+@Service("operationLogDao")
 public interface OperationLogMapper {
     int deleteByPrimaryKey(Integer orderId);
 

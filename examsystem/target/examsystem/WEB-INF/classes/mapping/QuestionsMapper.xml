@@ -161,4 +161,10 @@
       correct_num = #{correctNum,jdbcType=INTEGER}
     where question_id = #{questionId,jdbcType=INTEGER}
   </update>
+  <select id="selectByPrimaryKeyList" resultMap="BaseResultMap" parameterType="com.db.model.Questions">
+    select
+    <include refid="Base_Column_List" />
+    from questions
+    where chapter=#{chapter} and test_type=#{testType}
+  </select>
 </mapper>

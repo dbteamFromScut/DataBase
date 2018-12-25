@@ -139,4 +139,11 @@
       e_mail = #{eMail,jdbcType=VARCHAR}
     where teacher_id = #{teacherId,jdbcType=VARCHAR}
   </update>
+
+  <select id="selectByPrimaryKeyList" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List" />
+    from teachers
+    where teacher_id=#{teacherId}
+  </select>
 </mapper>

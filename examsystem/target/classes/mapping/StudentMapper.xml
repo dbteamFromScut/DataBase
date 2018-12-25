@@ -161,4 +161,10 @@
       e_mail = #{eMail,jdbcType=VARCHAR}
     where student_id = #{studentId,jdbcType=VARCHAR}
   </update>
+  <select id="selectByPrimaryKeyList" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List" />
+    from students
+    where class_name=#{param1} and class_grade=#{param2}
+  </select>
 </mapper>
