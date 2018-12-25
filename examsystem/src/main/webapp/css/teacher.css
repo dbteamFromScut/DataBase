@@ -60,7 +60,13 @@ body {
 #l_C,
 #l_D,
 #l_T,
-#l_F
+#l_F,
+#l_A2,
+#l_B2,
+#l_C2,
+#l_D2,
+#l_T2,
+#l_F2
 {
 	margin-left: 20px;
 	margin-right: 5px;
@@ -71,6 +77,7 @@ body {
 #oout3,
 #oout4,
 #oout5,
+#oout6,
 #changePassword,
 #AddExam {	
 	display: none;

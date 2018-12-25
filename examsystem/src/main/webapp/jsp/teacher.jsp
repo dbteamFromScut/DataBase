@@ -94,7 +94,8 @@
    		<li><a id="slide2" class="waves-effect" href="#!"><i class="icon-alarm"></i>创建/发布考试</a></li>
    		<li><a id="slide3" class="waves-effect" href="#!"><i class="icon-history"></i>已发布的考试</a></li>
    		<li><a id="slide4" class="waves-effect" href="#!"><i class="icon-plus"></i>添加题目</a></li>
-   		<li><a id="slide5" class="waves-effect" href="#!"><i class="icon-address-book"></i>查看学生信息</a></li>
+      <li><a id="slide5" class="waves-effect" href="#!"><i class="icon-pencil"></i>管理试题</a></li>
+   		<li><a id="slide6" class="waves-effect" href="#!"><i class="icon-address-book"></i>查看学生信息</a></li>
   	</ul>
 
 
@@ -330,8 +331,136 @@
       	</div>
 	</div>
 
+  <!-- 修改试题 -->
+  <div class="container" id="oout5">
+    <div class="row">
+      <h4><i class="icon-pencil"> 修改试题</i></h4>
+      <form class="s12">
+        <div class="col s4"></div>
+        <select class="browser-default col s3" id="section2">
+          <option value="" disabled selected>章节</option>
+          <option value="1">第一章</option>
+          <option value="2">第二章</option>
+          <option value="3">第三章</option>
+          <option value="4">第四章</option>
+          <option value="5">第五章</option>
+          <option value="6">第六章</option>
+          <option value="7">第七章</option>
+          <option value="8">第八章</option>
+          <option value="9">第九章</option>
+          <option value="10">第十章</option>
+          <option value="11">第十一章</option>
+        </select>
+        <div class="col s0.5"></div>
+        <select class="browser-default col s3" id="question_type2">
+          <option value="" disabled selected>题型</option>
+          <option value="选择">选择</option>
+          <option value="判断">判断</option>
+        </select>
+        <div class="col s0.5"></div>
+        <button class="btn waves-effect waves-light col s1" type="button" id="search_question2">查询</button>
+      </form>
+      <br><br>
+      <div class="s12">
+        <ul class="collection" id="question_list2">
+          <p class="col s2">试题id</p>
+          <p class="col s5">题目</p>
+          <p class="col s2">章节</p>
+          <p class="col s2">题型</p>
+          <p class="col s1">操作</p>
+          <li>
+            <p class="col s2" name="question_id2">343</p>
+            <p class="col s5">关于数据库，以下说法正确的是哪一个A.数据库...</p>
+            <p class="col s2">第一章</p>
+            <p class="col s2" name="type2">判断</p>
+            <p class="col s1"><a href="#!" name="question_edit">修改</a></p>
+          </li>
+          <li>
+            <p class="col s2" name="question_id2">423</p>
+            <p class="col s5">关于数据库，以下说法正确的是哪一个A.数据库...</p>
+            <p class="col s2">第一章</p>
+            <p class="col s2" name="type2">选择</p>
+            <p class="col s1"><a href="#!" name="question_edit">修改</a></p>
+          </li> 
+          <li>
+            <p class="col s2" name="question_id2">3424</p>
+            <p class="col s5">关于数据库，以下说法正确的是哪一个A.数据库...</p>
+            <p class="col s2">第一章</p>
+            <p class="col s2" name="type2">选择</p>
+            <p class="col s1"><a href="#!" name="question_edit">修改</a></p>
+          </li> 
+          <li>
+            <p class="col s2" name="question_id2">34</p>
+            <p class="col s5">关于数据库，以下说法正确的是哪一个A.数据库...</p>
+            <p class="col s2">第一章</p>
+            <p class="col s2" name="type2">选择</p>
+            <p class="col s1"><a href="#!" name="question_edit">修改</a></p>
+          </li>                                 
+        </ul>
+      </div>
+    </div>
+    <!-- 修改选择题 -->
+    <div id="choose_detail2" class="modal bottom-sheet">
+      <div class="modal-content">
+          <form class="col s12">
+            <div class="row" id="choose2">
+              <h5 class="col s12 m2">题目ID：<h5 class="col s12 m10" id="choose_id2">题目id</h5></h5>
+              <div class="input-field col s12">
+                  <textarea id="choose_q2" class="materialize-textarea" placeholder="请输入选择题题目"></textarea> 
+              </div>
+              <div class="input-field col s12">
+                <i class="prefix">A</i><input type="text" id="A2" placeholder="选项一">
+                <i class="prefix">B</i><input type="text" id="B2" placeholder="选项二">
+                <i class="prefix">C</i><input type="text" id="C2" placeholder="选项三">
+                <i class="prefix">D</i><input type="text" id="D2" placeholder="选项四">
+              </div>
+              <div>
+                <h4>正确答案：</h4>
+                <input name="group1" type="radio" id="_A2"/>
+                <label for="_A2" id="l_A2">A</label>
+                <input name="group1" type="radio" id="_B2"/>
+                <label for="_B2" id="l_B2">B</label>
+                <input name="group1" type="radio" id="_C2"/>
+                <label for="_C2" id="l_C2">C</label>
+                <input name="group1" type="radio" id="_D2"/>
+                <label for="_D2" id="l_D2">D</label>
+              </div>
+              <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-light btn" id="save_choose2">保存修改</a>
+              </div>
+            </div>
+          </form>
+      </div>      
+    </div>
+    <!-- 修改判断题 -->
+    <div id="tf_detail2" class="modal bottom-sheet">
+      <div class="modal-content">
+          <form class="col s12">
+            <div class="row" id="TF2">
+              <h5 class="col s12 m2">题目ID：<h5 class="col s12 m10" id="tf_id2">1111</h5></h5>
+              <div class="input-field col s12">
+                  <textarea id="TorF2" class="materialize-textarea" placeholder="请输入判断题题目"></textarea> 
+              </div>
+              <div>
+                <h4>正确答案：</h4>
+                <input name="group2" type="radio" id="_T2" value="对"/>
+                <label for="_T2" id="l_T2">True</label>
+                <input name="group2" type="radio" id="_F2" value="错"/>
+                <label for="_F2" id="l_F2">False</label>
+              </div>
+              <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-light btn" id="save_tf2">保存修改</a>
+              </div>
+            </div>
+          </form>
+      </div>      
+    </div>
+  </div>
+
+
+
 	<!-- 本班学生信息 -->
-	<div class="container" id="oout5">
+	<div class="container" id="oout6">
 		<div class="row">
 			<h4><i class="icon-users"> 学生信息</i></h4>
 			<form class="s12">
@@ -346,7 +475,7 @@
     		      
     		    </select>
     		    <div class="col s0.5"></div>
-    		    <button class="btn waves-effect waves-light col s1" type="submit" id="search_student">查询</button>
+    		    <button class="btn waves-effect waves-light col s1" type="button" id="search_student">查询</button>
     		</form>
     		<br><br>
 			<div class="s12">
@@ -442,9 +571,9 @@
 
         <div class="aa col s12">
           <div class="col s1"></div>
-          <button class="btn cyan darken-2 col s2 push-s2" type="submit" id="empty_selected">清空</button>
+          <button class="btn cyan darken-2 col s2 push-s2" type="button" id="empty_selected">清空</button>
           <div class="col s1"></div>
-          <button class="btn cyan darken-2 col s2 push-s2" type="submit" id="save_paper">保存试卷</button>
+          <button class="btn cyan darken-2 col s2 push-s2" type="button" id="save_paper">保存试卷</button>
           <br><br>
         </div>
       </form>
@@ -475,7 +604,7 @@
           <option value="判断">判断</option>
         </select>
         <div class="col s0.5"></div>
-        <button class="btn waves-effect waves-light col s1" type="submit" id="search_question">查询</button>
+        <button class="btn waves-effect waves-light col s1" type="button" id="search_question">查询</button>
       </form>
       <div class=""></div>
       <div class=" col s12">
@@ -512,19 +641,19 @@
         </ul>
       </div>
     </div>
-    <!-- 修改选择题 -->
+    <!-- 查看选择题 -->
     <div id="choose_detail" class="modal bottom-sheet">
       <div class="modal-content col s12">
-        <div class="row" id="choose">
-          <h5 class="col s12 m2">题目ID：<h5 class="col s12 m10" id="choose_id">题目id</h5>
+        <div class="row" id="choose_content">
+          <h5 class="col s12 m2">题目ID：<h5 class="col s12 m10" id="choose_id">题目id</h5></h5>
           <div class="input-field col s8">
-              <textarea disabled id="choose_q" class="materialize-textarea"></textarea> 
+              <textarea disabled id="choose_question" class="materialize-textarea"></textarea> 
           </div>
           <div class="input-field col s12">
             <p id="right_choose">选项一</p>
-            <p id="B">选项二</p>
-            <p id="C">选项三</p>
-            <p id="D">选项四</p>
+            <p id="B_choose">选项二</p>
+            <p id="C_choose">选项三</p>
+            <p id="D_choose">选项四</p>
           </div>
         </div>
       </div>      
@@ -532,10 +661,10 @@
     <!-- 修改判断题 -->
     <div id="tf_detail" class="modal bottom-sheet">
       <div class="modal-content col s12">
-        <div class="row" id="TF">
+        <div class="row" id="TF_content">
           <h5 class="col s12 m2">题目ID：<h5 class="col s12 m10" id="tf_id">1111</h5></h5>
           <div class="input-field col s12">
-              <textarea disabled id="TorF" class="materialize-textarea"></textarea> 
+              <textarea disabled id="TorF_question" class="materialize-textarea"></textarea> 
           </div>
           <div>
             <h4>答案：</h4>
