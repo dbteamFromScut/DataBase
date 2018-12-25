@@ -62,7 +62,7 @@ document.getElementById("logout").onclick = function(){
 var slide = new Array();
 var out = new Array();
 var cover = document.getElementById("cover");
-for (var i = 0; i < 3; i++) {
+for (var i = 0; i < 2; i++) {
   var id1 = "slide" + (i+1);
   var id2 = "oout" + (i+1);
   slide[i] = document.getElementById(id1);
@@ -80,178 +80,88 @@ for (var i = 0; i < slide.length; i++) {
   }
 }
 
-/*管理试题页面*/
-//弹出对应id的试题修改框，ajax根据id获取除id外的题目、选项、以及答案
-var question_edit=document.getElementsByName("question_edit");
-for (var i = 0; i < question_edit.length; i++) {
-  question_edit[i].setAttribute("index",i);
-}
-for(var i=0;i<question_edit.length;i++){
-  question_edit[i].onclick=function(){
-    var j=this.getAttribute("index");
-    var type=document.getElementsByName("type");
-    var question_id=document.getElementsByName("question_id");
-    var q_id=$(question_id[j]).text();
-    type=$(type[j]).text();
-    var form=new FormData();
-    form.append("id",q_id);//题目ID
-    if(type=="判断题"){
-      question_edit[j].setAttribute("href","#tf_detail");
-      $("#tf_id").text(q_id);
+
+/*-------------------管理学生页面---------------------*/
+//添加单独一个学生
+document.getElementById("addNewStudent").onclick=function(){
+  var name=$("#new_s_name").val();
+  var sex=$("#new_s_sex").val();
+  var id=$("#new_s_id").val();
+  var college=$("#new_s_college").val();
+  var grade=$("#new_s_grade").val();
+  var s_class=$("#new_s_class").val();
+  if(name==""||sex==""||id==""||college==""||grade==""||s_class==""){
+    alert("信息需要补充完整");
+  }
+  else{
+    if(confirm("确认将 "+name+" 同学的信息上传到考试系统吗？")==true){
+      var form=new FormData();
+      form.append("name",name);
+      form.append("sex",sex);
+      form.append("id",id);
+      form.append("college",college);
+      form.append("grade",grade);
+      form.append("s_class",s_class);
+      //由信息向数据库学生表插入一个新元组
       $.ajax({
-        url:"/acdemic/getTFinfo",
+        url:"/acdemic/addNewStudent",
         type:"POST",
         data:form,
         processData : false,
         contentType : false,
-        dataType:"json",
-        success:function(data){
-          if(data){
-            $("#TorF").val(data.question);
-            if(data.answer=="对"){
-              $("#_T").prop("checked",true);
-            }
-            else if(data.answer=="错"){
-              $("#_F").prop("checked",true);
-            }
-            else{
-              alert("这道题目未设置答案！");
-            }
-          }else{
-            alert("题目载入失败！");
+        success:function(result){
+          if(result.code=="success"){
+            alert("上传成功！");
+          }
+          //用主键职工号判断是否已存在
+          else if(result.code=="exist"){
+            alert("该学号已存在！")
+          }
+          else{
+            alert("上传失败！");
           }
         }
       });
     }
-    if(type=="选择题"){
-      question_edit[j].setAttribute("href","#choose_detail");
-      $("#choose_id").text(q_id);
-      //返回的answer为A/B/C/D
-      $.ajax({
-        url:"/acdemic/getChooseinfo",
-        type:"POST",
-        data:form,
-        processData : false,
-        contentType : false,
-        dataType:"json",
-        success:function(data){
-          if(data){
-            $("#choose_q").val(data.question);
-            $("#A").val(data.A);
-            $("#B").val(data.B);
-            $("#C").val(data.C);
-            $("#D").val(data.D);
-            if(data.answer=="A"){
-              $("#_A").prop("checked",true);
-            }
-            else if(data.answer=="B"){
-              $("#_B").prop("checked",true);
-            }
-            else if(data.answer=="C"){
-              $("#_C").prop("checked",true);
-            }
-            else if(data.answer=="D"){
-              $("#_D").prop("checked",true);
-            }
-            else{
-              alert("这道题目未设置答案！");
-            }
-          }else{
-            alert("题目载入失败！");
-          }
-        }
-      });
-    }   
   }
 }
-//保存判断题修改
-document.getElementById("save_tf").onclick=function(){
-  if(confirm("确认保存修改")==true){
-    var id=$("#tf_id").text();
-    var tf_question=$("#TorF").val();
-    var answer=$('#TF input:radio:checked').val();//值为“对”或“错”
-    if(tf_question==""||answer==""){
-      alert("保存失败！请提交完整的题目");
-    }
-    else{
-      form=new FormData();
-      form.append("question",tf_question);
-      form.append("answer",answer);
-      //根据ID保存信息
-      $.ajax({
-        url:"/acdemic/saveStudent",
-        type:"POST",
-        data:form,
-        processData : false,
-        contentType : false,
-        success:function(result){
-          if(result.code=="success"){
-            alert("题目保存成功！");
+//导入学生的excel文档
+document.getElementById("addNewStudentFile").onclick=function(){
+  var filename=$("#student_file").val();
+  var point=filename.lastIndexOf(".");
+  var filetype=filename.substr(point);
+  if(filename==""){
+    alert("未选择文件");
+    return;
+  }
+  else if(filetype!=".xlsx"&&filetype!=".xls"){
+    alert("请选择excel文件");
+    return;
+  }
+  else{
+    var form=new FormData();
+    form.append("filename",filename);
+    form.append("file",$("#student_file"[0].files[0]));
+    $.ajax({
+      url:"/acdemic/addNewStudentFile",
+      type:'POST',
+      data:form,
+      processData : false,
+      contentType : false,
+      beforeSend:function(){
+          console.log("正在上传，请稍候");
+      },
+      success:function(result){
+        if (result.code=="success"){
+            alert("上传成功！");
+          }else {
+              alert("上传失败！");
           }
-          else{
-            alert("保存失败！");
-          }
-        }
-      });
-    }
-  } 
-}
-//保存选择题的修改
-document.getElementById("save_choose").onclick=function(){
-  if(confirm("确认保存修改")==true){
-    var id=$("#choose_id").text();
-    var choose_question=$("#choose_q").val();
-    var A=$("#A").val();
-    var B=$("#B").val();
-    var C=$("#C").val();
-    var D=$("#D").val();
-    var choose=$('#choose input:radio:checked').val();//值为A/B/C/D
-    var answer="";
-    if(choose=="A"){
-      answer=A;
-    }else if(choose=="B"){
-      answer=B;
-    }else if(choose=="C"){
-      answer=C;
-    }else if(choose=="D"){
-      answer=D;
-    }else{
-      answer="";
-    }
-    if(choose_question==""||A==""||B==""||C==""||D==""||answer==""){
-      alert("保存失败！请提交完整的题目");
-    }
-    else{
-      form=new FormData();
-      form.append("question",choose_question);
-      form.append("A",A);
-      form.append("B",B);
-      form.append("C",C);
-      form.append("D",D);
-      form.append("answer",answer);
-      //根据ID保存信息
-      $.ajax({
-        url:"/acdemic/saveStudent",
-        type:"POST",
-        data:form,
-        processData : false,
-        contentType : false,
-        success:function(result){
-          if(result.code=="success"){
-            alert("题目保存成功！");
-          }
-          else{
-            alert("保存失败！");
-          }
-        }
-      });
-    }
-  } 
+      }
+    });
+  }
 }
 
-
-
-/*管理学生页面*/
 //弹出对应id的学生信息修改框，ajax根据id获取除id外的其他信息
 var student_edit=document.getElementsByName("student_edit");
 for (var i = 0; i < student_edit.length; i++) {
@@ -263,7 +173,7 @@ for(var i=0;i<student_edit.length;i++){
     var student_id=document.getElementsByName("student_id");
     var s_id=$(student_id[j]).text();
     $("#s_id").val(s_id);
-    form=new FormData();
+    var form=new FormData();
     form.append("id",s_id);
     $.ajax({
       url:"/acdemic/studentinfo",
@@ -291,6 +201,31 @@ for(var i=0;i<student_edit.length;i++){
     });
   }
 }
+//初始化学生的密码
+document.getElementById("default_student").onclick=function(){
+  var name=$("#s_name").val();
+  if(confirm("确认将 "+name+" 密码初始化吗?")==true){
+    var id=$("#s_id").val();
+    var form=new FormData();
+    form.append("id",id);
+    //根据id初始化对应学生的密码123456
+    $.ajax({
+        url:"/acdemic/defaultStudent",
+        type:"POST",
+        data:form,
+        processData : false,
+        contentType : false,
+        success:function(result){
+          if(result.code=="success"){
+            alert("初始化成功！");
+          }
+          else{
+            alert("初始化失败！");
+          }
+        }
+      });
+  }
+}
 //保存学生信息的修改
 document.getElementById("save_student").onclick=function(){
   if(confirm("确认保存修改")==true){
@@ -308,7 +243,7 @@ document.getElementById("save_student").onclick=function(){
       alert("保存失败！请提交完整的资料");
     }
     else{
-      form=new FormData();
+      var form=new FormData();
       form.append("id",id);
       form.append("name",name);
       form.append("sex",sex);
@@ -323,11 +258,12 @@ document.getElementById("save_student").onclick=function(){
       $.ajax({
         url:"/acdemic/saveStudent",
         type:"POST",
+        data:form,
         processData : false,
         contentType : false,
         success:function(result){
           if(result.code=="success"){
-            alert("题目保存成功！");
+            alert("信息保存成功！");
           }
           else{
             alert("保存失败！");
@@ -339,7 +275,83 @@ document.getElementById("save_student").onclick=function(){
 }
 
 
-/*管理教师信息页面*/
+/*-------------管理教师信息页面-----------------*/
+//添加单独一个新教师
+document.getElementById("addNewTeacher").onclick=function(){
+  var name=$("#new_t_name").val();
+  var sex=$("#new_t_sex").val();
+  var id=$("#new_t_id").val();
+  var college=$("#new_t_college").val();
+  if(name==""||sex==""||id==""||college==""){
+    alert("信息需要补充完整");
+  }
+  else{
+    if(confirm("确认将 "+name+" 老师的信息上传到考试系统吗？")==true){
+      var form=new FormData();
+      form.append("name",name);
+      form.append("sex",sex);
+      form.append("id",id);
+      form.append("college",college);
+      //由信息向数据库教师表插入一个新元组
+      $.ajax({
+        url:"/acdemic/addNewTeacher",
+        type:"POST",
+        data:form,
+        processData : false,
+        contentType : false,
+        success:function(result){
+          if(result.code=="success"){
+            alert("上传成功！");
+          }
+          //用主键职工号判断是否已存在
+          else if(result.code=="exist"){
+            alert("该职工号已存在！")
+          }
+          else{
+            alert("上传失败！");
+          }
+        }
+      });
+    }
+  }
+}
+//导入教师信息excel文档
+document.getElementById("addNewTeacherFile").onclick=function(){
+  var filename=$("#teacher_file").val();
+  var point=filename.lastIndexOf(".");
+  var filetype=filename.substr(point);
+  if(filename==""){
+    alert("未选择文件");
+    return;
+  }
+  else if(filetype!=".xlsx"&&filetype!=".xls"){
+    alert("请选择excel文件");
+    return;
+  }
+  else{
+    var form=new FormData();
+    form.append("filename",filename);
+    form.append("file",$("#teacher_file"[0].files[0]));
+    $.ajax({
+      url:"/acdemic/addNewTeacherFile",
+      type:'POST',
+      data:form,
+      processData : false,
+      contentType : false,
+      beforeSend:function(){
+          console.log("正在上传，请稍候");
+      },
+      success:function(result){
+        if (result.code=="success"){
+            alert("上传成功！");
+          }else {
+              alert("上传失败！");
+          }
+      }
+    });
+  }
+}
+
 //弹出对应id的教师信息修改框，ajax根据id获取除id外的其他信息
 var teacher_edit=document.getElementsByName("teacher_edit");
 for (var i = 0; i < teacher_edit.length; i++) {
@@ -351,7 +363,7 @@ for(var i=0;i<student_edit.length;i++){
     var teacher_id=document.getElementsByName("teacher_id");
     var t_id=$(teacher_id[j]).text();
     $("#t_id").val(t_id);
-    form=new FormData();
+    var form=new FormData();
     form.append("id",t_id);
     $.ajax({
       url:"/acdemic/teacherinfo",
@@ -377,6 +389,31 @@ for(var i=0;i<student_edit.length;i++){
     });
   }
 }
+//初始化教师的密码
+document.getElementById("default_teacher").onclick=function(){
+  var name=$("#t_name").val();
+  if(confirm("确认将 "+name+" 密码初始化吗?")==true){
+    var id=$("#t_id").val();
+    var form=new FormData();
+    form.append("id",id);
+    //根据id初始化对应教师的密码123456
+    $.ajax({
+        url:"/acdemic/defaultTeacher",
+        type:"POST",
+        data:form,
+        processData : false,
+        contentType : false,
+        success:function(result){
+          if(result.code=="success"){
+            alert("初始化成功！");
+          }
+          else{
+            alert("初始化失败！");
+          }
+        }
+      });
+  }
+}
 //保存教师信息的修改
 document.getElementById("save_teacher").onclick=function(){
   if(confirm("确认保存修改")==true){
@@ -392,7 +429,7 @@ document.getElementById("save_teacher").onclick=function(){
       alert("保存失败！请提交完整的资料");
     }
     else{
-      form=new FormData();
+      var form=new FormData();
       form.append("id",id);
       form.append("name",name);
       form.append("sex",sex);
@@ -403,14 +440,14 @@ document.getElementById("save_teacher").onclick=function(){
       form.append("email",email);
       //根据ID保存信息
       $.ajax({
-        url:"/acdemic/saveStudent",
+        url:"/acdemic/saveTeacher",
         type:"POST",
         data:form,
         processData : false,
         contentType : false,
         success:function(result){
           if(result.code=="success"){
-            alert("题目保存成功！");
+            alert("信息保存成功！");
           }
           else{
             alert("保存失败！");
@@ -423,7 +460,7 @@ document.getElementById("save_teacher").onclick=function(){
 
 
 
-/*列表更新函数*/
+/*------------------列表更新函数-------------------------*/
 
 //学生,根据年级和班级返回result为指定的学生(name、id、sex、class_grade、class_name、college)的数组
 //如果收到的classgrade、classname都=="",那么返回全部的学生，也要考虑其中之一为""的情况
@@ -483,41 +520,7 @@ function getTeacherList(){
   });
 }
 
-//试题,根据题目类型返回题目的id、除去选项外的题目(question)、section、question_type
-//section由数字转换成中文（如“第一章”）返回
-//同样要考虑section、question_type==""的情况
-function getQuestionList(){
-  var section=$("#section").val();
-  var question_type=$("#question_type").val();
-  var form=new FormData();
-  form.append("section",section);
-  form.append("question_type",question_type);
-  $.ajax({
-    url:"/acdemic/getQuestionList",
-    type:"POST",
-    data:form,
-    processData : false,
-    contentType : false,
-    dataType : "json",
-    success:function(result){
-      if(result){
-        str='<p class="col s2">试题id</p><p class="col s5">题目</p><p class="col s2">章节</p><p class="col s2">题型</p><p class="col s1">操作</p>';
-        $("#question_list").empty();
-        for(var i=0;i<result.length;i++){
-          str+='<p class="col s2" name="question_id">'+result[i].id+'</p><p class="col s5">'+result[i].question.substr(0,20)+'...</p><p class="col s2">'+result[i].section+'</p><p class="col s2" name="type">'+result[i].question_type+'</p><p class="col s1"><a href="#!" name="question_edit">修改</a></p></li>';
-        }
-        $("#question_list").append(str);
-      }
-      else{
-        alert("列表载入失败！");
-      }
-    }
-  });
-}
 
 document.getElementById("search_student").onclick=function(){
   getStudentList();
-}
-document.getElementById("search_question").onclick=function(){
-  getQuestionList();
 }

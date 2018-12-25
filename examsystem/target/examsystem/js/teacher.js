@@ -32,7 +32,7 @@ $(document).ready(function(){
 var slide = new Array();
 var out = new Array();
 var cover = document.getElementById("cover");
-for (var i = 0; i < 5; i++) {
+for (var i = 0; i < 6; i++) {
 	var id1 = "slide" + (i+1);
 	var id2 = "oout" + (i+1);
 	slide[i] = document.getElementById(id1);
@@ -62,7 +62,7 @@ document.getElementById("logout").onclick = function(){
         success: function(result){
             if (result.code=="success"){
                 alert("注销成功！")
-                window.location.href = "./login.jsp"
+                window.location.href="/"
             }else {
                 alert("注销失败！");
             }
@@ -71,14 +71,14 @@ document.getElementById("logout").onclick = function(){
 }
 
 //修改密码
-out[5] = document.getElementById('changePassword');
+out[6] = document.getElementById('changePassword');
 document.getElementById('change').onclick = function(){
     for (var i = 0; i < out.length; i++) {
         out[i].style.display = "none";
     }
     cover.style.display = "none";
     document.getElementById("AddExam").style.display="none";
-    out[5].style.display = "block";
+    out[6].style.display = "block";
 }
 
 function checkPassword(password){
@@ -204,6 +204,7 @@ function getInfo(){
     getClasses();
     getAllstudents();
     getQuestionList();
+    getQuestionList2();
 }
 
 document.getElementById('changeInfo').onclick = function() {
@@ -348,7 +349,7 @@ document.getElementById("file_confirm").onclick=function(){
 		form.append("filename",filename);
 		form.append("file",$("#input_file"[0].files[0]));
 		$.ajax({
-			url:"/teacher/",
+			url:"/teacher/submitFile",
 			type:'POST',
 			data:form,
 			processData : false,
@@ -404,7 +405,7 @@ function getAllstudents(){
 	
 }
 
-/* 创建考试相关 */
+/* ----------------创建考试相关-------------------------- */
 document.getElementById("CreateExam").onclick=function(){
     document.getElementById("oout2").style.display="none";
     //document.getElementById("AddExam").style.display="block";
@@ -449,7 +450,7 @@ for(var i=0;i<detail.length;i++){
             $("#tf_id").text(q_id);
             //根据题目id返回判断题的题目和对错(answer)
             $.ajax({
-                url:"/teacher/",
+                url:"/teacher/getTF",
                 type:"POST",
                 data:form,
                 processData : false,
@@ -457,7 +458,7 @@ for(var i=0;i<detail.length;i++){
                 dataType:"json",
                 success:function(data){
                     if(data){
-                        $("#TorF").val(data.question);
+                        $("#TorF_question").val(data.question);
                         $("#tf_answer").text(data.answer);
                     }
                     else{
@@ -469,9 +470,9 @@ for(var i=0;i<detail.length;i++){
         if(thetype=="选择"){
             detail[j].setAttribute("href","#choose_detail");
             $("#choose_id").text(q_id);
-            //根据id返回题目、以及四个选项，其中返回的第一个选项为正确答案
+            //根据id返回题目、以及四个选项，其中返回的第一个选项answer1为正确答案
             $.ajax({
-                url:"/teacher/",
+                url:"/teacher/getChoose",
                 type:"POST",
                 data:form,
                 processData : false,
@@ -479,11 +480,11 @@ for(var i=0;i<detail.length;i++){
                 dataType:"json",
                 success:function(data){
                     if(data){
-                        $("#choose_q").val(data.question);
+                        $("#choose_question").val(data.question);
                         $("#right_choose").val(data.answer1);
-                        $("#B").val(data.answer2);
-                        $("#C").val(data.answer3);
-                        $("#D").val(data.answer4);
+                        $("#B_choose").val(data.answer2);
+                        $("#C_choose").val(data.answer3);
+                        $("#D_choose").val(data.answer4);
                     }else{
                         alert("题目信息载入失败！");
                     }
@@ -558,9 +559,13 @@ for(var i=0;i<addtolist.length;i++){
     }
 }
 
+
+
+
 //试题,根据题目类型返回题目的id、除去选项外的题目(question)、section、question_type
 //section由数字转换成中文（如“第一章”）返回
 //同样要考虑section、question_type==""的情况
+//创建试卷页面的
 function getQuestionList(){
   var section=$("#section").val();
   var question_type=$("#question_type").val();
@@ -589,9 +594,41 @@ function getQuestionList(){
     }
   });
 }
+//修改试题页面的
+function getQuestionList2(){
+  var section=$("#section2").val();
+  var question_type=$("#question_type2").val();
+  var form=new FormData();
+  form.append("section",section);
+  form.append("question_type",question_type);
+  $.ajax({
+    url:"/teacher/getQuestionList2",
+    type:"POST",
+    data:form,
+    processData : false,
+    contentType : false,
+    dataType : "json",
+    success:function(result){
+      if(result){
+        str='<p class="col s2">试题id</p><p class="col s5">题目</p><p class="col s2">章节</p><p class="col s2">题型</p><p class="col s1">操作</p>';
+        $("#question_list2").empty();
+        for(var i=0;i<result.length;i++){
+          str+='<p class="col s2" name="question_id2">'+result[i].id+'</p><p class="col s5">'+result[i].question.substr(0,20)+'...</p><p class="col s2">'+result[i].section+'</p><p class="col s2" name="type2">'+result[i].question_type+'</p><p class="col s1"><a href="#!" name="question_edit">修改</a></p></li>';
+        }
+        $("#question_list2").append(str);
+      }
+      else{
+        alert("列表载入失败！");
+      }
+    }
+  });
+}
 
 document.getElementById("search_question").onclick=function(){
     getQuestionList();
+}
+document.getElementById("search_question2").onclick=function(){
+    getQuestionList2();
 }
 document.getElementById("empty_selected").onclick=function(){
     if(confirm("确定清空已选题目吗？")==true){
@@ -637,7 +674,7 @@ document.getElementById("save_paper").onclick=function(){
             form.append("tf_array",tf_array);//判断题id组成的数组
             //保存试卷，同时需生成一个独有的试卷id,已经将试卷标记为“未发布”
             $.ajax({
-                url:"/teacher/",
+                url:"/teacher/savePaper",
                 type:"POST",
                 data:form,
                 processData : false,
@@ -688,4 +725,175 @@ function cancelTf(){
 for (var i = 0; i < tf_selected.length; i++) {
     tf_selected[i].onclick = cancelTf;
     tf_selected[i].setAttribute("index",i);
+}
+
+
+/*--------------------修改试题页面---------------------*/
+//弹出对应id的试题修改框，ajax根据id获取除id外的题目、选项、以及答案
+var question_edit=document.getElementsByName("question_edit");
+for (var i = 0; i < question_edit.length; i++) {
+  question_edit[i].setAttribute("index",i);
+}
+for(var i=0;i<question_edit.length;i++){
+  question_edit[i].onclick=function(){
+    var j=this.getAttribute("index");
+    var type=document.getElementsByName("type2");
+    var question_id=document.getElementsByName("question_id2");
+    var q_id=$(question_id[j]).text();
+    type=$(type[j]).text();
+    var form=new FormData();
+    form.append("id",q_id);//题目ID
+    if(type=="判断"){
+      question_edit[j].setAttribute("href","#tf_detail2");
+      $("#tf_id2").text(q_id);
+      $.ajax({
+        url:"/teacher/getTFinfo",
+        type:"POST",
+        data:form,
+        processData : false,
+        contentType : false,
+        dataType:"json",
+        success:function(data){
+          if(data){
+            $("#TorF2").val(data.question);
+            if(data.answer=="对"){
+              $("#_T2").prop("checked",true);
+            }
+            else if(data.answer=="错"){
+              $("#_F2").prop("checked",true);
+            }
+            else{
+              alert("这道题目未设置答案！");
+            }
+          }else{
+            alert("题目载入失败！");
+          }
+        }
+      });
+    }
+    if(type=="选择"){
+      question_edit[j].setAttribute("href","#choose_detail2");
+      $("#choose_id2").text(q_id);
+      //返回的answer为A/B/C/D
+      $.ajax({
+        url:"/teacher/getChooseinfo",
+        type:"POST",
+        data:form,
+        processData : false,
+        contentType : false,
+        dataType:"json",
+        success:function(data){
+          if(data){
+            $("#choose_q2").val(data.question);
+            $("#A2").val(data.A);
+            $("#B2").val(data.B);
+            $("#C2").val(data.C);
+            $("#D2").val(data.D);
+            if(data.answer=="A"){
+              $("#_A2").prop("checked",true);
+            }
+            else if(data.answer=="B"){
+              $("#_B2").prop("checked",true);
+            }
+            else if(data.answer=="C"){
+              $("#_C2").prop("checked",true);
+            }
+            else if(data.answer=="D"){
+              $("#_D2").prop("checked",true);
+            }
+            else{
+              alert("这道题目未设置答案！");
+            }
+          }else{
+            alert("题目载入失败！");
+          }
+        }
+      });
+    }   
+  }
+}
+//保存判断题修改
+document.getElementById("save_tf2").onclick=function(){
+  if(confirm("确认保存修改")==true){
+    var id=$("#tf_id2").text();
+    var tf_question=$("#TorF2").val();
+    var answer=$('#TF2 input:radio:checked').val();//值为“对”或“错”
+    if(tf_question==""||answer==""){
+      alert("保存失败！请提交完整的题目");
+    }
+    else{
+      form=new FormData();
+      form.append("question",tf_question);
+      form.append("answer",answer);
+      //根据ID保存信息
+      $.ajax({
+        url:"/teacher/saveTF",
+        type:"POST",
+        data:form,
+        processData : false,
+        contentType : false,
+        success:function(result){
+          if(result.code=="success"){
+            alert("题目保存成功！");
+          }
+          else{
+            alert("保存失败！");
+          }
+        }
+      });
+    }
+  } 
+}
+//保存选择题的修改
+document.getElementById("save_choose2").onclick=function(){
+  if(confirm("确认保存修改")==true){
+    var id=$("#choose_id2").text();
+    var choose_question=$("#choose_q2").val();
+    var A=$("#A2").val();
+    var B=$("#B2").val();
+    var C=$("#C2").val();
+    var D=$("#D2").val();
+    var choose=$('#choose2 input:radio:checked').val();//值为A/B/C/D
+    var answer="";
+    if(choose=="A"){
+      answer=A;
+    }else if(choose=="B"){
+      answer=B;
+    }else if(choose=="C"){
+      answer=C;
+    }else if(choose=="D"){
+      answer=D;
+    }else{
+      answer="";
+    }
+    if(choose_question==""||A==""||B==""||C==""||D==""||answer==""){
+      alert("保存失败！请提交完整的题目");
+    }
+    else{
+      form=new FormData();
+      form.append("question",choose_question);
+      form.append("A",A);
+      form.append("B",B);
+      form.append("C",C);
+      form.append("D",D);
+      form.append("answer",answer);
+      //根据ID保存信息
+      //返回题目、四个选项、正确的选项(完整)
+      $.ajax({
+        url:"/teacher/saveChoose",
+        type:"POST",
+        data:form,
+        processData : false,
+        contentType : false,
+        success:function(result){
+          if(result.code=="success"){
+            alert("题目保存成功！");
+          }
+          else{
+            alert("保存失败！");
+          }
+        }
+      });
+    }
+  } 
 }

@@ -17,11 +17,6 @@ public class JumpController {
     }
 
 
-    @RequestMapping("/login")
-    public String loginn(){
-        return "login";
-    }
-
     @RequestMapping(value = "/student")
     public String toStudent(ModelMap modelMap, HttpServletRequest request){
         HttpSession seesion=request.getSession();

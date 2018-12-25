@@ -62,7 +62,7 @@ document.getElementById("logout").onclick = function(){
         success: function(result){
             if (result.code=="success"){
                 alert("注销成功！")
-                window.location.href = "./login.jsp"
+                window.location.href="/"
             }else {
                 alert("注销失败！");
             }
