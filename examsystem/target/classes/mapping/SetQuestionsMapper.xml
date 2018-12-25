@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.db.dao.SetQuestionsMapper" >
+  <resultMap id="BaseResultMap" type="com.db.model.SetQuestionsKey" >
+    <id column="paper_id" property="paperId" jdbcType="INTEGER" />
+    <id column="question_id" property="questionId" jdbcType="INTEGER" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="com.db.model.SetQuestionsKey" >
+    delete from set_questions
+    where paper_id = #{paperId,jdbcType=INTEGER}
+      and question_id = #{questionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.db.model.SetQuestionsKey" >
+    insert into set_questions (paper_id, question_id)
+    values (#{paperId,jdbcType=INTEGER}, #{questionId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.db.model.SetQuestionsKey" >
+    insert into set_questions
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="paperId != null" >
+        paper_id,
+      </if>
+      <if test="questionId != null" >
+        question_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="paperId != null" >
+        #{paperId,jdbcType=INTEGER},
+      </if>
+      <if test="questionId != null" >
+        #{questionId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

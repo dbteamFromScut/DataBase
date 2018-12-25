@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.db.dao.DeansMapper" >
+  <resultMap id="BaseResultMap" type="com.db.model.Deans" >
+    <id column="dean_id" property="deanId" jdbcType="VARCHAR" />
+    <result column="dean_name" property="deanName" jdbcType="VARCHAR" />
+    <result column="dean_password" property="deanPassword" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="institute" property="institute" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="birthdate" property="birthdate" jdbcType="DATE" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="e_mail" property="eMail" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    dean_id, dean_name, dean_password, sex, institute, address, birthdate, phone, e_mail
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from deans
+    where dean_id = #{deanId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from deans
+    where dean_id = #{deanId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.db.model.Deans" >
+    insert into deans (dean_id, dean_name, dean_password, 
+      sex, institute, address, 
+      birthdate, phone, e_mail
+      )
+    values (#{deanId,jdbcType=VARCHAR}, #{deanName,jdbcType=VARCHAR}, #{deanPassword,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{institute,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{birthdate,jdbcType=DATE}, #{phone,jdbcType=VARCHAR}, #{eMail,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.db.model.Deans" >
+    insert into deans
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="deanId != null" >
+        dean_id,
+      </if>
+      <if test="deanName != null" >
+        dean_name,
+      </if>
+      <if test="deanPassword != null" >
+        dean_password,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="institute != null" >
+        institute,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="birthdate != null" >
+        birthdate,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="eMail != null" >
+        e_mail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="deanId != null" >
+        #{deanId,jdbcType=VARCHAR},
+      </if>
+      <if test="deanName != null" >
+        #{deanName,jdbcType=VARCHAR},
+      </if>
+      <if test="deanPassword != null" >
+        #{deanPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="institute != null" >
+        #{institute,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdate != null" >
+        #{birthdate,jdbcType=DATE},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="eMail != null" >
+        #{eMail,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.db.model.Deans" >
+    update deans
+    <set >
+      <if test="deanName != null" >
+        dean_name = #{deanName,jdbcType=VARCHAR},
+      </if>
+      <if test="deanPassword != null" >
+        dean_password = #{deanPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="institute != null" >
+        institute = #{institute,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdate != null" >
+        birthdate = #{birthdate,jdbcType=DATE},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="eMail != null" >
+        e_mail = #{eMail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where dean_id = #{deanId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.db.model.Deans" >
+    update deans
+    set dean_name = #{deanName,jdbcType=VARCHAR},
+      dean_password = #{deanPassword,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      institute = #{institute,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      birthdate = #{birthdate,jdbcType=DATE},
+      phone = #{phone,jdbcType=VARCHAR},
+      e_mail = #{eMail,jdbcType=VARCHAR}
+    where dean_id = #{deanId,jdbcType=VARCHAR}
+  </update>
+</mapper>

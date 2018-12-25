@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.db.dao.StudentTeacherMapper" >
+  <resultMap id="BaseResultMap" type="com.db.model.StudentTeacher" >
+    <id column="teacher_id" property="teacherId" jdbcType="VARCHAR" />
+    <result column="class_name" property="className" jdbcType="VARCHAR" />
+    <result column="class_grade" property="classGrade" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    teacher_id, class_name, class_grade
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from st
+    where teacher_id = #{teacherId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from st
+    where teacher_id = #{teacherId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.db.model.StudentTeacher" >
+    insert into st (teacher_id, class_name, class_grade
+      )
+    values (#{teacherId,jdbcType=VARCHAR}, #{className,jdbcType=VARCHAR}, #{classGrade,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.db.model.StudentTeacher" >
+    insert into st
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="teacherId != null" >
+        teacher_id,
+      </if>
+      <if test="className != null" >
+        class_name,
+      </if>
+      <if test="classGrade != null" >
+        class_grade,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="teacherId != null" >
+        #{teacherId,jdbcType=VARCHAR},
+      </if>
+      <if test="className != null" >
+        #{className,jdbcType=VARCHAR},
+      </if>
+      <if test="classGrade != null" >
+        #{classGrade,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.db.model.StudentTeacher" >
+    update st
+    <set >
+      <if test="className != null" >
+        class_name = #{className,jdbcType=VARCHAR},
+      </if>
+      <if test="classGrade != null" >
+        class_grade = #{classGrade,jdbcType=CHAR},
+      </if>
+    </set>
+    where teacher_id = #{teacherId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.db.model.StudentTeacher" >
+    update st
+    set class_name = #{className,jdbcType=VARCHAR},
+      class_grade = #{classGrade,jdbcType=CHAR}
+    where teacher_id = #{teacherId,jdbcType=VARCHAR}
+  </update>
+</mapper>

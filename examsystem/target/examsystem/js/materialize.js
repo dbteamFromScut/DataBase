@@ -2057,11 +2057,11 @@ $(document).ready(function(){
         container.appendChild(newToast);
     }
 
-    newToast.style.top = '35px';
+    newToast.style.top = '700px';
     newToast.style.opacity = 0;
 
     // Animate toast in
-    Vel(newToast, { "top" : "0px", opacity: 1 }, {duration: 300,
+    Vel(newToast, { "top" : "700px",opacity: 1 }, {duration: 300,
       easing: 'easeOutCubic',
       queue: false});
 

@@ -7,21 +7,23 @@
 	<link rel="stylesheet" href="../css/materialize.min.css">
 	<link rel="stylesheet" href="../css/icomoon.css">
 	<link rel="stylesheet" href="../css/teacher.css">
+	<script src="../js/teacher.js"></script>
 </head>
-<body>
+<body onload="getInfo()">
 	<!-- 导航栏 -->
 	<nav>
     	<div class="nav-wrapper">
     		<a href="#" class="brand-logo">Logo</a>
     			<ul class="right">
-    				<li><button id="menu" data-activates="slide-out" class="button-collapse waves-effect"><i class="icon-menu"></i></button></li>
+    				<li><button class="button-collapse waves-effect tooltipped" data-position="right" data-delay="50" data-tooltip="菜单"  data-activates="slide-out" id="menu"><i class="icon-menu"></i></button></li>
     				<li><a class="waves-effect" href="#">姓名</a></li>
     				<li><a class="waves-effect" href="#">教师</a></li>
     				<li><a class="waves-effect" href="#modal1">注销</a></li>
+    				<li><a class="waves-effect tooltipped" data-position="left" data-delay="50" data-tooltip="修改密码" id="change"><i class="icon-key"></i></a></li>
     			</ul>
     	</div>
   	</nav>
-
+  	<!-- 注销确认 -->
   	<div id="modal1" class="modal l6">
     	<div class="modal-content">
       		<h6>你确定退出当前账号吗？</h6>
@@ -35,6 +37,42 @@
   	<div id="cover">
   		<h1>Welcome</h1>
   	</div>
+
+  	<!-- 修改密码 -->
+    <div class="container" id="changePassword">
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s6 push-s3">
+                        <i class="icon-user prefix"></i>
+                        <input id="oldpassword" type="password" class="validate">
+                        <label for="oldpassword">原密码</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6 push-s3">
+                        <i class="icon-key prefix"></i>
+                        <input id="newpassword" type="password" class="validate"  >
+                        <label for="newpassword">新密码</label>
+                    </div>
+                </div>
+
+                 <div class="row">
+                    <div class="input-field col s6 push-s3">
+                        <i class="icon-key prefix"></i>
+                        <input id="newpassword2" type="password" class="validate"  >
+                        <label for="newpassword2">确认新密码</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- <div></div> -->
+                    <a href="#" class="col btn push-s3 s2" id="yes">确定</a>
+                    <a href="#" class="col btn s2 push-s4" id="cancel">取消</a>
+                </div>
+            </form>
+        </div>
+    </div>
 
   	<!-- 侧边导航栏-->
 	<ul id="slide-out" class="side-nav">
@@ -56,7 +94,7 @@
    		<li><a id="slide2" class="waves-effect" href="#!"><i class="icon-alarm"></i>创建/发布考试</a></li>
    		<li><a id="slide3" class="waves-effect" href="#!"><i class="icon-history"></i>已发布的考试</a></li>
    		<li><a id="slide4" class="waves-effect" href="#!"><i class="icon-plus"></i>添加题目</a></li>
-   		<li><a id="slide5" class="waves-effect" href="#!"><i class="icon-address-book"></i>查看本班</a></li>
+   		<li><a id="slide5" class="waves-effect" href="#!"><i class="icon-address-book"></i>查看学生信息</a></li>
   	</ul>
 
 
@@ -70,7 +108,7 @@
     		  	<div class="row">
     		    	<div class="input-field col s3">
     		    		<i class="icon-price-tag prefix"></i>
-    		      		<input id="name" type="text" class="validate" value="教师姓名">
+    		      		<input disabled id="name" type="text" class="validate" value="教师姓名">
     		      		<label for="name">姓名</label>
     		    	</div>
     		    	<div class="input-field col s3">
@@ -80,7 +118,7 @@
     		    	</div>
     		    	<div class="input-field col s2">
     		    		<i class="prefix icon-man-woman"></i>
-    		    	  	<input id="sex" type="text" class="validate" value="女">
+    		    	  	<input disabled id="sex" type="text" class="validate" value="女">
     		    	  	<label for="sex">性别</label>
     		    	</div>
     		  	</div>
@@ -99,28 +137,36 @@
     		  	<div class="row">
     		    	<div class="input-field col s5">
     		    		<i class="prefix icon-home3"></i>
-    		    	  	<input id="address" type="text" class="validate" value="华南理工大学大学城校区C12-300">
+    		    	  	<input disabled id="address" type="text" class="validate" value="华南理工大学大学城校区C12-300">
     		    	  	<label for="address">住址</label>
     		    	</div>
     		  	</div>
     		  	<div class="row">
     		  		<div class="input-field col s5">
     		  			<i class="prefix icon-phone"></i>
-    		    	  	<input id="phone" type="email" class="validate" value="13500055522">
+    		    	  	<input disabled id="phone" type="email" class="validate" value="13500055522">
     		    	  	<label for="phone">电话号码</label>
     		    	</div>
     		    	<div class="input-field col s5">
     		    		<i class="prefix icon-envelop"></i>
-    		    	  	<input id="email" type="email" class="validate" value="1111111@qq.com">
+    		    	  	<input disabled id="email" type="email" class="validate" value="1111111@qq.com">
     		    	  	<label for="email">邮箱</label>
     		    	</div>
     		  	</div>
-    		  	
+    		  	<div class="row">
+                    <div class="input-field col s4 offset-s5">
+                        <a href="#" class="btn" id="changeInfo">修改信息</a>
+                    </div>
+                    <div class="input-field col s8 offset-s3">
+                        <a href="#" class="btn" id="confirmChange">确定</a>
+                        <a href="#" class="btn" id="cancelChange">取消</a>
+                    </div>
+                </div>
     		</form>
   		</div>
   	</div>
 
-  	<!-- 考试相关 -->
+  	<!-- 创建/发布考试 -->
   	<div class="container" id="oout2">
 		<div class="row">
 			<h4><i class="icon-files-empty"></i> 已创建的考试</h4>
@@ -129,90 +175,69 @@
         	<div class="col s12 m6 l4 hoverable">
         	  	<div class="card">
         	    	<div class="card-content white-text amber darken-4">
-        	      		<span class="card-title">考试标题</span>
-        	      		<p>考试时间：</p>
+        	      		<span class="card-title" name="examName">考试标题</span>
+        	      		<p>开始时间：</p><p name="startTime">2018-09-01 22:08</p>
+                    <p>结束时间：</p><p name="endTime">2018-09-01 22:08</p>
         	    	</div>
         	   		<div class="card-action blue-grey darken-1">
-        	   		  	<a href="#">发布考试</a>
-        	   		  	<a href="#">移除考试</a>
+        	   		  	<a href="#" name="post_exam">发布考试</a>
+        	   		  	<a href="#" name="delete_exam">移除考试</a>
         	   		</div>
         		</div>
         	</div>
 
 
         	<div class="col s12 m6 l4 hoverable">
-        	  	<div class="card">
-        	    	<div class="card-content white-text  amber darken-4">
-        	      		<span class="card-title">考试标题</span>
-        	      		<p>考试时间：</p>
-        	    	</div>
-        	   		<div class="card-action blue-grey darken-1">
-        	   		  	<a href="#">发布考试</a>
-        	   		  	<a href="#">移除考试</a>
-        	   		</div>
-        		</div>
-        	</div>
+              <div class="card">
+                <div class="card-content white-text amber darken-4">
+                    <span class="card-title" name="examName">考试标题</span>
+                    <p>开始时间：</p><p name="startTime">2018-09-01 22:08</p>
+                    <p>结束时间：</p><p name="endTime">2018-09-01 22:08</p>
+                </div>
+                <div class="card-action blue-grey darken-1">
+                    <a href="#" name="post_exam">发布考试</a>
+                    <a href="#" name="delete_exam">移除考试</a>
+                </div>
+            </div>
+          </div>
 
-
-        	<div class="col s12 m6 l4 hoverable">
-        	  	<div class="card">
-        	    	<div class="card-content white-text amber darken-4">
-        	      		<span class="card-title">考试标题</span>
-        	      		<p>考试时间：</p>
-        	    	</div>
-        	   		<div class="card-action blue-grey darken-1">
-        	   		  	<a href="#">发布考试</a>
-        	   		  	<a href="#">移除考试</a>
-        	   		</div>
-        		</div>
-        	</div>
       	</div>
-      	<a class="waves-effect waves-light btn"><i class="icon-plus left"></i>创建新的考试</a>
+      	<a class="waves-effect waves-light btn"  id="CreateExam"><i class="icon-plus left"></i>创建新的考试</a>
 	</div>
 
-	<!-- 考试相关 -->
+	<!-- 已发布的考试 -->
   	<div class="container" id="oout3">
 		<div class="row">
 			<h4><i class="icon-files-empty"></i> 已发布的考试</h4>
 
 
         	<div class="col s12 m6 l4 hoverable">
-        	  	<div class="card">
-        	    	<div class="card-content white-text amber darken-4">
-        	      		<span class="card-title">考试标题</span>
-        	      		<p>考试时间：</p>
-        	    	</div>
-        	   		<div class="card-action blue-grey darken-1">
-        	   		  	<a href="#">查看考试</a>
-        	   		</div>
-        		</div>
-        	</div>
+              <div class="card">
+                <div class="card-content white-text amber darken-4">
+                    <span class="card-title" name="examName_">考试标题</span>
+                    <p>开始时间：</p><p name="startTime_">2018-09-01 22:08</p>
+                    <p>结束时间：</p><p name="endTime_">2018-09-01 22:08</p>
+                </div>
+                <div class="card-action blue-grey darken-1">
+                    <a href="#" name="view_exam">查看考试</a>
+                </div>
+            </div>
+          </div>
 
 
         	<div class="col s12 m6 l4 hoverable">
-        	  	<div class="card">
-        	    	<div class="card-content white-text  amber darken-4">
-        	      		<span class="card-title">考试标题</span>
-        	      		<p>考试时间：</p>
-        	    	</div>
-        	   		<div class="card-action blue-grey darken-1">
-        	   		  	<a href="#">查看考试</a>
-        	   		</div>
-        		</div>
-        	</div>
-
-
-        	<div class="col s12 m6 l4 hoverable">
-        	  	<div class="card">
-        	    	<div class="card-content white-text amber darken-4">
-        	      		<span class="card-title">考试标题</span>
-        	      		<p>考试时间：</p>
-        	    	</div>
-        	   		<div class="card-action blue-grey darken-1">
-        	   		  	<a href="#">查看考试</a>
-        	   		</div>
-        		</div>
-        	</div>
+              <div class="card">
+                <div class="card-content white-text amber darken-4">
+                    <span class="card-title" name="examName_">考试标题</span>
+                    <p>开始时间：</p><p name="startTime_">2018-09-01 22:08</p>
+                    <p>结束时间：</p><p name="endTime_">2018-09-01 22:08</p>
+                </div>
+                <div class="card-action blue-grey darken-1">
+                    <a href="#" name="view_exam">查看考试</a>
+                </div>
+            </div>
+          </div>
+          
       	</div>
 	</div>
 
@@ -235,13 +260,13 @@
         			</div>
         			<div>
         				<h4>正确答案：</h4>
-        				<input name="group1" type="radio" id="_A"/>
+        				<input name="group1" type="radio" id="_A" value="A"/>
         				<label for="_A" id="l_A">A</label>
-        				<input name="group1" type="radio" id="_B"/>
+        				<input name="group1" type="radio" id="_B" value="B"/>
         				<label for="_B" id="l_B">B</label>
-        				<input name="group1" type="radio" id="_C"/>
+        				<input name="group1" type="radio" id="_C" value="C"/>
         				<label for="_C" id="l_C">C</label>
-        				<input name="group1" type="radio" id="_D"/>
+        				<input name="group1" type="radio" id="_D" value="D"/>
         				<label for="_D" id="l_D">D</label>
         			</div>
         			<a class="waves-effect waves-light btn" href="#import_choose"><i class="icon-quill"></i>提交选择题</a>
@@ -264,9 +289,9 @@
         			</div>
         			<div>
         				<h4>正确答案：</h4>
-        				<input name="group2" type="radio" id="_T"/>
+        				<input name="group2" type="radio" id="_T" value="T" />
         				<label for="_T" id="l_T">True</label>
-        				<input name="group2" type="radio" id="_F"/>
+        				<input name="group2" type="radio" id="_F" value="F" />
         				<label for="_F" id="l_F">False</label>
         			</div>
         			<a class="waves-effect waves-light btn" href="#import_tf"><i class="icon-quill"></i>提交判断题</a>
@@ -308,70 +333,218 @@
 	<!-- 本班学生信息 -->
 	<div class="container" id="oout5">
 		<div class="row">
-			<h4><i class="icon-users"> 网络工程班</i></h4>
+			<h4><i class="icon-users"> 学生信息</i></h4>
+			<form class="s12">
+    		    <div class="col s4"></div>
+    		    <select class="browser-default col s3" id="grade">
+    		      <option disabled selected>年级</option>
+    		      
+    		    </select>
+    		    <div class="col s0.5"></div>
+    		    <select class="browser-default col s3" id="class">
+    		      <option disabled selected>班级</option>
+    		      
+    		    </select>
+    		    <div class="col s0.5"></div>
+    		    <button class="btn waves-effect waves-light col s1" type="submit" id="search_student">查询</button>
+    		</form>
+    		<br><br>
 			<div class="s12">
-			<ul class="collection">
+			<ul class="collection" id="student_list">
       				<p class="col s2">姓名</p>
-      				<p class="col s3">学号</p>
-      				<p class="col s2">性别</p>
+      				<p class="col s2">学号</p>
+      				<p class="col s1">性别</p>
       				<p class="col s3">学院</p>
       				<p class="col s2">年级</p>
+      				<p class="col s2">班级</p>
       			<li>
       				<p class="col s2">大哥哥</p>
-      				<p class="col s3">201630600000</p>
-      				<p class="col s2">男</p>
+      				<p class="col s2">201630600000</p>
+      				<p class="col s1">男</p>
       				<p class="col s3">计算机科学与工程学院</p>
       				<p class="col s2">2016</p>
+      				<p class="col s2">网络工程班</p>
       			</li>
       			<li>
       				<p class="col s2">大哥哥</p>
-      				<p class="col s3">201630600000</p>
-      				<p class="col s2">男</p>
+      				<p class="col s2">201630600000</p>
+      				<p class="col s1">男</p>
       				<p class="col s3">计算机科学与工程学院</p>
       				<p class="col s2">2016</p>
+      				<p class="col s2">网络工程班</p>
       			</li>
       			<li>
-      				<p class="col s2">大姐姐</p>
-      				<p class="col s3">201630600000</p>
-      				<p class="col s2">女</p>
+      				<p class="col s2">大哥哥</p>
+      				<p class="col s2">201630600000</p>
+      				<p class="col s1">男</p>
       				<p class="col s3">计算机科学与工程学院</p>
       				<p class="col s2">2016</p>
-      			</li>
-      			<li>
-      				<p class="col s2">大姐姐</p>
-      				<p class="col s3">201630600000</p>
-      				<p class="col s2">女</p>
-      				<p class="col s3">计算机科学与工程学院</p>
-      				<p class="col s2">2016</p>
-      			</li>
-      			<li>
-      				<p class="col s2">大姐姐</p>
-      				<p class="col s3">201630600000</p>
-      				<p class="col s2">女</p>
-      				<p class="col s3">计算机科学与工程学院</p>
-      				<p class="col s2">2016</p>
-      			</li>
-      			<li>
-      				<p class="col s2">大姐姐</p>
-      				<p class="col s3">201630600000</p>
-      				<p class="col s2">女</p>
-      				<p class="col s3">计算机科学与工程学院</p>
-      				<p class="col s2">2016</p>
-      			</li>
-      			<li>
-      				<p class="col s2">大姐姐</p>
-      				<p class="col s3">201630600000</p>
-      				<p class="col s2">女</p>
-      				<p class="col s3">计算机科学与工程学院</p>
-      				<p class="col s2">2016</p>
-      			</li>
-      			
+      				<p class="col s2">网络工程班</p>
+      			</li>      			
     		</ul>
     		</div>
 
       	</div>
 	</div>
 
+
+  <!-- 创建考试 -->
+  <div class="container" id="AddExam">
+    <div class="row">
+      <h4><i class="icon-pencil"> 创建考试</i></h4>
+      <form class="s12 form1">
+        <div class="col s12">
+          <div class="col s1"></div>
+          <div class="input-field inline col s3">
+            <input id="exam_name" type="email" class="validate">
+            <label for="exam_name">请输入考试标题</label>
+          </div>
+          <div class="col s2.5">
+              设置考试日期：
+              <div class="input-field inline"><input id="exam_date" type="date" min="2018-12-10 "></div>
+          </div>
+          <div class="col s5.5">
+              设置考试时间：
+              <div class="input-field inline"><input type="time" id="start_time"></div>
+              至
+              <div class="input-field inline"><input type="time" id="end_time"></div>
+          </div>
+        </div>
+
+          <h4 style="text-align: center;">选择题</h4>
+        <div class="col s12">
+          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div> 
+          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
+          <br/><br/><br/><br/>
+        </div>        
+        <h4 style="text-align: center;">判断题</h4>
+        <div class="col s12">
+          
+          <div class="white-text col s2 stone stone1" name="tf_selected" style="margin: 10px 15px;">未选</div> 
+          <div class="white-text col s2 stone stone1" name="tf_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone stone1" name="tf_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone stone1" name="tf_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone stone1" name="tf_selected" style="margin: 10px 15px;">未选</div>
+        </div>
+
+        <div class="aa col s12">
+          <div class="col s1"></div>
+          <button class="btn cyan darken-2 col s2 push-s2" type="submit" id="empty_selected">清空</button>
+          <div class="col s1"></div>
+          <button class="btn cyan darken-2 col s2 push-s2" type="submit" id="save_paper">保存试卷</button>
+          <br><br>
+        </div>
+      </form>
+      
+      <div class="divider"></div>
+      <div class="divider"></div>
+
+      <form class="s12">
+        <div class="col s4"></div>
+        <select class="browser-default col s3" id="section">
+          <option value="" disabled selected>章节</option>
+          <option value="1">第一章</option>
+          <option value="2">第二章</option>
+          <option value="3">第三章</option>
+          <option value="4">第四章</option>
+          <option value="5">第五章</option>
+          <option value="6">第六章</option>
+          <option value="7">第七章</option>
+          <option value="8">第八章</option>
+          <option value="9">第九章</option>
+          <option value="10">第十章</option>
+          <option value="11">第十一章</option>
+        </select>
+        <div class="col s0.5"></div>
+        <select class="browser-default col s3" id="question_type">
+          <option value="" disabled selected>题型</option>
+          <option value="选择">选择</option>
+          <option value="判断">判断</option>
+        </select>
+        <div class="col s0.5"></div>
+        <button class="btn waves-effect waves-light col s1" type="submit" id="search_question">查询</button>
+      </form>
+      <div class=""></div>
+      <div class=" col s12">
+        <ul class="collection" id="question_list">
+          <p class="col s2">试题id</p>
+          <p class="col s5">题目</p>
+          <p class="col s1">章节</p>
+          <p class="col s2">题型</p>
+          <p class="col s2">操作</p>
+          <li>
+            <p class="col s2" name="question_id">343</p>
+            <p class="col s5">关于数据库，以下说法正确的是哪一个A.数据库...</p>
+            <p class="col s1">第一章</p>
+            <p class="col s2" name="type">判断</p>
+            <p class="col s1"><a href="#!" name="detail">详情</a></p>
+            <p class="col s1"><a href="#!" name="addtolist">添加</a></p>
+          </li>
+          <li>
+            <p class="col s2" name="question_id">34233</p>
+            <p class="col s5">关于数据库，以下说法正确的是哪一个A.数据库...</p>
+            <p class="col s1">第一章</p>
+            <p class="col s2" name="type">判断</p>
+            <p class="col s1"><a href="#!" name="detail">详情</a></p>
+            <p class="col s1"><a href="#!" name="addtolist">添加</a></p>
+          </li>
+          <li>
+            <p class="col s2" name="question_id">423</p>
+            <p class="col s5">关于数据库，以下说法正确的是哪一个A.数据库...</p>
+            <p class="col s1">第一章</p>
+            <p class="col s2" name="type">选择</p>
+            <p class="col s1"><a href="#!" name="detail">详情</a></p>
+            <p class="col s1"><a href="#!" name="addtolist">添加</a></p>
+          </li> 
+        </ul>
+      </div>
+    </div>
+    <!-- 修改选择题 -->
+    <div id="choose_detail" class="modal bottom-sheet">
+      <div class="modal-content col s12">
+        <div class="row" id="choose">
+          <h5 class="col s12 m2">题目ID：<h5 class="col s12 m10" id="choose_id">题目id</h5>
+          <div class="input-field col s8">
+              <textarea disabled id="choose_q" class="materialize-textarea"></textarea> 
+          </div>
+          <div class="input-field col s12">
+            <p id="right_choose">选项一</p>
+            <p id="B">选项二</p>
+            <p id="C">选项三</p>
+            <p id="D">选项四</p>
+          </div>
+        </div>
+      </div>      
+    </div>
+    <!-- 修改判断题 -->
+    <div id="tf_detail" class="modal bottom-sheet">
+      <div class="modal-content col s12">
+        <div class="row" id="TF">
+          <h5 class="col s12 m2">题目ID：<h5 class="col s12 m10" id="tf_id">1111</h5></h5>
+          <div class="input-field col s12">
+              <textarea disabled id="TorF" class="materialize-textarea"></textarea> 
+          </div>
+          <div>
+            <h4>答案：</h4>
+            <p id="tf_answer"></p>
+          </div>
+        </div>
+      </div>      
+    </div>
+  </div>
 
 
 

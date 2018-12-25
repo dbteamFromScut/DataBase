@@ -17,6 +17,7 @@ import java.text.SimpleDateFormat;
 
 
 @Controller
+@RequestMapping("/student")
 public class StudentController {
 
     @Autowired
