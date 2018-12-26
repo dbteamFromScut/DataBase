@@ -28,6 +28,17 @@ public class JumpController {
 
     }
 
+    @RequestMapping(value = "/exam-detail")
+    public String toexam_detail(ModelMap modelMap, HttpServletRequest request){
+        HttpSession seesion=request.getSession();
+        if (seesion.getAttribute("username")!=null){
+            return "exam-detail";
+        }else {
+            return "login";
+        }
+
+    }
+
     @RequestMapping(value = "/teacher")
     public String toTeacher(HttpServletRequest request){
         HttpSession seesion=request.getSession();
@@ -43,7 +54,7 @@ public class JumpController {
     public String toAdmin(HttpServletRequest request){
         HttpSession seesion=request.getSession();
         if (seesion.getAttribute("username")!=null){
-            return "admin";
+            return "acdemic";
         }else {
             return "login";
         }

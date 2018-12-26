@@ -7,31 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4c73bcf-5635-4767-ba7a-61f8ce97c76d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/controller/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/controller/StudentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/controller/TeacherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/controller/TeacherController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/dao/PapersMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/dao/PapersMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/dao/StudentPapersMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/dao/StudentPapersMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/model/Papers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/model/Papers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/model/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/model/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapping/PapersMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapping/PapersMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapping/StudentPapersMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapping/StudentPapersMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/controller/JumpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/controller/JumpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/controller/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/js/student.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/student.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/student.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/student.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/db/controller/StudentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/db/controller/StudentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/db/controller/TeacherController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/db/controller/TeacherController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/db/model/Student.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/db/model/Student.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/generatorConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapping/PapersMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapping/PapersMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapping/StudentPapersMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapping/StudentPapersMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/examsystem/WEB-INF/classes/com/db/controller/StudentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/examsystem/WEB-INF/classes/com/db/controller/StudentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/examsystem/WEB-INF/classes/com/db/controller/TeacherController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/examsystem/WEB-INF/classes/com/db/controller/TeacherController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/examsystem/WEB-INF/classes/com/db/model/Student.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/examsystem/WEB-INF/classes/com/db/model/Student.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/examsystem/WEB-INF/classes/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/examsystem/WEB-INF/classes/generatorConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/examsystem/WEB-INF/classes/mapping/PapersMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/examsystem/WEB-INF/classes/mapping/PapersMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/examsystem/WEB-INF/classes/mapping/StudentPapersMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/examsystem/WEB-INF/classes/mapping/StudentPapersMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/examsystem/js/student.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/examsystem/js/student.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -66,9 +44,9 @@
           <entry key="class" value="12" />
           <entry key="css" value="7" />
           <entry key="html" value="1" />
-          <entry key="java" value="55" />
-          <entry key="js" value="32" />
-          <entry key="jsp" value="25" />
+          <entry key="java" value="57" />
+          <entry key="js" value="34" />
+          <entry key="jsp" value="28" />
           <entry key="properties" value="4" />
           <entry key="xml" value="37" />
         </counts>
@@ -78,9 +56,9 @@
           <entry key="CLASS" value="12" />
           <entry key="CSS" value="7" />
           <entry key="HTML" value="1" />
-          <entry key="JAVA" value="55" />
-          <entry key="JSP" value="25" />
-          <entry key="JavaScript" value="32" />
+          <entry key="JAVA" value="57" />
+          <entry key="JSP" value="28" />
+          <entry key="JavaScript" value="34" />
           <entry key="Properties" value="4" />
           <entry key="XML" value="37" />
         </counts>
@@ -88,7 +66,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="8" />
-          <entry key="java" value="3645" />
+          <entry key="java" value="3734" />
           <entry key="js" value="555" />
           <entry key="jsp" value="142" />
           <entry key="properties" value="11" />
@@ -99,7 +77,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="8" />
-          <entry key="JAVA" value="3645" />
+          <entry key="JAVA" value="3734" />
           <entry key="JSP" value="142" />
           <entry key="JavaScript" value="555" />
           <entry key="PLAIN_TEXT" value="7" />
@@ -123,22 +101,73 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/js/student.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="308" column="31" lean-forward="true" selection-start-line="308" selection-start-column="31" selection-end-line="308" selection-end-column="31" />
+            <state relative-caret-position="223">
+              <caret line="258" column="38" lean-forward="true" selection-start-line="258" selection-start-column="38" selection-end-line="258" selection-end-column="38" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/teacher.jsp">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/exam-detail.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="160" column="62" lean-forward="true" selection-start-line="160" selection-start-column="62" selection-end-line="160" selection-end-column="62" />
+            <state relative-caret-position="3174">
+              <caret line="138" column="31" lean-forward="true" selection-start-line="138" selection-start-column="31" selection-end-line="138" selection-end-column="31" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/db/controller/LoginController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="291">
+              <caret line="86" column="38" lean-forward="true" selection-start-line="86" selection-start-column="38" selection-end-line="86" selection-end-column="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/login.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="34" column="42" lean-forward="true" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/exam-detail.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-69" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/db/controller/JumpController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="222">
+              <caret line="56" column="24" selection-start-line="56" selection-start-column="24" selection-end-line="56" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/admin.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="299">
+              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/acdemic.jsp">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -200,8 +229,6 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/css/student.css" />
         <option value="$PROJECT_DIR$/src/main/resources/db.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/db/controller/JumpController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/db/controller/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/db/dao/SetQuestionsMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/db/dao/OperationLogMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/db/dao/DeansMapper.java" />
@@ -225,6 +252,8 @@
         <option value="$PROJECT_DIR$/src/main/webapp/jsp/student.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/db/controller/StudentController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/student.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/db/controller/LoginController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/db/controller/JumpController.java" />
       </list>
     </option>
   </component>
@@ -393,7 +422,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545849319735" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545850595891" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Facets" />
@@ -531,7 +560,7 @@
       <workItem from="1545662859935" duration="1825000" />
       <workItem from="1545666111377" duration="3740000" />
       <workItem from="1545745936249" duration="16207000" />
-      <workItem from="1545837667635" duration="10419000" />
+      <workItem from="1545837667635" duration="11681000" />
     </task>
     <task id="LOCAL-00001" summary="utf8">
       <created>1542189286080</created>
@@ -600,13 +629,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83369000" />
+    <option name="totallyTimeSpent" value="84631000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21998659" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21998659" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -616,7 +645,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32056737" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32056737" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.30921987" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -690,34 +719,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="1.0" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/mybatis/3.4.1/mybatis-3.4.1.jar!/org/apache/ibatis/session/defaults/DefaultSqlSessionFactory.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="62" selection-start-line="62" selection-end-line="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/mybatis/3.4.1/mybatis-3.4.1.jar!/org/apache/ibatis/binding/MapperMethod.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="32" column="11" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/mybatis-spring/1.3.0/mybatis-spring-1.3.0.jar!/org/mybatis/spring/SqlSessionTemplate.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="171" selection-start-line="171" selection-end-line="171" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/spring-web-4.3.18.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="113" column="21" selection-start-line="113" selection-start-column="21" selection-end-line="113" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/mybatis/3.4.1/mybatis-3.4.1.jar!/org/apache/ibatis/binding/MapperProxy.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -798,13 +799,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="31" column="51" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/css/teacher.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="464">
@@ -814,16 +808,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/css/login.css">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/db/controller/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="94" column="5" selection-start-line="94" selection-start-column="5" selection-end-line="94" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/css/student.css">
       <provider selected="true" editor-type-id="text-editor">
@@ -836,13 +820,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="212">
           <caret line="17" column="58" lean-forward="true" selection-start-line="17" selection-start-column="58" selection-end-line="17" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/db/controller/JumpController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
@@ -1049,10 +1026,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/exam-detail.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-69" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="34" column="42" lean-forward="true" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/exam-detail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3174">
+          <caret line="138" column="31" lean-forward="true" selection-start-line="138" selection-start-column="31" selection-end-line="138" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/js/student.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="308" column="31" lean-forward="true" selection-start-line="308" selection-start-column="31" selection-end-line="308" selection-end-column="31" />
+        <state relative-caret-position="223">
+          <caret line="258" column="38" lean-forward="true" selection-start-line="258" selection-start-column="38" selection-end-line="258" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/db/controller/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="86" column="38" lean-forward="true" selection-start-line="86" selection-start-column="38" selection-end-line="86" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/admin.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/acdemic.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/db/controller/JumpController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="56" column="24" selection-start-line="56" selection-start-column="24" selection-end-line="56" selection-end-column="24" />
         </state>
       </provider>
     </entry>

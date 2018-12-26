@@ -259,13 +259,13 @@ function initExamList(ExamList) {
                     dataType : "json",
                     success : function() {
                         //成功则在新页面加载试卷。需要根据试卷ID返回试卷信息给考试页面。
-                        window.open("./exam-detail.html");
+                        window.location.href="/exam-detail";
                     },
                     error : function() {
                         alert("进入失败，请重试");
                     }
                 });
-                window.open("./exam-detail.html");
+                // window.open("./exam-detail.html");
             }
             containerDone.appendChild(dv1);
         }else if(ExamList[i]["Type"] == "do"){

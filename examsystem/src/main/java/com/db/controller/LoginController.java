@@ -1,7 +1,9 @@
 package com.db.controller;
 
+import com.db.dao.DeansMapper;
 import com.db.dao.StudentMapper;
 import com.db.dao.TeacherMapper;
+import com.db.model.Deans;
 import com.db.model.Student;
 import com.db.model.Teacher;
 import net.sf.json.JSONObject;
@@ -20,9 +22,10 @@ public class LoginController {
 
     @Autowired
     private StudentMapper studentDao;
-
     @Autowired
     private TeacherMapper teacherDao;
+    @Autowired
+    private DeansMapper deansDao;
 
     @RequestMapping(value = "/login",method = {RequestMethod.POST,RequestMethod.GET})
     @ResponseBody
@@ -33,6 +36,7 @@ public class LoginController {
         JSONObject result=new JSONObject();
         Student student=null;
         Teacher teacher=null;
+        Deans deans=null;
         int bool=0;
         if (role.equals("student")){
             student=studentDao.selectByPrimaryKey(username);
@@ -59,11 +63,21 @@ public class LoginController {
                 return result;
             }
         }else if (role.equals("admin")){
-
+            deans=deansDao.selectByPrimaryKey(username);
+            if (deans==null){
+                result.put("code","fail");
+                result.put("msg","账号错误");
+                return result;
+            }
+            if (!deans.getDeanPassword().equals(password)){
+                result.put("code","fail");
+                result.put("msg","密码不正确");
+                return result;
+            }
         }
 
 
-        if (student!=null||teacher!=null){
+        if (student!=null||teacher!=null||deans!=null){
             HttpSession session=request.getSession();
             session.setAttribute("username",username);
             session.setAttribute("role",role);
