@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
@@ -129,9 +130,10 @@ public class TeacherController {
                                       @RequestParam("question_type") String question_type, HttpServletRequest request) {
         JSONArray result = new JSONArray();
         Questions questions=new Questions();
-        questions.setChapter(Integer.valueOf(section));
-        questions.setTestType(question_type);
+        System.out.println(section);
         if (!section.equals("")||!question_type.equals("")){
+            questions.setChapter(Integer.valueOf(section));
+            questions.setTestType(question_type);
             List<Questions> questionsList = questionsDao.selectByPrimaryKeyList(questions);
             for (Questions s : questionsList) {
                 JSONObject jsonObject = new JSONObject();
@@ -143,6 +145,37 @@ public class TeacherController {
             }
         }
         return result;
+    }
+
+    @RequestMapping(value = "/changeInfo",method = {RequestMethod.GET,RequestMethod.POST})
+    @ResponseBody
+    public Object changeInfo(@RequestParam(value = "name",required = false) String name,
+                             @RequestParam(value = "id",required = false) String id,
+                             @RequestParam(value = "sex",required = false) String sex,
+                             @RequestParam(value = "college",required = false) String college,
+                             @RequestParam(value = "address",required = false) String address,
+                             @RequestParam(value = "birthday",required = false) String birthday,
+                             @RequestParam(value = "phone",required = false) String phone,
+                             @RequestParam(value = "email",required = false) String email,
+                             HttpServletRequest request) throws ParseException {
+        HttpSession session=request.getSession();
+        JSONObject result=new JSONObject();
+        if (id.equals(session.getAttribute("username").toString())){
+            Teacher teacher=teacherDao.selectByPrimaryKey(id);
+            teacher.setAddress(address);
+            teacher.setBirthdate(formatter.parse(birthday));
+            teacher.setSex(sex);
+            teacher.setInstitute(college);
+            teacher.setPhone(phone);
+            teacher.seteMail(email);
+            teacherDao.updateByPrimaryKeySelective(teacher);
+            result.put("code","success");
+            return result;
+        }else {
+            result.put("code","fail");
+            return result;
+        }
+
     }
 
 }

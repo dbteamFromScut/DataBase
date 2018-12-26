@@ -13,6 +13,10 @@ public class Papers {
 
     private Date stopTime;
 
+    private String classGrade;
+
+    private String className;
+
     public Integer getPaperId() {
         return paperId;
     }
@@ -51,5 +55,21 @@ public class Papers {
 
     public void setStopTime(Date stopTime) {
         this.stopTime = stopTime;
+    }
+
+    public String getClassGrade() {
+        return classGrade;
+    }
+
+    public void setClassGrade(String classGrade) {
+        this.classGrade = classGrade == null ? null : classGrade.trim();
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className == null ? null : className.trim();
     }
 }

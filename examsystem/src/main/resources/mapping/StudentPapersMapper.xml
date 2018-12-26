@@ -68,4 +68,10 @@
     where student_id = #{studentId,jdbcType=VARCHAR}
       and paper_id = #{paperId,jdbcType=INTEGER}
   </update>
+  <select id="selectByPrimaryKeyList" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List" />
+    from sp
+    where student_id=#{param1}
+  </select>
 </mapper>

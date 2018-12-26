@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="../css/icomoon.css">
 	<link rel="stylesheet" href="../css/student.css">
 </head>
-<body onload="getStudentInfo()">
+<body onload="getStudentInfo();getExamList()">
 
 	<!-- 导航栏 -->
     <div class="navbar-fixed">

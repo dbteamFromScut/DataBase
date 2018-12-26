@@ -1,7 +1,8 @@
 package com.db.controller;
 
-import com.db.dao.StudentMapper;
-import com.db.model.Student;
+import com.db.dao.*;
+import com.db.model.*;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 
 @Controller
@@ -22,9 +24,16 @@ public class StudentController {
 
     @Autowired
     private StudentMapper studentDao;
+    @Autowired
+    private TeacherMapper teacherDao;
+    @Autowired
+    private PapersMapper papersDao;
+    @Autowired
+    private StudentPapersMapper studentPapersDao;
 
 
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat formatter2 = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
 
 
@@ -100,6 +109,7 @@ public class StudentController {
             student.setSex(sex);
             student.setStudentName(first_name);
             studentDao.updateByPrimaryKey(student);
+
             result.put("code","success");
             return result;
         }else {
@@ -109,4 +119,63 @@ public class StudentController {
 
     }
 
+//    var ExamList = [
+//    {
+//        "Type" : "done",
+//            "title" : "数据库测试1",
+//            "start" : "2018-09-01 22:08",
+//            "end" : "2018-09-01 23:08",
+//            "id" : "123",
+//            "grade" : "85",
+//    },
+//{
+//    "Type" : "do",
+//        "title" : "数据库测试2",
+//        "start" : "2018-09-01 22:08",
+//        "end" : "2018-09-01 23:08",
+//        "id" : "456",
+//}];
+//{"Type":"do",
+//        "title":"第一章至第三章",
+//        "start":"2018-12-06 09:30",
+//        "end":"2018-12-06 10:00",
+//        "id":"1"}
+
+    @RequestMapping(value ="/getExamList",method = {RequestMethod.GET,RequestMethod.POST})
+    @ResponseBody
+    public Object getExamList(HttpServletRequest request){
+        HttpSession session=request.getSession();
+        String id=session.getAttribute("username").toString();
+        JSONArray result=new JSONArray();
+        Student student=studentDao.selectByPrimaryKey(id);
+        List<Papers> papersDoList=papersDao.selectByPrimaryKeyList(student.getClassName(),student.getClassGrade());
+
+        List<StudentPapers> papersDoneList=studentPapersDao.selectByPrimaryKeyList(id);
+
+        for (Papers p:papersDoList){
+            JSONObject jsonObject=new JSONObject();
+            jsonObject.put("Type","do");
+            jsonObject.put("title",p.getPaperName());
+            jsonObject.put("start",formatter2.format(p.getStartTime()));
+            jsonObject.put("end",formatter2.format(p.getStopTime()));
+            jsonObject.put("id",String.valueOf(p.getPaperId()));
+            result.add(jsonObject);
+        }
+        for (StudentPapers sp:papersDoneList){
+            JSONObject jsonObject=new JSONObject();
+            Papers papers=papersDao.selectByPrimaryKey(sp.getPaperId());
+            jsonObject.put("Type","done");
+            jsonObject.put("title",papers.getPaperName());
+            jsonObject.put("start",formatter2.format(papers.getStartTime()));
+            jsonObject.put("end",formatter2.format(papers.getStopTime()));
+            jsonObject.put("id",String.valueOf(papers.getPaperId()));
+            jsonObject.put("grade",String.valueOf(sp.getGrade()));
+            result.add(jsonObject);
+        }
+        System.out.println(result);
+        return result;
+
+
+
+    }
 }

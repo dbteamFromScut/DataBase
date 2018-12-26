@@ -112,4 +112,9 @@ public class Student {
     public void seteMail(String eMail) {
         this.eMail = eMail == null ? null : eMail.trim();
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

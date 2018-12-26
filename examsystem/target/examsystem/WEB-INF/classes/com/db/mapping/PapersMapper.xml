@@ -114,11 +114,4 @@
       class_name = #{className,jdbcType=VARCHAR}
     where paper_id = #{paperId,jdbcType=INTEGER}
   </update>
-
-  <select id="selectByPrimaryKeyList" resultMap="BaseResultMap" parameterType="java.lang.String">
-    select
-    <include refid="Base_Column_List" />
-    from papers
-    where class_name=#{param1} and class_grade=#{param2}
-  </select>
 </mapper>

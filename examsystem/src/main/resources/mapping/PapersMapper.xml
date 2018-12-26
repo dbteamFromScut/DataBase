@@ -7,9 +7,11 @@
     <result column="paper_name" property="paperName" jdbcType="VARCHAR" />
     <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
     <result column="stop_time" property="stopTime" jdbcType="TIMESTAMP" />
+    <result column="class_grade" property="classGrade" jdbcType="CHAR" />
+    <result column="class_name" property="className" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    paper_id, teacher_id, paper_name, start_time, stop_time
+    paper_id, teacher_id, paper_name, start_time, stop_time, class_grade, class_name
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -23,9 +25,11 @@
   </delete>
   <insert id="insert" parameterType="com.db.model.Papers" >
     insert into papers (paper_id, teacher_id, paper_name, 
-      start_time, stop_time)
+      start_time, stop_time, class_grade, 
+      class_name)
     values (#{paperId,jdbcType=INTEGER}, #{teacherId,jdbcType=VARCHAR}, #{paperName,jdbcType=VARCHAR}, 
-      #{startTime,jdbcType=TIMESTAMP}, #{stopTime,jdbcType=TIMESTAMP})
+      #{startTime,jdbcType=TIMESTAMP}, #{stopTime,jdbcType=TIMESTAMP}, #{classGrade,jdbcType=CHAR}, 
+      #{className,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.db.model.Papers" >
     insert into papers
@@ -45,6 +49,12 @@
       <if test="stopTime != null" >
         stop_time,
       </if>
+      <if test="classGrade != null" >
+        class_grade,
+      </if>
+      <if test="className != null" >
+        class_name,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="paperId != null" >
@@ -61,6 +71,12 @@
       </if>
       <if test="stopTime != null" >
         #{stopTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="classGrade != null" >
+        #{classGrade,jdbcType=CHAR},
+      </if>
+      <if test="className != null" >
+        #{className,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -79,6 +95,12 @@
       <if test="stopTime != null" >
         stop_time = #{stopTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="classGrade != null" >
+        class_grade = #{classGrade,jdbcType=CHAR},
+      </if>
+      <if test="className != null" >
+        class_name = #{className,jdbcType=VARCHAR},
+      </if>
     </set>
     where paper_id = #{paperId,jdbcType=INTEGER}
   </update>
@@ -87,7 +109,16 @@
     set teacher_id = #{teacherId,jdbcType=VARCHAR},
       paper_name = #{paperName,jdbcType=VARCHAR},
       start_time = #{startTime,jdbcType=TIMESTAMP},
-      stop_time = #{stopTime,jdbcType=TIMESTAMP}
+      stop_time = #{stopTime,jdbcType=TIMESTAMP},
+      class_grade = #{classGrade,jdbcType=CHAR},
+      class_name = #{className,jdbcType=VARCHAR}
     where paper_id = #{paperId,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByPrimaryKeyList" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List" />
+    from papers
+    where class_name=#{param1} and class_grade=#{param2}
+  </select>
 </mapper>

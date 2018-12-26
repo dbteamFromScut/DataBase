@@ -4,6 +4,8 @@ import com.db.model.StudentPapers;
 import com.db.model.StudentPapersKey;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service("studentPapersDao")
 public interface StudentPapersMapper {
     int deleteByPrimaryKey(StudentPapersKey key);
@@ -17,4 +19,7 @@ public interface StudentPapersMapper {
     int updateByPrimaryKeySelective(StudentPapers record);
 
     int updateByPrimaryKey(StudentPapers record);
+
+    List<StudentPapers> selectByPrimaryKeyList(String id);
+
 }

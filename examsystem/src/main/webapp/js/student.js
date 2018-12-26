@@ -151,15 +151,13 @@ function initInfo(json) {
     $("#birthday").val(json.birthday);
     $("#phoneNumbr").val(json.phoneNumbr);
     $("#email").val(json.email);
-
-    //菜单栏个人信息设置
-    $("#Smail").val(json.email);
-    $("#Sname").val(json.first_name);
-    $("#college2").val(json.college);
-    $("#class2").val(json.class);
-
+    // 菜单栏个人信息设置
+    $("#Semail").innerText=json.email;
+    $("#Sname").innerText=json.first_name;
+    $("#college2").innerText= json.college;
+    $("#class2").innerText= json.class;
     //导航栏加载名字
-    $("#Sname1").val(json.first_name);
+    $("#Sname1").innerText= json.first_name;
 }
 
 //获取学生信息,返回一个json格式的数据，里面的各项信息按顺序排列
@@ -185,29 +183,14 @@ function getStudentInfo() {
     });
 }
 
-var ExamList = [
-    {
-        "Type" : "done",
-        "title" : "数据库测试1",
-        "start" : "2018-09-01 22:08",
-        "end" : "2018-09-01 23:08",
-        "id" : "123",
-        "grade" : "85",
-},
-{
-        "Type" : "do",
-        "title" : "数据库测试2",
-        "start" : "2018-09-01 22:08",
-        "end" : "2018-09-01 23:08",
-        "id" : "456",
-}];
-
+var ExamList = [{"Type":"do","title":"第一章至第三章","start":"2018-12-06 09:30","end":"2018-12-06 10:00","id":"1"},{"Type":"do","title":"第四章至第六章","start":"2018-12-07 09:30","end":"2018-12-07 10:00","id":"2"},{"Type":"do","title":"第七章至第十一章","start":"2018-12-08 09:30","end":"2018-12-08 10:00","id":"3"},{"Type":"done","title":"第一章至第三章","start":"2018-12-06 09:30","end":"2018-12-06 10:00","id":"1","grade":"91"}];
 
 function initExamList(ExamList) {
     console.log(ExamList.length);
     console.log(typeof(ExamList));
     var containerDone = document.getElementById("oout3").children[0];
     var containerDo = document.getElementById("oout2").children[0];
+    console.log("length"+ExamList.length);
     for (var i = 0; i < ExamList.length; i++) {
 
         var dv1 = document.createElement("div");
@@ -312,7 +295,7 @@ function initExamList(ExamList) {
     }
 }
 
-initExamList(ExamList);//前端测试用，后台写完可以删除，包括上面的数据ExamList
+// initExamList(ExamList);//前端测试用，后台写完可以删除，包括上面的数据ExamList
 
 //获取试卷列表
 function getExamList(){
@@ -323,9 +306,7 @@ function getExamList(){
         contentType : false,
         dataType : "json",
         success : function(data){
-            if(data.code == "success"){
-                initExamList(data);
-            }
+            initExamList(data);
         }
     });
 }
