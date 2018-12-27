@@ -16,7 +16,7 @@
     		<a href="#" class="brand-logo">Logo</a>
     			<ul class="right">
     				<li><button class="button-collapse waves-effect tooltipped" data-position="right" data-delay="50" data-tooltip="菜单"  data-activates="slide-out" id="menu"><i class="icon-menu"></i></button></li>
-    				<li><a class="waves-effect" href="#">姓名</a></li>
+    				<li><a  class="waves-effect" href="#">姓名</a></li>
     				<li><a class="waves-effect" href="#">教务员</a></li>
     				<li><a class="waves-effect" href="#modal1">注销</a></li>
     			</ul>

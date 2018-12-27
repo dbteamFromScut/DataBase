@@ -13,10 +13,10 @@
 	<!-- 导航栏 -->
 	<nav>
     	<div class="nav-wrapper">
-    		<a href="#" class="brand-logo">Logo</a>
+    		<a href="/teacher" class="brand-logo">在线考试系统</a>
     			<ul class="right">
     				<li><button class="button-collapse waves-effect tooltipped" data-position="right" data-delay="50" data-tooltip="菜单"  data-activates="slide-out" id="menu"><i class="icon-menu"></i></button></li>
-    				<li><a class="waves-effect" href="#">姓名</a></li>
+    				<li><a id="Tname1" class="waves-effect" href="#">姓名</a></li>
     				<li><a class="waves-effect" href="#">教师</a></li>
     				<li><a class="waves-effect" href="#modal1">注销</a></li>
     				<li><a class="waves-effect tooltipped" data-position="left" data-delay="50" data-tooltip="修改密码" id="change"><i class="icon-key"></i></a></li>
@@ -82,12 +82,11 @@
         			<img src="../images/t6.jpg">
       			</div>
       			<img class="circle" src="../images/Teacher_female.png">
-      			<span class="white-text name">张三</span>
-      			<span class="white-text email">jdandturk@sina.com</span>
+      			<span id="Tname" class="white-text name">张三</span>
+      			<span id="Temail" class="white-text email">jdandturk@sina.com</span>
     		</div>
     	</li>
-    	<li><a href="#!"><i class="icon-newspaper"></i>学院</a></li>
-   		<li><a href="#!"><i class="icon-users"></i>班级</a></li>
+    	<li><a id="college2" href="#!"><i class="icon-newspaper"></i>学院</a></li>
    		<li><div class="divider"></div></li>
    		<li><a class="subheader">其他选项</a></li>
    		<li><a id="slide1" class="waves-effect" href="#!" data-activates="slide-out2"><i class="icon-user"></i>基本信息</a></li>

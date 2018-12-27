@@ -152,12 +152,16 @@ function initInfo(json) {
     $("#phoneNumbr").val(json.phoneNumbr);
     $("#email").val(json.email);
     // 菜单栏个人信息设置
-    $("#Semail").innerText=json.email;
-    $("#Sname").innerText=json.first_name;
-    $("#college2").innerText= json.college;
-    $("#class2").innerText= json.class;
+    // $("#Semail").innerText=json.email;
+    // $("#Sname").innerText=json.first_name;
+    // $("#college2").innerText= json.college;
+    // $("#class2").innerText= json.class;
+    document.getElementById("Semail").innerHTML = json.email;
+    document.getElementById("Sname").innerHTML = json.first_name;
+    document.getElementById("college2").innerHTML = json.college;
+    document.getElementById("class2").innerHTML = json.class;
     //导航栏加载名字
-    $("#Sname1").innerText= json.first_name;
+    document.getElementById("Sname1").innerHTML = json.first_name;
 }
 
 //获取学生信息,返回一个json格式的数据，里面的各项信息按顺序排列
@@ -359,7 +363,8 @@ document.getElementById("confirmChange").onclick = function() {
                     inputs[i].disabled = true;
                 }
                 alert("修改成功！");
-                this.style.display = "none";
+                console.log("aaa");
+                document.getElementById("confirmChange").style.display = "none";
                 document.getElementById('cancelChange').style.display = "none";
                 document.getElementById('changeInfo').parentNode.style.display = "inline-block";
             }else {

@@ -147,6 +147,17 @@ function init(json) {
     $("#address").val(json.address);
     $("#phone").val(json.phone);
     $("#email").val(json.email);
+
+    // 菜单栏个人信息设置
+    // $("#Semail").innerText=json.email;
+    // $("#Sname").innerText=json.first_name;
+    // $("#college2").innerText= json.college;
+    // $("#class2").innerText= json.class;
+    document.getElementById("Temail").innerHTML = json.email;
+    document.getElementById("Tname").innerHTML = json.name;
+    document.getElementById("college2").innerHTML = json.college;
+    //导航栏加载名字
+    document.getElementById("Tname1").innerHTML = json.name;
 }
 var inputs = document.getElementById('oout1').getElementsByTagName("input");
 
