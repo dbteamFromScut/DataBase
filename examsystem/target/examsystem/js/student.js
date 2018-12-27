@@ -41,6 +41,7 @@ for (var i = 0; i < slide.length; i++) {
     }
 }
 
+document.getElementById("oout2").style.display = "block";
 
 
 //确定注销按钮

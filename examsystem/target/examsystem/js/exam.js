@@ -10,6 +10,7 @@ jsons[0] = {
 	"options3" : "D选项内容",
 	"accuracy" : "50%",
 	"right-key" : "1", //1-4表示ABCD，判断题则是1、2表示正确错误
+	"id" : "111"
 }
 jsons[1] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈2",

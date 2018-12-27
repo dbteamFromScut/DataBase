@@ -42,14 +42,15 @@ for (var i = 0; i < 6; i++) {
 for (var i = 0; i < slide.length; i++) {
 	slide[i].onclick = function() {
 		for (var j = 0; j < out.length; j++) {
-			console.log(j);
-			out[j].style.display = "none";
-		}
+            out[j].style.display = "none";
+        }
 		cover.style.display = "none"; 
         document.getElementById("AddExam").style.display="none";
 		out[this.getAttribute("index")].style.display = "block";
 	}
 }
+document.getElementById("oout2").style.display = "block";
+
 
 //确定注销按钮
 document.getElementById("logout").onclick = function(){
