@@ -1,20 +1,16 @@
 package com.db.controller;
 
 
-import com.db.dao.StudentMapper;
 import com.db.dao.TeacherMapper;
-import com.db.model.Student;
 import com.db.model.Teacher;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -23,8 +19,6 @@ public class AcdemicController {
 
     @Autowired
     private TeacherMapper teacherDao;
-    @Autowired
-    private StudentMapper studentDao;
 
     @RequestMapping("addNewTeacher")
     @ResponseBody
@@ -67,27 +61,6 @@ public class AcdemicController {
             j.put("sex",t.getSex());
             j.put("college",t.getInstitute());
             result.add(j);
-        }
-        return result;
-    }
-
-    @RequestMapping(value = "/getStudentList", method = {RequestMethod.GET, RequestMethod.POST})
-    @ResponseBody
-    public Object getSelectedStudents(@RequestParam("classgrade") String classgrade,
-                                      @RequestParam("classname") String classname, HttpServletRequest request) {
-        JSONArray result = new JSONArray();
-        if (!classgrade.equals("")||!classname.equals("")){
-            List<Student> studentList = studentDao.selectByPrimaryKeyList(classname, classgrade);
-            for (Student s : studentList) {
-                JSONObject jsonObject = new JSONObject();
-                jsonObject.put("name", s.getStudentName());
-                jsonObject.put("id", s.getStudentId());
-                jsonObject.put("sex", s.getSex());
-                jsonObject.put("college", s.getInstitute());
-                jsonObject.put("grade", s.getClassGrade());
-                jsonObject.put("class_name", s.getClassName());
-                result.add(jsonObject);
-            }
         }
         return result;
     }
