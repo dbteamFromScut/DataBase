@@ -188,7 +188,32 @@ function getStudentInfo() {
     });
 }
 
-var ExamList = [{"Type":"do","title":"第一章至第三章","start":"2018-12-06 09:30","end":"2018-12-06 10:00","id":"1"},{"Type":"do","title":"第四章至第六章","start":"2018-12-07 09:30","end":"2018-12-07 10:00","id":"2"},{"Type":"do","title":"第七章至第十一章","start":"2018-12-08 09:30","end":"2018-12-08 10:00","id":"3"},{"Type":"done","title":"第一章至第三章","start":"2018-12-06 09:30","end":"2018-12-06 10:00","id":"1","grade":"91"}];
+var ExamList = [
+{"Type":"do",
+"title":"第一章至第三章",
+"start":"2018-12-06 09:30",
+"end":"2018-12-06 10:00",
+"id":"1"
+},
+{"Type":"do",
+"title":"第四章至第六章",
+"start":"2018-12-07 09:30",
+"end":"2018-12-07 10:00",
+"id":"2"
+},
+{"Type":"do",
+"title":"第七章至第十一章",
+"start":"2018-12-08 09:30",
+"end":"2018-12-08 10:00",
+"id":"3"
+},
+{"Type":"done",
+"title":"第一章至第三章",
+"start":"2018-12-06 09:30",
+"end":"2018-12-06 10:00",
+"id":"1",
+"grade":"91"
+}];
 
 function initExamList(ExamList) {
     console.log(ExamList.length);
@@ -288,13 +313,13 @@ function initExamList(ExamList) {
                     dataType : "json",
                     success : function() {
                         //成功则在新页面加载试卷。需要根据试卷ID返回试卷信息给考试页面。
-                        window.open("./exam.html");
+                        window.open("/exam");
                     },
                     error : function() {
                         alert("进入失败，请重试");
                     }
                 });
-                window.open("./exam.html");
+                window.open("/exam");
             }
         }
     }

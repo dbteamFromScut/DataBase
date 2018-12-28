@@ -7,9 +7,8 @@
 	<link rel="stylesheet" href="../css/materialize.min.css">
 	<link rel="stylesheet" href="../css/icomoon.css">
 	<link rel="stylesheet" href="../css/teacher.css">
-	<script src="../js/teacher.js"></script>
 </head>
-<body>
+<body onload="getInfo()">
 	<!-- 导航栏 -->
 	<nav>
     	<div class="nav-wrapper">
@@ -176,8 +175,10 @@
         	  	<div class="card">
         	    	<div class="card-content white-text amber darken-4">
         	      		<span class="card-title" name="examName">考试标题</span>
-        	      		<p>开始时间：</p><p name="startTime">2018-09-01 22:08</p>
-                    <p>结束时间：</p><p name="endTime">2018-09-01 22:08</p>
+                    <br/>
+        	      		<span>开始时间：</span><span name="startTime">2018-09-01 22:08</span>
+                    <br/>
+                    <span>结束时间：</span><span name="endTime">2018-09-01 22:08</span>
         	    	</div>
         	   		<div class="card-action blue-grey darken-1">
         	   		  	<a href="#" name="post_exam">发布考试</a>
@@ -187,19 +188,6 @@
         	</div>
 
 
-        	<div class="col s12 m6 l4 hoverable">
-              <div class="card">
-                <div class="card-content white-text amber darken-4">
-                    <span class="card-title" name="examName">考试标题</span>
-                    <p>开始时间：</p><p name="startTime">2018-09-01 22:08</p>
-                    <p>结束时间：</p><p name="endTime">2018-09-01 22:08</p>
-                </div>
-                <div class="card-action blue-grey darken-1">
-                    <a href="#" name="post_exam">发布考试</a>
-                    <a href="#" name="delete_exam">移除考试</a>
-                </div>
-            </div>
-          </div>
 
       	</div>
       	<a class="waves-effect waves-light btn"  id="CreateExam"><i class="icon-plus left"></i>创建新的考试</a>
@@ -215,8 +203,8 @@
               <div class="card">
                 <div class="card-content white-text amber darken-4">
                     <span class="card-title" name="examName_">考试标题</span>
-                    <p>开始时间：</p><p name="startTime_">2018-09-01 22:08</p>
-                    <p>结束时间：</p><p name="endTime_">2018-09-01 22:08</p>
+                    <span>开始时间：</span><span name="startTime_">2018-09-01 22:08</spans>
+                    <span>结束时间：</span><span name="endTime_">2018-09-01 22:08</span>
                 </div>
                 <div class="card-action blue-grey darken-1">
                     <a href="#" name="view_exam">查看考试</a>
@@ -229,8 +217,8 @@
               <div class="card">
                 <div class="card-content white-text amber darken-4">
                     <span class="card-title" name="examName_">考试标题</span>
-                    <p>开始时间：</p><p name="startTime_">2018-09-01 22:08</p>
-                    <p>结束时间：</p><p name="endTime_">2018-09-01 22:08</p>
+                    <span>开始时间：</span><span name="startTime_">2018-09-01 22:08</span>
+                    <span>结束时间：</span><span name="endTime_">2018-09-01 22:08</span>
                 </div>
                 <div class="card-action blue-grey darken-1">
                     <a href="#" name="view_exam">查看考试</a>
@@ -564,11 +552,11 @@
             <input id="exam_name" type="email" class="validate">
             <label for="exam_name">请输入考试标题</label>
           </div>
-          <div class="col s2.5">
+          <div class="col s2">
               设置考试日期：
               <div class="input-field inline"><input id="exam_date" type="date" min="2018-12-10"></div>
           </div>
-          <div class="col s5.5">
+          <div class="col s5">
               设置考试时间：
               <div class="input-field inline"><input type="time" id="start_time"></div>
               至
@@ -713,8 +701,8 @@
 
 
 
-  	<script src="../js/jquery.min.js"></script>
+  <script src="../js/jquery.min.js"></script>
 	<script src="../js/materialize.min.js"></script>
-  	<script src="../js/teacher.js"></script>
+  <script src="../js/teacher.js"></script>
 </body>
 </html>

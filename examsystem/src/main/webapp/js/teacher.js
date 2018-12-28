@@ -160,6 +160,7 @@ function init(json) {
     // $("#class2").innerText= json.class;
     document.getElementById("Temail").innerHTML = json.email;
     document.getElementById("college2").innerHTML = '<i class="icon-newspaper"></i>' +json.college;
+    document.getElementById("Tname").innerHTML = json.name;
     //导航栏加载名字
     document.getElementById("Tname1").innerHTML = json.name;
 }
@@ -624,7 +625,163 @@ for(var i=0;i<addtolist.length;i++){
     }
 }
 
+var ExamList = [
+{"Type":"do",
+"title":"第一章至第三章",
+"start":"2018-12-06 09:30",
+"end":"2018-12-06 10:00",
+"id":"1"
+},
+{"Type":"do",
+"title":"第四章至第六章",
+"start":"2018-12-07 09:30",
+"end":"2018-12-07 10:00",
+"id":"2"
+},
+{"Type":"do",
+"title":"第七章至第十一章",
+"start":"2018-12-08 09:30",
+"end":"2018-12-08 10:00",
+"id":"3"
+},
+{"Type":"done",
+"title":"第一章至第三章",
+"start":"2018-12-06 09:30",
+"end":"2018-12-06 10:00",
+"id":"1",
+"grade":"91"
+}];
 
+//获取已发布、已考完试卷信息
+function initExamList(ExamList) {
+    console.log(ExamList.length);
+    console.log(typeof(ExamList));
+    var containerDone = document.getElementById("oout3").children[0];
+    var containerDo = document.getElementById("oout2").children[0];
+    console.log("length"+ExamList.length);
+    for (var i = 0; i < ExamList.length; i++) {
+
+        var dv1 = document.createElement("div");
+        dv1.className = "col s12 m6 l4 hoverable";
+        dv1.setAttribute("examId",ExamList[i]["id"]);
+        var dv2 = document.createElement("div");
+        dv2.className = "card";
+        dv1.appendChild(dv2);
+
+        var dv3 = document.createElement("div");
+        var span = document.createElement("span");
+        span.innerHTML = ExamList[i]["title"];
+        span.className = "card-title";
+        dv3.appendChild(span);
+        var br = document.createElement("br");
+        dv3.appendChild(br);
+
+        var p1 = document.createElement("span");
+        p1.innerHTML = "开始时间：";
+        dv3.appendChild(p1);
+        var p2 = document.createElement("span");
+        p2.innerHTML = ExamList[i]["start"];
+        dv3.appendChild(p2);
+        var br1 = document.createElement("br");
+        dv3.appendChild(br1);
+
+        var p3 = document.createElement("span");
+        p3.innerHTML = "结束时间：";
+        dv3.appendChild(p3);
+        var p4 = document.createElement("span");
+        p4.innerHTML = ExamList[i]["end"];
+        dv3.appendChild(p4);
+        var br2 = document.createElement("br");
+        dv3.appendChild(br2);
+
+        dv2.appendChild(dv3);
+    
+        var dv4 = document.createElement("div");
+        dv4.className = "card-action blue-grey darken-1";
+        dv2.appendChild(dv4);
+    
+        var a = document.createElement("a");
+        a.href = "#";
+        dv4.appendChild(a);
+
+        var a2 = document.createElement("a");
+        a2.href = "#";
+
+        if(ExamList[i]["Type"] == "done"){
+            a.innerHTML = "查看考试";
+            dv3.className = "card-content white-text amber darken-4";
+            var grade = document.createElement("span"); 
+            grade.innerHTML = "成绩：";
+            var grade2 = document.createElement("span");
+            grade2.innerHTML = ExamList[i]["grade"];
+            dv3.appendChild(grade);
+            dv3.appendChild(grade2);
+            a.onclick = function() {
+                var id = dv1.getAttribute("examId");
+                console.log(id);
+                $.ajax({
+                    url : "/student/beginExam",
+                    //开始考试，需计时
+                    type : "POST",
+                    data : {"examId" : id },
+                    processData : false,
+                    contentType : false,
+                    dataType : "json",
+                    success : function() {
+                        //成功则在新页面加载试卷。需要根据试卷ID返回试卷信息给考试页面。
+                        window.location.href="/exam-detail";
+                    },
+                    error : function() {
+                        alert("进入失败，请重试");
+                    }
+                });
+                // window.open("./exam-detail.html");
+            }
+            containerDone.appendChild(dv1);
+        }else if(ExamList[i]["Type"] == "do"){
+            a.innerHTML = "发布考试";
+            dv4.appendChild(a2);
+            a2.innerHTML = "移除考试";
+           dv3.className = "card-content white-text cyan";
+            containerDo.appendChild(dv1);
+            a.onclick = function() {
+                var id = dv1.getAttribute("examId");
+                $.ajax({
+                    url : "/teacher/getExam",
+                    type : "POST",
+                    data : {"examId" : id },
+                    processData : false,
+                    contentType : false,
+                    dataType : "json",
+                    success : function() {
+                        //成功则在新页面加载试卷。需要根据试卷ID返回试卷信息给考试页面。
+                        window.open("/exam");
+                    },
+                    error : function() {
+                        alert("进入失败，请重试");
+                    }
+                });
+                window.open("./exam.html");
+            }
+        }
+    }
+}
+
+initExamList(ExamList);//前端测试用，后台写完可以删除，包括上面的数据ExamList
+
+//获取试卷列表
+function getExamList(){
+    $.ajax({
+        url : "/teacher/getExamList",
+        type : "POST",
+        processData : false,
+        contentType : false,
+        dataType : "json",
+        success : function(data){
+            initExamList(data);
+        }
+    });
+}
 
 
 //试题,根据题目类型返回题目的id、除去选项外的题目(question)、section、question_type
