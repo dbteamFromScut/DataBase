@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="../css/teacher.css">
 	<script src="../js/teacher.js"></script>
 </head>
-<body onload="getInfo()">
+<body>
 	<!-- 导航栏 -->
 	<nav>
     	<div class="nav-wrapper">
@@ -308,18 +308,21 @@
   				</div>
     		</form>
 
+  
+
+
         <form class="card">
 
           <div class="row" id="aksquestion">
 
               <div class="input-field col s8">
-                  <textarea id="TorAks" class="materialize-textarea" placeholder="请输入填空/问答题题目"></textarea>
+                  <textarea id="Aks" class="materialize-textarea" placeholder="请输入填空/问答题题目"></textarea>
               </div>
 			  <div>
 				  <h4>题目类型</h4>
-				  <input name="group2" type="radio" id="ask" style='margin-left: 20px;' />
+				  <input name="group3" type="radio" id="ask" style='margin-left: 20px;' />
 				  <label for="ask" id="ask_lab">问答</label>
-				  <input name="group2" type="radio" id="fill" />
+				  <input name="group3" type="radio" id="fill" />
 				  <label for="fill" id="fill_lab">填空</label>
 			  </div>
 
@@ -327,7 +330,7 @@
                 <input 
 					type="text" id="answer" placeholder="请在这里输入答案" />
               </div>
-              <a class="waves-effect waves-light btn" href="#import_fill"><i class="icon-quill"></i>提交填空题</a>
+              <a class="waves-effect waves-light btn" href="#import_fill"><i class="icon-quill"></i>提交题目</a>
               <br><br>
             </div>
 
@@ -563,7 +566,7 @@
           </div>
           <div class="col s2.5">
               设置考试日期：
-              <div class="input-field inline"><input id="exam_date" type="date" min="2018-12-10 "></div>
+              <div class="input-field inline"><input id="exam_date" type="date" min="2018-12-10"></div>
           </div>
           <div class="col s5.5">
               设置考试时间：

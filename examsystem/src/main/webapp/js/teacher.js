@@ -3,8 +3,12 @@ var year=today.getFullYear();
 var month=today.getMonth()+1; 
 var date=today.getDate();
 var today=year+"-"+month+"-"+date;
+// document.getElementById("exam_date").setAttribute("min",today);
+// var a = document.getElementById("examDate");
+// console.log(a);
+// console.log(document.getElementById("grade"));
 $('#exam_date').attr("min",today);
-$('#exam_date').val(today);
+$('#examDate').val(today);
 
 $(document).ready(function(){
 // Initialize collapse button
@@ -346,6 +350,52 @@ document.getElementById("tf_confirm").onclick=function(){
 		})
 	}
 }
+
+document.getElementById("fill_confirm").onclick = function(){
+    var question = document.getElementById("Aks").value;
+    var type;
+    var answer = document.getElementById("answer").value;
+    if(document.getElementById('ask').checked == true)
+        type = "问答";
+    if(document.getElementById('fill').checked == true)
+        type = "填空";
+    if(!type){
+        alert("请选择题目类型");
+        return false;
+    }
+    if(!question){
+        alert("请输入题目");
+        return false;
+    }
+    if(type == "填空" && !answer){
+        alert("填空题答案不能为空");
+        return false;
+    }
+    var q = {
+        "askOrfill" : type,
+        "answer" : answer,
+        "question" : question,
+    };
+    console.log("q");
+    console.log(q);
+    $.ajax({
+        url : "teacher/submitAskAndFill",
+        type : "POST",
+        data : q,
+        dataType : "json",
+        processData : false,
+        contentType : false,
+        success : function(result){
+            if(result.code == "success")
+                alert("上传成功！");
+        },
+        error : function(){
+            alert("上传失败！请重试！")
+        }
+    });
+}
+
+
 //导入Excel文件
 document.getElementById("file_confirm").onclick=function(){
 	var filename=$("#input_file").val();
