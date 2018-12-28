@@ -8,9 +8,7 @@ jsons[0] = {
 	"options1" : "B选项内容",
 	"options2" : "C选项内容",
 	"options3" : "D选项内容",
-	"accuracy" : "50%",
-	"right-key" : "1", //1-4表示ABCD，判断题则是1、2表示正确错误
-	"id" : "111"
+	"id" : "111",
 }
 jsons[1] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈2",
@@ -19,8 +17,7 @@ jsons[1] = {
 	"options1" : "B",
 	"options2" : "C",
 	"options3" : "D",
-	"accuracy" : "50%",
-	"right-key" : "1",
+	"id" : "112",
 }
 jsons[2] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈3",
@@ -29,8 +26,7 @@ jsons[2] = {
 	"options1" : "错误",
 	"options2" : "错误",
 	"options3" : "错误",
-	"accuracy" : "80%",
-	"right-key" : "1",
+	"id" : "113",
 }
 jsons[3] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈4",
@@ -39,8 +35,7 @@ jsons[3] = {
 	"options1" : "B",
 	"options2" : "C",
 	"options3" : "D",
-	"accuracy" : "50%",
-	"right-key" : "1",
+	"id" : "114",
 }
 jsons[4] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈5",
@@ -49,8 +44,7 @@ jsons[4] = {
 	"options1" : "B",
 	"options2" : "C",
 	"options3" : "D",
-	"accuracy" : "50%",
-	"right-key" : "1",
+	"id" : "115",
 }
 jsons[5] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈6",
@@ -59,8 +53,7 @@ jsons[5] = {
 	"options1" : "B",
 	"options2" : "C",
 	"options3" : "D",
-	"accuracy" : "50%",
-	"right-key" : "1",
+	"id" : "116",
 }
 jsons[6] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
@@ -69,8 +62,7 @@ jsons[6] = {
 	"options1" : "B",
 	"options2" : "C",
 	"options3" : "D",
-	"accuracy" : "50%",
-	"right-key" : "1",
+	"id" : "117",
 }
 jsons[7] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
@@ -79,8 +71,7 @@ jsons[7] = {
 	"options1" : "B",
 	"options2" : "C",
 	"options3" : "D",
-	"accuracy" : "50%",
-	"right-key" : "1",
+	"id" : "118",
 }
 jsons[8] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
@@ -89,8 +80,7 @@ jsons[8] = {
 	"options1" : "B",
 	"options2" : "C",
 	"options3" : "D",
-	"accuracy" : "50%",
-	"right-key" : "1",
+	"id" : "119",
 }
 jsons[9] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
@@ -99,71 +89,85 @@ jsons[9] = {
 	"options1" : "B",
 	"options2" : "C",
 	"options3" : "D",
-	"accuracy" : "50%",
-	"right-key" : "1",
+	"id" : "120",
 }
 jsons[10] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
 	"type" : "判断",
-	"options0" : "A",
-	"options1" : "B",
-	"options2" : "C",
-	"options3" : "D",
-	"accuracy" : "50%",
-	"right-key" : "1",
+	"options0" : "正确",
+	"options1" : "错误",
+	"id" : "121",
 }
 jsons[11] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
 	"type" : "判断",
-	"options0" : "A",
-	"options1" : "B",
-	"options2" : "C",
-	"options3" : "D",
-	"accuracy" : "50%",
-	"right-key" : "1", 
+	"options0" : "正确",
+	"options1" : "错误",
+	"id" : "122",
 }
 jsons[12] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
 	"type" : "判断",
-	"options0" : "A",
-	"options1" : "B",
-	"options2" : "C",
-	"options3" : "D",
-	"accuracy" : "50%",
-	"right-key" : "1", 
+	"options0" : "正确",
+	"options1" : "错误",
+	"id" : "123",
 }
 jsons[13] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
 	"type" : "判断",
-	"options0" : "A",
-	"options1" : "B",
-	"options2" : "C",
-	"options3" : "D",
-	"accuracy" : "50%",
-	"right-key" : "1", 
+	"options0" : "正确",
+	"options1" : "错误",
+	"id" : "124",
 }
 jsons[14] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
 	"type" : "判断",
-	"options0" : "A",
-	"options1" : "B",
-	"options2" : "C",
-	"options3" : "D",
-	"accuracy" : "50%",
-	"right-key" : "1", 
+	"options0" : "正确",
+	"options1" : "错误",
+	"id" : "125",
 }
 var a = new Array();
-a[0] = "少时诵诗1_____";
-a[1] = "少时诵诗2_____";
-a[2] = "少时诵诗3_____";
-a[3] = "少时诵诗4_____";
-a[4] = "少时诵诗5_____";
+a[0] = {
+	"question":"少时诵诗1_____",
+	"id" : "1123",
+};
+a[1] = {
+	"question":"少时诵诗1_____",
+	"id" : "1124",
+};
+a[2] = {
+	"question":"少时诵诗1_____",
+	"id" : "1125",
+};
+a[3] = {
+	"question":"少时诵诗1_____",
+	"id" : "1126",
+};
+a[4] = {
+	"question":"少时诵诗1_____",
+	"id" : "1127",
+};
 var b = new Array();
-b[0] = "你开心吗？";
-b[1] = "你开心吗？";
-b[2] = "你开心吗？";
-b[3] = "你开心吗？";
-b[4] = "你开心吗？";
+b[0] = {
+	"question":"你快乐吗？",
+	"id" : "1223",
+};
+b[1] = {
+	"question":"你快乐吗？",
+	"id" : "1224",
+};
+b[2] = {
+	"question":"你快乐吗？",
+	"id" : "1225",
+};
+b[3] = {
+	"question":"你快乐吗？",
+	"id" : "1226",
+};
+b[4] = {
+	"question":"你快乐吗？",
+	"id" : "1227",
+};
 function datas (){
 	this.title = "编译原理测试";
 	this.chooseAndTF = [];  //选择和判断题放一起
@@ -224,6 +228,7 @@ function initExam(data){
 		//创建试题最外的div
 		var dv = document.createElement("div");
 		dv.className = "question";
+		dv.setAttribute("questionid",jsons[i]["id"]);
 	
 		//创建题干p
 		var p = document.createElement("p");
@@ -287,8 +292,9 @@ function initExam(data){
 	for (var i = 0; i < a.length; i++) {
 		var dv = document.createElement("div");
 		dv.className = "question";
+		dv.setAttribute("questionid",a[i]["id"]);
 		var p = document.createElement("p");
-		p.innerHTML = (i+16).toString() + "、" + a[i];
+		p.innerHTML = (i+16).toString() + "、" + a[i]["question"];
 		p.className = "pan";
 		dv.appendChild(p);
 		var divi = document.createElement("div");
@@ -323,8 +329,9 @@ function initExam(data){
 	for (var i = 0; i < b.length; i++) {
 		var dv = document.createElement("div");
 		dv.className = "question";
+		dv.setAttribute("questionid",b[i]["id"]);
 		var p = document.createElement("p");
-		p.innerHTML = (i+21).toString() + "、" + b[i];
+		p.innerHTML = (i+21).toString() + "、" + b[i]["question"];
 		p.className = "pan";
 		dv.appendChild(p);
 		var divi = document.createElement("div");
@@ -419,27 +426,50 @@ setCursor();
 
 
 
-
+var submitCount = 0;
 //获取作答答案
 function getAnswers(isTimeRunOut){
-	var answers = new Object();
-	answers.chooseAndTF = [];
-	answers.fill = [];
-	answers.ask = [];
-	var num = 0;
-
-	//选择判断部分
-	for (var i = 0; i < 15; i++) {
-		answers.chooseAndTF[i] = 0;
+	function result () {
+		this.id = [];
+		this.answers = [];
 	}
-	var inputs = document.getElementsByTagName("input");
+	var result = new result();
+	var id = new Array();
+	var answers = new Array();
+	var num = 0;
+	//选择判断部分
+	for (var i = 0; i < 25; i++) {
+		answers[i] = 0;
+	}
+	for (var i = 0; i < 25; i++) {
+		id[i] = 0;
+	}
+	console.log(id);
+	var inputs = document.getElementById("contain").getElementsByTagName("input");
+	console.log(inputs.length);
+	var index = -1;
+	for (var i = 0; i < inputs.length; i++) {
+		if(i<=39){
+			if(i % 4 == 0 ){
+				id[++index] = inputs[i].parentNode.parentNode.parentNode.getAttribute("questionid");
+			}
+		}
+		else if(i <= 49){
+			if(i % 2 == 0){
+				id[++index] = inputs[i].parentNode.parentNode.parentNode.getAttribute("questionid");
+			}
+		}
+	}
 	for (var i = 0; i < inputs.length; i++) {
 		if(inputs[i].checked == true){
 			var index = inputs[i].id;
-			if(index.length == 6)
-				answers.chooseAndTF[index.charAt(4)-1] = index.charAt(5);
-			else
-				answers.chooseAndTF[index.substring(4,6)-1] = index.charAt(6);
+			if(index.length == 6){
+				answers[index.charAt(4)-1] = index.charAt(5);
+			}
+			else{
+				answers[index.substring(4,6)-1] = index.charAt(6);
+				
+			}
 			//统计作答题目数量
 			num++;
 
@@ -448,29 +478,37 @@ function getAnswers(isTimeRunOut){
 	//填空答案
 	var fills = document.getElementsByName("fill");
 	for (var i = 0; i < fills.length; i++) {
-		answers.fill[i] = fills[i].value;
+		answers[i+15] = fills[i].value;
+		id[i+15] = fills[i].parentNode.getAttribute("questionid");
 		if(fills[i].value)
 			num++;
 	}
 
 	//问答题
 	var asks = document.getElementsByName("ask");
+	console.log(asks);
 	for (var i = 0; i < asks.length; i++) {
-		answers.ask[i] = asks[i].value;
-		console.log(asks[i].value);
-		if(asks[i].value)
+			answers[i+20] = asks[i].value;
+			id[i+20] = asks[i].parentNode.getAttribute("questionid");
+			console.log(asks[i].value);
+		if(asks[i].value){
 			num++;
+		}
 	}
 	console.log(answers);
-	// console.log(num);
-	if(!isTimeRunOut){
-		if(num != 25)
-			return null;
-		else
-			return answers;
-	}else
-		return answers;
-	// return answers;
+	console.log(id);
+	for (var i = 0; i < id.length; i++) {
+		result.id[i] = id[i];
+		result.answers[i] = answers[i];
+	}
+	// if(!isTimeRunOut){
+	// 	if(num != 25)
+	// 		return null;
+	// 	else
+	// 		return result;
+	// }else
+	// 	return result;
+	return result;
 }
 
 //上传考试答案
@@ -497,15 +535,22 @@ function uploadAnswers(answers){
         },
         error : function() {
         	alert("网络原因提交失败，请重新提交一次");
+        	submitCount--;
         }
 	});
 }
 
 //提交试卷时记录答案
 document.getElementById("submit").onclick = function() {
+	if(submitCount){
+		alert("你已经提交过一次，无法重复提交！");
+		return false;
+	}
 	var answers = getAnswers(false);
+	submitCount++;
 	if(!answers){
 		alert("试卷还没写完，请写完后再提交！");
+		submitCount--;
 		return false;
 	}
 	uploadAnswers(answers);
@@ -534,7 +579,17 @@ function getExamTime(){
 		}
 	});
 }
-var maxtime = 303;
+// var end = getExamTime();
+var end = "2016-03-28 11:27:00";
+var d2 =  end.replace(/\-/g, "/");
+var t1 = "2016-03-28 10:27:00";
+var d1 = t1.replace(/\-/g, "/");
+
+var date1 = new Date(d1);//目前网络时间
+
+var date2  = new Date(d2);//截止提交时间
+
+var maxtime = (date2-date1)/1000;
 // var maxtime = getExamTime(); 
 function CountDown() {
     if (maxtime >= 0) {
