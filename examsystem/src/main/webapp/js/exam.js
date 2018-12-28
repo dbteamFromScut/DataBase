@@ -300,7 +300,7 @@ function initExam(data){
 		input.style.backgroundColor = "#fff";
 		input.style.marginLeft = "20%";
 		input.style.width = "40%";
-
+		input.name = 'fill';
 
 		input.setAttribute("index",i+16);
 		input.onblur = changeBGC2;
@@ -339,7 +339,7 @@ function initExam(data){
 		textarea.style.width = "80%";
 		textarea.style.height = "160px";
 		textarea.style.marginLeft = "10%";
-
+		textarea.name = 'ask';
 
 		textarea.setAttribute("index",i+21);
 		textarea.onblur = changeBGC2;
@@ -422,29 +422,55 @@ setCursor();
 
 //获取作答答案
 function getAnswers(isTimeRunOut){
-	var answers = {};
+	var answers = new Object();
+	answers.chooseAndTF = [];
+	answers.fill = [];
+	answers.ask = [];
 	var num = 0;
+
+	//选择判断部分
+	for (var i = 0; i < 15; i++) {
+		answers.chooseAndTF[i] = 0;
+	}
 	var inputs = document.getElementsByTagName("input");
 	for (var i = 0; i < inputs.length; i++) {
 		if(inputs[i].checked == true){
 			var index = inputs[i].id;
 			if(index.length == 6)
-				answers[index.charAt(4)] = index.charAt(5);
+				answers.chooseAndTF[index.charAt(4)-1] = index.charAt(5);
 			else
-				answers[index.substring(4,6)] = index.charAt(6);
+				answers.chooseAndTF[index.substring(4,6)-1] = index.charAt(6);
 			//统计作答题目数量
 			num++;
 
 		}
 	}
+	//填空答案
+	var fills = document.getElementsByName("fill");
+	for (var i = 0; i < fills.length; i++) {
+		answers.fill[i] = fills[i].value;
+		if(fills[i].value)
+			num++;
+	}
+
+	//问答题
+	var asks = document.getElementsByName("ask");
+	for (var i = 0; i < asks.length; i++) {
+		answers.ask[i] = asks[i].value;
+		console.log(asks[i].value);
+		if(asks[i].value)
+			num++;
+	}
+	console.log(answers);
+	// console.log(num);
 	if(!isTimeRunOut){
-		if(num != 15)
+		if(num != 25)
 			return null;
 		else
 			return answers;
 	}else
 		return answers;
-	
+	// return answers;
 }
 
 //上传考试答案
@@ -453,14 +479,24 @@ function uploadAnswers(answers){
 		url : "/uploadAnswers",
 		type : "POST",
 		data : answers,
+		//上传的答案是一个object，如下
+		//answers = {
+		//	this.chooseAndTF = [];  数组长度为15，对应1-15题，数组元素赋值为0-4，0为未选，1-4代表ABCD
+		//	this.fill = [];	数组长度为5，元素是字符串，""代表未作答
+		//	this.ask = [];	数组长度为5，元素是字符串，""代表未作答
+		//}
         processData : false,
         contentType : false,
         success : function(result){
         	if (result == "success") {
         		alert("试卷提交成功，离开时请记得带齐所有物品。");
+				window.location.href = "/student";
         	}
         	else
         		alert("提交失败，请重新提交一次");
+        },
+        error : function() {
+        	alert("网络原因提交失败，请重新提交一次");
         }
 	});
 }
@@ -469,13 +505,10 @@ function uploadAnswers(answers){
 document.getElementById("submit").onclick = function() {
 	var answers = getAnswers(false);
 	if(!answers){
-		// console.log(answers);
-		// console.log("11");
 		alert("试卷还没写完，请写完后再提交！");
 		return false;
 	}
 	uploadAnswers(answers);
-	window.location.href = "./student.jsp";
 }
 
 
@@ -509,7 +542,7 @@ function CountDown() {
         seconds = Math.floor(maxtime % 60);
         var msg = minutes + "分" + seconds + "秒";
         document.getElementById("timer").innerHTML = msg;
-        if (maxtime == 5 * 60)
+        if (maxtime == 10 * 60)
         	warning();
         --maxtime;
     }else{

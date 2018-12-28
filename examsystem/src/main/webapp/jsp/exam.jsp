@@ -68,12 +68,12 @@
       </div>
     </div>
   </div>
-  <h3>第一部分：选择和判断（共xx分）</h3>
+  <h3>第一部分：选择和判断（共25分）</h3>
   <div class="contain" id="contain">
     
   </div>
 
-  <h3>第二部分：填空（共xx分）</h3>
+  <h3>第二部分：填空（共25分）</h3>
   <div class="contain" id="contain2">
     <!-- <div class="question">
       <p class="pan">呵呵是表示_____（情感）的词语。</p>
@@ -81,7 +81,7 @@
       <input id="16" style="background-color: #fff;margin-left: 20%;width: 40%;" type="text" placeholder="在这里输入答案">
     </div> -->
   </div>
-  <h3>第三部分：问答题（共xx分）</h3>
+  <h3>第三部分：问答题（共50分）</h3>
 
   <div class="contain" id="contain3">
     <!-- <div class="question">
