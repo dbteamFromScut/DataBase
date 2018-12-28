@@ -33,9 +33,7 @@
     	</div>
   	</div>
 
-  	<div id="cover">
-  		<h1>Welcome</h1>
-  	</div>
+  	
 
   	<!-- 修改密码 -->
     <div class="container" id="changePassword">

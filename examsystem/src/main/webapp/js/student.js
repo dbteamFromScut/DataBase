@@ -319,7 +319,7 @@ function initExamList(ExamList) {
                         alert("进入失败，请重试");
                     }
                 });
-                window.open("/exam");
+                window.open("./exam");
             }
         }
     }
