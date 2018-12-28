@@ -88,8 +88,7 @@
 		<div>
       <div class="row">
 			 <h4><i class="icon-users col s8"> 系统中的教师信息</i></h4>
-       <button class="btn waves-effect waves-light col s2" type="button">
-           <a href="/template/teacher.xlsx">导出教师</a></button>
+       <button class="btn waves-effect waves-light col s2" type="button" id="addNewTeacherFile">导出教师</button>
       </div>
 			<div class="s12">
 			  <ul class="collection" id="allteacher">

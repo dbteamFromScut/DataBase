@@ -20,8 +20,4 @@ public interface TeacherMapper {
     int updateByPrimaryKey(Teacher record);
 
     List<Teacher> selectByPrimaryKeyList(String teacherId);
-
-    List<Teacher> selectByPrimaryKeyList();
-
-    int getCount(String teacherId);
 }
