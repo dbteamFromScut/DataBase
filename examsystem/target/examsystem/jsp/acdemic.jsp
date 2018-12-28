@@ -257,24 +257,7 @@
               <p class="col s3">学院</p>
               <p class="col s1">操作</p>
             </div>
-            <li class="row">
-              <p class="col s2">大哥哥</p>
-              <p class="col s2" name="student_id">201630600000</p>
-              <p class="col s1">男</p>
-              <p class="col s1">2016级</p>
-              <p class="col s2">网络工程班</p>
-              <p class="col s3">计算机科学与工程学院</p>
-              <p class="col s1"><a href="#student_detail" name="student_edit">修改</a></p>
-            </li>
-            <li class="row">
-              <p class="col s2">大哥哥</p>
-              <p class="col s2" name="student_id">201630650000</p>
-              <p class="col s1">男</p>
-              <p class="col s1">2016级</p>
-              <p class="col s2">网络工程班</p>
-              <p class="col s3">计算机科学与工程学院</p>
-              <p class="col s1"><a href="#student_detail" name="student_edit">修改</a></p>
-            </li>                                 
+
         </ul>
       </div>
     </div>
