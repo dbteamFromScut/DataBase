@@ -47,8 +47,7 @@ for (var i = 0; i < slide.length; i++) {
 	slide[i].onclick = function() {
 		for (var j = 0; j < out.length; j++) {
             out[j].style.display = "none";
-        }
-		cover.style.display = "none"; 
+        } 
         document.getElementById("AddExam").style.display="none";
 		out[this.getAttribute("index")].style.display = "block";
 	}
@@ -441,7 +440,7 @@ document.getElementById("search_student").onclick=function(){
 //学生,根据年级和班级返回result为指定的学生(name、id、sex、class_grade、class_name、college)的数组
 //如果收到的classgrade、classname都=="",那么返回全部的学生，也要考虑其中之一为""的情况
 function getAllstudents(){
-    var str='<p class="col s2">姓名</p><p class="col s2">学号</p><p class="col s1">性别</p><p class="col s3">学院</p><p class="col s2">年级</p><p class="col s2">班级</p>';
+    var str='<div class="row"><p class="col s2">姓名</p><p class="col s2">学号</p><p class="col s1">性别</p><p class="col s3">学院</p><p class="col s2">年级</p><p class="col s2">班级</p></div>';
 	var classgrade=$("#grade option:selected").text();
 	var classname=$("#class option:selected").text();
 	console.log(classgrade);
@@ -462,7 +461,7 @@ function getAllstudents(){
     		if (result){
     			$("#student_list").empty();
     	        for(var i=0;i<result.length;i++){
-    	        	str+='<li><p class="col s2">'+result[i].name+'</p><p class="col s2">'+result[i].id+'</p><p class="col s1">'+result[i].sex+'</p><p class="col s3">'+result[i].college+'</p><p class="col s2">'+result[i].grade+'</p><p class="col s2">'+result[i].classname+'</p></li>';
+    	        	str+='<li class="row"><p class="col s2">'+result[i].name+'</p><p class="col s2">'+result[i].id+'</p><p class="col s1">'+result[i].sex+'</p><p class="col s3">'+result[i].college+'</p><p class="col s2">'+result[i].grade+'</p><p class="col s2">'+result[i].classname+'</p></li>';
     	        }
     	        $("#student_list").append(str);
     	    }
@@ -480,21 +479,36 @@ document.getElementById("CreateExam").onclick=function(){
 
 var choose_array=new Array();
 var tf_array=new Array();
+var fill_array=new Array();//填空
+var ask_array=new Array();//问答
+
 var c_selected=document.getElementsByName("c_selected");
 var tf_selected=document.getElementsByName("tf_selected");
+var fill_selected=document.getElementsByName("fill_selected");
+var ask_selected=document.getElementsByName("ask_selected");
+
 var choose_count= new Array();
 var tf_count = new Array();
+var fill_count = new Array();
+var ask_count = new Array();
+
 var detail=document.getElementsByName("detail");
 var addtolist=document.getElementsByName("addtolist");
 var type=document.getElementsByName("type");
 var question_id=document.getElementsByName("question_id");
 var the_chooses=document.getElementsByName("the_chooses");
 
-for (var i = 0; i < 15; i++) {
+for (var i = 0; i < 10; i++) {
     choose_count[i] = 0;
 }
 for (var i = 0; i < 5; i++) {
     tf_count[i] = 0;
+}
+for (var i = 0; i < 5; i++) {
+    fill_count[i] = 0;
+}
+for (var i = 0; i < 5; i++) {
+    ask_count[i] = 0;
 }
 
 for (var i = 0; i < detail.length; i++) {
@@ -526,6 +540,28 @@ for(var i=0;i<detail.length;i++){
                     if(data){
                         $("#TorF_question").val(data.question);
                         $("#tf_answer").text(data.answer);
+                    }
+                    else{
+                        alert("题目信息载入失败！");
+                    }
+                }
+            });
+        }
+        if(thetype=="问答"||thetype=="填空"){
+            detail[j].setAttribute("href","#aks_detail");
+            $("#aks_id").text(q_id);
+            //根据题目id返回问答题或填空题的题目和答案(answer)
+            $.ajax({
+                url:"/teacher/getAks",
+                type:"POST",
+                data:form,
+                processData : false,
+                contentType : false,
+                dataType:"json",
+                success:function(data){
+                    if(data){
+                        $("#aks_question").val(data.question);
+                        $("#aks_answer").text(data.answer);
                     }
                     else{
                         alert("题目信息载入失败！");
@@ -604,7 +640,7 @@ for(var i=0;i<addtolist.length;i++){
                     }
                 }
                 if(flag){
-                    alert("15道选择题已选满");
+                    alert("10道选择题已选满");
                 }else{
                     var index;
                     for (var j = 0; j < choose_count.length; j++) {
@@ -617,6 +653,64 @@ for(var i=0;i<addtolist.length;i++){
                     $(c_selected[index]).css("background-color","#ff8a80");
                     choose_array[index]=q_id;
                     choose_count[index] = 1;
+                }
+            }else{
+                alert("这道题目已经添加到列表中了");
+            }
+        }
+        if(thetype=="填空"){
+            if($.inArray(q_id,fill_array)==-1){
+                var flag = 1;
+                for (var i = fill_count.length - 1; i >= 0; i--) {
+                    if(fill_count[i] == 0){
+                        flag = 0;
+                        break;
+                    }
+                }
+                if(flag){
+                    alert("5道填空题已经选满");
+                }else{
+                    var index = 0;
+                    for (var j = 0; j < fill_count.length; j++) {
+                        if(fill_count[j] == 0){
+                            index = j;
+                            break;
+                        }
+                    }
+                    $(fill_selected[index]).text(q_id);
+                    $(fill_selected[index]).css("background-color","#ff8a80");
+                    fill_array[index]=q_id;
+                    fill_count[index] = 1;
+                    console.log(fill_array);
+                }
+            }else{
+                alert("这道题目已经添加到列表中了");
+            }
+        }
+        if(thetype=="问答"){
+            if($.inArray(q_id,ask_array)==-1){
+                var flag = 1;
+                for (var i = ask_count.length - 1; i >= 0; i--) {
+                    if(ask_count[i] == 0){
+                        flag = 0;
+                        break;
+                    }
+                }
+                if(flag){
+                    alert("5道填空题已经选满");
+                }else{
+                    var index = 0;
+                    for (var j = 0; j < ask_count.length; j++) {
+                        if(ask_count[j] == 0){
+                            index = j;
+                            break;
+                        }
+                    }
+                    $(ask_selected[index]).text(q_id);
+                    $(ask_selected[index]).css("background-color","#ff8a80");
+                    ask_array[index]=q_id;
+                    ask_count[index] = 1;
+                    console.log(ask_array);
                 }
             }else{
                 alert("这道题目已经添加到列表中了");
@@ -803,10 +897,10 @@ function getQuestionList(){
     dataType : "json",
     success:function(result){
       if(result){
-        str='<p class="col s2">试题id</p><p class="col s5">题目</p><p class="col s1">章节</p><p class="col s2">题型</p><p class="col s2">操作</p>';
+        str='<div class="row"><p class="col s2">试题id</p><p class="col s5">题目</p><p class="col s1">章节</p><p class="col s2">题型</p><p class="col s2">操作</p></div>';
         $("#question_list").empty();
         for(var i=0;i<result.length;i++){
-          str+='<p class="col s2" name="question_id">'+result[i].id+'</p><p class="col s5">'+result[i].question.substr(0,20)+'...</p><p class="col s1">'+result[i].section+'</p><p class="col s2" name="type">'+result[i].question_type+'</p><p class="col s1"><a href="#!" name="detail">详情</a></p><p class="col s1"><a href="#!" name="addtolist">添加</a></p></li>';
+          str+='<li class="row"><p class="col s2" name="question_id">'+result[i].id+'</p><p class="col s5">'+result[i].question.substr(0,20)+'...</p><p class="col s1">'+result[i].section+'</p><p class="col s2" name="type">'+result[i].question_type+'</p><p class="col s1"><a href="#!" name="detail">详情</a></p><p class="col s1"><a href="#!" name="addtolist">添加</a></p></li>';
         }
         $("#question_list").append(str);
       }
@@ -832,10 +926,10 @@ function getQuestionList2(){
     dataType : "json",
     success:function(result){
       if(result){
-        str='<p class="col s2">试题id</p><p class="col s5">题目</p><p class="col s2">章节</p><p class="col s2">题型</p><p class="col s1">操作</p>';
+        str='<div class="row"><p class="col s2">试题id</p><p class="col s5">题目</p><p class="col s2">章节</p><p class="col s2">题型</p><p class="col s1">操作</p></div>';
         $("#question_list2").empty();
         for(var i=0;i<result.length;i++){
-          str+='<p class="col s2" name="question_id2">'+result[i].id+'</p><p class="col s5">'+result[i].question.substr(0,20)+'...</p><p class="col s2">'+result[i].section+'</p><p class="col s2" name="type2">'+result[i].question_type+'</p><p class="col s1"><a href="#!" name="question_edit">修改</a></p></li>';
+          str+='<li class="row"><p class="col s2" name="question_id2">'+result[i].id+'</p><p class="col s5">'+result[i].question.substr(0,20)+'...</p><p class="col s2">'+result[i].section+'</p><p class="col s2" name="type2">'+result[i].question_type+'</p><p class="col s1"><a href="#!" name="question_edit">修改</a></p></li>';
         }
         $("#question_list2").append(str);
       }
@@ -854,31 +948,60 @@ document.getElementById("search_question2").onclick=function(){
 }
 document.getElementById("empty_selected").onclick=function(){
     if(confirm("确定清空已选题目吗？")==true){
-        for (var i = 0; i < 15; i++) {
+        for (var i = 0; i < 10; i++) {
             choose_count[i] = 0;
         }
         for (var i = 0; i < 5; i++) {
             tf_count[i] = 0;
         }
+        for (var i = 0; i < 5; i++) {
+            fill_count[i] = 0;
+        }
+        for (var i = 0; i < 5; i++) {
+            ask_count[i] = 0;
+        }
         choose_array=[];
         tf_array=[];
-        for(i=0;i<15;i++){
+        ask_array=[];
+        fill_array=[];
+        for(i=0;i<10;i++){
             $(c_selected[i]).text("未选");
             $(c_selected[i]).css("background-color","rgb(227,224,181)");
         }
         for(i=0;i<5;i++){
             $(tf_selected[i]).text("未选");
-            $(tf_selected[i]).css("background-color","rgb(200,211,179)");
+            $(tf_selected[i]).css("background-color","rgb(227,224,181)");
+        }
+        for(i=0;i<5;i++){
+            $(ask_selected[i]).text("未选");
+            $(ask_selected[i]).css("background-color","rgb(200,211,179)");
+        }
+        for(i=0;i<5;i++){
+            $(fill_selected[i]).text("未选");
+            $(fill_selected[i]).css("background-color","rgb(200,211,179)");
         }
     }
 }
 //保存试卷
 document.getElementById("save_paper").onclick=function(){
     if(confirm("确定保存试卷吗？")==true){
+        var g=0;
+        for (var i = 0; i < 10; i++) {
+            if(choose_count[i] == 0){g=1;}
+        }
+        for (var i = 0; i < 5; i++) {
+            if(tf_count[i] == 0){g=1;}
+        }
+        for (var i = 0; i < 5; i++) {
+            if(fill_count[i] == 0){g=1;}
+        }
+        for (var i = 0; i < 5; i++) {
+            if(ask_count[i] == 0){g=1;}
+        }
         if($("#exam_date").val()==""||$("#exam_name").val()==""||$("#start_time").val()==""||$("#end_time").val()==""){
             alert("试卷标题/考试日期/时间未设置");
-        }else if(choose_count<15||tf_count<5){
-            alert("试卷题目数量不足(15道选择题+5道判断题)");
+        }else if(g==1){
+            alert("试卷题目数量不足(10道选择题+5道判断题+5道填空+5道问答)");
         }else if($("#start_time").val()>=$("#end_time").val){
             alert("考试时间设置不准确");
         }
@@ -894,6 +1017,8 @@ document.getElementById("save_paper").onclick=function(){
             form.append("end_time",end_time);
             form.append("choose_array",choose_array);//选择题id组成的数组
             form.append("tf_array",tf_array);//判断题id组成的数组
+            form.append("fill_array",tf_array);//填空题id组成的数组
+            form.append("ask_array",tf_array);//问答题id组成的数组
             //保存试卷，同时需生成一个独有的试卷id,已经将试卷标记为“未发布”
             $.ajax({
                 url:"/teacher/savePaper",
@@ -936,7 +1061,7 @@ function cancelTf(){
     if(this.innerHTML != "未选"){
         if(confirm("确认移除这道题目吗") == true){
             this.innerHTML = "未选";
-            this.style.backgroundColor = "rgb(200,211,179)";
+            this.style.backgroundColor = "rgb(227,224,181)";
             var index = this.getAttribute("index");
             tf_count[index] = 0;
             tf_array[index] = 0;
@@ -947,6 +1072,40 @@ function cancelTf(){
 for (var i = 0; i < tf_selected.length; i++) {
     tf_selected[i].onclick = cancelTf;
     tf_selected[i].setAttribute("index",i);
+}
+
+function cancelFill(){
+    if(this.innerHTML != "未选"){
+        if(confirm("确认移除这道题目吗") == true){
+            this.innerHTML = "未选";
+            this.style.backgroundColor = "rgb(200,211,179)";
+            var index = this.getAttribute("index");
+            fill_count[index] = 0;
+            fill_array[index] = 0;
+            console.log(fill_array);
+        }
+    }
+}
+for (var i = 0; i < fill_selected.length; i++) {
+    fill_selected[i].onclick = cancelFill;
+    fill_selected[i].setAttribute("index",i);
+}
+
+function cancelAsk(){
+    if(this.innerHTML != "未选"){
+        if(confirm("确认移除这道题目吗") == true){
+            this.innerHTML = "未选";
+            this.style.backgroundColor = "rgb(200,211,179)";
+            var index = this.getAttribute("index");
+            ask_count[index] = 0;
+            ask_array[index] = 0;
+            console.log(ask_array);
+        }
+    }
+}
+for (var i = 0; i < ask_selected.length; i++) {
+    ask_selected[i].onclick = cancelAsk;
+    ask_selected[i].setAttribute("index",i);
 }
 
 
@@ -993,6 +1152,28 @@ for(var i=0;i<question_edit.length;i++){
         }
       });
     }
+    if(type=="问答"||type=="填空"){
+            question_edit[j].setAttribute("href","#aks_detail2");
+            $("#aks_id2").text(q_id);
+            //根据题目id返回问答题或填空题的题目和答案(answer)
+            $.ajax({
+                url:"/teacher/getAksinfo",
+                type:"POST",
+                data:form,
+                processData : false,
+                contentType : false,
+                dataType:"json",
+                success:function(data){
+                    if(data){
+                        $("#aks_question2").val(data.question);
+                        $("#aks_answer2").val(data.answer);
+                    }
+                    else{
+                        alert("题目信息载入失败！");
+                    }
+                }
+            });
+        }
     if(type=="选择"){
       question_edit[j].setAttribute("href","#choose_detail2");
       $("#choose_id2").text(q_id);
@@ -1054,6 +1235,7 @@ document.getElementById("save_tf2").onclick=function(){
         data:form,
         processData : false,
         contentType : false,
+        dataType:"json",
         success:function(result){
           if(result.code=="success"){
             alert("题目保存成功！");
@@ -1100,13 +1282,13 @@ document.getElementById("save_choose2").onclick=function(){
       form.append("D",D);
       form.append("answer",answer);
       //根据ID保存信息
-      //返回题目、四个选项、正确的选项(完整)
       $.ajax({
         url:"/teacher/saveChoose",
         type:"POST",
         data:form,
         processData : false,
         contentType : false,
+        dataType:"json",
         success:function(result){
           if(result.code=="success"){
             alert("题目保存成功！");
@@ -1118,4 +1300,37 @@ document.getElementById("save_choose2").onclick=function(){
       });
     }
   } 
+}
+//保存问答题修改
+document.getElementById("save_aks2").onclick=function(){
+    if(confirm("确认保存修改")==true){
+        var id=$("#aks_id2").text();
+        var aks_question=$("#aks_question2").val();
+        var aks_answer=$("#aks_answer2").val();
+        if(aks_question==""||aks_answer==""){
+            alert("保存失败！请提交完整的题目");
+        }
+        else{
+            form=new FormData();
+            form.append("aks_question",aks_question);
+            form.append("aks_answer",aks_answer);
+            //根据ID保存信息
+            $.ajax({
+              url:"/teacher/saveAks",
+              type:"POST",
+              data:form,
+              processData : false,
+              contentType : false,
+              dataType:"json",
+              success:function(result){
+                if(result.code=="success"){
+                  alert("题目保存成功！");
+                }
+                else{
+                  alert("保存失败！");
+                }
+              }
+            });
+        }
+    }
 }
