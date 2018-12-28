@@ -79,29 +79,35 @@
       <button class="btn waves-effect waves-light col s2" type="button" id="addNewTeacher">添加新用户</button>
     </form>
     <form class="row">
-      <h5><i class="icon-address-book col s3"> 导入Excel文件</i></h5>
+      <h5 class="col s3"><i class="icon-address-book"> 导入Excel文件</i></h5>
       <input type="file" id="teacher_file" class="col s3">
       <div class="col s2"></div>
-      <button class="btn waves-effect waves-light col s2" type="button" id="addNewTeacherFile">导入文件</button>
+      <button class="btn waves-effect waves-light col s2" type="button" id="getTeacherFile">导入文件</button>
     </form>
     <br>
-		<div class="row">
-			<h4><i class="icon-users"> 系统中的教师信息</i></h4>
+		<div>
+      <div class="row">
+			 <h4><i class="icon-users col s8"> 系统中的教师信息</i></h4>
+       <button class="btn waves-effect waves-light col s2" type="button">
+           <a href="/template/teacher.xlsx">导出教师</a></button>
+      </div>
 			<div class="s12">
 			  <ul class="collection" id="allteacher">
-      		<p class="col s2">姓名</p>
-      		<p class="col s3">职工号</p>
-      		<p class="col s2">性别</p>
-      		<p class="col s3">学院</p>
-      		<p class="col s2">操作</p>
-      		<li>
+          <div class="row">
+      		  <p class="col s2">姓名</p>
+      		  <p class="col s3">职工号</p>
+      		  <p class="col s2">性别</p>
+      		  <p class="col s3">学院</p>
+      		  <p class="col s2">操作</p>
+          </div>
+      		<li class="row">
       			<p class="col s2">大哥哥</p>
       			<p class="col s3" name="teacher_id">201630600000</p>
       			<p class="col s2">男</p>
       			<p class="col s3">计算机科学与工程学院</p>
       			<p class="col s2"><a href="#teacher_detail" name="teacher_edit">修改</a></p>
       		</li>
-      		<li>
+      		<li class="row">
       			<p class="col s2">大哥哥</p>
       			<p class="col s3" name="teacher_id">201630603000</p>
       			<p class="col s2">男</p>
@@ -213,31 +219,36 @@
       <button class="btn waves-effect waves-light col s2" type="button" id="addNewStudentFile">导入文件</button>
     </form>
     <br>
-    <div class="row">
+    <div>
       <h4><i class="icon-users"> 学生信息</i></h4>
       <form class="s12">
-        <div class="col s4"></div>
-        <select class="browser-default col s3" id="grade">
-          <option value="" disabled selected>年级</option>
-          <option value="1">2015级</option>
-          <option value="2">2016级</option>
-          <option value="3">2017级</option>
-        </select>
-        <div class="col s0.5"></div>
-        <select class="browser-default col s3" id="class">
-          <option value="" disabled selected>班级</option>
-          <option value="1">计科1班</option>
-          <option value="2">计科2班</option>
-          <option value="3">网络工程</option>
-          <option value="4">信息安全</option>
-          <option value="5">计联计创</option>
-        </select>
-        <div class="col s0.5"></div>
-        <button class="btn waves-effect waves-light col s1" type="button" id="search_student">查询</button>
+        <div class="row">
+          <div class="col s3"></div>
+          <select class="browser-default col s3" id="grade">
+            <option value="" disabled selected>年级</option>
+            <option value="1">2015级</option>
+            <option value="2">2016级</option>
+            <option value="3">2017级</option>
+          </select>
+          <div class="col s0.5"></div>
+          <select class="browser-default col s3" id="class">
+            <option value="" disabled selected>班级</option>
+            <option value="1">计科1班</option>
+            <option value="2">计科2班</option>
+            <option value="3">网络工程</option>
+            <option value="4">信息安全</option>
+            <option value="5">计联计创</option>
+          </select>
+          <div class="col s0.5"></div>
+          <button class="btn waves-effect waves-light col s1" type="button" id="search_student">查询</button>
+          <div class="col s0.5"></div>
+          <a class="btn waves-effect waves-light col s1" type="button" id="getStudentFile">导出学生</a>
+        </div>
       </form>
       <br><br>
       <div class="s12">
       <ul class="collection" id="student_list">
+            <div class="row">
               <p class="col s2">姓名</p>
               <p class="col s2">学号</p>
               <p class="col s1">性别</p>
@@ -245,7 +256,8 @@
               <p class="col s2">班级</p>
               <p class="col s3">学院</p>
               <p class="col s1">操作</p>
-            <li>
+            </div>
+            <li class="row">
               <p class="col s2">大哥哥</p>
               <p class="col s2" name="student_id">201630600000</p>
               <p class="col s1">男</p>
@@ -254,7 +266,7 @@
               <p class="col s3">计算机科学与工程学院</p>
               <p class="col s1"><a href="#student_detail" name="student_edit">修改</a></p>
             </li>
-            <li>
+            <li class="row">
               <p class="col s2">大哥哥</p>
               <p class="col s2" name="student_id">201630650000</p>
               <p class="col s1">男</p>

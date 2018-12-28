@@ -302,13 +302,13 @@ document.getElementById("addNewTeacher").onclick=function(){
         success:function(result){
           if(result.code=="success"){
             alert("上传成功！");
-          }
-          //用主键职工号判断是否已存在
-          else if(result.code=="exist"){
-            alert("该职工号已存在！")
-          }
-          else{
-            alert("上传失败！");
+              $("#new_t_name").val("");
+              $("#new_t_sex").val("");
+              $("#new_t_id").val("");
+              $("#new_t_college").val("");
+          } else
+            {
+            alert(result.msg);
           }
         }
       });
@@ -481,10 +481,10 @@ function getStudentList(){
     dataType : "json",
     success:function(result){
       if (result){
-        var str='<p class="col s2">姓名</p><p class="col s2">学号</p><p class="col s1">性别</p><p class="col s1">年级</p><p class="col s2">班级</p><p class="col s3">学院</p><p class="col s1">操作</p>';
+        var str='<div class="row"></div><p class="col s2">姓名</p><p class="col s2">学号</p><p class="col s1">性别</p><p class="col s1">年级</p><p class="col s2">班级</p><p class="col s3">学院</p><p class="col s1">操作</p></div>';
         $("#student_list").empty();
         for(var i=0;i<result.length;i++){
-          str+='<li><p class="col s2">'+result[i].name+'</p><p class="col s2">'+result[i].id+'</p><p class="col s1">'+result[i].sex+'</p><p class="col s1">'+result[i].class_grade+'</p><p class="col s2">'+result[i].class_name+'</p><p class="col s3">'+result[i].college+'</p><p class="col s1"><a href="#student_detail" name="student_edit">修改</a></p></li>';
+          str+='<li class="row"><p class="col s2">'+result[i].name+'</p><p class="col s2">'+result[i].id+'</p><p class="col s1">'+result[i].sex+'</p><p class="col s1">'+result[i].class_grade+'</p><p class="col s2">'+result[i].class_name+'</p><p class="col s3">'+result[i].college+'</p><p class="col s1"><a href="#student_detail" name="student_edit">修改</a></p></li>';
         }
         $("#student_list").append(str);
       }
@@ -498,7 +498,7 @@ function getStudentList(){
 //教师,result返回一个教师姓名、职工号、性别、学院元组作为一个元组组成的数组
 //name、id、sex、college
 function getTeacherList(){
-  var str='<p class="col s2">姓名</p><p class="col s3">职工号</p><p class="col s2">性别</p><p class="col s3">学院</p><p class="col s2">操作</p>';
+  var str='<div class="row"><p class="col s2">姓名</p><p class="col s3">职工号</p><p class="col s2">性别</p><p class="col s3">学院</p><p class="col s2">操作</p></div>';
   $.ajax({
     url:"/acdemic/getTeacherList",
     type:"POST",
@@ -506,16 +506,11 @@ function getTeacherList(){
     contentType : false,
     dataType:"json",
     success:function(result){
-      if(result){
         $("#allteacher").empty();
         for(var i=0;i<result.length;i++){
-          str+='<li><p class="col s2">'+result[i].name+'</p><p class="col s3" name="teacher_id">'+result[i].id+'</p><p class="col s2">'+result[i].sex+'</p><p class="col s3">'+result[i].college+'</p><p class="col s2"><a href="#teacher_detail" name="teacher_edit">修改</a></p></li>';
-        }
+          str+='<li class="row"><p class="col s2">'+result[i].name+'</p><p class="col s3" name="teacher_id">'+result[i].id+'</p><p class="col s2">'+result[i].sex+'</p><p class="col s3">'+result[i].college+'</p><p class="col s2"><a href="#teacher_detail" name="teacher_edit">修改</a></p></li>';
+      }
         $("#allteacher").append(str);
-      }
-      else{
-        alert("列表载入失败！");
-      }
     }
   });
 }
