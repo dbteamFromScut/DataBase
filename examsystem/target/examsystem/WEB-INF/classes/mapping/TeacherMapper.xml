@@ -144,6 +144,14 @@
     select
     <include refid="Base_Column_List" />
     from teachers
+    <trim prefix="where" prefixOverrides="and|or">
+      <if test="teacherId!=null">and teacher_id=#{teacherId}</if>
+    </trim>
+  </select>
+  <select id="getCount" resultType="int" parameterType="java.lang.String">
+    select count(1)
+    from teachers
     where teacher_id=#{teacherId}
   </select>
+
 </mapper>

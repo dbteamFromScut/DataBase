@@ -20,7 +20,7 @@ public class AcdemicController {
     @Autowired
     private TeacherMapper teacherDao;
 
-    @RequestMapping("addNewTeacher")
+    @RequestMapping("/addNewTeacher")
     @ResponseBody
     public Object addTeacher(@RequestParam("name") String name,@RequestParam("sex") String sex,
                              @RequestParam("id") String id,@RequestParam("college") String college){

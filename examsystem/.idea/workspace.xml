@@ -1,67 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="examsystem:war exploded" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="d11a9bec-e1fd-45c4-a1b8-f37b08f25d02" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/controller/AcdemicController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/controller/JumpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/controller/JumpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/controller/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/controller/StudentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/controller/TeacherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/controller/TeacherController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/dao/DeansMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/dao/DeansMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/dao/OperationLogMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/dao/OperationLogMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/dao/PapersMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/dao/PapersMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/dao/QuestionsMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/dao/QuestionsMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/dao/SetQuestionsMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/dao/SetQuestionsMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/dao/StudentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/dao/StudentMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/dao/StudentPapersMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/dao/StudentPapersMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/dao/StudentQuestionDoneMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/dao/StudentTeacherMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/dao/StudentTeacherMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/dao/TeacherMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/dao/TeacherMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/model/Deans.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/model/Deans.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/model/OperationLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/model/OperationLog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/model/Papers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/model/Papers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/model/Questions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/model/Questions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/model/SetQuestionsKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/model/SetQuestionsKey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/model/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/model/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/model/StudentPapers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/model/StudentPapers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/model/StudentPapersKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/model/StudentPapersKey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/model/StudentQuestionDone.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/model/StudentTeacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/model/StudentTeacher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/model/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/model/Teacher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapping/StudentQuestionDoneMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/db/controller/AcdemicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/db/controller/AcdemicController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mapping/TeacherMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapping/TeacherMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/teacher.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/teacher.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/js/acdemic.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/acdemic.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/teacher.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/teacher.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/acdemic.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/acdemic.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/teacher.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/teacher.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/template/student.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/template/teacher.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/db/controller/AcdemicController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/db/dao/StudentQuestionDoneMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/db/dao/TeacherMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/db/dao/TeacherMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/db/model/StudentQuestionDone.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/generatorConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapping/StudentQuestionDoneMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/db/controller/AcdemicController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/db/controller/AcdemicController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/mapping/TeacherMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapping/TeacherMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/examsystem/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/examsystem/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/examsystem/WEB-INF/classes/com/db/controller/AcdemicController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/examsystem/WEB-INF/classes/com/db/dao/StudentQuestionDoneMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/examsystem/WEB-INF/classes/com/db/dao/TeacherMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/examsystem/WEB-INF/classes/com/db/dao/TeacherMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/examsystem/WEB-INF/classes/com/db/model/StudentQuestionDone.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/examsystem/WEB-INF/classes/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/examsystem/WEB-INF/classes/generatorConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/examsystem/WEB-INF/classes/mapping/StudentQuestionDoneMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/examsystem/WEB-INF/classes/com/db/controller/AcdemicController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/examsystem/WEB-INF/classes/com/db/controller/AcdemicController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/examsystem/WEB-INF/classes/mapping/TeacherMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/examsystem/WEB-INF/classes/mapping/TeacherMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/examsystem/css/teacher.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/examsystem/css/teacher.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/examsystem/js/acdemic.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/examsystem/js/acdemic.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/examsystem/js/teacher.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/examsystem/js/teacher.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/examsystem/jsp/acdemic.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/examsystem/jsp/acdemic.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/examsystem/jsp/teacher.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/examsystem/jsp/teacher.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/examsystem/template/student.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/examsystem/template/teacher.xlsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,16 +26,31 @@
     <session id="-1426480617">
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="2" />
+          <entry key="java" value="3" />
           <entry key="js" value="1" />
-          <entry key="xml" value="3" />
+          <entry key="xml" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="2" />
+          <entry key="JAVA" value="3" />
           <entry key="JavaScript" value="1" />
-          <entry key="XML" value="3" />
+          <entry key="XML" value="4" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="10" />
+          <entry key="js" value="50" />
+          <entry key="xml" value="79" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="10" />
+          <entry key="JavaScript" value="50" />
+          <entry key="SQL" value="4" />
+          <entry key="XML" value="75" />
         </counts>
       </usages-collector>
     </session>
@@ -91,8 +60,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/db/controller/AcdemicController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="363">
+              <caret line="63" column="9" lean-forward="true" selection-start-line="63" selection-start-column="9" selection-end-line="63" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/db/dao/TeacherMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mapping/TeacherMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="297">
+              <caret line="148" column="11" lean-forward="true" selection-start-line="148" selection-start-column="11" selection-end-line="148" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -100,17 +87,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/db/model/StudentQuestionDone.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
+            <state relative-caret-position="456">
               <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/js/acdemic.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="506" column="20" lean-forward="true" selection-start-line="506" selection-start-column="20" selection-end-line="506" selection-end-column="20" />
+            <state relative-caret-position="280">
+              <caret line="512" column="37" selection-start-line="512" selection-start-column="37" selection-end-line="512" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -126,6 +113,15 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/webapp/js/acdemic.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/db/controller/AcdemicController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapping/TeacherMapper.xml" />
+      </list>
+    </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
@@ -266,7 +262,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546022991473" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546023935005" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -460,7 +456,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1108000" />
+    <option name="totallyTimeSpent" value="1918000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -476,7 +472,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.48510638" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.22553192" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.30921987" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -485,7 +481,7 @@
       <window_info anchor="bottom" id="Spring" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="11" visible="true" weight="0.32907802" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32907802" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
       <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="14" weight="0.32907802" />
@@ -579,38 +575,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/db/dao/TeacherMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapping/TeacherMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="146" selection-start-line="146" selection-end-line="146" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/db/controller/AcdemicController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/db/model/StudentQuestionDone.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
+        <state relative-caret-position="456">
           <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/js/acdemic.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="506" column="20" lean-forward="true" selection-start-line="506" selection-start-column="20" selection-end-line="506" selection-end-column="20" />
+        <state relative-caret-position="280">
+          <caret line="512" column="37" selection-start-line="512" selection-start-column="37" selection-end-line="512" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/db/controller/AcdemicController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="63" column="9" lean-forward="true" selection-start-line="63" selection-start-column="9" selection-end-line="63" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/db/dao/TeacherMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapping/TeacherMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="148" column="11" lean-forward="true" selection-start-line="148" selection-start-column="11" selection-end-line="148" selection-end-column="11" />
         </state>
       </provider>
     </entry>
