@@ -23,7 +23,7 @@ body {
 }
 .question {
 	background-color: rgb(245,242,240);
-	margin-top: 70px;
+	margin-top: 60px;
 }
 .pan {
 	width: 100%;
@@ -49,4 +49,18 @@ h2 {
 	color: #a0a0a0;
 	margin: 50px 0;
 	padding: 0;
+}
+h3 {
+	text-align: center;
+	color: #a0a0a0;
+	margin: 100px 0;
+	font-size: 27px;
+}
+#cc111{
+	width:80%;
+	margin: 10px auto;
+	height: 100px;
+	display: inline-block;
+	background-color: #fff;
+	margin-left: 10%;
 }

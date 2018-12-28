@@ -3,7 +3,7 @@
 var jsons = new Array();
 jsons[0] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
-	"type" : "choice",
+	"type" : "选择",
 	"options0" : "A选项内容",
 	"options1" : "B选项内容",
 	"options2" : "C选项内容",
@@ -14,7 +14,7 @@ jsons[0] = {
 }
 jsons[1] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈2",
-	"type" : "choice",
+	"type" : "选择",
 	"options0" : "A",
 	"options1" : "B",
 	"options2" : "C",
@@ -24,15 +24,17 @@ jsons[1] = {
 }
 jsons[2] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈3",
-	"type" : "judge",
+	"type" : "选择",
 	"options0" : "正确",
 	"options1" : "错误",
+	"options2" : "错误",
+	"options3" : "错误",
 	"accuracy" : "80%",
 	"right-key" : "1",
 }
 jsons[3] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈4",
-	"type" : "choice",
+	"type" : "选择",
 	"options0" : "A",
 	"options1" : "B",
 	"options2" : "C",
@@ -42,7 +44,7 @@ jsons[3] = {
 }
 jsons[4] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈5",
-	"type" : "choice",
+	"type" : "选择",
 	"options0" : "A",
 	"options1" : "B",
 	"options2" : "C",
@@ -52,7 +54,7 @@ jsons[4] = {
 }
 jsons[5] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈6",
-	"type" : "choice",
+	"type" : "选择",
 	"options0" : "A",
 	"options1" : "B",
 	"options2" : "C",
@@ -62,7 +64,7 @@ jsons[5] = {
 }
 jsons[6] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
-	"type" : "choice",
+	"type" : "选择",
 	"options0" : "A",
 	"options1" : "B",
 	"options2" : "C",
@@ -72,7 +74,7 @@ jsons[6] = {
 }
 jsons[7] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
-	"type" : "choice",
+	"type" : "选择",
 	"options0" : "A",
 	"options1" : "B",
 	"options2" : "C",
@@ -82,7 +84,7 @@ jsons[7] = {
 }
 jsons[8] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
-	"type" : "choice",
+	"type" : "选择",
 	"options0" : "A",
 	"options1" : "B",
 	"options2" : "C",
@@ -92,7 +94,7 @@ jsons[8] = {
 }
 jsons[9] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
-	"type" : "choice",
+	"type" : "选择",
 	"options0" : "A",
 	"options1" : "B",
 	"options2" : "C",
@@ -102,7 +104,7 @@ jsons[9] = {
 }
 jsons[10] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
-	"type" : "choice",
+	"type" : "判断",
 	"options0" : "A",
 	"options1" : "B",
 	"options2" : "C",
@@ -112,7 +114,7 @@ jsons[10] = {
 }
 jsons[11] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
-	"type" : "choice",
+	"type" : "判断",
 	"options0" : "A",
 	"options1" : "B",
 	"options2" : "C",
@@ -122,7 +124,7 @@ jsons[11] = {
 }
 jsons[12] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
-	"type" : "choice",
+	"type" : "判断",
 	"options0" : "A",
 	"options1" : "B",
 	"options2" : "C",
@@ -132,7 +134,7 @@ jsons[12] = {
 }
 jsons[13] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
-	"type" : "choice",
+	"type" : "判断",
 	"options0" : "A",
 	"options1" : "B",
 	"options2" : "C",
@@ -142,7 +144,7 @@ jsons[13] = {
 }
 jsons[14] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
-	"type" : "choice",
+	"type" : "判断",
 	"options0" : "A",
 	"options1" : "B",
 	"options2" : "C",
@@ -150,14 +152,33 @@ jsons[14] = {
 	"accuracy" : "50%",
 	"right-key" : "1", 
 }
-
+var a = new Array();
+a[0] = "少时诵诗1_____";
+a[1] = "少时诵诗2_____";
+a[2] = "少时诵诗3_____";
+a[3] = "少时诵诗4_____";
+a[4] = "少时诵诗5_____";
+var b = new Array();
+b[0] = "你开心吗？";
+b[1] = "你开心吗？";
+b[2] = "你开心吗？";
+b[3] = "你开心吗？";
+b[4] = "你开心吗？";
 function datas (){
 	this.title = "编译原理测试";
-	this.jsons = [];
+	this.chooseAndTF = [];  //选择和判断题放一起
+	this.fill = [];
+	this.ask = [];
 }
 var data = new datas();
 for (var i = 0; i < jsons.length; i++) {
-	data.jsons[i] = jsons[i];
+	data.chooseAndTF[i] = jsons[i];
+}
+for (var i = 0; i < a.length; i++) {
+	data.fill[i] = a[i];
+}
+for (var i = 0; i < b.length; i++) {
+	data.ask[i] = b[i]
 }
 data.title = "编译原理测试1";
 
@@ -196,8 +217,9 @@ function initExam(data){
 	}else {
 		document.getElementById("title").innerHTML = data.title;
 	}
+	var cAndTf = document.createElement
 	var jsons = new Array();
-	jsons = data.jsons;
+	jsons = data.chooseAndTF;
 	for (var i = 0; i < jsons.length; i++) {
 		//创建试题最外的div
 		var dv = document.createElement("div");
@@ -213,7 +235,7 @@ function initExam(data){
 		ul.className = "collection";
 		ul.id = "u" + (i+1);
 		ul.setAttribute("index",i+1);
-		if(jsons[i]["type"] == "choice"){
+		if(jsons[i]["type"] == "选择"){
 			for (var j = 0; j < 4; j++) {
 				//创建每个选项li
 				var li = document.createElement("li");
@@ -256,6 +278,82 @@ function initExam(data){
 		document.getElementById("contain").appendChild(division);
 		document.getElementById("contain").appendChild(dv);
 	}
+
+
+	//填空题
+	var a = new Array();
+	a = data.fill;
+	var contain2 = document.getElementById("contain2");
+	for (var i = 0; i < a.length; i++) {
+		var dv = document.createElement("div");
+		dv.className = "question";
+		var p = document.createElement("p");
+		p.innerHTML = (i+16).toString() + "、" + a[i];
+		p.className = "pan";
+		dv.appendChild(p);
+		var divi = document.createElement("div");
+		divi.className = "divider";
+		dv.appendChild(divi);
+		var input = document.createElement("input");
+		input.placeholder = "请在这里作答";
+		input.id = i + 16;
+		input.style.backgroundColor = "#fff";
+		input.style.marginLeft = "20%";
+		input.style.width = "40%";
+		input.name = 'fill';
+
+		input.setAttribute("index",i+16);
+		input.onblur = changeBGC2;
+
+		// input.name = 
+		dv.appendChild(input);
+
+		//定位锚点
+		var division = document.createElement("div");
+		division.id = "d" + (i+16);
+		division.className = "divi";
+		contain2.appendChild(division);
+		contain2.appendChild(dv);
+	}
+
+	//问答题
+	var b = new Array();
+	b = data.ask;
+	var contain3 = document.getElementById('contain3');
+	for (var i = 0; i < b.length; i++) {
+		var dv = document.createElement("div");
+		dv.className = "question";
+		var p = document.createElement("p");
+		p.innerHTML = (i+21).toString() + "、" + b[i];
+		p.className = "pan";
+		dv.appendChild(p);
+		var divi = document.createElement("div");
+		divi.className = "divider";
+		dv.appendChild(divi);
+		var textarea = document.createElement("textarea");
+		textarea.placeholder = "请在这里作答";
+		textarea.id = i + 21;
+		textarea.style.backgroundColor = "#fff";
+		textarea.style.marginTop = "15px";
+		textarea.style.marginBottom = "25px";
+		textarea.style.width = "80%";
+		textarea.style.height = "160px";
+		textarea.style.marginLeft = "10%";
+		textarea.name = 'ask';
+
+		textarea.setAttribute("index",i+21);
+		textarea.onblur = changeBGC2;
+
+		// input.name = 
+		dv.appendChild(textarea);
+
+		//定位锚点
+		var division = document.createElement("div");
+		division.id = "d" + (i+21);
+		division.className = "divi";
+		contain3.appendChild(division);
+		contain3.appendChild(dv);
+	}
 }
 initExam(data);  //前端写代码时测试用，后台写完可删除，改为body标签调用onloadExam()
 
@@ -274,6 +372,15 @@ function changeBGC() {
 var lis = document.getElementsByClassName("collection-item");
 for (var i = 0; i < lis.length; i++) {
 	lis[i].onclick = changeBGC;
+}
+
+function changeBGC2(){
+	var id = "c" + this.getAttribute("index");
+	console.log(id);
+	if(this.value)
+		document.getElementById(id).style.backgroundColor = "orange";
+	else
+		document.getElementById(id).style.backgroundColor = "";
 }
 
 //点击右侧题目导航栏跳转至对应题目
@@ -315,29 +422,55 @@ setCursor();
 
 //获取作答答案
 function getAnswers(isTimeRunOut){
-	var answers = {};
+	var answers = new Object();
+	answers.chooseAndTF = [];
+	answers.fill = [];
+	answers.ask = [];
 	var num = 0;
+
+	//选择判断部分
+	for (var i = 0; i < 15; i++) {
+		answers.chooseAndTF[i] = 0;
+	}
 	var inputs = document.getElementsByTagName("input");
 	for (var i = 0; i < inputs.length; i++) {
 		if(inputs[i].checked == true){
 			var index = inputs[i].id;
 			if(index.length == 6)
-				answers[index.charAt(4)] = index.charAt(5);
+				answers.chooseAndTF[index.charAt(4)-1] = index.charAt(5);
 			else
-				answers[index.substring(4,6)] = index.charAt(6);
+				answers.chooseAndTF[index.substring(4,6)-1] = index.charAt(6);
 			//统计作答题目数量
 			num++;
 
 		}
 	}
+	//填空答案
+	var fills = document.getElementsByName("fill");
+	for (var i = 0; i < fills.length; i++) {
+		answers.fill[i] = fills[i].value;
+		if(fills[i].value)
+			num++;
+	}
+
+	//问答题
+	var asks = document.getElementsByName("ask");
+	for (var i = 0; i < asks.length; i++) {
+		answers.ask[i] = asks[i].value;
+		console.log(asks[i].value);
+		if(asks[i].value)
+			num++;
+	}
+	console.log(answers);
+	// console.log(num);
 	if(!isTimeRunOut){
-		if(num != 15)
+		if(num != 25)
 			return null;
 		else
 			return answers;
 	}else
 		return answers;
-	
+	// return answers;
 }
 
 //上传考试答案
@@ -346,14 +479,24 @@ function uploadAnswers(answers){
 		url : "/uploadAnswers",
 		type : "POST",
 		data : answers,
+		//上传的答案是一个object，如下
+		//answers = {
+		//	this.chooseAndTF = [];  数组长度为15，对应1-15题，数组元素赋值为0-4，0为未选，1-4代表ABCD
+		//	this.fill = [];	数组长度为5，元素是字符串，""代表未作答
+		//	this.ask = [];	数组长度为5，元素是字符串，""代表未作答
+		//}
         processData : false,
         contentType : false,
         success : function(result){
         	if (result == "success") {
         		alert("试卷提交成功，离开时请记得带齐所有物品。");
+				window.location.href = "/student";
         	}
         	else
         		alert("提交失败，请重新提交一次");
+        },
+        error : function() {
+        	alert("网络原因提交失败，请重新提交一次");
         }
 	});
 }
@@ -362,13 +505,10 @@ function uploadAnswers(answers){
 document.getElementById("submit").onclick = function() {
 	var answers = getAnswers(false);
 	if(!answers){
-		// console.log(answers);
-		// console.log("11");
 		alert("试卷还没写完，请写完后再提交！");
 		return false;
 	}
 	uploadAnswers(answers);
-	window.location.href = "./student.jsp";
 }
 
 
@@ -402,7 +542,7 @@ function CountDown() {
         seconds = Math.floor(maxtime % 60);
         var msg = minutes + "分" + seconds + "秒";
         document.getElementById("timer").innerHTML = msg;
-        if (maxtime == 5 * 60)
+        if (maxtime == 10 * 60)
         	warning();
         --maxtime;
     }else{

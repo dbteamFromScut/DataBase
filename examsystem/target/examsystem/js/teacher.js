@@ -155,8 +155,7 @@ function init(json) {
     // $("#college2").innerText= json.college;
     // $("#class2").innerText= json.class;
     document.getElementById("Temail").innerHTML = json.email;
-    document.getElementById("Tname").innerHTML = json.name;
-    document.getElementById("college2").innerHTML = json.college;
+    document.getElementById("college2").innerHTML = '<i class="icon-newspaper"></i>' +json.college;
     //导航栏加载名字
     document.getElementById("Tname1").innerHTML = json.name;
 }

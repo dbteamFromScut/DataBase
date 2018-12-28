@@ -308,6 +308,40 @@
   				</div>
     		</form>
 
+        <form class="card">
+
+          <div class="row" id="aksquestion">
+
+              <div class="input-field col s8">
+                  <textarea id="TorAks" class="materialize-textarea" placeholder="请输入填空/问答题题目"></textarea>
+              </div>
+			  <div>
+				  <h4>题目类型</h4>
+				  <input name="group2" type="radio" id="ask" style='margin-left: 20px;' />
+				  <label for="ask" id="ask_lab">问答</label>
+				  <input name="group2" type="radio" id="fill" />
+				  <label for="fill" id="fill_lab">填空</label>
+			  </div>
+
+              <div>
+                <input 
+					type="text" id="answer" placeholder="请在这里输入答案" />
+              </div>
+              <a class="waves-effect waves-light btn" href="#import_fill"><i class="icon-quill"></i>提交填空题</a>
+              <br><br>
+            </div>
+
+            <div id="import_fill" class="modal l6">
+            <div class="modal-content">
+                <h6>确定提交这道题</h6>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" id="fill_confirm">确定</a>
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">取消</a>
+            </div>
+          </div>
+        </form>
+
     		<form class="card">
     			<br><br>
     			<div class="col s12">
