@@ -36,7 +36,7 @@ document.getElementById("login").onclick = function(){
                     window.location.href="/admin";
                 }
 			}else {
- 					console.log(result.msg);
+ 					alert(result.msg);
 			}
 		}
 	});

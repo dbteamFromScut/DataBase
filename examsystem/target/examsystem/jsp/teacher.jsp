@@ -7,7 +7,6 @@
 	<link rel="stylesheet" href="../css/materialize.min.css">
 	<link rel="stylesheet" href="../css/icomoon.css">
 	<link rel="stylesheet" href="../css/teacher.css">
-	<script src="../js/teacher.js"></script>
 </head>
 <body onload="getInfo()">
 	<!-- 导航栏 -->
@@ -176,8 +175,10 @@
         	  	<div class="card">
         	    	<div class="card-content white-text amber darken-4">
         	      		<span class="card-title" name="examName">考试标题</span>
-        	      		<p>开始时间：</p><p name="startTime">2018-09-01 22:08</p>
-                    <p>结束时间：</p><p name="endTime">2018-09-01 22:08</p>
+                    <br/>
+        	      		<span>开始时间：</span><span name="startTime">2018-09-01 22:08</span>
+                    <br/>
+                    <span>结束时间：</span><span name="endTime">2018-09-01 22:08</span>
         	    	</div>
         	   		<div class="card-action blue-grey darken-1">
         	   		  	<a href="#" name="post_exam">发布考试</a>
@@ -187,19 +188,6 @@
         	</div>
 
 
-        	<div class="col s12 m6 l4 hoverable">
-              <div class="card">
-                <div class="card-content white-text amber darken-4">
-                    <span class="card-title" name="examName">考试标题</span>
-                    <p>开始时间：</p><p name="startTime">2018-09-01 22:08</p>
-                    <p>结束时间：</p><p name="endTime">2018-09-01 22:08</p>
-                </div>
-                <div class="card-action blue-grey darken-1">
-                    <a href="#" name="post_exam">发布考试</a>
-                    <a href="#" name="delete_exam">移除考试</a>
-                </div>
-            </div>
-          </div>
 
       	</div>
       	<a class="waves-effect waves-light btn"  id="CreateExam"><i class="icon-plus left"></i>创建新的考试</a>
@@ -215,8 +203,8 @@
               <div class="card">
                 <div class="card-content white-text amber darken-4">
                     <span class="card-title" name="examName_">考试标题</span>
-                    <p>开始时间：</p><p name="startTime_">2018-09-01 22:08</p>
-                    <p>结束时间：</p><p name="endTime_">2018-09-01 22:08</p>
+                    <span>开始时间：</span><span name="startTime_">2018-09-01 22:08</spans>
+                    <span>结束时间：</span><span name="endTime_">2018-09-01 22:08</span>
                 </div>
                 <div class="card-action blue-grey darken-1">
                     <a href="#" name="view_exam">查看考试</a>
@@ -229,8 +217,8 @@
               <div class="card">
                 <div class="card-content white-text amber darken-4">
                     <span class="card-title" name="examName_">考试标题</span>
-                    <p>开始时间：</p><p name="startTime_">2018-09-01 22:08</p>
-                    <p>结束时间：</p><p name="endTime_">2018-09-01 22:08</p>
+                    <span>开始时间：</span><span name="startTime_">2018-09-01 22:08</span>
+                    <span>结束时间：</span><span name="endTime_">2018-09-01 22:08</span>
                 </div>
                 <div class="card-action blue-grey darken-1">
                     <a href="#" name="view_exam">查看考试</a>
@@ -307,6 +295,43 @@
     				</div>
   				</div>
     		</form>
+
+  
+
+
+        <form class="card">
+
+          <div class="row" id="aksquestion">
+
+              <div class="input-field col s8">
+                  <textarea id="Aks" class="materialize-textarea" placeholder="请输入填空/问答题题目"></textarea>
+              </div>
+			  <div>
+				  <h4>题目类型</h4>
+				  <input name="group3" type="radio" id="ask" style='margin-left: 20px;' />
+				  <label for="ask" id="ask_lab">问答</label>
+				  <input name="group3" type="radio" id="fill" />
+				  <label for="fill" id="fill_lab">填空</label>
+			  </div>
+
+              <div>
+                <input 
+					type="text" id="answer" placeholder="请在这里输入答案" />
+              </div>
+              <a class="waves-effect waves-light btn" href="#import_fill"><i class="icon-quill"></i>提交题目</a>
+              <br><br>
+            </div>
+
+            <div id="import_fill" class="modal l6">
+            <div class="modal-content">
+                <h6>确定提交这道题</h6>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" id="fill_confirm">确定</a>
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">取消</a>
+            </div>
+          </div>
+        </form>
 
     		<form class="card">
     			<br><br>
@@ -527,11 +552,11 @@
             <input id="exam_name" type="email" class="validate">
             <label for="exam_name">请输入考试标题</label>
           </div>
-          <div class="col s2.5">
+          <div class="col s2">
               设置考试日期：
-              <div class="input-field inline"><input id="exam_date" type="date" min="2018-12-10 "></div>
+              <div class="input-field inline"><input id="exam_date" type="date" min="2018-12-10"></div>
           </div>
-          <div class="col s5.5">
+          <div class="col s5">
               设置考试时间：
               <div class="input-field inline"><input type="time" id="start_time"></div>
               至
@@ -676,8 +701,8 @@
 
 
 
-  	<script src="../js/jquery.min.js"></script>
+  <script src="../js/jquery.min.js"></script>
 	<script src="../js/materialize.min.js"></script>
-  	<script src="../js/teacher.js"></script>
+  <script src="../js/teacher.js"></script>
 </body>
 </html>

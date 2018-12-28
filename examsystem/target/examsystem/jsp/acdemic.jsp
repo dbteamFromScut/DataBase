@@ -13,7 +13,7 @@
 	<!-- 导航栏 -->
 	<nav>
     	<div class="nav-wrapper">
-    		<a href="#" class="brand-logo">Logo</a>
+    		<a href="/acdemic" class="brand-logo">在线考试系统</a>
     			<ul class="right">
     				<li><button class="button-collapse waves-effect tooltipped" data-position="right" data-delay="50" data-tooltip="菜单"  data-activates="slide-out" id="menu"><i class="icon-menu"></i></button></li>
     				<li><a  class="waves-effect" href="#">姓名</a></li>
