@@ -302,13 +302,9 @@ document.getElementById("addNewTeacher").onclick=function(){
         success:function(result){
           if(result.code=="success"){
             alert("上传成功！");
-          }
-          //用主键职工号判断是否已存在
-          else if(result.code=="exist"){
-            alert("该职工号已存在！")
-          }
-          else{
-            alert("上传失败！");
+          } else
+            {
+            alert(result.msg);
           }
         }
       });
