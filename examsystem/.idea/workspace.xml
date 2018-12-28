@@ -6,17 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4c73bcf-5635-4767-ba7a-61f8ce97c76d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/student.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/student.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/teacher.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/teacher.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/acdemic.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/acdemic.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/teacher.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/teacher.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/examsystem/js/student.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/examsystem/js/student.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/examsystem/js/teacher.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/examsystem/js/teacher.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/examsystem/jsp/acdemic.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/examsystem/jsp/acdemic.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/examsystem/jsp/teacher.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/examsystem/jsp/teacher.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="d4c73bcf-5635-4767-ba7a-61f8ce97c76d" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,7 +18,7 @@
     <session id="-1426480617">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="19" />
+          <entry key="project.closed" value="20" />
           <entry key="project.open.time.1" value="6" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="1" />
@@ -304,7 +294,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-10" />
     <option name="y" value="-10" />
     <option name="width" value="1940" />
@@ -637,7 +627,7 @@
     <option name="totallyTimeSpent" value="88738000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15694165" />
@@ -650,7 +640,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.1574468" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.1574468" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.30921987" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
