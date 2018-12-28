@@ -1,8 +1,8 @@
 function getAllList(){
   getStudentList();
   getTeacherList();
-  getQuestionList();
   getAllClass();
+  getTeacherClass();
 }
 
 function getAllClass(){
@@ -62,7 +62,7 @@ document.getElementById("logout").onclick = function(){
 var slide = new Array();
 var out = new Array();
 var cover = document.getElementById("cover");
-for (var i = 0; i < 2; i++) {
+for (var i = 0; i < 3; i++) {
   var id1 = "slide" + (i+1);
   var id2 = "oout" + (i+1);
   slide[i] = document.getElementById(id1);
@@ -465,14 +465,16 @@ document.getElementById("save_teacher").onclick=function(){
 //学生,根据年级和班级返回result为指定的学生(name、id、sex、class_grade、class_name、college)的数组
 //如果收到的classgrade、classname都=="",那么返回全部的学生，也要考虑其中之一为""的情况
 function getStudentList(){
-  var classgrade=$("#grade").text();
-  var classname=$("#class").text();
+  var classgrade=$("#grade option:selected").text();
+  var classname=$("#class option:selected").text();
   if(classgrade=="年级"){classgrade="";}
   if(classname=="班级"){classname="";}
   var form=new FormData();
   form.append("classgrade",classgrade);
   form.append("classname",classname);
-  $.ajax({
+    var str='<div class="row"><p class="col s2">姓名</p><p class="col s2">学号</p><p class="col s1">性别</p><p class="col s1">年级</p><p class="col s2">班级</p><p class="col s3">学院</p><p class="col s1">操作</p></div>';
+    console.log(form);
+    $.ajax({
     url:"/acdemic/getStudentList",
     type:"POST",
     data:form,
@@ -480,17 +482,12 @@ function getStudentList(){
     contentType : false,
     dataType : "json",
     success:function(result){
-      if (result){
-        var str='<p class="col s2">姓名</p><p class="col s2">学号</p><p class="col s1">性别</p><p class="col s1">年级</p><p class="col s2">班级</p><p class="col s3">学院</p><p class="col s1">操作</p>';
         $("#student_list").empty();
         for(var i=0;i<result.length;i++){
-          str+='<li><p class="col s2">'+result[i].name+'</p><p class="col s2">'+result[i].id+'</p><p class="col s1">'+result[i].sex+'</p><p class="col s1">'+result[i].class_grade+'</p><p class="col s2">'+result[i].class_name+'</p><p class="col s3">'+result[i].college+'</p><p class="col s1"><a href="#student_detail" name="student_edit">修改</a></p></li>';
+          str+='<li class="row"><p class="col s2">'+result[i].name+'</p><p class="col s2">'+result[i].id+'</p><p class="col s1">'+result[i].sex+'</p><p class="col s1">'+result[i].class_grade+'</p><p class="col s2">'+result[i].class_name+'</p><p class="col s3">'+result[i].college+'</p><p class="col s1"><a href="#student_detail" name="student_edit">修改</a></p></li>';
         }
         $("#student_list").append(str);
-      }
-      else{
-        alert("列表载入失败！");
-      }
+
     }
   });
 }
@@ -498,7 +495,7 @@ function getStudentList(){
 //教师,result返回一个教师姓名、职工号、性别、学院元组作为一个元组组成的数组
 //name、id、sex、college
 function getTeacherList(){
-  var str='<p class="col s2">姓名</p><p class="col s3">职工号</p><p class="col s2">性别</p><p class="col s3">学院</p><p class="col s2">操作</p>';
+  var str='<div class="row"><p class="col s2">姓名</p><p class="col s3">职工号</p><p class="col s2">性别</p><p class="col s3">学院</p><p class="col s2">操作</p></div>';
   $.ajax({
     url:"/acdemic/getTeacherList",
     type:"POST",
@@ -506,16 +503,11 @@ function getTeacherList(){
     contentType : false,
     dataType:"json",
     success:function(result){
-      if(result){
         $("#allteacher").empty();
         for(var i=0;i<result.length;i++){
-          str+='<li><p class="col s2">'+result[i].name+'</p><p class="col s3" name="teacher_id">'+result[i].id+'</p><p class="col s2">'+result[i].sex+'</p><p class="col s3">'+result[i].college+'</p><p class="col s2"><a href="#teacher_detail" name="teacher_edit">修改</a></p></li>';
+          str+='<li class="row"><p class="col s2">'+result[i].name+'</p><p class="col s3" name="teacher_id">'+result[i].id+'</p><p class="col s2">'+result[i].sex+'</p><p class="col s3">'+result[i].college+'</p><p class="col s2"><a href="#teacher_detail" name="teacher_edit">修改</a></p></li>';
         }
         $("#allteacher").append(str);
-      }
-      else{
-        alert("列表载入失败！");
-      }
     }
   });
 }
@@ -523,4 +515,97 @@ function getTeacherList(){
 
 document.getElementById("search_student").onclick=function(){
   getStudentList();
+}
+
+
+
+////dasdasdsad
+
+var jsons = [
+{
+  "name": "对对对对1",
+  "id" : "3123213123",
+  "college" : "计算机科学与工程学院",
+  "class" : "网络工程班",
+  "grade" : "2016级",
+},
+{
+  "name": "对对对对2",
+  "id" : "3123213123",
+  "college" : "计算机科学与工程学院",
+  "class" : "网络工程班",
+  "grade" : "2016级",
+},{
+  "name": "对对对对3",
+  "id" : "3123213123",
+  "college" : "计算机科学与工程学院",
+  "class" : "网络工程班",
+  "grade" : "2016级",
+},{
+  "name": "对对对对4",
+  "id" : "3123213123",
+  "college" : "计算机科学与工程学院",
+  "class" : "网络工程班",
+  "grade" : "2016级",
+},{
+  "name": "对对对对5",
+  "id" : "3123213123",
+  "college" : "计算机科学与工程学院",
+  "class" : "网络工程班",
+  "grade" : "2016级",
+},{
+  "name": "对对对对6",
+  "id" : "3123213123",
+  "college" : "计算机科学与工程学院",
+  "class" : "网络工程班",
+  "grade" : "2016级",
+},{
+  "name": "对对对对7",
+  "id" : "3123213123",
+  "college" : "计算机科学与工程学院",
+  "class" : "网络工程班",
+  "grade" : "2016级",
+},{
+  "name": "对对对对8",
+  "id" : "3123213123",
+  "college" : "计算机科学与工程学院",
+  "class" : "网络工程班",
+  "grade" : "2016级",
+}];
+function getTeacherClass(){
+  var ul = document.getElementById("teacher-class");
+  for (var i = 0; i < jsons.length; i++) {
+    var name = document.createElement("span");
+    name.innerHTML = jsons[i]["name"];
+    name.className = "td";
+
+    var id = document.createElement("span");
+    id.innerHTML = jsons[i]["id"];
+    id.className = "td";
+
+    var college = document.createElement("span");
+    college.innerHTML = jsons[i]["college"];
+    college.className = "td";
+
+    var class_name = document.createElement("span");
+    class_name.innerHTML = jsons[i]["class"];
+    class_name.className = "td";
+
+    var grade = document.createElement("span");
+    grade.innerHTML = jsons[i]["grade"];
+    grade.className = "td";
+
+    var button = document.createElement("button");
+    button.innerHTML = "移除";
+    button.className = "btn waves-effect waves-light";
+    var li = document.createElement("li");
+    li.className = "lis";
+    li.appendChild(name);
+    li.appendChild(id);
+    li.appendChild(college);
+    li.appendChild(class_name);
+    li.appendChild(grade);
+    li.appendChild(button);
+    ul.appendChild(li);
+  }
 }

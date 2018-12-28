@@ -37,7 +37,8 @@ body {
 }
 
 #oout1,
-#oout2 {
+#oout2,
+#oout3{
 	display: none;
 	margin: 100px auto;
 	background-color: rgb(245,242,240);
@@ -62,4 +63,8 @@ body {
 }
 #addNewStudent{
 	margin-top: 25px;
+}
+.th {
+	font-weight: 800;
+	margin: 10px 20px;
 }

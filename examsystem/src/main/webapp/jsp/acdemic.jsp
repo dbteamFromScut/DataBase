@@ -7,7 +7,6 @@
 	<link rel="stylesheet" href="../css/materialize.min.css">
 	<link rel="stylesheet" href="../css/icomoon.css">
 	<link rel="stylesheet" href="../css/acdemic.css">
-  <script src="../js/student.js"></script>
 </head>
 <body onload="getAllList()">
 	<!-- 导航栏 -->
@@ -53,6 +52,7 @@
    		<li><a class="subheader">其他选项</a></li>
    		<li><a id="slide1" class="waves-effect" href="#!" data-activates="slide-out2"><i class="icon-user"></i>管理教师信息</a></li>
    		<li><a id="slide2" class="waves-effect" href="#!"><i class="icon-users"></i>管理学生信息</a></li>
+      <li><a id="slide3" class="waves-effect" href="#!"><i class="icon-history"></i>管理老师班级</a></li>
   	</ul>
 
 
@@ -81,8 +81,7 @@
     <form class="row">
       <h5 class="col s3"><i class="icon-address-book"> 导入Excel文件</i></h5>
       <input type="file" id="teacher_file" class="col s3">
-      <div class="col s2"></div>
-      <button class="btn waves-effect waves-light col s2" type="button" id="getTeacherFile">导入文件</button>
+      <button class="btn waves-effect waves-light col s2" type="button" id="getTeacherFile" style="margin-left: 21%;">导入文件</button>
     </form>
     <br>
 		<div>
@@ -232,16 +231,16 @@
           <div class="col s0.5"></div>
           <select class="browser-default col s3" id="class">
             <option value="" disabled selected>班级</option>
-            <option value="1">计科1班</option>
+            <option value="1">计算机联合班</option>
             <option value="2">计科2班</option>
-            <option value="3">网络工程</option>
-            <option value="4">信息安全</option>
+            <option value="3">网络工程班</option>
+            <option value="4">信息安全班</option>
             <option value="5">计联计创</option>
           </select>
           <div class="col s0.5"></div>
           <button class="btn waves-effect waves-light col s1" type="button" id="search_student">查询</button>
           <div class="col s0.5"></div>
-          <a class="btn waves-effect waves-light col s1" type="button" id="getStudentFile">导出学生</a>
+          <a class="btn waves-effect waves-light col s1" id="getStudentFile">导出学生</a>
         </div>
       </form>
       <br><br>
@@ -273,7 +272,7 @@
               <p class="col s2">网络工程班</p>
               <p class="col s3">计算机科学与工程学院</p>
               <p class="col s1"><a href="#student_detail" name="student_edit">修改</a></p>
-            </li>                                 
+            </li>
         </ul>
       </div>
     </div>
@@ -349,9 +348,17 @@
   </div>
 
 
-
-
-
+  <div class="container" id="oout3" style="display: block;">
+    <ul id="teacher-class">
+      <li>
+        <span class="th">姓名</span>
+        <span class="th">职工号</span>
+        <span class="th">学院</span>
+        <span class="th">班级</span>
+        <span class="th">年级</span>
+      </li>
+    </ul>
+  </div>
 
 
 	<script src="../js/jquery.min.js"></script>
