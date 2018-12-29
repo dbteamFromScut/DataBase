@@ -37,9 +37,13 @@ body {
 }
 
 #oout1,
-#oout2,
-#oout3{
+#oout2{
 	display: none;
+	margin: 100px auto;
+	background-color: rgb(245,242,240);
+	padding: 30px;
+}
+#oout3{
 	margin: 100px auto;
 	background-color: rgb(245,242,240);
 	padding: 30px;
@@ -54,7 +58,8 @@ body {
 	margin-top: 25px;
 	margin-left: 50px;
 }
-#addNewTeacherFile{
+#addNewTeacherFile,
+#getTeacherFile{
 	margin-left: 50px;
 }
 #teacher_file,
@@ -64,7 +69,12 @@ body {
 #addNewStudent{
 	margin-top: 25px;
 }
-.th {
-	font-weight: 800;
-	margin: 10px 20px;
+#teacher_class_grade2,
+#teacher_class_class2{
+	margin-top: 15px;
+	margin-left: 10px;
+}
+#add_teacher_class{
+	margin-top: 20px;
+	margin-left: 10px;
 }

@@ -2,9 +2,8 @@ function getAllList(){
   getStudentList();
   getTeacherList();
   getAllClass();
-  getTeacherClass();
+  getTeacherClassList();
 }
-
 function getAllClass(){
   //result返回数据库中学生所在的所有年级class_grade和班级class_name
   var str1='<option value="" disabled selected>年级</option>';
@@ -19,12 +18,16 @@ function getAllClass(){
       if(result){
         $("#grade").empty();
         $("#class").empty();
+        $("#teacher_class_grade2").empty();
+        $("#teacher_class_class2").empty();
         for(var i=0;i<result.length;i++){
             str1+='<option>'+result[i].class_grade+'</option>';
             str2+='<option>'+result[i].class_name+'</option>';
         }
         $("#grade").append(str1);
         $("#class").append(str2);
+        $("#teacher_class_grade2").append(str1);
+        $("#teacher_class_class2").append(str2);
       }
     }
   });
@@ -61,7 +64,7 @@ document.getElementById("logout").onclick = function(){
 //控制左侧导航栏菜单的点击切换
 var slide = new Array();
 var out = new Array();
-var cover = document.getElementById("cover");
+
 for (var i = 0; i < 3; i++) {
   var id1 = "slide" + (i+1);
   var id2 = "oout" + (i+1);
@@ -75,7 +78,6 @@ for (var i = 0; i < slide.length; i++) {
       console.log(j);
       out[j].style.display = "none";
     }
-    cover.style.display = "none"; 
     out[this.getAttribute("index")].style.display = "block";
   }
 }
@@ -458,7 +460,78 @@ document.getElementById("save_teacher").onclick=function(){
   } 
 }
 
+/*-------------管理教师班级页面-----------------*/
+document.getElementById("add_teacher_class").onclick=function(){
+  if(confirm("确认添加吗?")==true){
+    var classgrade=$("#teacher_class_grade2 option:selected").text();
+    var classname=$("#teacher_class_class2 option:selected").text();
+    if(classgrade=="年级"){classgrade="";}
+    if(classname=="班级"){classname="";}
+    var teacher_id=$("#teacher_class_id2").val();
+    if(classgrade==""||classname==""||teacher_id==""){
+      alert("请填写完整!");
+    }else{
+      var form=new FormData();
+      form.append("teacher_id",teacher_id);
+      form.append("classgrade",classgrade);
+      form.append("classname",classname);
+      //保存教师id与班级的对应关系
+      $.ajax({
+        url:"/acdemic/saveTeacherClass",
+        type:"POST",
+        data:form,
+        processData : false,
+        contentType : false,
+        success:function(result){
+          if(result.code=="success"){
+            alert("添加成功！");
+          }
+          else{
+            alert("添加失败！");
+          }
+        }
+      });
+    }
+  }
+}
 
+//删除教师——班级的元组
+var teacher_class_delete=document.getElementsByName("teacher_class_delete");
+for (var i = 0; i < teacher_class_delete.length; i++) {
+  teacher_class_delete[i].setAttribute("index",i);
+}
+for(var i=0;i<teacher_class_delete.length;i++){
+  teacher_class_delete[i].onclick=function(){
+  if(confirm("确认删除吗?")==true){
+    var j=this.getAttribute("index");
+    var teacher_class_id=document.getElementsByName("teacher_class_id");
+    var teacher_class=document.getElementsByName("teacher_class");
+    var t_c_id=$(teacher_class_id[j]).text();
+    var t_c=$(teacher_class[j]).text();
+    var class_grade=t_c.split(" ")[0];
+    var class_name=t_c.split(" ")[1];
+    var form=new FormData();
+    form.append("teacher_id",t_c_id);
+    form.append("class_grade",class_grade);
+    form.append("class_name",class_name);
+    //根据上面三个属性删除教师-班级表中对应的元组
+    $.ajax({
+      url:"/acdemic/deleteTeacherClass",
+      type:"POST",
+      data:form,
+      processData : false,
+      contentType : false,
+      success:function(result){
+        if(result.code=="success"){
+          alert("删除成功！");
+        }else{
+          alert("删除失败！");
+        }
+      }
+    });
+    }
+  }
+}
 
 /*------------------列表更新函数-------------------------*/
 
@@ -512,6 +585,24 @@ function getTeacherList(){
   });
 }
 
+//
+function getTeacherClassList(){
+  var str='<div class="row"><div class="col s1"></div><p class="col s2">教师姓名</p><p class="col s2">教师职工号</p><p class="col s3">所教班级</p><p class="col s1">操作</p></div>';
+  $.ajax({
+    url:"/acdemic/getTeacherClassList",
+    type:"POST",
+    processData : false,
+    contentType : false,
+    dataType:"json",
+    success:function(result){
+      $("#teacher_class_list").empty();
+      for(var i=0;i<result.length;i++){
+        str+='<li class="row"><div class="col s1"></div><p class="col s2">'+result[i].teacher_name+'</p><p class="col s2" name="teacher_class_id">'+result[i].teacher_id+'</p><p class="col s3" name="teacher_class">'+result[i].class_grade+' '+result[i].class_name+'</p><p class="col s1"><a href="#!" name="teacher_class_delete">删除</a></p></li>';
+      }
+      $("#teacher_class_list").append(str);
+    }
+  });
+}
 
 document.getElementById("search_student").onclick=function(){
   getStudentList();
@@ -519,93 +610,3 @@ document.getElementById("search_student").onclick=function(){
 
 
 
-////dasdasdsad
-
-var jsons = [
-{
-  "name": "对对对对1",
-  "id" : "3123213123",
-  "college" : "计算机科学与工程学院",
-  "class" : "网络工程班",
-  "grade" : "2016级",
-},
-{
-  "name": "对对对对2",
-  "id" : "3123213123",
-  "college" : "计算机科学与工程学院",
-  "class" : "网络工程班",
-  "grade" : "2016级",
-},{
-  "name": "对对对对3",
-  "id" : "3123213123",
-  "college" : "计算机科学与工程学院",
-  "class" : "网络工程班",
-  "grade" : "2016级",
-},{
-  "name": "对对对对4",
-  "id" : "3123213123",
-  "college" : "计算机科学与工程学院",
-  "class" : "网络工程班",
-  "grade" : "2016级",
-},{
-  "name": "对对对对5",
-  "id" : "3123213123",
-  "college" : "计算机科学与工程学院",
-  "class" : "网络工程班",
-  "grade" : "2016级",
-},{
-  "name": "对对对对6",
-  "id" : "3123213123",
-  "college" : "计算机科学与工程学院",
-  "class" : "网络工程班",
-  "grade" : "2016级",
-},{
-  "name": "对对对对7",
-  "id" : "3123213123",
-  "college" : "计算机科学与工程学院",
-  "class" : "网络工程班",
-  "grade" : "2016级",
-},{
-  "name": "对对对对8",
-  "id" : "3123213123",
-  "college" : "计算机科学与工程学院",
-  "class" : "网络工程班",
-  "grade" : "2016级",
-}];
-function getTeacherClass(){
-  var ul = document.getElementById("teacher-class");
-  for (var i = 0; i < jsons.length; i++) {
-    var name = document.createElement("span");
-    name.innerHTML = jsons[i]["name"];
-    name.className = "td";
-
-    var id = document.createElement("span");
-    id.innerHTML = jsons[i]["id"];
-    id.className = "td";
-
-    var college = document.createElement("span");
-    college.innerHTML = jsons[i]["college"];
-    college.className = "td";
-
-    var class_name = document.createElement("span");
-    class_name.innerHTML = jsons[i]["class"];
-    class_name.className = "td";
-
-    var grade = document.createElement("span");
-    grade.innerHTML = jsons[i]["grade"];
-    grade.className = "td";
-
-    var button = document.createElement("button");
-    button.innerHTML = "移除";
-    button.className = "btn waves-effect waves-light";
-    var li = document.createElement("li");
-    li.className = "lis";
-    li.appendChild(name);
-    li.appendChild(id);
-    li.appendChild(college);
-    li.appendChild(class_name);
-    li.appendChild(grade);
-    li.appendChild(button);
-    ul.appendChild(li);
-  }
-}
