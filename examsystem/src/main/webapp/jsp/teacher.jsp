@@ -33,8 +33,6 @@
     	</div>
   	</div>
 
-  	
-
   	<!-- 修改密码 -->
     <div class="container" id="changePassword">
         <div class="row">
@@ -169,26 +167,9 @@
 			<h4><i class="icon-files-empty"></i> 已创建的考试</h4>
 
 
-        	<div class="col s12 m6 l4 hoverable">
-        	  	<div class="card">
-        	    	<div class="card-content white-text amber darken-4">
-        	      		<span class="card-title" name="examName">考试标题</span>
-                    <br/>
-        	      		<span>开始时间：</span><span name="startTime">2018-09-01 22:08</span>
-                    <br/>
-                    <span>结束时间：</span><span name="endTime">2018-09-01 22:08</span>
-        	    	</div>
-        	   		<div class="card-action blue-grey darken-1">
-        	   		  	<a href="#" name="post_exam">发布考试</a>
-        	   		  	<a href="#" name="delete_exam">移除考试</a>
-        	   		</div>
-        		</div>
-        	</div>
 
-
-
-      	</div>
-      	<a class="waves-effect waves-light btn"  id="CreateExam"><i class="icon-plus left"></i>创建新的考试</a>
+    </div>
+    <a class="waves-effect waves-light btn"  id="CreateExam"><i class="icon-plus left"></i>创建新的考试</a>
 	</div>
 
 	<!-- 已发布的考试 -->
@@ -197,7 +178,7 @@
 			<h4><i class="icon-files-empty"></i> 已发布的考试</h4>
 
 
-        	<div class="col s12 m6 l4 hoverable">
+        	<!-- <div class="col s12 m6 l4 hoverable">
               <div class="card">
                 <div class="card-content white-text amber darken-4">
                     <span class="card-title" name="examName_">考试标题</span>
@@ -222,7 +203,7 @@
                     <a href="#" name="view_exam">查看考试</a>
                 </div>
             </div>
-          </div>
+          </div> -->
           
       	</div>
 	</div>
@@ -385,33 +366,35 @@
       <br><br>
       <div class="s12">
         <ul class="collection" id="question_list2">
-          <p class="col s2">试题id</p>
-          <p class="col s5">题目</p>
-          <p class="col s2">章节</p>
-          <p class="col s2">题型</p>
-          <p class="col s1">操作</p>
-          <li>
+          <div class="row">
+            <p class="col s2">试题id</p>
+            <p class="col s5">题目</p>
+            <p class="col s2">章节</p>
+            <p class="col s2">题型</p>
+            <p class="col s1">操作</p>
+          </div>
+          <li class="row">
             <p class="col s2" name="question_id2">343</p>
             <p class="col s5">关于数据库，以下说法正确的是哪一个A.数据库...</p>
             <p class="col s2">第一章</p>
             <p class="col s2" name="type2">判断</p>
             <p class="col s1"><a href="#!" name="question_edit">修改</a></p>
           </li>
-          <li>
+          <li class="row">
             <p class="col s2" name="question_id2">423</p>
             <p class="col s5">关于数据库，以下说法正确的是哪一个A.数据库...</p>
             <p class="col s2">第一章</p>
-            <p class="col s2" name="type2">选择</p>
+            <p class="col s2" name="type2">问答</p>
             <p class="col s1"><a href="#!" name="question_edit">修改</a></p>
           </li> 
-          <li>
+          <li class="row">
             <p class="col s2" name="question_id2">3424</p>
             <p class="col s5">关于数据库，以下说法正确的是哪一个A.数据库...</p>
             <p class="col s2">第一章</p>
             <p class="col s2" name="type2">选择</p>
             <p class="col s1"><a href="#!" name="question_edit">修改</a></p>
           </li> 
-          <li>
+          <li class="row">
             <p class="col s2" name="question_id2">34</p>
             <p class="col s5">关于数据库，以下说法正确的是哪一个A.数据库...</p>
             <p class="col s2">第一章</p>
@@ -477,6 +460,24 @@
           </form>
       </div>      
     </div>
+    <!-- 修改问答题或填空题 -->
+    <div id="aks_detail2" class="modal bottom-sheet">
+      <div class="modal-content col s12">
+        <div class="row" id="aks_content2">
+          <h5 class="col s12 m2">题目ID：<h5 class="col s12 m10" id="aks_id2">1111</h5></h5>
+          <div class="input-field col s12">
+              <textarea id="aks_question2" class="materialize-textarea"></textarea> 
+          </div>
+          <div>
+            <h4>答案：</h4>
+            <input type="text" id="aks_answer2" placeholder="答案">
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-light btn" id="save_aks2">保存修改</a>
+          </div>
+        </div>
+      </div>      
+    </div>
   </div>
 
 
@@ -502,13 +503,15 @@
     		<br><br>
 			<div class="s12">
 			<ul class="collection" id="student_list">
+            <div class="row">
       				<p class="col s2">姓名</p>
       				<p class="col s2">学号</p>
       				<p class="col s1">性别</p>
       				<p class="col s3">学院</p>
       				<p class="col s2">年级</p>
       				<p class="col s2">班级</p>
-      			<li>
+            </div>
+      			<li class="row">
       				<p class="col s2">大哥哥</p>
       				<p class="col s2">201630600000</p>
       				<p class="col s1">男</p>
@@ -516,7 +519,7 @@
       				<p class="col s2">2016</p>
       				<p class="col s2">网络工程班</p>
       			</li>
-      			<li>
+      			<li class="row">
       				<p class="col s2">大哥哥</p>
       				<p class="col s2">201630600000</p>
       				<p class="col s1">男</p>
@@ -524,7 +527,7 @@
       				<p class="col s2">2016</p>
       				<p class="col s2">网络工程班</p>
       			</li>
-      			<li>
+      			<li class="row">
       				<p class="col s2">大哥哥</p>
       				<p class="col s2">201630600000</p>
       				<p class="col s1">男</p>
@@ -544,17 +547,17 @@
     <div class="row">
       <h4><i class="icon-pencil"> 创建考试</i></h4>
       <form class="s12 form1">
-        <div class="col s12">
+        <div class="row">
           <div class="col s1"></div>
           <div class="input-field inline col s3">
             <input id="exam_name" type="email" class="validate">
             <label for="exam_name">请输入考试标题</label>
           </div>
-          <div class="col s2">
+          <div class="col s4">
               设置考试日期：
               <div class="input-field inline"><input id="exam_date" type="date" min="2018-12-10"></div>
           </div>
-          <div class="col s5">
+          <div class="col s4">
               设置考试时间：
               <div class="input-field inline"><input type="time" id="start_time"></div>
               至
@@ -574,23 +577,32 @@
           <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
           <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
           <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
-          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
-          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
-          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
-          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
-          <div class="white-text col s2 stone" name="c_selected" style="margin: 10px 15px;">未选</div>
           <br/><br/><br/><br/>
         </div>        
         <h4 style="text-align: center;">判断题</h4>
         <div class="col s12">
-          
-          <div class="white-text col s2 stone stone1" name="tf_selected" style="margin: 10px 15px;">未选</div> 
-          <div class="white-text col s2 stone stone1" name="tf_selected" style="margin: 10px 15px;">未选</div>
-          <div class="white-text col s2 stone stone1" name="tf_selected" style="margin: 10px 15px;">未选</div>
-          <div class="white-text col s2 stone stone1" name="tf_selected" style="margin: 10px 15px;">未选</div>
-          <div class="white-text col s2 stone stone1" name="tf_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone" name="tf_selected" style="margin: 10px 15px;">未选</div> 
+          <div class="white-text col s2 stone" name="tf_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone" name="tf_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone" name="tf_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone" name="tf_selected" style="margin: 10px 15px;">未选</div>
         </div>
-
+        <h4 style="text-align: center;">填空题</h4>
+        <div class="col s12">
+          <div class="white-text col s2 stone stone1" name="fill_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone stone1" name="fill_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone stone1" name="fill_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone stone1" name="fill_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone stone1" name="fill_selected" style="margin: 10px 15px;">未选</div>
+        </div>
+        <h4 style="text-align: center;">问答题</h4>
+        <div class="col s12">
+          <div class="white-text col s2 stone stone1" name="ask_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone stone1" name="ask_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone stone1" name="ask_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone stone1" name="ask_selected" style="margin: 10px 15px;">未选</div>
+          <div class="white-text col s2 stone stone1" name="ask_selected" style="margin: 10px 15px;">未选</div>
+        </div>
         <div class="aa col s12">
           <div class="col s1"></div>
           <button class="btn cyan darken-2 col s2 push-s2" type="button" id="empty_selected">清空</button>
@@ -631,12 +643,14 @@
       <div class=""></div>
       <div class=" col s12">
         <ul class="collection" id="question_list">
-          <p class="col s2">试题id</p>
-          <p class="col s5">题目</p>
-          <p class="col s1">章节</p>
-          <p class="col s2">题型</p>
-          <p class="col s2">操作</p>
-          <li>
+          <div class="row">
+            <p class="col s2">试题id</p>
+            <p class="col s5">题目</p>
+            <p class="col s1">章节</p>
+            <p class="col s2">题型</p>
+            <p class="col s2">操作</p>
+          </div>
+          <li class="row">
             <p class="col s2" name="question_id">343</p>
             <p class="col s5">关于数据库，以下说法正确的是哪一个A.数据库...</p>
             <p class="col s1">第一章</p>
@@ -644,19 +658,27 @@
             <p class="col s1"><a href="#!" name="detail">详情</a></p>
             <p class="col s1"><a href="#!" name="addtolist">添加</a></p>
           </li>
-          <li>
+          <li class="row">
             <p class="col s2" name="question_id">34233</p>
             <p class="col s5">关于数据库，以下说法正确的是哪一个A.数据库...</p>
             <p class="col s1">第一章</p>
-            <p class="col s2" name="type">判断</p>
+            <p class="col s2" name="type">问答</p>
             <p class="col s1"><a href="#!" name="detail">详情</a></p>
             <p class="col s1"><a href="#!" name="addtolist">添加</a></p>
           </li>
-          <li>
+          <li class="row">
             <p class="col s2" name="question_id">423</p>
             <p class="col s5">关于数据库，以下说法正确的是哪一个A.数据库...</p>
             <p class="col s1">第一章</p>
             <p class="col s2" name="type">选择</p>
+            <p class="col s1"><a href="#!" name="detail">详情</a></p>
+            <p class="col s1"><a href="#!" name="addtolist">添加</a></p>
+          </li> 
+          <li class="row">
+            <p class="col s2" name="question_id">423</p>
+            <p class="col s5">关于数据库，以下说法正确的是哪一个A.数据库...</p>
+            <p class="col s1">第一章</p>
+            <p class="col s2" name="type">填空</p>
             <p class="col s1"><a href="#!" name="detail">详情</a></p>
             <p class="col s1"><a href="#!" name="addtolist">添加</a></p>
           </li> 
@@ -680,7 +702,7 @@
         </div>
       </div>      
     </div>
-    <!-- 修改判断题 -->
+    <!-- 查看判断题 -->
     <div id="tf_detail" class="modal bottom-sheet">
       <div class="modal-content col s12">
         <div class="row" id="TF_content">
@@ -695,8 +717,57 @@
         </div>
       </div>      
     </div>
+    <!-- 查看问答题或填空题 -->
+     <div id="aks_detail" class="modal bottom-sheet">
+      <div class="modal-content col s12">
+        <div class="row" id="aks_content">
+          <h5 class="col s12 m2">题目ID：<h5 class="col s12 m10" id="aks_id">1111</h5></h5>
+          <div class="input-field col s12">
+              <textarea disabled id="aks_question" class="materialize-textarea"></textarea> 
+          </div>
+          <div>
+            <h4>答案：</h4>
+            <p id="aks_answer"></p>
+          </div>
+        </div>
+      </div>      
+    </div>
   </div>
 
+
+  <!-- 查看试卷已考的学生 -->
+  <div class="container" id="Exam_Student">
+    <h4><i class="icon-pencil2"> 已提交试卷的学生</i></h4>
+    <br><br>
+    <form>
+      <div class="row">
+        <p class="col s2">姓名</p>
+        <p class="col s3">学号</p>
+        <p class="col s2">年级</p>
+        <p class="col s2">班级</p>
+        <p class="col s2">操作</p>
+        <p class="col s1">成绩</p>
+      </div>
+      <ul id="Exam_Student_List">
+        <li class="row">
+          <p class="col s2">张三</p>
+          <p class="col s3" name="exam_student_id">201630600200</p>
+          <p class="col s2">年级</p>
+          <p class="col s2">网络工程</p>
+          <p class="col s2"><a href="#!" name="check_exam">批改</a></p>
+          <p class="col s1">84</p>
+        </li>
+        <li class="row">
+          <p class="col s2">李四</p>
+          <p class="col s3" name="exam_student_id">201630602130</p>
+          <p class="col s2">年级</p>
+          <p class="col s2">网络工程</p>
+          <p class="col s2" name="check_exam">已批改</p>
+          <p class="col s1">84</p>
+        </li>
+      </ul>
+    </form>
+  </div>
 
 
   <script src="../js/jquery.min.js"></script>

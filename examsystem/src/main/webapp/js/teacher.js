@@ -49,6 +49,7 @@ for (var i = 0; i < slide.length; i++) {
             out[j].style.display = "none";
         } 
         document.getElementById("AddExam").style.display="none";
+        document.getElementById("Exam_Student").style.display="none";
 		out[this.getAttribute("index")].style.display = "block";
 	}
 }
@@ -82,6 +83,7 @@ document.getElementById('change').onclick = function(){
     }
     cover.style.display = "none";
     document.getElementById("AddExam").style.display="none";
+    document.getElementById("Exam_Student").style.display="none";
     out[6].style.display = "block";
 }
 
@@ -758,6 +760,7 @@ function initExamList(ExamList) {
         var dv1 = document.createElement("div");
         dv1.className = "col s12 m6 l4 hoverable";
         dv1.setAttribute("examId",ExamList[i]["id"]);
+        dv1.setAttribute("name","unsentExam");
         var dv2 = document.createElement("div");
         dv2.className = "card";
         dv1.appendChild(dv2);
@@ -802,31 +805,42 @@ function initExamList(ExamList) {
         a2.href = "#";
 
         if(ExamList[i]["Type"] == "done"){
-            a.innerHTML = "查看考试";
+            a.innerHTML = "批改试卷";
             dv3.className = "card-content white-text amber darken-4";
-            var grade = document.createElement("span"); 
-            grade.innerHTML = "成绩：";
-            var grade2 = document.createElement("span");
-            grade2.innerHTML = ExamList[i]["grade"];
-            dv3.appendChild(grade);
-            dv3.appendChild(grade2);
             a.onclick = function() {
                 var id = dv1.getAttribute("examId");
                 console.log(id);
                 $.ajax({
-                    url : "/student/beginExam",
+                    url : "/student/seeExam",
                     //开始考试，需计时
                     type : "POST",
                     data : {"examId" : id },
                     processData : false,
                     contentType : false,
                     dataType : "json",
-                    success : function() {
-                        //成功则在新页面加载试卷。需要根据试卷ID返回试卷信息给考试页面。
-                        window.location.href="/exam-detail";
+                    success : function(result) {
+                        //成功则加载已考试的学生列表,result返回的是
+                        //对应试卷id已考的学生[姓名，学号，班级，是否批阅，成绩(没有则返回"")]的数组
+                        if(result){
+                            document.getElementById("oout3").style.display="none";
+                            var str='<div class="row"><p class="col s2">姓名</p><p class="col s3">学号</p><p class="col s2">年级</p><p class="col s2">班级</p><p class="col s2">操作</p><p class="col s1">成绩</p></div>';
+                            $("#Exam_Student_List").empty();
+                            for(var i=0;i<result.length;i++){
+                                if(result[i].score==""){
+                                str+='<li class="row"><p class="col s2">'+result[i].name+'</p><p class="col s3">'+result[i].id+'</p><p class="col s2">'+result[i].grade+'</p><p class="col s2">'+result[i].classname+'</p><p class="col s2"><a href="#!" name="check_exam">批改</a></p><p class="col s1"></p></li>';
+                                }else{
+                                    str+='<li class="row"><p class="col s2">'+result[i].name+'</p><p class="col s3">'+result[i].id+'</p><p class="col s2">'+result[i].grade+'</p><p class="col s2">'+result[i].classname+'</p><p class="col s2">已批改</p><p class="col s1">'+result[i].score+'</p></li>';
+                                }
+                            }
+                            $("#Exam_Student_List").append(str);
+                            $("#Exam_Student").fadeIn(1000);
+                        }
+                        else{
+                            alert("加载失败！");
+                        }
                     },
                     error : function() {
-                        alert("进入失败，请重试");
+                        alert("加载失败，请重试");
                     }
                 });
                 // window.open("./exam-detail.html");
@@ -841,21 +855,39 @@ function initExamList(ExamList) {
             a.onclick = function() {
                 var id = dv1.getAttribute("examId");
                 $.ajax({
-                    url : "/teacher/getExam",
+                    url : "/teacher/sendExam",
                     type : "POST",
                     data : {"examId" : id },
                     processData : false,
                     contentType : false,
                     dataType : "json",
+                    //发布对应id的试卷
                     success : function() {
-                        //成功则在新页面加载试卷。需要根据试卷ID返回试卷信息给考试页面。
-                        window.open("/exam");
+                        alert("发布成功！");
                     },
                     error : function() {
-                        alert("进入失败，请重试");
+                        alert("发布失败，请重试");
                     }
                 });
-                window.open("./exam.html");
+            }
+            a2.onclick=function(){
+                var id = dv1.getAttribute("examId");
+                $.ajax({
+                    url : "/teacher/removeExam",
+                    type : "POST",
+                    data : {"examId" : id },
+                    processData : false,
+                    contentType : false,
+                    dataType : "json",
+                    //删除对应id的试卷
+                    success : function() {
+                        alert("移除成功！");
+                        location.reload();
+                    },
+                    error : function() {
+                        alert("移除失败，请重试");
+                    }
+                });
             }
         }
     }
