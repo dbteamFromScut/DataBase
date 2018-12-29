@@ -167,6 +167,31 @@
 			<h4><i class="icon-files-empty"></i> 已创建的考试</h4>
 
 
+      <div id="select_class" class="modal l6">
+        <div class="modal-content">
+          <div class="row">
+            <p class="col s2">试卷id:</p>
+            <p class="col s10" id="exam_id">2312</p>
+          </div>
+            <h6>请选择班级</h6>
+            <form class="row">
+              <select class="browser-default col s5" id="exam_grade">
+                <option disabled selected>年级</option>
+                
+              </select>
+              <div class="col s0.5"></div>
+              <select class="browser-default col s5" id="exam_class">
+                <option disabled selected>班级</option>
+                
+              </select>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" id="send_exam">发布</a>
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">取消</a>
+        </div>
+      </div>
+
 
     </div>
     <a class="waves-effect waves-light btn"  id="CreateExam"><i class="icon-plus left"></i>创建新的考试</a>

@@ -207,12 +207,16 @@ function getClasses(){
             if (result){
                 $("#grade").empty();
                 $("#class").empty();
+                $("#exam_grade").empty();
+                $("#exam_class").empty();
                 for(var i=0;i<result.length;i++){
                     str1+='<option>'+result[i].class_grade+'</option>';
                     str2+='<option>'+result[i].class_name+'</option>';
                 }
                 $("#grade").append(str1);
                 $("#class").append(str2);
+                $("#exam_grade").append(str1);
+                $("#exam_class").append(str2);
             }
         }
     });
@@ -847,6 +851,7 @@ function initExamList(ExamList) {
             }
             containerDone.appendChild(dv1);
         }else if(ExamList[i]["Type"] == "do"){
+            a.href="#select_class";
             a.innerHTML = "发布考试";
             dv4.appendChild(a2);
             a2.innerHTML = "移除考试";
@@ -854,21 +859,7 @@ function initExamList(ExamList) {
             containerDo.appendChild(dv1);
             a.onclick = function() {
                 var id = dv1.getAttribute("examId");
-                $.ajax({
-                    url : "/teacher/sendExam",
-                    type : "POST",
-                    data : {"examId" : id },
-                    processData : false,
-                    contentType : false,
-                    dataType : "json",
-                    //发布对应id的试卷
-                    success : function() {
-                        alert("发布成功！");
-                    },
-                    error : function() {
-                        alert("发布失败，请重试");
-                    }
-                });
+                $("#exam_id").text(id);
             }
             a2.onclick=function(){
                 var id = dv1.getAttribute("examId");
@@ -889,6 +880,38 @@ function initExamList(ExamList) {
                     }
                 });
             }
+        }
+    }
+}
+
+//发布考试
+document.getElementById("send_exam").onclick=function(){
+    if(confirm("确定发布试卷吗？")==true){
+        var exam_id=$("#exam_id").text();
+        var exam_grade=$("#exam_grade option:selected").val();
+        var exam_class=$("#exam_class option:selected").val();
+        if(exam_grade=="年级"||exam_class=="班级"){
+            alert("发布失败,请选择完整信息!");
+        }else{
+            var form=new FormData();
+            form.append("exam_id",exam_id);
+            form.append("exam_grade",exam_grade);
+            form.append("exam_class",exam_class);
+            //将试卷发布到对应班级
+            $.ajax({
+                url : "/teacher/sendExam",
+                type : "POST",
+                data : form,
+                processData : false,
+                contentType : false,
+                dataType : "json",
+                success : function() {
+                    alert("发布成功！");
+                },
+                error : function() {
+                    alert("发布失败，请重试");
+                }
+            });
         }
     }
 }
@@ -917,6 +940,8 @@ function getExamList(){
 function getQuestionList(){
   var section=$("#section option:selected").val();
   var question_type=$("#question_type option:selected").val();
+  if(section=="章节"){section=="";}
+  if(question_type=="题型"){question_type=="";}
   var form=new FormData();
   form.append("section",section);
   form.append("question_type",question_type);
