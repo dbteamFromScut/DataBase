@@ -21,8 +21,13 @@ function getAllClass(){
         $("#teacher_class_grade2").empty();
         $("#teacher_class_class2").empty();
         for(var i=0;i<result.length;i++){
-            str1+='<option>'+result[i].class_grade+'</option>';
-            str2+='<option>'+result[i].class_name+'</option>';
+          if (result[i].type=="grade") {
+              str1+='<option>'+result[i].value+'</option>';
+          }
+          if (result[i].type=="class")
+          {
+              str2+='<option>'+result[i].value+'</option>';
+          }
         }
         $("#grade").append(str1);
         $("#class").append(str2);
@@ -103,7 +108,7 @@ document.getElementById("addNewStudent").onclick=function(){
       form.append("id",id);
       form.append("college",college);
       form.append("grade",grade);
-      form.append("s_class",s_class);
+      form.append("class",s_class);
       //由信息向数据库学生表插入一个新元组
       $.ajax({
         url:"/acdemic/addNewStudent",
@@ -114,6 +119,13 @@ document.getElementById("addNewStudent").onclick=function(){
         success:function(result){
           if(result.code=="success"){
             alert("上传成功！");
+            getStudentList();
+            $("#new_s_name").val("");
+            $("#new_s_sex").val("");
+            $("#new_s_id").val("");
+            $("#new_s_college").val("");
+            $("#new_s_grade").val("");
+             $("#new_s_class").val("");
           }
           //用主键职工号判断是否已存在
           else if(result.code=="exist"){
@@ -127,82 +139,59 @@ document.getElementById("addNewStudent").onclick=function(){
     }
   }
 }
+
+
 //导入学生的excel文档
 document.getElementById("addNewStudentFile").onclick=function(){
-  var filename=$("#student_file").val();
-  var point=filename.lastIndexOf(".");
-  var filetype=filename.substr(point);
-  if(filename==""){
-    alert("未选择文件");
-    return;
-  }
-  else if(filetype!=".xlsx"&&filetype!=".xls"){
-    alert("请选择excel文件");
-    return;
-  }
-  else{
-    var form=new FormData();
-    form.append("filename",filename);
-    form.append("file",$("#student_file"[0].files[0]));
-    $.ajax({
-      url:"/acdemic/addNewStudentFile",
-      type:'POST',
-      data:form,
-      processData : false,
-      contentType : false,
-      beforeSend:function(){
-          console.log("正在上传，请稍候");
-      },
-      success:function(result){
-        if (result.code=="success"){
-            alert("上传成功！");
-          }else {
-              alert("上传失败！");
+      $.ajax({
+          url:"/acdemic/addNewStudentFile",
+          type:'POST',
+          data:new FormData($("#student_file")[0]),
+          processData : false,
+          contentType : false,
+          beforeSend:function(){
+              console.log("正在上传，请稍候");
+          },
+          success:function(result){
+              if (result.code=="success"){
+                  alert(result.msg);
+              }else {
+                  alert(result.msg);
+              }
           }
-      }
+      });
+
+}
+function getStudentInfo(id) {
+    var form=new FormData();
+    form.append("id",id);
+    $.ajax({
+        url:"/acdemic/studentinfo",
+        type:"POST",
+        data:form,
+        processData : false,
+        contentType : false,
+        dataType:"json",
+        success:function(data){
+            if(data.code=="success"){
+                $("#s_name").val(data.name);
+                $("#s_id").val(data.id);
+                $("#s_sex").val(data.sex);
+                $("#s_college").val(data.college);
+                $("#s_grade").val(data.grade);
+                $("#s_class").val(data.class);
+                $("#s_address").val(data.address);
+                $("#s_birthday").val(data.birthday);
+                $("#s_phone").val(data.phone);
+                $("#s_email").val(data.email);
+            }
+            else{
+                alert("查询详细信息失败！");//一般不会出现
+            }
+        }
     });
-  }
 }
 
-//弹出对应id的学生信息修改框，ajax根据id获取除id外的其他信息
-var student_edit=document.getElementsByName("student_edit");
-for (var i = 0; i < student_edit.length; i++) {
-  student_edit[i].setAttribute("index",i);
-}
-for(var i=0;i<student_edit.length;i++){
-  student_edit[i].onclick=function(){
-    var j=this.getAttribute("index");
-    var student_id=document.getElementsByName("student_id");
-    var s_id=$(student_id[j]).text();
-    $("#s_id").val(s_id);
-    var form=new FormData();
-    form.append("id",s_id);
-    $.ajax({
-      url:"/acdemic/studentinfo",
-      type:"POST",
-      data:form,
-      processData : false,
-      contentType : false,
-      dataType:"json",
-      success:function(data){
-        if(data){
-          $("#s_name").val(data.name);
-          $("#s_sex").val(data.sex);
-          $("#s_college").val(data.college);
-          $("#s_grade").val(data.grade);
-          $("#s_class").val(data.class);
-          $("#s_address").val(data.address);
-          $("#s_birthday").val(data.birthday);
-          $("#s_phone").val(data.phone);
-          $("#s_email").val(data.email);
-        }
-        else{
-          alert("查询详细信息失败！");//一般不会出现
-        }
-      }
-    });
-  }
-}
 //初始化学生的密码
 document.getElementById("default_student").onclick=function(){
   var name=$("#s_name").val();
@@ -210,7 +199,7 @@ document.getElementById("default_student").onclick=function(){
     var id=$("#s_id").val();
     var form=new FormData();
     form.append("id",id);
-    //根据id初始化对应学生的密码123456
+    //根据id初始化对应学生的密码111111
     $.ajax({
         url:"/acdemic/defaultStudent",
         type:"POST",
@@ -266,6 +255,7 @@ document.getElementById("save_student").onclick=function(){
         success:function(result){
           if(result.code=="success"){
             alert("信息保存成功！");
+            getStudentList();
           }
           else{
             alert("保存失败！");
@@ -304,6 +294,11 @@ document.getElementById("addNewTeacher").onclick=function(){
         success:function(result){
           if(result.code=="success"){
             alert("上传成功！");
+            getTeacherList();
+            $("#new_t_name").val("");
+            $("#new_t_sex").val("");
+            $("#new_t_id").val("");
+            $("#new_t_college").val("");
           }
           //用主键职工号判断是否已存在
           else if(result.code=="exist"){
@@ -319,25 +314,11 @@ document.getElementById("addNewTeacher").onclick=function(){
 }
 //导入教师信息excel文档
 document.getElementById("addNewTeacherFile").onclick=function(){
-  var filename=$("#teacher_file").val();
-  var point=filename.lastIndexOf(".");
-  var filetype=filename.substr(point);
-  if(filename==""){
-    alert("未选择文件");
-    return;
-  }
-  else if(filetype!=".xlsx"&&filetype!=".xls"){
-    alert("请选择excel文件");
-    return;
-  }
-  else{
-    var form=new FormData();
-    form.append("filename",filename);
-    form.append("file",$("#teacher_file"[0].files[0]));
+
     $.ajax({
       url:"/acdemic/addNewTeacherFile",
       type:'POST',
-      data:form,
+      data:new FormData($("#teacher_file")[0]),
       processData : false,
       contentType : false,
       beforeSend:function(){
@@ -345,52 +326,28 @@ document.getElementById("addNewTeacherFile").onclick=function(){
       },
       success:function(result){
         if (result.code=="success"){
-            alert("上传成功！");
+            alert(result.msg);
           }else {
-              alert("上传失败！");
+              alert(result.msg);
           }
       }
     });
-  }
+
+}
+function exportTeacher() {
+
+    $.ajax({
+        url:"/acdemic/exportTeacher",
+        type:'POST',
+        processData : false,
+        contentType : false,
+        success:function(result){
+
+        }
+    });
 }
 
-//弹出对应id的教师信息修改框，ajax根据id获取除id外的其他信息
-var teacher_edit=document.getElementsByName("teacher_edit");
-for (var i = 0; i < teacher_edit.length; i++) {
-  teacher_edit[i].setAttribute("index",i);
-}
-for(var i=0;i<student_edit.length;i++){
-  teacher_edit[i].onclick=function(){
-    var j=this.getAttribute("index");
-    var teacher_id=document.getElementsByName("teacher_id");
-    var t_id=$(teacher_id[j]).text();
-    $("#t_id").val(t_id);
-    var form=new FormData();
-    form.append("id",t_id);
-    $.ajax({
-      url:"/acdemic/teacherinfo",
-      type:"POST",
-      data:form,
-      processData : false,
-      contentType : false,
-      dataType:"json",
-      success:function(data){
-        if(data){
-          $("#t_name").val(data.name);
-          $("#t_sex").val(data.sex);
-          $("#t_college").val(data.college);
-          $("#t_address").val(data.address);
-          $("#t_birthday").val(data.birthday);
-          $("#t_phone").val(data.phone);
-          $("#t_email").val(data.email);
-        }
-        else{
-          alert("查询详细信息失败！");//一般不会出现
-        }
-      }
-    });
-  }
-}
+
 function getTeacherInfo(id){
     var form=new FormData();
     form.append("id",id);
@@ -425,7 +382,7 @@ document.getElementById("default_teacher").onclick=function(){
     var id=$("#t_id").val();
     var form=new FormData();
     form.append("id",id);
-    //根据id初始化对应教师的密码123456
+    //根据id初始化对应教师的密码222222
     $.ajax({
         url:"/acdemic/defaultTeacher",
         type:"POST",
@@ -477,6 +434,7 @@ document.getElementById("save_teacher").onclick=function(){
         success:function(result){
           if(result.code=="success"){
             alert("信息保存成功！");
+            getTeacherList();
           }
           else{
             alert("保存失败！");
@@ -512,6 +470,7 @@ document.getElementById("add_teacher_class").onclick=function(){
         success:function(result){
           if(result.code=="success"){
             alert("添加成功！");
+            getTeacherClassList();
           }
           else{
             alert("添加失败！");
@@ -560,6 +519,29 @@ for(var i=0;i<teacher_class_delete.length;i++){
   }
 }
 
+function delTC(a,b,c) {
+    var form=new FormData();
+    form.append("id",a);
+    form.append("grade",b);
+    form.append("name",c);
+    //根据上面三个属性删除教师-班级表中对应的元组
+    $.ajax({
+        url:"/acdemic/deleteTeacherClass",
+        type:"POST",
+        data:form,
+        processData : false,
+        contentType : false,
+        success:function(result){
+            if(result.code=="success"){
+                alert("删除成功！");
+                getTeacherClassList();
+            }else{
+                alert("删除失败！");
+            }
+        }
+    });
+}
+
 /*------------------列表更新函数-------------------------*/
 
 //学生,根据年级和班级返回result为指定的学生(name、id、sex、class_grade、class_name、college)的数组
@@ -584,10 +566,9 @@ function getStudentList(){
     success:function(result){
         $("#student_list").empty();
         for(var i=0;i<result.length;i++){
-          str+='<li class="row"><p class="col s2">'+result[i].name+'</p><p class="col s2">'+result[i].id+'</p><p class="col s1">'+result[i].sex+'</p><p class="col s1">'+result[i].class_grade+'</p><p class="col s2">'+result[i].class_name+'</p><p class="col s3">'+result[i].college+'</p><p class="col s1"><a href="#student_detail" name="student_edit">修改</a></p></li>';
+          str+='<li class="row"><p class="col s2">'+result[i].name+'</p><p class="col s2">'+result[i].id+'</p><p class="col s1">'+result[i].sex+'</p><p class="col s1">'+result[i].class_grade+'</p><p class="col s2">'+result[i].class_name+'</p><p class="col s3">'+result[i].college+'</p><p class="col s1"><a href="#student_detail" name="student_edit" onclick="getStudentInfo('+result[i].id+')">修改</a></p></li>';
         }
         $("#student_list").append(str);
-
     }
   });
 }
@@ -614,7 +595,7 @@ function getTeacherList(){
 
 //
 function getTeacherClassList(){
-  var str='<div class="row"><div class="col s1"></div><p class="col s2">教师姓名</p><p class="col s2">教师职工号</p><p class="col s3">所教班级</p><p class="col s1">操作</p></div>';
+  var str='<div class="row"><div class="col s1"></div><p class="col s2">教师姓名</p><p class="col s3">教师职工号</p><p class="col s3">所教班级</p><p class="col s3">操作</p></div>';
   $.ajax({
     url:"/acdemic/getTeacherClassList",
     type:"POST",
@@ -624,7 +605,7 @@ function getTeacherClassList(){
     success:function(result){
       $("#teacher_class_list").empty();
       for(var i=0;i<result.length;i++){
-        str+='<li class="row"><div class="col s1"></div><p class="col s2">'+result[i].teacher_name+'</p><p class="col s2" name="teacher_class_id">'+result[i].teacher_id+'</p><p class="col s3" name="teacher_class">'+result[i].class_grade+' '+result[i].class_name+'</p><p class="col s1"><a href="#!" name="teacher_class_delete">删除</a></p></li>';
+        str+='<li class="row"><div class="col s1"></div><p class="col s2" id="tiid">'+result[i].teacher_name+'</p><p class="col s3" name="teacher_class_id">'+result[i].teacher_id+'</p><p class="col s1" id="ggrade">'+result[i].class_grade+'</p><p class="col s2" id="cclass">'+result[i].class_name+'</p><p class="col s1"><a href="#!" name="teacher_class_delete" onclick="delTC('+"'"+result[i].teacher_id+"'"+','+"'"+result[i].class_grade+"'"+','+"'"+result[i].class_name+"'"+')">删除</a></p></li>';
       }
       $("#teacher_class_list").append(str);
     }

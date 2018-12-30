@@ -167,4 +167,19 @@
     from students
     where class_name=#{param1} and class_grade=#{param2}
   </select>
+  <select id="getAllClass" resultType="java.lang.String" >
+    select DISTINCT class_name
+    from students
+  </select>
+
+  <select id="getAllGrade" resultType="java.lang.String">
+    select DISTINCT class_grade
+    from students
+  </select>
+
+  <select id="getCount" resultType="int" parameterType="java.lang.String">
+    select count(1)
+    from students
+    where student_id=#{id}
+  </select>
 </mapper>

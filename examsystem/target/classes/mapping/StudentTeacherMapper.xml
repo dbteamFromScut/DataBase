@@ -18,6 +18,8 @@
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from st
     where teacher_id = #{teacherId,jdbcType=VARCHAR}
+    and class_name = #{className,jdbcType=VARCHAR}
+    and class_grade = #{classGrade,jdbcType=CHAR}
   </delete>
   <insert id="insert" parameterType="com.db.model.StudentTeacher" >
     insert into st (teacher_id, class_name, class_grade

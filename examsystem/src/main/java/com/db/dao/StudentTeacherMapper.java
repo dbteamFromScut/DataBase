@@ -7,7 +7,7 @@ import java.util.List;
 
 @Service("studentTeacherDao")
 public interface StudentTeacherMapper {
-    int deleteByPrimaryKey(String teacherId);
+    int deleteByPrimaryKey(StudentTeacher record);
 
     int insert(StudentTeacher record);
 

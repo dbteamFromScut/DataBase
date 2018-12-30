@@ -1,24 +1,35 @@
 package com.db.model;
 
+import cn.afterturn.easypoi.excel.annotation.Excel;
+
 import java.util.Date;
 
 public class Teacher {
+
+    @Excel(name = "职工号", height = 8, width = 15, isImportField = "true_st")
     private String teacherId;
 
+    @Excel(name = "名字", height = 8, width = 10, isImportField = "true_st")
     private String teacherName;
 
     private String teacherPassword;
 
+    @Excel(name = "性别", height = 8, width = 5, isImportField = "true_st")
     private String sex;
 
+    @Excel(name = "学院", height = 8, width = 15, isImportField = "true_st")
     private String institute;
 
+    @Excel(name = "住址", height = 8, width = 30, isImportField = "true_st")
     private String address;
 
+    @Excel(name = "出生日期", height = 8, width = 10, isImportField = "true_st")
     private Date birthdate;
 
+    @Excel(name = "手机号", height = 8, width = 15, isImportField = "true_st")
     private String phone;
 
+    @Excel(name = "邮箱", height = 8, width = 15, isImportField = "true_st")
     private String eMail;
 
     public String getTeacherId() {

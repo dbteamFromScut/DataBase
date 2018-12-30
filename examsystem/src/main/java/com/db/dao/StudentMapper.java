@@ -20,5 +20,9 @@ public interface StudentMapper {
     int updateByPrimaryKey(Student record);
 
     List<Student> selectByPrimaryKeyList(String classname,String grade);
+    List<String> getAllClass();
 
+    List<String> getAllGrade();
+
+    int getCount(String id);
 }

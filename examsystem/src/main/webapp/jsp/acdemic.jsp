@@ -76,16 +76,19 @@
       </div>
       <button class="btn waves-effect waves-light col s2" type="button" id="addNewTeacher">添加新用户</button>
     </form>
-    <form class="row">
+      <form class="row" style="margin-top: 10px">
+        <a href="/template/teacher.xlsx"><button class="btn waves-effect waves-light col s2" type="button" id="teacherTemolate" style="margin-left: 72%;">导出模板</button></a>
+      </form>
+      <form id="teacher_file" class="row" style="margin-top: 10px" enctype="multipart/form-data" method="post" action="/acdemic/addNewTeacherFile">
       <h5 class="col s3"><i class="icon-address-book"> 导入Excel文件</i></h5>
-      <input type="file" id="teacher_file" class="col s3">
+      <input type="file" id="file" name="file" class="col s3">
       <button class="btn waves-effect waves-light col s2" type="button" id="addNewTeacherFile" style="margin-left: 22%;">导入文件</button>
     </form>
     <br>
 		<div>
       <div class="row">
 			 <h4><i class="icon-users col s8"> 系统中的教师信息</i></h4>
-       <a class="btn waves-effect waves-light col s2" type="button" id="getTeacherFile">导出教师</a>
+       <a class="btn waves-effect waves-light col s2"  id="getTeacherFile" onclick="exportTeacher()">导出教师</a>
       </div>
 			<div class="s12">
 			  <ul class="collection" id="allteacher">
@@ -117,7 +120,7 @@
     <div id="teacher_detail" class="modal bottom-sheet">
       <div class="modal-content">
           <form class="col s12">
-            <a href="#!" class="modal-action modal-close waves-effect waves-light btn" id="default_teacher">初始化用户密码</a>
+            <a href="#!" class="modal-action modal-close waves-effect waves-light btn" id="default_teacher">初始化密码</a>
             <div class="row">
               <div class="input-field col s3">
                 <i class="icon-price-tag prefix"></i>
@@ -208,10 +211,12 @@
         <button class="btn waves-effect waves-light col s2" type="button" id="addNewStudent">添加新用户</button>
       </div>
     </form>
-    <form class="row">
+    <form class="row" style="margin-top: 10px">
+      <a href="/template/student.xlsx"><button class="btn waves-effect waves-light col s2" type="button" style="margin-left: 75%;">导出模板</button></a>
+    </form>
+    <form id="student_file" class="row" style="margin-top: 10px" enctype="multipart/form-data" method="post" action="/acdemic/addNewTeacherFile">
       <h5><i class="icon-address-book col s4"> 导入Excel文件</i></h5>
-      <input type="file" id="student_file" class="col s4">
-      <div class="col s1"></div>
+      <input type="file" id="file1" name="file" class="col s4">
       <button class="btn waves-effect waves-light col s2" type="button" id="addNewStudentFile">导入文件</button>
     </form>
     <br>
