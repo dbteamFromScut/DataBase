@@ -21,4 +21,6 @@ public interface StudentTeacherMapper {
 
     List<StudentTeacher> selectByPrimaryKeyList(String teacherId);
 
+    List<StudentTeacher> selectByPrimaryKeyList();
+
 }

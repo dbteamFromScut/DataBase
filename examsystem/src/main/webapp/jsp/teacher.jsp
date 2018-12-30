@@ -199,7 +199,7 @@
               <div class="card">
                 <div class="card-content white-text amber darken-4">
                     <span class="card-title" name="examName_">考试标题</span>
-                    <span>开始时间：</span><span name="startTime_">2018-09-01 22:08</spans>
+                    <span>开始时间：</span><span name="startTime_">2018-09-01 22:08</span>
                     <span>结束时间：</span><span name="endTime_">2018-09-01 22:08</span>
                 </div>
                 <div class="card-action blue-grey darken-1">

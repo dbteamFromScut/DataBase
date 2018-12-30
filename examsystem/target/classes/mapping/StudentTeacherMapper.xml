@@ -73,6 +73,8 @@
     select
     <include refid="Base_Column_List" />
     from st
-    where teacher_id=#{teacherId}
+    <trim prefix="where" prefixOverrides="and|or">
+      <if test="teacherId!=null">and teacher_id=#{teacherId}</if>
+    </trim>
   </select>
 </mapper>
