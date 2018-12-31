@@ -1,6 +1,3 @@
-
-//jsons数组前端测试用，后台传数据后写完后可以删除
-
 var jsons = new Array();
 jsons[0] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
@@ -9,9 +6,10 @@ jsons[0] = {
 	"options1" : "B选项内容",
 	"options2" : "C选项内容",
 	"options3" : "D选项内容",
-	"accuracy" : "50%",
-	"right-key" : "1", //1-4表示ABCD，判断题则是1、2表示正确错误
 	"choose" : "1",
+	"right-key" : "2",
+	"accuracy" : "50%",
+	"id" : "111",
 }
 jsons[1] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈2",
@@ -20,9 +18,10 @@ jsons[1] = {
 	"options1" : "B",
 	"options2" : "C",
 	"options3" : "D",
+	"choose" : "1",
+	"right-key" : "2",
 	"accuracy" : "50%",
-	"right-key" : "1",
-	"choose" : "2",
+	"id" : "112",
 }
 jsons[2] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈3",
@@ -31,9 +30,10 @@ jsons[2] = {
 	"options1" : "错误",
 	"options2" : "错误",
 	"options3" : "错误",
-	"accuracy" : "80%",
+	"choose" : "1",
 	"right-key" : "1",
-	"choose" : "2",
+	"accuracy" : "50%",
+	"id" : "113",
 }
 jsons[3] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈4",
@@ -42,9 +42,10 @@ jsons[3] = {
 	"options1" : "B",
 	"options2" : "C",
 	"options3" : "D",
-	"accuracy" : "50%",
-	"right-key" : "1",
 	"choose" : "2",
+	"right-key" : "2",
+	"accuracy" : "50%",
+	"id" : "114",
 }
 jsons[4] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈5",
@@ -53,9 +54,10 @@ jsons[4] = {
 	"options1" : "B",
 	"options2" : "C",
 	"options3" : "D",
-	"accuracy" : "50%",
-	"right-key" : "1",
 	"choose" : "2",
+	"right-key" : "2",
+	"accuracy" : "50%",
+	"id" : "115",
 }
 jsons[5] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈6",
@@ -64,9 +66,10 @@ jsons[5] = {
 	"options1" : "B",
 	"options2" : "C",
 	"options3" : "D",
+	"choose" : "3",
+	"right-key" : "2",
 	"accuracy" : "50%",
-	"right-key" : "1",
-	"choose" : "2",
+	"id" : "116",
 }
 jsons[6] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
@@ -75,9 +78,10 @@ jsons[6] = {
 	"options1" : "B",
 	"options2" : "C",
 	"options3" : "D",
-	"accuracy" : "50%",
-	"right-key" : "1", 
 	"choose" : "1",
+	"right-key" : "2",
+	"accuracy" : "50%",
+	"id" : "117",
 }
 jsons[7] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
@@ -86,9 +90,10 @@ jsons[7] = {
 	"options1" : "B",
 	"options2" : "C",
 	"options3" : "D",
+	"choose" : "1",
+	"right-key" : "2",
 	"accuracy" : "50%",
-	"right-key" : "1", 
-	"choose" : "2",
+	"id" : "118",
 }
 jsons[8] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
@@ -97,9 +102,10 @@ jsons[8] = {
 	"options1" : "B",
 	"options2" : "C",
 	"options3" : "D",
+	"choose" : "3",
+	"right-key" : "2",
 	"accuracy" : "50%",
-	"right-key" : "1", 
-	"choose" : "2",
+	"id" : "119",
 }
 jsons[9] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
@@ -108,117 +114,129 @@ jsons[9] = {
 	"options1" : "B",
 	"options2" : "C",
 	"options3" : "D",
+	"choose" : "4",
+	"right-key" : "2",
 	"accuracy" : "50%",
-	"right-key" : "1", 
-	"choose" : "2",
+	"id" : "120",
 }
 jsons[10] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
 	"type" : "判断",
 	"options0" : "正确",
 	"options1" : "错误",
-	"accuracy" : "50%",
-	"right-key" : "1", 
 	"choose" : "2",
+	"right-key" : "2",
+	"accuracy" : "50%",
+	"id" : "121",
 }
 jsons[11] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
 	"type" : "判断",
 	"options0" : "正确",
 	"options1" : "错误",
+	"choose" : "1",
+	"right-key" : "2",
 	"accuracy" : "50%",
-	"right-key" : "1", 
-	"choose" : "2",
+	"id" : "122",
 }
 jsons[12] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
 	"type" : "判断",
 	"options0" : "正确",
 	"options1" : "错误",
-	"accuracy" : "50%",
-	"right-key" : "1", 
 	"choose" : "2",
+	"right-key" : "2",
+	"accuracy" : "50%",
+	"id" : "123",
 }
 jsons[13] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
 	"type" : "判断",
 	"options0" : "正确",
 	"options1" : "错误",
+	"choose" : "1",
+	"right-key" : "2",
 	"accuracy" : "50%",
-	"right-key" : "1", 
-	"choose" : "2",
+	"id" : "124",
 }
 jsons[14] = {
 	"title" : "哈哈哈哈哈哈哈或哈哈哈",
 	"type" : "判断",
 	"options0" : "正确",
 	"options1" : "错误",
-	"accuracy" : "50%",
-	"right-key" : "1", 
 	"choose" : "2",
+	"right-key" : "2",
+	"accuracy" : "50%",
+	"id" : "125",
 }
 var a = new Array();
 a[0] = {
 	"question":"少时诵诗1_____",
+	"Sanswer" : "adasdasd",
+	"right-key" : "aqwe1332qw",
 	"id" : "1123",
-	"right-key" : "dasdasds",
-	"Sanswer" : "d大声道",
 };
 a[1] = {
 	"question":"少时诵诗1_____",
+	"Sanswer" : "adasdasd",
+	"right-key" : "aqwe1332qw",
 	"id" : "1124",
-	"right-key" : "dasdasds",
-	"Sanswer" : "d大声道",
 };
 a[2] = {
 	"question":"少时诵诗1_____",
+	"Sanswer" : "adasdasd",
+	"right-key" : "aqwe1332qw",
 	"id" : "1125",
-	"right-key" : "dasdasds",
-	"Sanswer" : "d大声道",
 };
 a[3] = {
 	"question":"少时诵诗1_____",
+	"Sanswer" : "adasdasd",
+	"right-key" : "aqwe1332qw",
 	"id" : "1126",
-	"right-key" : "dasdasds",
-	"Sanswer" : "d大声道",
 };
 a[4] = {
 	"question":"少时诵诗1_____",
+	"Sanswer" : "adasdasd",
+	"right-key" : "aqwe1332qw",
 	"id" : "1127",
-	"right-key" : "dasdasds",
-	"Sanswer" : "d大声道",
 };
 var b = new Array();
 b[0] = {
 	"question":"你快乐吗？",
-	"id" : "123",
-	"Sanswer" : "d大声道",
+	"Sanswer" : "adasdasd",
+	"right-key" : "aqwe1332qw",
+	"id" : "1223",
 };
 b[1] = {
 	"question":"你快乐吗？",
-	"id" : "124",
-	"Sanswer" : "d大声道",
+	"Sanswer" : "adasdasd",
+	"right-key" : "aqwe1332qw",
+	"id" : "1224",
 };
 b[2] = {
 	"question":"你快乐吗？",
-	"id" : "125",
-	"Sanswer" : "d大声道",
+	"Sanswer" : "adasdasd",
+	"right-key" : "aqwe1332qw",
+	"id" : "1225",
 };
 b[3] = {
 	"question":"你快乐吗？",
-	"id" : "126",
-	"Sanswer" : "d大声道",
+	"Sanswer" : "adasdasd",
+	"right-key" : "aqwe1332qw",
+	"id" : "1226",
 };
 b[4] = {
 	"question":"你快乐吗？",
-	"id" : "127",
-	"Sanswer" : "d大声道",
+	"Sanswer" : "adasdasd",
+	"right-key" : "aqwe1332qw",
+	"id" : "1227",
 };
 function datas (){
 	this.title = "编译原理测试";
 	this.chooseAndTF = [];  //选择和判断题放一起
 	this.fill = [];
 	this.ask = [];
+	this.time = "";
 }
 var data = new datas();
 for (var i = 0; i < jsons.length; i++) {
@@ -231,28 +249,39 @@ for (var i = 0; i < b.length; i++) {
 	data.ask[i] = b[i]
 }
 data.title = "编译原理测试1";
-
+data.time = "2018-12-06 10:00";
 console.log(data);
 
 //以上内容是前端测试写的数据，写后台时注释掉，输出的data是所需要的数据类型
 
-//请求获得试卷的数据json数组（jsons）加载试卷
-function onloadExam(){
-	//请求试卷信息
+
+//存储试卷分数的数组,-1表示未评分
+var grade = new Array();
+for (var i = 0; i < 25; i++) {
+	grade[i] = -1;
+}
+//定义存放试题id的数组
+var ids = new Array();
+for (var i = 0; i < 25; i++) {
+	ids[i] = "hhh";
+}
+//请求试卷信息
+function get_toMarkExam(){
 	$.ajax({
-        url : "/getExamInfo",
-        type : "POST",
-        processData : false,
-        contentType : false,
-        dataType : "json",
-        success: function(data,result){
-            if (result.code=="success")
-            	//返回的数据可以查看控制台的data
-                initExam(data);
-            else
-				alert("试卷加载失败！请重新加载");
-        }
-    });
+		url : "/MarkExam",
+		type : "POST",
+		processData : false,
+		contentType : false,
+		success : function(date){
+			if(data.code == true)
+				initExam(data);
+			else
+				alert("找不到该试卷信息");
+		},
+		error : function(){
+			alert("请求试卷信息失败，请重试！");
+		}
+	});
 }
 
 //初始化试卷
@@ -290,7 +319,8 @@ function initExam(data){
 		ul.id = "u" + (i+1);
 		ul.setAttribute("index",i+1);
 		var tOrf = document.createElement("li");
-		tOrf.className = ""
+		tOrf.className = "";
+		ids[i] = jsons[i]["id"];
 		if(jsons[i]["type"] == "选择"){
 			for (var j = 0; j < 4; j++) {
 				//创建每个选项li
@@ -303,16 +333,18 @@ function initExam(data){
 			}
 			if(jsons[i]["right-key"] == jsons[i]["choose"]){
 				var choose = String.fromCharCode(64+parseInt(jsons[i]["choose"]));
-				tOrf.innerHTML = "你的答案是：" + choose + "，答对了！";
+				tOrf.innerHTML = "学生作答：" + choose + "，答对了！";
 				tOrf.className = "true-one";
 				var ID = "c" + (i + 1);
 				document.getElementById(ID).style.backgroundColor = "green";
+				grade[i] = 2;
 			}else{
 				var choose = String.fromCharCode(64+parseInt(jsons[i]["choose"]));
-				tOrf.innerHTML = "你的答案是：" + choose + "，答错了！";
+				tOrf.innerHTML = "学生作答：" + choose + "，答错了！";
 				tOrf.className = "false-one";
 				var ID = "c" + (i + 1);
 				document.getElementById(ID).style.backgroundColor = "red";
+				grade[i] = 0;
 			}
 		}else {
 			for (var j = 0; j < 2; j++) {
@@ -324,11 +356,13 @@ function initExam(data){
 				li.appendChild(label);
 				ul.appendChild(li);
 			}
-			var choose = jsons[i]["right-key"] == jsons[i]["choose"]? "你的答案是'正确'，答对了！" : "你的答案是‘错误’，答错了！";
+			var choose = jsons[i]["right-key"] == jsons[i]["choose"]? "学生作答：'正确'，答对了！" : "学生作答：‘错误’，答错了！";
 			tOrf.innerHTML = choose;
+			jsons[i]["right-key"] == jsons[i]["choose"]? grade[i] = 1 : grade[i] =0;
 			tOrf.className = jsons[i]["right-key"] == jsons[i]["choose"]? "true-one":"false-one";
 			var ID = "c" + (i + 1);
 			document.getElementById(ID).style.backgroundColor = jsons[i]["right-key"] == jsons[i]["choose"]? "green":"red";
+		
 		}
 		var answer = String.fromCharCode(64+parseInt(jsons[i]["right-key"]));
 		var percen = document.createElement("li");
@@ -354,6 +388,7 @@ function initExam(data){
 	a = data.fill;
 	var contain2 = document.getElementById("contain2");
 	for (var i = 0; i < a.length; i++) {
+		ids[i+15] = a[i]["id"];
 		var dv = document.createElement("div");
 		dv.className = "question";
 		var p = document.createElement("p");
@@ -371,11 +406,23 @@ function initExam(data){
 		dv.appendChild(p2);
 
 		var p3 = document.createElement("p");
-		p3.innerHTML = "你的答案：" + a[i]["Sanswer"];
+		p3.innerHTML = "学生作答：" + a[i]["Sanswer"];
 		p3.className = "answer";
 		dv.appendChild(p3);
 
+		var input = document.createElement("input");
+		input.placeholder = "请在这里给出本题分数";
+		input.id = 'fill' + i;
+		input.style.backgroundColor = "#fff";
+		input.style.marginLeft = "10%";
+		input.style.width = "40%";
+		input.name = 'fill';
+
+		input.setAttribute("index",i+16);
+		input.onblur = judgeAndUpdate;
+
 		
+		dv.appendChild(input);
 
 		//定位锚点
 		var division = document.createElement("div");
@@ -384,8 +431,8 @@ function initExam(data){
 		contain2.appendChild(division);
 		contain2.appendChild(dv);
 
-		var ID = "c" + (i + 16);
-		document.getElementById(ID).style.backgroundColor = "orange";
+		// var ID = "c" + (i + 16);
+		// document.getElementById(ID).style.backgroundColor = "orange";
 	}
 
 	//问答题
@@ -393,6 +440,7 @@ function initExam(data){
 	b = data.ask;
 	var contain3 = document.getElementById('contain3');
 	for (var i = 0; i < b.length; i++) {
+		ids[i+20] = b[i]["id"];
 		var dv = document.createElement("div");
 		dv.className = "question";
 		var p = document.createElement("p");
@@ -408,13 +456,23 @@ function initExam(data){
 		dv.appendChild(p2);
 
 		var p3 = document.createElement("p");
-		p3.innerHTML = "你的答案：" + a[i]["Sanswer"];
+		p3.innerHTML = "学生作答：" + a[i]["Sanswer"];
 		p3.className = "answer";
 		dv.appendChild(p3);
-		// textarea.onblur = changeBGC2;
+		
+		var input = document.createElement("input");
+		input.placeholder = "请在这里给出本题分数";
+		input.id = 'fill' + i;
+		input.style.backgroundColor = "#fff";
+		input.style.marginLeft = "10%";
+		input.style.width = "40%";
+		input.name = 'fill';
 
-		// input.name = 
-		// dv.appendChild(textarea);
+		input.setAttribute("index",i+21);
+		input.onblur = judgeAndUpdate;
+
+		
+		dv.appendChild(input);
 
 		//定位锚点
 		var division = document.createElement("div");
@@ -423,12 +481,13 @@ function initExam(data){
 		contain3.appendChild(division);
 		contain3.appendChild(dv);
 
-		var ID = "c" + (i + 21);
-		document.getElementById(ID).style.backgroundColor = "orange";
+		// var ID = "c" + (i + 21);
+		// document.getElementById(ID).style.backgroundColor = "orange";
+		// 
 	}
+	document.getElementById("timer").innerHTML = data.time;
 }
-
-initExam(data);  //前端写代码时测试用，后台写完可删除，改为body标签调用onloadExam()
+initExam(data);
 
 //点击右侧题目导航栏跳转至对应题目
 function f1() {
@@ -450,15 +509,140 @@ function located() {
 }
 located();
 
-//设定每个li的mouseover事件以及上边距
-function f2() {
-	this.style.cursor = "pointer";
+//判断输入评分是否为数字、小数、整数
+function isNumber(val) {
+    var regPos = /^\d+(\.\d+)?$/; //非负浮点数
+    var regNeg = /^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$/; //负浮点数
+    if(regPos.test(val) || regNeg.test(val))
+        return true;
+    else
+        return false;
 }
-function setCursor() {
-	var lis = document.getElementsByTagName("li");
-	for (var i = 0; i < lis.length; i++) {
-		lis[i].onmouseover = f2;
-		lis[i].style.marginTop = "15px";
+
+//判断评分是否为整数，如果需要再使用
+function isIneger(val) {
+	if(val % 1 === 0)
+		return true;
+	return false;
+}
+
+//判断评分并且更新成绩和题目导航背景
+function judgeAndUpdate(){
+	var index = this.getAttribute("index");
+	var id = "c" + index;
+	if(!this.value){
+		document.getElementById(id).style.backgroundColor = "";
+		grade[index-1] = -1;
+		getScore();
+		return false;
+	}
+	if(!isNumber(this.value)){
+		alert("评分必须是一个数字！");
+		grade[index-1] = -1;
+		document.getElementById(id).style.backgroundColor = "";
+		getScore();
+		return false;
+	}
+	var num = parseFloat(this.value);
+	if(index <= 20 ){
+		if(num > 5 || num < 0){
+			alert("评分必须在0-5之间");
+			grade[index-1] = -1;
+			document.getElementById(id).style.backgroundColor = "";
+			getScore();
+			return false;
+		}
+	}
+	else{
+		if(num > 10 || num < 0){
+			alert("评分必须在0-10之间");
+			grade[index-1] = -1;
+			document.getElementById(id).style.backgroundColor = "";
+			getScore();
+			return false;
+		}
+	}
+	console.log(num);
+	grade[index-1] = num;
+	console.log(grade);
+	document.getElementById(id).style.backgroundColor = "orange";
+	getScore();
+}
+
+function getScore() {
+	var one = 0;
+	var two = 0;
+	var three = 0;
+	var four = 0;
+	for (var i = 0; i < 10; i++)
+		one += grade[i];
+	for (var i = 10; i < 15; i++)
+		two += grade[i];
+	for (var i = 15; i < 20; i++)
+		if(grade[i] != -1)
+		three += grade[i];
+	for (var i = 20; i < 25; i++)
+		if(grade[i] != -1)
+		four += grade[i];
+	document.getElementById("score").innerHTML = one + " + " + two + " + " + three + " + " + four + " = ";
+	document.getElementById("score2").innerHTML = one + two + three + four + "分";
+}
+
+getScore();
+
+
+
+//提交试卷批阅结果
+document.getElementById("submit").onclick = function(){
+	var count = 0;
+	for (var i = 0; i < grade.length; i++) {
+		if(grade[i] != -1)
+			count ++;
+	}
+	if(count != 25){
+		alert("试卷还没批改完");
+		return false;
+	}
+	console.log(count);
+	if(confirm("提交之后将无法更改，您确定真的提交批改结果吗？") == true){
+		function data() {
+			this.ids = new Array();
+			this.grade = new Array();
+		}
+		var idAndGrade = new data();
+		for (var i = 0; i < grade.length; i++) {
+			idAndGrade.grade[i] = grade[i];
+			idAndGrade.ids[i] = ids[i];
+		}
+		console.log(ids);
+		$.ajax({
+			url : "teacher/MarkSubmit",
+			type : "POST",
+			data : idAndGrade,
+			processData : false,
+			contentType : false,
+			success : function(result){
+				if(result.code == true)
+					alert("提交成功");
+				else
+					alert("提交失败，请重新提交一次");
+			},
+			error : function(){
+				alert("网络原因提交失败，请重试！");
+			}
+		});
 	}
 }
-setCursor();
+
+
+//返回首页按钮
+document.getElementById("goback").onclick = function(){
+	if(confirm("返回首页将丢失目前的批改，您确认要回到首页吗？") == true){
+		window.location.href = "./teacher";
+	}
+}
+
+
+window.addEventListener("beforeunload", function (e) {
+    (e || window.event).returnValue = '确定离开此页吗？';
+});
