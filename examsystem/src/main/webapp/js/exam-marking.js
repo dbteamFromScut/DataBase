@@ -616,7 +616,7 @@ document.getElementById("submit").onclick = function(){
 		}
 		console.log(ids);
 		$.ajax({
-			url : "teacher/MarkSubmit",
+			url : "/teacher/MarkSubmit",
 			type : "POST",
 			data : idAndGrade,
 			processData : false,
@@ -646,3 +646,58 @@ document.getElementById("goback").onclick = function(){
 window.addEventListener("beforeunload", function (e) {
     (e || window.event).returnValue = '确定离开此页吗？';
 });
+
+
+//加载导航栏学生信息
+function get_toMarkStudentInfo(){
+	$.ajax({
+		url : "/teacher/getStudentInfo",
+		type : "POST",
+		processData : false,
+		contentType : false,
+		success : function(result){
+			if(result.code == false){
+				alert("学生信息加载失败" + result.mes);
+				return false;
+			}
+			init_StudentInfo(result);
+		}
+	});
+}
+function init_StudentInfo(result){
+	document.getElementById("StudentNum").innerHTML = "学号：" + result.Snum;
+	document.getElementById("StudentName").innerHTML = "姓名：" + result.Sname;
+	document.getElementById("StudentGrade").innerHTML = "年级：" + result.Sgrade;
+	document.getElementById("StudentClass").innerHTML = "班级：" + result.SClass;
+}
+init_StudentInfo({
+	"Snum" : "201630600333",
+	"Sname" : "糖好酸",
+	"Sgrade" : "2016",
+	"SClass" : "网络工程"
+});
+
+//设置页面卷积时标题置顶
+//
+//获取当前页面卷积高度
+ function getScroll() {
+    var obj = {
+      left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft||0,
+      top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+    };
+    return obj;
+  }
+
+//设置页面卷积固定导航栏
+  window.onscroll = function(){
+    if(getScroll().top>=65){
+      document.getElementById('title').className = "fixed-title teal";
+      // document.getElementById("one").className = "fixed-one";
+      document.getElementById('one').style.marginTop = 180 + "px";
+    }
+    else{
+      document.getElementById('title').className = "title";
+      // document.getElementById("one").className = "";
+      document.getElementById('one').style.marginTop = 10 + "px";
+    }
+  }

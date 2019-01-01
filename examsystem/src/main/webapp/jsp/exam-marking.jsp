@@ -1,3 +1,4 @@
+<%@ page language="java" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,9 +15,10 @@
       <div class="nav-wrapper">
             <a href="/teacher" class="brand-logo" id="logo">批改试卷</a>
             <ul id="nav-mobile" class="right">
-            <li>学生学号：201630600000</li>
-            <li>姓名：哈哈哈</li>
-            <li>所属班级：16网工</li>
+            <li id="StudentNum">学生学号：201630600000</li>
+            <li id="StudentName">姓名：哈哈哈</li>
+            <li id="StudentGrade">年级：2016</li>
+            <li id="StudentClass">所属班级：网络工程</li>
             <li><a href="#" id="goback">回到首页</a></li>
             </ul>
       </div>
@@ -72,7 +74,7 @@
   </div>
 
 
-  <h2 id="title"></h2>
+  <h2 class="title" id="title"></h2>
  <h3>第一部分：选择和判断（选择题每题2分，判断题每题1分，共25分）</h3>
   <div class="contain" id="contain">
     

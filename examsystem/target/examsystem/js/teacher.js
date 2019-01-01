@@ -49,6 +49,7 @@ for (var i = 0; i < slide.length; i++) {
             out[j].style.display = "none";
         } 
         document.getElementById("AddExam").style.display="none";
+        document.getElementById("Exam_Student").style.display="none";
 		out[this.getAttribute("index")].style.display = "block";
 	}
 }
@@ -82,6 +83,7 @@ document.getElementById('change').onclick = function(){
     }
     cover.style.display = "none";
     document.getElementById("AddExam").style.display="none";
+    document.getElementById("Exam_Student").style.display="none";
     out[6].style.display = "block";
 }
 
@@ -205,12 +207,16 @@ function getClasses(){
             if (result){
                 $("#grade").empty();
                 $("#class").empty();
+                $("#exam_grade").empty();
+                $("#exam_class").empty();
                 for(var i=0;i<result.length;i++){
                     str1+='<option>'+result[i].class_grade+'</option>';
                     str2+='<option>'+result[i].class_name+'</option>';
                 }
                 $("#grade").append(str1);
                 $("#class").append(str2);
+                $("#exam_grade").append(str1);
+                $("#exam_class").append(str2);
             }
         }
     });
@@ -758,6 +764,7 @@ function initExamList(ExamList) {
         var dv1 = document.createElement("div");
         dv1.className = "col s12 m6 l4 hoverable";
         dv1.setAttribute("examId",ExamList[i]["id"]);
+        dv1.setAttribute("name","unsentExam");
         var dv2 = document.createElement("div");
         dv2.className = "card";
         dv1.appendChild(dv2);
@@ -802,37 +809,49 @@ function initExamList(ExamList) {
         a2.href = "#";
 
         if(ExamList[i]["Type"] == "done"){
-            a.innerHTML = "查看考试";
+            a.innerHTML = "批改试卷";
             dv3.className = "card-content white-text amber darken-4";
-            var grade = document.createElement("span"); 
-            grade.innerHTML = "成绩：";
-            var grade2 = document.createElement("span");
-            grade2.innerHTML = ExamList[i]["grade"];
-            dv3.appendChild(grade);
-            dv3.appendChild(grade2);
             a.onclick = function() {
                 var id = dv1.getAttribute("examId");
                 console.log(id);
                 $.ajax({
-                    url : "/student/beginExam",
+                    url : "/student/seeExam",
                     //开始考试，需计时
                     type : "POST",
                     data : {"examId" : id },
                     processData : false,
                     contentType : false,
                     dataType : "json",
-                    success : function() {
-                        //成功则在新页面加载试卷。需要根据试卷ID返回试卷信息给考试页面。
-                        window.location.href="/exam-detail";
+                    success : function(result) {
+                        //成功则加载已考试的学生列表,result返回的是
+                        //对应试卷id已考的学生[姓名，学号，班级，是否批阅，成绩(没有则返回"")]的数组
+                        if(result){
+                            document.getElementById("oout3").style.display="none";
+                            var str='<div class="row"><p class="col s2">姓名</p><p class="col s3">学号</p><p class="col s2">年级</p><p class="col s2">班级</p><p class="col s2">操作</p><p class="col s1">成绩</p></div>';
+                            $("#Exam_Student_List").empty();
+                            for(var i=0;i<result.length;i++){
+                                if(result[i].score==""){
+                                str+='<li class="row"><p class="col s2">'+result[i].name+'</p><p class="col s3">'+result[i].id+'</p><p class="col s2">'+result[i].grade+'</p><p class="col s2">'+result[i].classname+'</p><p class="col s2"><a href="#!" name="check_exam">批改</a></p><p class="col s1"></p></li>';
+                                }else{
+                                    str+='<li class="row"><p class="col s2">'+result[i].name+'</p><p class="col s3">'+result[i].id+'</p><p class="col s2">'+result[i].grade+'</p><p class="col s2">'+result[i].classname+'</p><p class="col s2">已批改</p><p class="col s1">'+result[i].score+'</p></li>';
+                                }
+                            }
+                            $("#Exam_Student_List").append(str);
+                            $("#Exam_Student").fadeIn(1000);
+                        }
+                        else{
+                            alert("加载失败！");
+                        }
                     },
                     error : function() {
-                        alert("进入失败，请重试");
+                        alert("加载失败，请重试");
                     }
                 });
                 // window.open("./exam-detail.html");
             }
             containerDone.appendChild(dv1);
         }else if(ExamList[i]["Type"] == "do"){
+            a.href="#select_class";
             a.innerHTML = "发布考试";
             dv4.appendChild(a2);
             a2.innerHTML = "移除考试";
@@ -840,23 +859,59 @@ function initExamList(ExamList) {
             containerDo.appendChild(dv1);
             a.onclick = function() {
                 var id = dv1.getAttribute("examId");
+                $("#exam_id").text(id);
+            }
+            a2.onclick=function(){
+                var id = dv1.getAttribute("examId");
                 $.ajax({
-                    url : "/teacher/getExam",
+                    url : "/teacher/removeExam",
                     type : "POST",
                     data : {"examId" : id },
                     processData : false,
                     contentType : false,
                     dataType : "json",
+                    //删除对应id的试卷
                     success : function() {
-                        //成功则在新页面加载试卷。需要根据试卷ID返回试卷信息给考试页面。
-                        window.open("/exam");
+                        alert("移除成功！");
+                        location.reload();
                     },
                     error : function() {
-                        alert("进入失败，请重试");
+                        alert("移除失败，请重试");
                     }
                 });
-                window.open("./exam.html");
             }
+        }
+    }
+}
+
+//发布考试
+document.getElementById("send_exam").onclick=function(){
+    if(confirm("确定发布试卷吗？")==true){
+        var exam_id=$("#exam_id").text();
+        var exam_grade=$("#exam_grade option:selected").val();
+        var exam_class=$("#exam_class option:selected").val();
+        if(exam_grade=="年级"||exam_class=="班级"){
+            alert("发布失败,请选择完整信息!");
+        }else{
+            var form=new FormData();
+            form.append("exam_id",exam_id);
+            form.append("exam_grade",exam_grade);
+            form.append("exam_class",exam_class);
+            //将试卷发布到对应班级
+            $.ajax({
+                url : "/teacher/sendExam",
+                type : "POST",
+                data : form,
+                processData : false,
+                contentType : false,
+                dataType : "json",
+                success : function() {
+                    alert("发布成功！");
+                },
+                error : function() {
+                    alert("发布失败，请重试");
+                }
+            });
         }
     }
 }
@@ -885,6 +940,8 @@ function getExamList(){
 function getQuestionList(){
   var section=$("#section option:selected").val();
   var question_type=$("#question_type option:selected").val();
+  if(section=="章节"){section=="";}
+  if(question_type=="题型"){question_type=="";}
   var form=new FormData();
   form.append("section",section);
   form.append("question_type",question_type);
