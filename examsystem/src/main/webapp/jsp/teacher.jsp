@@ -762,6 +762,12 @@
 
   <!-- 查看试卷已考的学生 -->
   <div class="container" id="Exam_Student">
+    <div class="row">
+      <div class="col s4"></div>
+      <h5 class="col s2">试卷ID:</h5>
+      <h5 class="col s2" id="paper_id">23213131321</h5>
+      <button class="btn cyan darken-2 col s2 push-s2" type="button" id="show_paper">查看试卷</button>
+    </div>
     <h4><i class="icon-pencil2"> 已提交试卷的学生</i></h4>
     <br><br>
     <form>

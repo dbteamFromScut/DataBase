@@ -81,7 +81,6 @@ document.getElementById('change').onclick = function(){
     for (var i = 0; i < out.length; i++) {
         out[i].style.display = "none";
     }
-    cover.style.display = "none";
     document.getElementById("AddExam").style.display="none";
     document.getElementById("Exam_Student").style.display="none";
     out[6].style.display = "block";
@@ -826,12 +825,13 @@ function initExamList(ExamList) {
                         //成功则加载已考试的学生列表,result返回的是
                         //对应试卷id已考的学生[姓名，学号，班级，是否批阅，成绩(没有则返回"")]的数组
                         if(result){
+                            $("#paper_id").val(examId);
                             document.getElementById("oout3").style.display="none";
                             var str='<div class="row"><p class="col s2">姓名</p><p class="col s3">学号</p><p class="col s2">年级</p><p class="col s2">班级</p><p class="col s2">操作</p><p class="col s1">成绩</p></div>';
                             $("#Exam_Student_List").empty();
                             for(var i=0;i<result.length;i++){
                                 if(result[i].score==""){
-                                str+='<li class="row"><p class="col s2">'+result[i].name+'</p><p class="col s3">'+result[i].id+'</p><p class="col s2">'+result[i].grade+'</p><p class="col s2">'+result[i].classname+'</p><p class="col s2"><a href="#!" name="check_exam">批改</a></p><p class="col s1"></p></li>';
+                                str+='<li class="row"><p class="col s2">'+result[i].name+'</p><p class="col s3"  name="exam_student_id">'+result[i].id+'</p><p class="col s2">'+result[i].grade+'</p><p class="col s2">'+result[i].classname+'</p><p class="col s2"><a href="#!" name="check_exam">批改</a></p><p class="col s1"></p></li>';
                                 }else{
                                     str+='<li class="row"><p class="col s2">'+result[i].name+'</p><p class="col s3">'+result[i].id+'</p><p class="col s2">'+result[i].grade+'</p><p class="col s2">'+result[i].classname+'</p><p class="col s2">已批改</p><p class="col s1">'+result[i].score+'</p></li>';
                                 }
@@ -883,6 +883,58 @@ function initExamList(ExamList) {
         }
     }
 }
+
+//点击批改试卷传对应的试卷id和学生id
+var check_exam=document.getElementsByName("check_exam");
+for (var i = 0; i < check_exam.length; i++) {
+  check_exam[i].setAttribute("check_exam",i);
+}
+for(var i=0;i<check_exam.length;i++){
+    check_exam[i].onclick=function(){
+        var j=this.getAttribute("index");
+        var exam_student_id=document.getElementsByName("exam_student_id");
+        var s_id=$(exam_student_id[j]).text();
+        var paper_id=$("#paper_id").val();
+        var form=new FormData();
+        form.append("s_id",s_id);
+        form.append("paperID",paper_id);
+        //传学生id+试卷id,用于打开对应的阅卷页面
+        $.ajax({
+          url:"/acdemic/openStudentPaper",
+          type:"POST",
+          data:form,
+          processData : false,
+          contentType : false,
+          success:function(){
+            window.location.href="/exam-marking";
+          },
+          error:function(){
+            alert("试卷搜索失败！");
+          }
+        });
+    }
+}
+//查看试卷按钮
+document.getElementById("show_paper").onclick=function(){
+    var paper_id=$("#paper_id").val();
+    var form=new FormData();
+    form.append("paperID",paper_id);
+    //传学生id+试卷id,用于打开对应的阅卷页面
+    $.ajax({
+      url:"/acdemic/showPaper",
+      type:"POST",
+      data:form,
+      processData : false,
+      contentType : false,
+      success:function(){
+        window.location.href="/exam-detail";
+      },
+      error:function(){
+        alert("试卷打开失败！");
+      }
+    });
+}
+
 
 //发布考试
 document.getElementById("send_exam").onclick=function(){
