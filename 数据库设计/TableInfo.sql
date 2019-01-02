@@ -44,9 +44,10 @@ e_mail varchar(50)
 
 /*教师-班级表*/
 create table st
-(teacher_id varchar(20)primary key,
+(teacher_id varchar(20),
 class_name varchar(20),
 class_grade char(5),
+primary key(teacher_id,class_name,class_grade),
 foreign key (teacher_id) references teachers (teacher_id)
 );
 
@@ -74,6 +75,9 @@ teacher_id varchar(20),
 paper_name varchar(50),
 start_time datetime,
 stop_time datetime,
+last_time bigint(20),
+class_grade varchar(5),
+class_name varchar(20),
 foreign key (teacher_id) references teachers (teacher_id)
 );
 
@@ -86,7 +90,18 @@ foreign key (paper_id) references papers (paper_id),
 foreign key (question_id) references questions (question_id)
 );
 
-/*学生-考试表*/
+/*学生-考试情况表*/
+create table sp
+(student_id varchar(20),
+paper_id int,
+begin_time timestamp,
+end_time timestamp,
+primary key (student_id,paper_id),
+foreign key (student_id) references students (student_id),
+foreign key (paper_id) references papers (paper_id)
+);
+
+/*学生-考试结果表*/
 create table sp
 (student_id varchar(20),
 paper_id int,
@@ -94,6 +109,16 @@ grade tinyint,
 primary key (student_id,paper_id),
 foreign key (student_id) references students (student_id),
 foreign key (paper_id) references papers (paper_id)
+);
+
+/*学生答题情况*/
+create table sq_done(
+student_id varchar(20),
+paper_id int,
+question_id int,
+commit_answer varchar(512),
+goal int,
+primary key (student_id,paper_id,question_id)
 );
 
 
