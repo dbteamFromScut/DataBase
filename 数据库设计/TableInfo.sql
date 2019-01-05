@@ -91,7 +91,7 @@ foreign key (question_id) references questions (question_id)
 );
 
 /*学生-考试情况表*/
-create table sp
+create table student_exam
 (student_id varchar(20),
 paper_id int,
 begin_time timestamp,
